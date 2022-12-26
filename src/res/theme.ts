@@ -6,9 +6,9 @@ const theme = {
     colors: {
       ...DefaultTheme.colors,
       // Default background color, prevents flickering
-      backroundPrimary: '#fafafa',
+      backroundPrimary: '#F5F5F5',
       backroundSecondary: '#eeeeee',
-
+      main: '#2BB0AD',
       textPrimary: '#0B1F35',
       textSecondary: '#6D7986',
       textTertiary: '#B0B6BE',
@@ -23,8 +23,9 @@ const theme = {
     colors: {
       ...DefaultTheme.colors,
       // Default background color, prevents flickering
-      backroundPrimary: '#fafafa',
+      backroundPrimary: '#F5F5F5',
       backroundSecondary: '#eeeeee',
+      main: '#2BB0AD',
 
       textPrimary: '#0B1F35',
       textSecondary: '#6D7986',

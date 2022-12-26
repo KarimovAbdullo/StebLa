@@ -17,7 +17,7 @@ export const getDefaultScreenOptions = (
     elevation: 0,
     shadowOpacity: 0,
   },
-  headerTintColor: colors.lightGray,
+  headerTintColor: colors.backroundPrimary,
   headerRightContainerStyle: {
     paddingRight: Platform.select({ ios: s(10) }),
   },
@@ -38,7 +38,7 @@ export const getLogoScreenOptions = (
     shadowOpacity: 0,
     height: Platform.select({ android: vs(65) }),
   },
-  headerTintColor: colors.lightGray,
+  headerTintColor: colors.backroundPrimary,
   headerRightContainerStyle: {
     paddingRight: Platform.select({ ios: s(10) }),
   },

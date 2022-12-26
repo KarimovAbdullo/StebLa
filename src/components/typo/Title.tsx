@@ -8,28 +8,37 @@ import { createStyles } from 'utils/createStyles'
 interface IProps {
   children: ReactElement | string | string[]
   center?: boolean
-  type?: 'bold' | 'regular' | 'regular1' | 'regular2'
+  type?: 'bold' | 'regular' | 'regular1' | 'regular2' | 'header'
   style?: StyleProp<TextProps>
   numberOfLines?: number
   color?: keyof TThemeColors
+  flex?: boolean
 }
 
-const TextButton: React.FC<IProps> = ({
+const Title: React.FC<IProps> = ({
   type = 'regular',
   children,
   style,
   numberOfLines,
   color = 'black',
   center = false,
+  flex = false,
 }) => {
   const styles = useStyles(stylesConfig)
   const colors = useColors()
+  //@ts-ignore
   const colorStyle = { color: color ? colors[color] : undefined }
 
   return (
     <Text
       numberOfLines={numberOfLines}
-      style={[styles[type], center ? styles.center : {}, colorStyle, style]}>
+      style={[
+        styles[type],
+        flex && styles.flex,
+        center ? styles.center : {},
+        colorStyle,
+        style,
+      ]}>
       {children}
     </Text>
   )
@@ -37,32 +46,40 @@ const TextButton: React.FC<IProps> = ({
 
 const stylesConfig = createStyles((_colors, fonts) => ({
   regular: {
-    fontFamily: fonts.Ubuntu.regular,
-    fontSize: '12@ms',
-    lineHeight: '15@ms',
-    fontWeight: '600',
+    fontFamily: fonts.Montserrat.monserrat,
+    fontSize: '18@ms',
+    lineHeight: '22@ms',
+    fontWeight: '300',
   },
   bold: {
-    fontFamily: fonts.Ubuntu.regular,
-    fontSize: '16@ms',
+    fontFamily: fonts.Montserrat.bold,
+    fontSize: '28@ms',
     lineHeight: '22@ms',
-    color: '#BDBDBD',
   },
   center: {
     textAlign: 'center',
   },
+  flex: {
+    flex: 1,
+  },
   regular1: {
-    fontFamily: fonts.Ubuntu.regular,
-    fontSize: '12@ms',
+    fontFamily: fonts.Montserrat.monserrat,
+    fontSize: '15@ms',
     lineHeight: '18@ms',
-    fontWeight: '700',
+    fontWeight: '300',
   },
   regular2: {
-    fontFamily: fonts.Ubuntu.regular,
-    fontSize: '12@ms',
-    lineHeight: '15@ms',
-    fontWeight: '300',
+    fontFamily: fonts.Montserrat.medium,
+    fontSize: '18@ms',
+    lineHeight: '18@ms',
+    fontWeight: '600',
+  },
+  header: {
+    fontSize: '16@ms',
+    fontFamily: fonts.Montserrat.medium,
+    fontWeight: '100',
+    lineHeight: '19@ms',
   },
 }))
 
-export default TextButton
+export default Title

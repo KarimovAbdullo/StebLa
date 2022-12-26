@@ -4,4 +4,7 @@ export default {
     regular: 'ubuntu-regular',
     medium: 'ubuntu-medium',
   },
+  // Rubik: {
+  //   medium:
+  // }
 }

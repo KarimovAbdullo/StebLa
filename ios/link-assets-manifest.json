@@ -1,0 +1,17 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/ubuntu-light.ttf",
+      "sha1": "5f88f07d61cb63e065f565c3ace8fd12394e071b"
+    },
+    {
+      "path": "src/assets/fonts/ubuntu-medium.ttf",
+      "sha1": "8f9552f4661c80d13082dbf72a38ab4585d0b8a9"
+    },
+    {
+      "path": "src/assets/fonts/ubuntu-regular.ttf",
+      "sha1": "31b6449384c3fe8d10a483814fe68302dc05485f"
+    }
+  ]
+}

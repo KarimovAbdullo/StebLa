@@ -1,0 +1,13 @@
+export const background = '#FFFFFF'
+
+export const black = '#292929'
+export const white = '#FFFFFF'
+export const grey = '#BCBCBC'
+export const lightGrey = '#B0B6BE'
+export const red = '#D64238'
+export const yellow = '#facd02'
+export const blue = '#2980B9'
+export const backroundPrimary = '#FFFFFF'
+export const backroundSecondary = '#F2F3F3'
+export const orange = 'orange'
+export const none = 'none'

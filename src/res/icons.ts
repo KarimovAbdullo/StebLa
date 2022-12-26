@@ -1,3 +1,4 @@
 import ExampleIcon from 'assets/icons/ExampleIcon'
+import LogoIcon from 'assets/icons/LogoIcon'
 
-export { ExampleIcon }
+export { ExampleIcon, LogoIcon }

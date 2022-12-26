@@ -9,6 +9,7 @@ import React, { useRef } from 'react'
 import R from 'res'
 import { TTheme } from 'res/theme'
 import HomeScreen from 'screens/Home'
+import StartScreen from 'screens/StartScreen/StartScreen'
 import { TNavigationParams } from 'types/navigation'
 
 const Navigator = ({ theme }: { theme: TTheme }) => {
@@ -26,6 +27,15 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
       }}>
       <BottomSheetModalProvider>
         <RootStack.Navigator screenOptions={{ headerShown: false }}>
+          <RootStack.Screen
+            component={StartScreen}
+            name={R.routes.SCREEN_START}
+            options={{
+              headerShown: false,
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
           <RootStack.Screen
             name={R.routes.ROOT_MAIN}
             //@ts-ignore

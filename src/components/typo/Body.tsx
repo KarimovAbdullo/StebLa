@@ -14,7 +14,17 @@ interface IProps extends TextProps {
     | number
     | (string | number)[]
   center?: boolean
-  type?: 'regular16' | 'regular14' | 'regular18' | 'regular12' | 'semi12'
+  type?:
+    | 'regular16'
+    | 'regular14'
+    | 'regular18'
+    | 'regular12'
+    | 'semi12'
+    | 'regular22'
+    | 'small'
+    | 'fill'
+    | 'user18'
+    | 'small10'
   style?: StyleProp<TextProps>
   numberOfLines?: number
   color?: keyof TThemeColors
@@ -24,7 +34,7 @@ interface IProps extends TextProps {
 }
 
 const Body: React.FC<IProps> = ({
-  type = 'regular16',
+  type = 'regular18',
   children,
   style,
   numberOfLines,
@@ -69,17 +79,23 @@ const stylesConfig = createStyles((_colors, fonts) => ({
     lineHeight: '18@ms',
   },
   regular18: {
-    fontFamily: fonts.Ubuntu.regular,
+    fontFamily: fonts.Ubuntu,
     fontSize: '18@ms',
-    lineHeight: '24@ms',
+    lineHeight: '23@ms',
+    fontWeight: '300',
   },
   regular12: {
     fontFamily: fonts.Ubuntu.regular,
     fontSize: '12@ms',
     lineHeight: '14@ms',
   },
+  regular22: {
+    fontFamily: fonts.Ubuntu.regular,
+    fontSize: '22@ms',
+    lineHeight: '26@ms',
+  },
   semi12: {
-    fontFamily: fonts.Ubuntu,
+    fontFamily: fonts.Ubuntu.regular,
     fontSize: '12@ms',
     lineHeight: '14@ms',
   },
@@ -90,7 +106,28 @@ const stylesConfig = createStyles((_colors, fonts) => ({
     fontWeight: '700',
   },
   semiBold: {
-    fontFamily: fonts.Ubuntu,
+    fontFamily: fonts.Ubuntu.regular,
+  },
+  small: {
+    fontFamily: fonts.Ubuntu.regular,
+    fontSize: '12@ms',
+    lineHeight: '15@ms',
+  },
+  user18: {
+    fontFamily: fonts.Ubuntu.regular,
+    fontSize: '18@ms',
+    lineHeight: '21.94@ms',
+  },
+  fill: {
+    fontFamily: fonts.Ubuntu.regular,
+    fontSize: '18@ms',
+    lineHeight: '21.94@ms',
+    fontWeight: '300',
+  },
+  small10: {
+    fontFamily: fonts.Ubuntu.regular,
+    fontSize: '10@ms',
+    lineHeight: '13@ms',
   },
 }))
 

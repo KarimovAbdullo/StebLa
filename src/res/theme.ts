@@ -13,6 +13,7 @@ const theme = {
       textSecondary: '#6D7986',
       textTertiary: '#B0B6BE',
       black: 'black',
+      white: '#FFFFFF',
 
       iconPrimary: '#0B1F35',
       iconSecondary: '#6D7986',
@@ -28,6 +29,7 @@ const theme = {
       backroundSecondary: '#eeeeee',
       main: '#2BB0AD',
       black: 'black',
+      white: '#FFFFFF',
 
       textPrimary: '#0B1F35',
       textSecondary: '#6D7986',

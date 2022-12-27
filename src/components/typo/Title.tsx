@@ -46,13 +46,13 @@ const Title: React.FC<IProps> = ({
 
 const stylesConfig = createStyles((_colors, fonts) => ({
   regular: {
-    fontFamily: fonts.Montserrat.monserrat,
+    fontFamily: fonts.Ubuntu.regular,
     fontSize: '18@ms',
     lineHeight: '22@ms',
     fontWeight: '300',
   },
   bold: {
-    fontFamily: fonts.Montserrat.bold,
+    fontFamily: fonts.Ubuntu.regular,
     fontSize: '28@ms',
     lineHeight: '22@ms',
   },
@@ -63,20 +63,20 @@ const stylesConfig = createStyles((_colors, fonts) => ({
     flex: 1,
   },
   regular1: {
-    fontFamily: fonts.Montserrat.monserrat,
+    fontFamily: fonts.Ubuntu.regular,
     fontSize: '15@ms',
     lineHeight: '18@ms',
     fontWeight: '300',
   },
   regular2: {
-    fontFamily: fonts.Montserrat.medium,
+    fontFamily: fonts.Ubuntu.regular,
     fontSize: '18@ms',
     lineHeight: '18@ms',
     fontWeight: '600',
   },
   header: {
     fontSize: '16@ms',
-    fontFamily: fonts.Montserrat.medium,
+    fontFamily: fonts.Ubuntu.regular,
     fontWeight: '100',
     lineHeight: '19@ms',
   },

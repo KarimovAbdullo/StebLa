@@ -9,13 +9,17 @@ export default createStyles(() => ({
   logo: {
     marginTop: '26@vs',
   },
+  card: {
+    borderWidth: 1,
+    width: '283@s',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+  },
 
   re: {
     fontSize: '19@ms',
     borderWidth: 1,
-    paddingHorizontal: '21@s',
     justifyContent: 'center',
     textAlign: 'center',
-    marginTop: '27@vs',
   },
 }))

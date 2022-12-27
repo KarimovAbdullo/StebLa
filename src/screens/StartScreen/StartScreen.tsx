@@ -1,93 +1,71 @@
 import React from 'react'
-import { FlatList, SafeAreaView, View } from 'react-native'
+import { Dimensions, Text, View } from 'react-native'
+import Carousel from 'react-native-snap-carousel'
 import R from 'res'
+
+export const SLIDER_WIDTH = Dimensions.get('window').width + 30
+export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.8)
+interface IProps {
+  id: number
+  name: string
+  icon?: any
+  iconText?: any
+}
+interface IData {
+  item: IProps
+}
+
 const data = [
   {
-    id: '1',
-    title: 'Title 1',
-    text: 'Description.\nSay something cool',
-    image: <R.icons.LogoIcon />,
-    bg: '#59b2ab',
+    id: 1,
+    name: 'React JS',
+    icon: <R.icons.LogoIcon />,
+    iconText: <R.icons.LogoTitle />,
   },
   {
-    id: '2',
-    title: 'Title 2',
-    text: 'Other cool stuff',
-    image: require('./../../assets/images/t.png'),
-    bg: '#febe29',
+    id: 2,
+    name: 'JavaScript',
   },
   {
-    id: '3',
-    title: 'Rocket guy',
-    text: "I'm already out of descriptions\n\nLorem ipsum bla bla bla",
-    image: require('./../../assets/images/t.png'),
-    bg: '#22bcb5',
+    id: 3,
+    name: 'Node JS',
   },
 ]
 
-const StartScreen = () => {
-  
-  const renderBottomSection = () => {
-    return (
-      <SafeAreaView>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            paddingHorizontal: 2,
-            paddingVertical: 2,
-            borderWidth: 1,
-          }}>
-          {[...Array(data.length)].map((_, index) => (
-            <View
-              key={index}
-              style={{
-                width: 80,
-                height: 10,
-                borderRadius: 10,
-                backgroundColor: 'red',
-                marginRight: 10,
-              }}
-            />
-          ))}
-        </View>
-      </SafeAreaView>
-    )
-  }
-
-  const renderFlatlistItem = ({ item }) => {
-    return (
-      <View
-        style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: 100,
-        }}>
-        <View>
-          {item.}
-        </View>
-      </View>
-    )
-  }
-
+const renderItem = ({ item }: IData) => {
   return (
-    <SafeAreaView style={{ flex: 1, alignItems: 'center', borderWidth: 1 }}>
-      <FlatList
-        data={data}
-        pagingEnabled
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        keyExtractor={item => item.id}
-        renderItem={renderFlatlistItem}
-      />
-      <View>{renderBottomSection()}</View>
-    </SafeAreaView>
+    <View
+      style={{
+        borderWidth: 1,
+        padding: 20,
+        borderRadius: 20,
+        alignItems: 'center',
+        backgroundColor: 'white',
+      }}>
+      <R.icons.LogoIcon />
+      <Text style={{ marginVertical: 10, fontSize: 20, fontWeight: 'bold' }}>
+        {item.name}
+      </Text>
+    </View>
   )
 }
 
+const App = () => {
+  return (
+    <View style={{ marginVertical: 10 }}>
+      <Carousel
+        data={data}
+        renderItem={renderItem}
+        sliderWidth={SLIDER_WIDTH}
+        itemWidth={ITEM_WIDTH}
+      />
+    </View>
+  )
+}
+export default App
+
 // import Container from 'components/Container'
+// import { CustomButton } from 'components/CustomButton/CustomButton'
 // import Typo from 'components/typo'
 // import { useStyles } from 'hooks/useStyles'
 // import React from 'react'
@@ -108,14 +86,16 @@ const StartScreen = () => {
 //           <View style={styles.logo}>
 //             <R.icons.LogoTitle />
 //           </View>
-
-//           <Typo.Title type="regular19" color="black" style={styles.re}>
-//             Получайте только важную информацию{' '}
-//           </Typo.Title>
+//           <View style={styles.card}>
+//             <Typo.Title type="regular19" color="black" style={styles.re}>
+//               Получайте только важную информацию
+//             </Typo.Title>
+//             <CustomButton text={'Ознакомиться с сервисом'} />
+//           </View>
 //         </View>
 //       </Container>
 //     </SafeAreaView>
 //   )
 // }
 
-export default StartScreen
+// export default StartScreen

@@ -1,7 +1,8 @@
 import Container from 'components/Container'
+import Typo from 'components/typo'
 import { useStyles } from 'hooks/useStyles'
 import React from 'react'
-import { SafeAreaView, Text, View } from 'react-native'
+import { SafeAreaView, View } from 'react-native'
 import R from 'res'
 
 // import R from 'res'
@@ -19,7 +20,9 @@ const StartScreen = () => {
             <R.icons.LogoTitle />
           </View>
 
-          <Text style={styles.re}>Получайте только важную информацию </Text>
+          <Typo.Title type="regular19" color="black" style={styles.re}>
+            Получайте только важную информацию{' '}
+          </Typo.Title>
         </View>
       </Container>
     </SafeAreaView>

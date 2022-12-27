@@ -1,4 +1,4 @@
-package com.gooddeed.newarchitecture;
+package com.stebla.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.gooddeed.BuildConfig;
-import com.gooddeed.newarchitecture.components.MainComponentsRegistry;
-import com.gooddeed.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.stebla.BuildConfig;
+import com.stebla.newarchitecture.components.MainComponentsRegistry;
+import com.stebla.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

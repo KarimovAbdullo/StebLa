@@ -8,7 +8,7 @@ import { createStyles } from 'utils/createStyles'
 interface IProps {
   children: ReactElement | string | string[]
   center?: boolean
-  type?: 'bold' | 'regular' | 'regular1' | 'regular2' | 'header'
+  type?: 'bold' | 'regular' | 'regular19' | 'regular21' | 'header'
   style?: StyleProp<TextProps>
   numberOfLines?: number
   color?: keyof TThemeColors
@@ -46,13 +46,13 @@ const Title: React.FC<IProps> = ({
 
 const stylesConfig = createStyles((_colors, fonts) => ({
   regular: {
-    fontFamily: fonts.Ubuntu.regular,
+    fontFamily: fonts.Ubuntu,
     fontSize: '18@ms',
     lineHeight: '22@ms',
     fontWeight: '300',
   },
   bold: {
-    fontFamily: fonts.Ubuntu.regular,
+    fontFamily: fonts.Ubuntu.medium,
     fontSize: '28@ms',
     lineHeight: '22@ms',
   },
@@ -62,21 +62,21 @@ const stylesConfig = createStyles((_colors, fonts) => ({
   flex: {
     flex: 1,
   },
-  regular1: {
-    fontFamily: fonts.Ubuntu.regular,
-    fontSize: '15@ms',
-    lineHeight: '18@ms',
-    fontWeight: '300',
+  regular19: {
+    fontFamily: fonts.Ubuntu.medium,
+    fontSize: '19@ms',
+    lineHeight: '22.5@ms',
+    fontWeight: '400',
   },
-  regular2: {
-    fontFamily: fonts.Ubuntu.regular,
+  regular21: {
+    fontFamily: fonts.Ubuntu.medium,
     fontSize: '18@ms',
-    lineHeight: '18@ms',
+    lineHeight: '21@ms',
     fontWeight: '600',
   },
   header: {
     fontSize: '16@ms',
-    fontFamily: fonts.Ubuntu.regular,
+    fontFamily: fonts.Ubuntu.medium,
     fontWeight: '100',
     lineHeight: '19@ms',
   },

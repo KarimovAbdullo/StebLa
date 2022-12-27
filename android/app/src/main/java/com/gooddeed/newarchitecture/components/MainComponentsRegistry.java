@@ -1,4 +1,4 @@
-package com.gooddeed.newarchitecture.components;
+package com.stebla.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;

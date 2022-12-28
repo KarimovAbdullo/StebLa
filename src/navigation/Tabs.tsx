@@ -67,9 +67,9 @@ const Tabs: React.FC<IProps> = ({ route }) => {
           headerShown: false,
           tabBarIcon: ({ focused }) =>
             focused ? (
-              <R.icons.ExampleIcon color={colors.textPrimary} bg={'none'} />
+              <R.icons.ExampleIcon color={colors.textPrimary} />
             ) : (
-              <R.icons.ExampleIcon color={colors.iconLine} bg={'none'} />
+              <R.icons.ExampleIcon color={colors.iconLine} />
             ),
         }}
         name={R.routes.STACK_HOME}

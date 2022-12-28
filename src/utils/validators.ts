@@ -16,7 +16,7 @@ export function required(value: string) {
     value === undefined ||
     value.length === 0
   ) {
-    return 'This field is required'
+    return 'Это поле обязательно к заполнению'
   }
 }
 
@@ -48,7 +48,7 @@ export function onlyLetter(value: string) {
 
 export function onlyNumber(value: string) {
   if (!/^-?\d*(\.\d+)?$/.test(value)) {
-    return 'This field only accepts numbers'
+    return 'Неверный формат номера'
   }
 }
 

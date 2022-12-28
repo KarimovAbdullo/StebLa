@@ -1,10 +1,7 @@
 import { createStyles } from 'utils/createStyles'
 
 export default createStyles(() => ({
-  main: {
-    borderWidth: 1,
-    backgroundColor: 'red',
-  },
+  main: {},
   logo: {
     marginTop: '26@vs',
   },

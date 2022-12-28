@@ -3,8 +3,7 @@ import { createStyles } from 'utils/createStyles'
 export default createStyles(() => ({
   main: {
     borderWidth: 1,
-    top: '156@vs',
-    alignItems: 'center',
+    backgroundColor: 'red',
   },
   logo: {
     marginTop: '26@vs',

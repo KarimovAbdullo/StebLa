@@ -24,6 +24,7 @@ interface IProps extends TextProps {
     | 'small'
     | 'fill'
     | 'user18'
+    | 'regular01'
     | 'small10'
   style?: StyleProp<TextProps>
   numberOfLines?: number
@@ -128,6 +129,12 @@ const stylesConfig = createStyles((_colors, fonts) => ({
     fontFamily: fonts.Ubuntu.regular,
     fontSize: '10@ms',
     lineHeight: '13@ms',
+  },
+  regular01: {
+    fontFamily: fonts.Ubuntu.regular,
+    fontSize: '21@ms',
+    lineHeight: '14@ms',
+    textAlign: 'center',
   },
 }))
 

@@ -4,11 +4,12 @@ import {
   useNavigationContainerRef,
 } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import Tabs from 'navigation/Tabs'
 import React, { useRef } from 'react'
 import R from 'res'
 import { TTheme } from 'res/theme'
 import HomeScreen from 'screens/Home'
+import LoginScreen from 'screens/Login'
+import OtpScreen from 'screens/Otp'
 import StartScreen from 'screens/StartScreen/StartScreen'
 import { TNavigationParams } from 'types/navigation'
 
@@ -32,14 +33,26 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
             name={R.routes.SCREEN_START}
             options={{
               headerShown: false,
-              headerTitleAlign: 'center',
               headerBackTitleVisible: false,
             }}
           />
+
           <RootStack.Screen
-            name={R.routes.ROOT_MAIN}
-            //@ts-ignore
-            component={Tabs}
+            component={LoginScreen}
+            name={R.routes.SCREEN_LOGIN}
+            options={{
+              headerShown: false,
+              headerBackTitleVisible: false,
+            }}
+          />
+
+          <RootStack.Screen
+            component={OtpScreen}
+            name={R.routes.SCREEN_OTP}
+            options={{
+              headerShown: false,
+              headerBackTitleVisible: false,
+            }}
           />
 
           <RootStack.Screen

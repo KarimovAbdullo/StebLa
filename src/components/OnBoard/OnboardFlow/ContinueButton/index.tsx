@@ -1,3 +1,4 @@
+import useSmartNavigation from 'hooks/useSmartNavigation'
 import React from 'react'
 import { FC } from 'react'
 import {
@@ -8,6 +9,7 @@ import {
   ViewStyle,
 } from 'react-native'
 import { s, vs } from 'react-native-size-matters'
+import R from 'res'
 
 import {
   CONTINUE_BUTTON_TEXT_DEFAULT,
@@ -29,6 +31,12 @@ export const ContinueButton: FC<ContinueButtonProps> = ({
 }) => {
   const isLastPage = currentPage === totalPages - 1
   const startPage = currentPage > 0
+  const navigation = useSmartNavigation()
+
+  const goLogin = () => {
+    //@ts-ignore
+    navigation.navigate(R.routes.SCREEN_HOME)
+  }
 
   return (
     <View>
@@ -36,7 +44,7 @@ export const ContinueButton: FC<ContinueButtonProps> = ({
         <TouchableOpacity
           activeOpacity={0.8}
           style={[styles.button, style]}
-          onPress={goToNextPage}>
+          onPress={isLastPage ? goLogin : goToNextPage}>
           <Text style={styles.buttonText}>
             {isLastPage
               ? FINISH_BUTTON_TEXT_DEFAULT

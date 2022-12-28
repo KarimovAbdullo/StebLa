@@ -1,16 +1,13 @@
 import { OnboardFlow } from 'components/OnBoard'
-import { useStyles } from 'hooks/useStyles'
 import React from 'react'
 import { StatusBar, View } from 'react-native'
 import { vs } from 'react-native-size-matters'
 import R from 'res'
 
-import stylesConfig from './StartScreen.style'
 const data = [
   {
     title: 'Получайте только важную информацию ',
-    url: require('../../assets/images/t.png'),
-    logo: require('../../assets/images/t.png'),
+    logo: <R.icons.LogoIcon />,
     logoTitle: <R.icons.LogoTitle />,
   },
   {
@@ -37,8 +34,6 @@ const data = [
   },
 ]
 const StartScreen = () => {
-  const styles = useStyles(stylesConfig)
-
   return (
     <View>
       <StatusBar />

@@ -35,7 +35,7 @@ export const ContinueButton: FC<ContinueButtonProps> = ({
 
   const goLogin = () => {
     //@ts-ignore
-    navigation.navigate(R.routes.SCREEN_HOME)
+    navigation.navigate(R.routes.SCREEN_LOGIN)
   }
 
   return (

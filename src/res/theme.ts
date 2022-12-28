@@ -7,13 +7,15 @@ const theme = {
       ...DefaultTheme.colors,
       // Default background color, prevents flickering
       backroundPrimary: '#F5F5F5',
-      backroundSecondary: '#eeeeee',
+      backroundSecondary: '#F5F8F9',
       main: '#2BB0AD',
-      textPrimary: '#0B1F35',
+      textPrimary: '#061A1A',
       textSecondary: '#6D7986',
       textTertiary: '#B0B6BE',
       black: 'black',
       white: '#FFFFFF',
+      lightGrey: '#F5F8F9',
+      red: '#F54D3F',
 
       iconPrimary: '#0B1F35',
       iconSecondary: '#6D7986',
@@ -26,12 +28,14 @@ const theme = {
       ...DefaultTheme.colors,
       // Default background color, prevents flickering
       backroundPrimary: '#F5F5F5',
-      backroundSecondary: '#eeeeee',
+      backroundSecondary: '#F5F8F9',
       main: '#2BB0AD',
       black: 'black',
       white: '#FFFFFF',
+      lightGrey: '#F5F8F9',
+      red: '#F54D3F',
 
-      textPrimary: '#0B1F35',
+      textPrimary: '#061A1A',
       textSecondary: '#6D7986',
       textTertiary: '#B0B6BE',
 

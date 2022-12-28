@@ -2,39 +2,34 @@ import { createStyles } from 'utils/createStyles'
 
 export default createStyles(colors => ({
   itemsContent: {
-    paddingVertical: '3@vs',
-    backgroundColor: colors.backroundPrimary,
     borderRadius: '8@s',
-    borderWidth: '1@s',
     borderColor: colors.iconLine,
     marginTop: '5@vs',
   },
   input: {
-    marginHorizontal: '3@s',
-    fontSize: '20@s',
+    fontSize: '18@s',
     color: colors.textSecondary,
-    paddingLeft: '2@s',
-    width: '300@s',
+    marginLeft: '13@s',
   },
   activeInput: {
     borderWidth: '1@s',
-    borderColor: colors.green,
+    borderColor: colors.main,
     borderRadius: '5@s',
   },
   error: {
-    borderColor: colors.tanla,
+    borderColor: colors.main,
   },
   errorText: {
-    fontSize: '12@s',
+    fontSize: '14@s',
     color: colors.red,
-    paddingLeft: '10@s',
+    paddingLeft: '15@s',
   },
   inputContent: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   successText: {
-    color: colors.green,
+    color: colors.black,
     paddingLeft: '10@s',
     fontSize: '12@s',
   },
@@ -46,5 +41,17 @@ export default createStyles(colors => ({
   },
   container: {
     marginVertical: '5@vs',
+    backgroundColor: colors.lightGrey,
+    padding: '10@s',
+    borderRadius: '10@s',
+    // height: '69@vs',
+  },
+  eror: {
+    marginVertical: '5@vs',
+    backgroundColor: colors.lightGrey,
+    padding: '10@s',
+    borderRadius: '10@s',
+    borderWidth: '1@s',
+    borderColor: colors.red,
   },
 }))

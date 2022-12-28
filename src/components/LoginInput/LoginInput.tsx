@@ -1,4 +1,3 @@
-import Typo from 'components/typo'
 import { useField, useFormikContext } from 'formik'
 import { useStyles } from 'hooks/useStyles'
 import React, { useCallback, useRef, useState } from 'react'
@@ -23,8 +22,6 @@ export const LoginInput = ({
   inputStyle,
   secureTextEntry,
   placeholderTextColor,
-  label,
-  title = '',
   keyboardType,
   ...attributes
 }: IProps) => {
@@ -48,12 +45,12 @@ export const LoginInput = ({
   }, [])
 
   return (
-    <View style={styles.container}>
-      <Typo.TextButton color={'textPrimary'}>{title}</Typo.TextButton>
+    <View style={[styles.container, meta.error ? styles.eror : {}]}>
       <View style={styles.itemsContent}>
+        {(submitCount || leftFocus) && meta.error ? (
+          <Text style={styles.errorText}>{meta.error}</Text>
+        ) : null}
         <View style={styles.inputContent}>
-          <Text style={styles.text}>{label}</Text>
-
           <TextInput
             style={[
               styles.input,
@@ -73,10 +70,6 @@ export const LoginInput = ({
             {...attributes}
           />
         </View>
-
-        {(submitCount || leftFocus) && meta.error ? (
-          <Text style={styles.errorText}>{meta.error}</Text>
-        ) : null}
       </View>
     </View>
   )

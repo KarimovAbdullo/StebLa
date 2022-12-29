@@ -1,15 +1,16 @@
+import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
 import { OnboardFlow } from 'components/OnBoard'
 import React from 'react'
-import { StatusBar, View } from 'react-native'
+import { View } from 'react-native'
 import { vs } from 'react-native-size-matters'
 import R from 'res'
 
 const data = [
-  {
-    title: 'Получайте только важную информацию ',
-    logo: <R.icons.LogoIcon />,
-    logoTitle: <R.icons.LogoTitle />,
-  },
+  // {
+  //   title: 'Получайте только важную информацию ',
+  //   logo: <R.icons.LogoIcon />,
+  //   logoTitle: <R.icons.LogoTitle />,
+  // },
   {
     title:
       'Теперь вам не нужно самостоятельно искать нужную вам информацию в чатах телеграмм',
@@ -36,7 +37,10 @@ const data = [
 const StartScreen = () => {
   return (
     <View>
-      <StatusBar />
+      <FocusAwareStatusBar
+        backgroundColor={R.colors.white}
+        barStyle={'dark-content'}
+      />
       <OnboardFlow pages={data} style={{ marginTop: vs(150) }} />
     </View>
   )

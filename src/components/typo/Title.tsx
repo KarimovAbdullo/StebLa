@@ -63,7 +63,7 @@ const stylesConfig = createStyles((_colors, fonts) => ({
     flex: 1,
   },
   regular18: {
-    fontFamily: fonts.Inter.regular,
+    fontFamily: fonts.Inter.medium,
     fontSize: '18@ms',
     lineHeight: '24.93@ms',
     fontWeight: '400',

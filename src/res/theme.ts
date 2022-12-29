@@ -2,7 +2,7 @@ import { DefaultTheme } from '@react-navigation/native'
 
 const theme = {
   light: {
-    dark: false,
+    dark: true,
     colors: {
       ...DefaultTheme.colors,
       // Default background color, prevents flickering
@@ -23,7 +23,7 @@ const theme = {
     },
   },
   dark: {
-    dark: true,
+    dark: false,
     colors: {
       ...DefaultTheme.colors,
       // Default background color, prevents flickering

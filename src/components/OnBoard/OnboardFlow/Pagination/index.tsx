@@ -23,7 +23,7 @@ export const Pagination: FC<PaginationProps> = ({
   paginationColor,
 }) => {
   const dots = []
-  for (let i = 1; i < totalPages; i++) {
+  for (let i = 0; i < totalPages; i++) {
     dots.push(
       <Dot
         paginationColor={paginationColor ?? COLOR_PAGINATION_DEFAULT}

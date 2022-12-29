@@ -30,7 +30,6 @@ export const ContinueButton: FC<ContinueButtonProps> = ({
   totalPages,
 }) => {
   const isLastPage = currentPage === totalPages - 1
-  const startPage = currentPage > 0
   const navigation = useSmartNavigation()
 
   const goLogin = () => {
@@ -40,25 +39,16 @@ export const ContinueButton: FC<ContinueButtonProps> = ({
 
   return (
     <View>
-      {startPage ? (
-        <TouchableOpacity
-          activeOpacity={0.8}
-          style={[styles.button, style]}
-          onPress={isLastPage ? goLogin : goToNextPage}>
-          <Text style={styles.buttonText}>
-            {isLastPage
-              ? FINISH_BUTTON_TEXT_DEFAULT
-              : CONTINUE_BUTTON_TEXT_DEFAULT}
-          </Text>
-        </TouchableOpacity>
-      ) : (
-        <TouchableOpacity
-          activeOpacity={0.6}
-          style={[styles.btn, style]}
-          onPress={goToNextPage}>
-          <Text style={styles.buttonText}>Ознакомиться с сервисом</Text>
-        </TouchableOpacity>
-      )}
+      <TouchableOpacity
+        activeOpacity={0.8}
+        style={[styles.button, style]}
+        onPress={isLastPage ? goLogin : goToNextPage}>
+        <Text style={styles.buttonText}>
+          {isLastPage
+            ? FINISH_BUTTON_TEXT_DEFAULT
+            : CONTINUE_BUTTON_TEXT_DEFAULT}
+        </Text>
+      </TouchableOpacity>
     </View>
   )
 }

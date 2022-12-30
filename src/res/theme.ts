@@ -18,7 +18,7 @@ const theme = {
       red: '#F54D3F',
       title: '#B3C2CB',
 
-      iconPrimary: '#0B1F35',
+      iconPrimary: '#B3C2CB',
       iconSecondary: '#6D7986',
       iconLine: '#BCBCBC',
     },
@@ -41,7 +41,7 @@ const theme = {
       textSecondary: '#6D7986',
       textTertiary: '#B0B6BE',
 
-      iconPrimary: '#0B1F35',
+      iconPrimary: '#B3C2CB',
       iconSecondary: '#6D7986',
       iconLine: '#BCBCBC',
     },

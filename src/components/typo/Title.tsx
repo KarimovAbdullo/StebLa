@@ -17,6 +17,8 @@ interface IProps {
     | 'header'
     | 'reg21'
     | 'reg28'
+    | 'regular28'
+
   style?: StyleProp<TextProps>
   numberOfLines?: number
   color?: keyof TThemeColors
@@ -54,7 +56,7 @@ const Title: React.FC<IProps> = ({
 
 const stylesConfig = createStyles((_colors, fonts) => ({
   regular: {
-    fontFamily: fonts.Ubuntu,
+    fontFamily: fonts.Ubuntu.regular,
     fontSize: '18@ms',
     lineHeight: '22@ms',
     fontWeight: '300',
@@ -89,16 +91,22 @@ const stylesConfig = createStyles((_colors, fonts) => ({
     fontWeight: '400',
   },
   regular21: {
-    fontFamily: fonts.Inter.regular,
+    fontFamily: fonts.Ubuntu.medium,
     fontSize: '21@ms',
-    lineHeight: '29.08@ms',
-    fontWeight: '400',
+    lineHeight: '21@ms',
+    fontWeight: '600',
   },
   header: {
     fontSize: '16@ms',
     fontFamily: fonts.Ubuntu.medium,
     fontWeight: '100',
     lineHeight: '19@ms',
+  },
+  regular28: {
+    fontFamily: fonts.Ubuntu.regular,
+    fontSize: '28@ms',
+    lineHeight: '29.93@ms',
+    fontWeight: '500',
   },
   reg21: {
     fontSize: '21@ms',

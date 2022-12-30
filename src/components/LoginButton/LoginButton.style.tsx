@@ -7,7 +7,6 @@ export default createStyles(colors => ({
     borderRadius: '36@s',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: '10@vs',
     backgroundColor: colors.main,
   },
   text: {

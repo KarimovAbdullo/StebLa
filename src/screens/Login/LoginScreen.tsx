@@ -1,3 +1,4 @@
+import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
 import { LoginButton } from 'components/LoginButton/LoginButtton'
 import { LoginInput } from 'components/LoginInput/LoginInput'
 import Typo from 'components/typo'
@@ -8,7 +9,7 @@ import React from 'react'
 import { View } from 'react-native'
 import R from 'res'
 import { ILogin } from 'types/data'
-import { onlyNumber, required, validator } from 'utils/validators'
+import { required, validator } from 'utils/validators'
 
 import stylesConfig from './LoginScreen.styles'
 
@@ -27,6 +28,7 @@ export const LoginScreen = () => {
 
   return (
     <View style={styles.container}>
+      <FocusAwareStatusBar backgroundColor={R.colors.background} />
       <Typo.Headline>Вход</Typo.Headline>
 
       <Typo.TextButton type="regular16" color="textPrimary" style={styles.text}>
@@ -44,12 +46,13 @@ export const LoginScreen = () => {
             <View style={styles.inputContent}>
               <LoginInput
                 label="+"
-                validate={validator(required, onlyNumber)}
+                validate={validator(required)}
                 name="phone"
                 placeholder="+ _ (_ _ _) _ _ _ _ _ _ _ _"
                 placeholderTextColor={R.colors.textPrimary}
                 secureTextEntry={false}
                 keyboardType="numeric"
+                maxLength={12}
               />
             </View>
 

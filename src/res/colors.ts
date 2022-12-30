@@ -1,4 +1,4 @@
-export const background = '#FFFFFF'
+export const background = '#F5F5F5'
 
 export const black = '#292929'
 export const white = '#FFFFFF'
@@ -13,3 +13,4 @@ export const orange = 'orange'
 export const none = 'none'
 export const main = '#2BB0AD'
 export const textPrimary = '#061A1A'
+export const iconPrimary = '#B3C2CB'

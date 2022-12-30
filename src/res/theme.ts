@@ -17,7 +17,7 @@ const theme = {
       lightGrey: '#F5F8F9',
       red: '#F54D3F',
 
-      iconPrimary: '#0B1F35',
+      iconPrimary: '#B3C2CB',
       iconSecondary: '#6D7986',
       iconLine: '#BCBCBC',
     },
@@ -39,7 +39,7 @@ const theme = {
       textSecondary: '#6D7986',
       textTertiary: '#B0B6BE',
 
-      iconPrimary: '#0B1F35',
+      iconPrimary: '#B3C2CB',
       iconSecondary: '#6D7986',
       iconLine: '#BCBCBC',
     },

@@ -5,6 +5,7 @@ import LogoIcon from 'assets/icons/LogoIcon'
 import LogoTitle from 'assets/icons/LogoTilte'
 import PlusIcon from 'assets/icons/PlusIcon'
 import ProfileIcon from 'assets/icons/ProfileIcon'
+import StarIcon from 'assets/icons/StarIcon'
 import StaticIcon from 'assets/icons/StaticIcon'
 import TelegramIcon from 'assets/icons/TelegramIcon'
 
@@ -16,6 +17,7 @@ export {
   LogoTitle,
   PlusIcon,
   ProfileIcon,
+  StarIcon,
   StaticIcon,
   TelegramIcon,
 }

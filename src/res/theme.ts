@@ -16,6 +16,7 @@ const theme = {
       white: '#FFFFFF',
       lightGrey: '#F5F8F9',
       red: '#F54D3F',
+      title: '#B3C2CB',
 
       iconPrimary: '#0B1F35',
       iconSecondary: '#6D7986',
@@ -34,6 +35,7 @@ const theme = {
       white: '#FFFFFF',
       lightGrey: '#F5F8F9',
       red: '#F54D3F',
+      title: '#B3C2CB',
 
       textPrimary: '#061A1A',
       textSecondary: '#6D7986',

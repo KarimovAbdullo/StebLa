@@ -56,6 +56,20 @@
 		<string>ubuntu-light.ttf</string>
 		<string>ubuntu-medium.ttf</string>
 		<string>ubuntu-regular.ttf</string>
+		<string>Inter-Black.ttf</string>
+		<string>Inter-Bold.ttf</string>
+		<string>Inter-Light.ttf</string>
+		<string>Inter-Medium.ttf</string>
+		<string>Inter-Regular.ttf</string>
+		<string>Rubik-Black.ttf</string>
+		<string>Rubik-Bold.ttf</string>
+		<string>Rubik-Light.ttf</string>
+		<string>Rubik-Medium.ttf</string>
+		<string>Rubik-Regular.ttf</string>
+		<string>Inter-ExtraBold.ttf</string>
+		<string>Inter-ExtraLight.ttf</string>
+		<string>Inter-SemiBold.ttf</string>
+		<string>Inter-Thin.ttf</string>
 	</array>
 </dict>
 </plist>

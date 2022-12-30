@@ -11,15 +11,14 @@ import styleConfig from './CreateProfileScreen.style'
 
 const CreateProfileScreen = () => {
   const styles = useStyles(styleConfig)
-  const [free, setFree] = useState('')
-  // const [pro, setPro] = useState(false)
+  const [check, setCheck] = useState('')
 
   const freeBtn = () => {
-    setFree('standart')
+    setCheck('standart')
   }
 
   const proBtn = () => {
-    setFree('pro')
+    setCheck('pro')
   }
 
   return (
@@ -41,7 +40,7 @@ const CreateProfileScreen = () => {
           onPress={freeBtn}
           style={[
             styles.freeCard,
-            free === 'standart'
+            check === 'standart'
               ? { borderColor: R.colors.main }
               : { borderColor: R.colors.title },
           ]}>
@@ -57,7 +56,7 @@ const CreateProfileScreen = () => {
           onPress={proBtn}
           style={[
             styles.ProCard,
-            free === 'pro'
+            check === 'pro'
               ? { borderColor: R.colors.main }
               : { borderColor: R.colors.title },
           ]}>
@@ -74,7 +73,7 @@ const CreateProfileScreen = () => {
           </Typo.Title>
         </TouchableOpacity>
 
-        {free === 'pro' || free === 'standart' ? (
+        {check === 'pro' || check === 'standart' ? (
           <CustomButton text={'Далее'} style={styles.btn} />
         ) : (
           <View style={styles.button}>

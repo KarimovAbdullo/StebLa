@@ -2,6 +2,62 @@
   "migIndex": 1,
   "data": [
     {
+      "path": "src/assets/fonts/Inter-Black.ttf",
+      "sha1": "283fa65b96dc1f2d71c6504afb9610447bdcdf1b"
+    },
+    {
+      "path": "src/assets/fonts/Inter-Bold.ttf",
+      "sha1": "48747b7a60086f97af0d373febcbd1f1bee87f17"
+    },
+    {
+      "path": "src/assets/fonts/Inter-ExtraBold.ttf",
+      "sha1": "bff772be6bca9895c6fdcd57e5d5be9a47f2e058"
+    },
+    {
+      "path": "src/assets/fonts/Inter-ExtraLight.ttf",
+      "sha1": "421072aef8610cb0f79661b494442a4b9363b43f"
+    },
+    {
+      "path": "src/assets/fonts/Inter-Light.ttf",
+      "sha1": "dd9ec1ae67dd85143bacf7a3cb37e9f0ac979843"
+    },
+    {
+      "path": "src/assets/fonts/Inter-Medium.ttf",
+      "sha1": "a418a8ba73bbcfa8c131c426ab836d78457afa9b"
+    },
+    {
+      "path": "src/assets/fonts/Inter-Regular.ttf",
+      "sha1": "7237d9cf55f177702066a28a4dde1e4c7e8ab576"
+    },
+    {
+      "path": "src/assets/fonts/Inter-SemiBold.ttf",
+      "sha1": "431007da316de60d85174aeec9b8389b5c73e7d6"
+    },
+    {
+      "path": "src/assets/fonts/Inter-Thin.ttf",
+      "sha1": "297919d59c9ba4fa17251cdb9f06c26ca906e593"
+    },
+    {
+      "path": "src/assets/fonts/Rubik-Black.ttf",
+      "sha1": "407d1bbd4b0f67d5c2cc06c8ed1cb4287566a402"
+    },
+    {
+      "path": "src/assets/fonts/Rubik-Bold.ttf",
+      "sha1": "e68ec3310202f2a08092ffc9c1bb28268f8c5b70"
+    },
+    {
+      "path": "src/assets/fonts/Rubik-Light.ttf",
+      "sha1": "d787342d65c099498babc2be83cc10c24f24cfca"
+    },
+    {
+      "path": "src/assets/fonts/Rubik-Medium.ttf",
+      "sha1": "dfb3bb5c226cf55f1dd579caf8e8829753d0e71c"
+    },
+    {
+      "path": "src/assets/fonts/Rubik-Regular.ttf",
+      "sha1": "a68256ef0c0a3a7b597dba28408e584cf24c1e56"
+    },
+    {
       "path": "src/assets/fonts/ubuntu-light.ttf",
       "sha1": "5f88f07d61cb63e065f565c3ace8fd12394e071b"
     },

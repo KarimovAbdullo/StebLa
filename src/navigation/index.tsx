@@ -7,6 +7,8 @@ import { createStackNavigator } from '@react-navigation/stack'
 import React, { useRef } from 'react'
 import R from 'res'
 import { TTheme } from 'res/theme'
+import CreateProfileScreen from 'screens/CreateProfileScreen/CreateProfileScreen'
+import FirsStartScreen from 'screens/FirsStartScreen/FirsStartScreen'
 import HomeScreen from 'screens/Home'
 import LoginScreen from 'screens/Login'
 import OtpScreen from 'screens/Otp'
@@ -28,6 +30,15 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
       }}>
       <BottomSheetModalProvider>
         <RootStack.Navigator screenOptions={{ headerShown: false }}>
+          <RootStack.Screen
+            component={FirsStartScreen}
+            name={R.routes.SCREEN_FIRS_START}
+            options={{
+              headerShown: false,
+              headerBackTitleVisible: false,
+            }}
+          />
+
           <RootStack.Screen
             component={StartScreen}
             name={R.routes.SCREEN_START}
@@ -58,6 +69,16 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
           <RootStack.Screen
             component={HomeScreen}
             name={R.routes.SCREEN_HOME}
+            options={{
+              headerShown: false,
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
+
+          <RootStack.Screen
+            component={CreateProfileScreen}
+            name={R.routes.SCREEN_CREATE_PROFILE}
             options={{
               headerShown: false,
               headerTitleAlign: 'center',

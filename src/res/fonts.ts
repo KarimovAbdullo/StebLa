@@ -15,5 +15,8 @@ export default {
     regular: 'Inter-Regular',
     light: 'Inter-Light',
     bold: 'Inter-Bold',
+    semiBold: 'Inter-SemiBold',
+    extraBold: 'Inter-ExtraBold',
+    thin: 'Inter-Thin',
   },
 }

@@ -21,6 +21,7 @@ interface IProps extends TextProps {
     | 'regular12'
     | 'semi12'
     | 'regular22'
+    | 'regular28'
     | 'small'
     | 'fill'
     | 'user18'
@@ -80,10 +81,10 @@ const stylesConfig = createStyles((_colors, fonts) => ({
     lineHeight: '18@ms',
   },
   regular18: {
-    fontFamily: fonts.Ubuntu,
-    fontSize: '18@ms',
-    lineHeight: '23@ms',
-    fontWeight: '300',
+    fontFamily: fonts.Inter.light,
+    fontSize: '16@ms',
+    lineHeight: '19.36@ms',
+    fontWeight: '400',
   },
   regular12: {
     fontFamily: fonts.Ubuntu.regular,
@@ -94,6 +95,12 @@ const stylesConfig = createStyles((_colors, fonts) => ({
     fontFamily: fonts.Ubuntu.regular,
     fontSize: '22@ms',
     lineHeight: '26@ms',
+  },
+  regular28: {
+    fontFamily: fonts.Rubik.regular,
+    fontSize: '28@ms',
+    fontWeight: '600',
+    lineHeight: '38.78@ms',
   },
   semi12: {
     fontFamily: fonts.Ubuntu.regular,

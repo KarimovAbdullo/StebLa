@@ -2,7 +2,7 @@ import { DefaultTheme } from '@react-navigation/native'
 
 const theme = {
   light: {
-    dark: false,
+    dark: true,
     colors: {
       ...DefaultTheme.colors,
       // Default background color, prevents flickering
@@ -16,6 +16,7 @@ const theme = {
       white: '#FFFFFF',
       lightGrey: '#F5F8F9',
       red: '#F54D3F',
+      title: '#B3C2CB',
 
       iconPrimary: '#B3C2CB',
       iconSecondary: '#6D7986',
@@ -23,7 +24,7 @@ const theme = {
     },
   },
   dark: {
-    dark: true,
+    dark: false,
     colors: {
       ...DefaultTheme.colors,
       // Default background color, prevents flickering
@@ -34,6 +35,7 @@ const theme = {
       white: '#FFFFFF',
       lightGrey: '#F5F8F9',
       red: '#F54D3F',
+      title: '#B3C2CB',
 
       textPrimary: '#061A1A',
       textSecondary: '#6D7986',

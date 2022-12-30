@@ -8,7 +8,17 @@ import { createStyles } from 'utils/createStyles'
 interface IProps {
   children: ReactElement | string | string[]
   center?: boolean
-  type?: 'bold' | 'regular' | 'regular18' | 'regular21' | 'header' | 'regular28'
+  type?:
+    | 'bold'
+    | 'regular'
+    | 'regular18'
+    | 'regular21'
+    | 'regular16'
+    | 'header'
+    | 'reg21'
+    | 'reg28'
+    | 'regular28'
+
   style?: StyleProp<TextProps>
   numberOfLines?: number
   color?: keyof TThemeColors
@@ -68,6 +78,18 @@ const stylesConfig = createStyles((_colors, fonts) => ({
     lineHeight: '24.93@ms',
     fontWeight: '400',
   },
+  regular16: {
+    fontFamily: fonts.Ubuntu.light,
+    fontSize: '16@ms',
+    lineHeight: '19.36@ms',
+    fontWeight: '400',
+  },
+  reg28: {
+    fontFamily: fonts.Inter.medium,
+    fontSize: '28@ms',
+    lineHeight: '38.78@ms',
+    fontWeight: '400',
+  },
   regular21: {
     fontFamily: fonts.Ubuntu.medium,
     fontSize: '21@ms',
@@ -85,6 +107,12 @@ const stylesConfig = createStyles((_colors, fonts) => ({
     fontSize: '28@ms',
     lineHeight: '29.93@ms',
     fontWeight: '500',
+  },
+  reg21: {
+    fontSize: '21@ms',
+    fontWeight: '100',
+    lineHeight: '29.08@ms',
+    fontFamly: fonts.Inter.thin,
   },
 }))
 

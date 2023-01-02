@@ -17,6 +17,7 @@ export default createStyles(color => ({
     alignItems: 'center',
     marginTop: '26@vs',
     justifyContent: 'center',
+    borderWidth: 1,
   },
   text: {
     paddingHorizontal: '52@s',

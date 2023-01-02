@@ -1,6 +1,6 @@
 import React from 'react'
 import { ColorValue } from 'react-native'
-// import { s } from 'react-native-size-matters'
+import { s, vs } from 'react-native-size-matters'
 import Svg, { Circle, ClipPath, Defs, G, Path, Rect } from 'react-native-svg'
 
 interface IProps {
@@ -12,7 +12,7 @@ interface IProps {
 const LogoIcon = (props: IProps) => {
   // const { color = "#2BB0AD", strokeWidth = 2, size = 24 } = props
   return (
-    <Svg width={76} height={75} fill="none" {...props}>
+    <Svg width={s(76)} height={vs(75)} fill="none" {...props}>
       <Circle cx={38} cy={37.5} r={37.5} fill="#2BB0AD" />
       <G clipPath="url(#a)">
         <Path
@@ -22,7 +22,14 @@ const LogoIcon = (props: IProps) => {
       </G>
       <Defs>
         <ClipPath id="a">
-          <Rect x={13} y={10} width={50} height={54} rx={25} fill="#fff" />
+          <Rect
+            x={13}
+            y={10}
+            width={s(50)}
+            height={vs(54)}
+            rx={25}
+            fill="#fff"
+          />
         </ClipPath>
       </Defs>
     </Svg>

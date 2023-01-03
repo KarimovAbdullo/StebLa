@@ -3,15 +3,14 @@ import { CustomButton } from 'components/CustomButton/CustomButton'
 import Typo from 'components/typo'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
-import moment from 'moment'
 import React, { useEffect } from 'react'
-import { TouchableOpacity, View } from 'react-native'
+import { View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import R from 'res'
 
-import stylesConfig from './OtpScreen.styles'
+import stylesConfig from './AddTelegramCodeScreen.style'
 
-export const OtpScreen = () => {
+export const AddTelegramCodeScreen = () => {
   const styles = useStyles(stylesConfig)
   const [code, setCode] = React.useState('')
   const [countdown, setCountdown] = React.useState(3)
@@ -19,7 +18,7 @@ export const OtpScreen = () => {
 
   const goHome = () => {
     //@ts-ignore
-    navigation.navigate(R.routes.SCREEN_HOME)
+    navigation.navigate(R.routes.MY_PROFILE_SCREEN)
   }
 
   console.log(code)
@@ -46,13 +45,13 @@ export const OtpScreen = () => {
           <R.icons.PensilIcon />
         </View>
 
-        <Typo.Title type="regular28" style={styles.textContent}>
-          Вход
+        <Typo.Title type="regular28" center={true} style={styles.textContent}>
+          Добавление профиля Telegram
         </Typo.Title>
 
         <View style={styles.titleContent}>
-          <Typo.TextButton type="regular16">
-            Введите последние 4 цифры входящего номера
+          <Typo.TextButton type="regular16" center={true}>
+            Введите код, полученный в Телеграм
           </Typo.TextButton>
         </View>
 
@@ -70,37 +69,8 @@ export const OtpScreen = () => {
         />
 
         <View style={styles.buttonContent}>
-          <TouchableOpacity style={styles.refreshContent}>
-            <R.icons.LoadingIcon />
-
-            <Typo.TextButton type="regular16" color="iconPrimary">
-              Получить повторно
-            </Typo.TextButton>
-          </TouchableOpacity>
-
           <CustomButton text={'Далее'} style={styles.button} onPress={goHome} />
         </View>
-
-        <View style={styles.buttonContent}>
-          <Typo.TextButton type="regular2" style={styles.buttonContainer}>
-            Возможность повторного звонка будет доступна через
-          </Typo.TextButton>
-
-          <View style={styles.timerContent}>
-            <Typo.TextButton color="black" center>
-              {moment.utc(countdown * 100).format('mm:ss')}
-            </Typo.TextButton>
-          </View>
-        </View>
-
-        <TouchableOpacity>
-          <Typo.TextButton center color="iconPrimary" style={styles.bottomText}>
-            Не приходит звонок?
-          </Typo.TextButton>
-          <Typo.TextButton color="main" center>
-            Заказать SMS сообщение
-          </Typo.TextButton>
-        </TouchableOpacity>
       </View>
     </KeyboardAwareScrollView>
   )

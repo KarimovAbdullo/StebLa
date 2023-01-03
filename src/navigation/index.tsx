@@ -7,10 +7,13 @@ import { createStackNavigator } from '@react-navigation/stack'
 import React, { useRef } from 'react'
 import R from 'res'
 import { TTheme } from 'res/theme'
+import { AddTelegramCodeScreen } from 'screens/AddTelegramCodeScreen/AddTelegramCodeScreen'
+import { AddTelegramNumScreen } from 'screens/AddTelegramNumScreen/AddTelegramNumScreen'
 import CreateProfileScreen from 'screens/CreateProfileScreen/CreateProfileScreen'
 import FirsStartScreen from 'screens/FirsStartScreen/FirsStartScreen'
 import HomeScreen from 'screens/Home'
 import LoginScreen from 'screens/Login'
+import { MyProfileScreen } from 'screens/MyProfileScreen/MyProfileScreen'
 import OtpScreen from 'screens/Otp'
 import StartScreen from 'screens/StartScreen/StartScreen'
 import { TNavigationParams } from 'types/navigation'
@@ -79,6 +82,33 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
           <RootStack.Screen
             component={CreateProfileScreen}
             name={R.routes.SCREEN_CREATE_PROFILE}
+            options={{
+              headerShown: false,
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
+          <RootStack.Screen
+            component={AddTelegramNumScreen}
+            name={R.routes.SCREEN_ADD_TELEGRAM_NUM}
+            options={{
+              headerShown: false,
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
+          <RootStack.Screen
+            component={AddTelegramCodeScreen}
+            name={R.routes.SCREEN_ADD_TELEGRAM_CODE}
+            options={{
+              headerShown: false,
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
+          <RootStack.Screen
+            component={MyProfileScreen}
+            name={R.routes.MY_PROFILE_SCREEN}
             options={{
               headerShown: false,
               headerTitleAlign: 'center',

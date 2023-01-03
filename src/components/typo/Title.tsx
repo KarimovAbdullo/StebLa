@@ -88,7 +88,7 @@ const stylesConfig = createStyles((_colors, fonts) => ({
     fontFamily: fonts.Inter.medium,
     fontSize: '28@ms',
     lineHeight: '38.78@ms',
-    fontWeight: '400',
+    fontWeight: '500',
   },
   regular21: {
     fontFamily: fonts.Ubuntu.medium,

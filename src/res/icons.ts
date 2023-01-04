@@ -8,6 +8,7 @@ import LogoIcon from 'assets/icons/LogoIcon'
 import LogoTitle from 'assets/icons/LogoTilte'
 import PensilIcon from 'assets/icons/PensilIcon'
 import PhoneIcon from 'assets/icons/PhoneIcon'
+import PlusCardIcon from 'assets/icons/PlusCardIcon'
 import PlusIcon from 'assets/icons/PlusIcon'
 import ProfileBellIcon from 'assets/icons/ProfileBellIcon'
 import ProfileIcon from 'assets/icons/ProfileIcon'
@@ -28,6 +29,7 @@ export {
   LogoTitle,
   PensilIcon,
   PhoneIcon,
+  PlusCardIcon,
   PlusIcon,
   ProfileBellIcon,
   ProfileIcon,

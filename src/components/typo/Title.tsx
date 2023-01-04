@@ -14,6 +14,7 @@ interface IProps {
     | 'regular18'
     | 'regular21'
     | 'regular16'
+    | 'regular18bold'
     | 'header'
     | 'reg21'
     | 'reg28'
@@ -113,6 +114,12 @@ const stylesConfig = createStyles((_colors, fonts) => ({
     fontWeight: '100',
     lineHeight: '29.08@ms',
     fontFamly: fonts.Inter.thin,
+  },
+  regular18bold: {
+    fontFamily: fonts.Inter.regular,
+    fontSize: '18@ms',
+    lineHeight: '24.93@ms',
+    fontWeight: '700',
   },
 }))
 

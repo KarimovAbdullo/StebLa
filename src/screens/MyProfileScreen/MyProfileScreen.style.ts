@@ -13,6 +13,7 @@ export default createStyles(() => ({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginTop: '10@vs',
   },
   text: {
     // justifyContent: 'center',

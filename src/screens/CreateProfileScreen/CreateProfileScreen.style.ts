@@ -2,7 +2,7 @@ import { createStyles } from 'utils/createStyles'
 
 export default createStyles(color => ({
   container: {
-    flex: 1,
+    // flex: 1,
   },
   main: {
     marginTop: '70@vs',
@@ -33,7 +33,7 @@ export default createStyles(color => ({
     position: 'absolute',
     left: '23@s',
     top: -13,
-    backgroundColor: color.background,
+    backgroundColor: color.white,
     paddingHorizontal: '5@s',
   },
   button: {

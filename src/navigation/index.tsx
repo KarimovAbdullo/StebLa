@@ -7,16 +7,16 @@ import { createStackNavigator } from '@react-navigation/stack'
 import React, { useRef } from 'react'
 import R from 'res'
 import { TTheme } from 'res/theme'
-// import { AddTelegramCodeScreen } from 'screens/AddTelegramCodeScreen/AddTelegramCodeScreen'
-// import { AddTelegramNumScreen } from 'screens/AddTelegramNumScreen/AddTelegramNumScreen'
-// import CreateProfileScreen from 'screens/CreateProfileScreen/CreateProfileScreen'
+import { AddTelegramCodeScreen } from 'screens/AddTelegramCodeScreen/AddTelegramCodeScreen'
+import { AddTelegramNumScreen } from 'screens/AddTelegramNumScreen/AddTelegramNumScreen'
+import CreateProfileScreen from 'screens/CreateProfileScreen/CreateProfileScreen'
 import CreateRuleScreen from 'screens/CreateRuleScreen/CreateRuleScreen'
-// import FirsStartScreen from 'screens/FirsStartScreen/FirsStartScreen'
-// import HomeScreen from 'screens/Home'
-// import LoginScreen from 'screens/Login'
-// import { MyProfileScreen } from 'screens/MyProfileScreen/MyProfileScreen'
-// import OtpScreen from 'screens/Otp'
-// import StartScreen from 'screens/StartScreen/StartScreen'
+import FirsStartScreen from 'screens/FirsStartScreen/FirsStartScreen'
+import HomeScreen from 'screens/Home'
+import LoginScreen from 'screens/Login'
+import { MyProfileScreen } from 'screens/MyProfileScreen/MyProfileScreen'
+import OtpScreen from 'screens/Otp'
+import StartScreen from 'screens/StartScreen/StartScreen'
 import { TNavigationParams } from 'types/navigation'
 
 const Navigator = ({ theme }: { theme: TTheme }) => {
@@ -34,7 +34,7 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
       }}>
       <BottomSheetModalProvider>
         <RootStack.Navigator screenOptions={{ headerShown: false }}>
-          {/* <RootStack.Screen
+          <RootStack.Screen
             component={FirsStartScreen}
             name={R.routes.SCREEN_FIRS_START}
             options={{
@@ -115,7 +115,7 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
               headerTitleAlign: 'center',
               headerBackTitleVisible: false,
             }}
-          /> */}
+          />
 
           <RootStack.Screen
             component={CreateRuleScreen}

@@ -28,7 +28,7 @@ export const LoginScreen = () => {
 
   return (
     <View style={styles.container}>
-      <FocusAwareStatusBar backgroundColor={R.colors.background} />
+      <FocusAwareStatusBar backgroundColor={R.colors.white} />
       <Typo.Headline>Вход</Typo.Headline>
 
       <Typo.TextButton type="regular16" color="textPrimary" style={styles.text}>

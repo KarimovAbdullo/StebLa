@@ -15,4 +15,9 @@ export default createStyles(colors => ({
     textAlign: 'center',
     color: colors.white,
   },
+  disabled: {
+    backgroundColor: colors.backroundSecondary,
+    shadowOpacity: 0,
+    elevation: 0,
+  },
 }))

@@ -1,6 +1,10 @@
 import { createStyles } from 'utils/createStyles'
 
 export default createStyles(colors => ({
+  contentItem: {
+    flex: 1,
+    backgroundColor: colors.white,
+  },
   container: {
     flex: 1,
     paddingHorizontal: '18@s',
@@ -34,6 +38,7 @@ export default createStyles(colors => ({
     width: '100%',
     height: '69@s',
     fontSize: '24@ms',
+    backgroundColor: colors.white,
   },
   otpInput: {
     // paddingHorizontal: '30@s',
@@ -45,7 +50,7 @@ export default createStyles(colors => ({
     borderWidth: '0.5@s',
     borderColor: '#3BBE53',
     borderRadius: '16@s',
-    backgroundColor: colors.backroundPrimary,
+    backgroundColor: colors.white,
     color: colors.textPrimary,
   },
   titleContent: {

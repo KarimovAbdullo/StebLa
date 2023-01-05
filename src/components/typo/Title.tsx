@@ -19,6 +19,7 @@ interface IProps {
     | 'reg21'
     | 'reg28'
     | 'regular28'
+    | 'regular18bold'
 
   style?: StyleProp<TextProps>
   numberOfLines?: number

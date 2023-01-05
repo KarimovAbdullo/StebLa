@@ -17,7 +17,7 @@ export default createStyles(colors => ({
     width: '53@ms',
     height: '4@ms',
     borderRadius: '8@ms',
-    backgroundColor: colors.white,
+    backgroundColor: colors.iconSecondary,
     alignSelf: 'center',
   },
 }))

@@ -9,10 +9,12 @@ import R from 'res'
 import { TTheme } from 'res/theme'
 import { AddTelegramCodeScreen } from 'screens/AddTelegramCodeScreen/AddTelegramCodeScreen'
 import { AddTelegramNumScreen } from 'screens/AddTelegramNumScreen/AddTelegramNumScreen'
+import ChatsScreen from 'screens/Chats'
 import CreateProfileScreen from 'screens/CreateProfileScreen/CreateProfileScreen'
 import CreateRuleScreen from 'screens/CreateRuleScreen/CreateRuleScreen'
 import FirsStartScreen from 'screens/FirsStartScreen/FirsStartScreen'
 import HomeScreen from 'screens/Home'
+import ImportChatsScreen from 'screens/ImportChats'
 import LoginScreen from 'screens/Login'
 import { MyProfileScreen } from 'screens/MyProfileScreen/MyProfileScreen'
 import OtpScreen from 'screens/Otp'
@@ -91,6 +93,17 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
               headerBackTitleVisible: false,
             }}
           />
+
+          <RootStack.Screen
+            component={ImportChatsScreen}
+            name={R.routes.SCREEN_IMPORT_CHATS}
+            options={{
+              headerShown: false,
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
+
           <RootStack.Screen
             component={AddTelegramNumScreen}
             name={R.routes.SCREEN_ADD_TELEGRAM_NUM}
@@ -112,6 +125,16 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
           <RootStack.Screen
             component={MyProfileScreen}
             name={R.routes.MY_PROFILE_SCREEN}
+            options={{
+              headerShown: false,
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
+
+          <RootStack.Screen
+            component={ChatsScreen}
+            name={R.routes.SCREEN_CHATS}
             options={{
               headerShown: false,
               headerTitleAlign: 'center',

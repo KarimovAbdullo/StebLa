@@ -1,3 +1,5 @@
+import { ImageSourcePropType } from 'react-native'
+
 export interface IUser {
   firstName: string
   lastName: string
@@ -32,6 +34,14 @@ export interface IVerifyUserData {
 export interface IUserInfo {
   lastName: string
   firstName: string
+}
+
+export interface IChatsInfo {
+  name: string
+  fayl?: string
+  text?: string
+  image: ImageSourcePropType
+  id: string
 }
 // export interface IData {
 //   id: number

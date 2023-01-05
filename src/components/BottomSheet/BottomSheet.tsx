@@ -63,7 +63,7 @@ const BottomSheetComponent = React.forwardRef(
                   {...props}
                   style={{
                     ...StyleSheet.absoluteFillObject,
-                    backgroundColor: '#000000',
+                    backgroundColor: 'black',
                   }}
                   opacity={backdropOpacity}
                   disappearsOnIndex={-1}

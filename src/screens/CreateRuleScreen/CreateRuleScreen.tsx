@@ -25,7 +25,7 @@ const CreateRuleScreen = () => {
   const styles = useStyles(styleConfig)
 
   const [state, setState] = useState<IData[]>([
-    { id: 1, text: 'Огонь' },
+    { id: 1, text: 'Огонь.' },
     { id: 2, text: 'Ведро' },
     { id: 3, text: 'Фабрикант' },
     { id: 4, text: 'Молоко' },

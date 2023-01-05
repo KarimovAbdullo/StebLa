@@ -7,20 +7,29 @@ interface IProps {
   onPress?: (() => void) | undefined
   style?: object
   loading?: boolean
+  disabled?: boolean
+  textStyle?: object
 }
 
 import stylesConfig from './CustomButton.styles'
 
-export const CustomButton = ({ text, onPress, style, loading }: IProps) => {
+export const CustomButton = ({
+  text,
+  onPress,
+  style,
+  loading,
+  disabled = false,
+  textStyle,
+}: IProps) => {
   const styles = useStyles(stylesConfig)
 
   return (
-    <TouchableOpacity onPress={onPress} disabled={loading}>
-      <View style={[styles.button, style]}>
+    <TouchableOpacity onPress={onPress} disabled={loading || disabled}>
+      <View style={[styles.button, disabled ? styles.disabled : {}, style]}>
         {loading ? (
           <ActivityIndicator />
         ) : (
-          <Text style={styles.text}>{text}</Text>
+          <Text style={[styles.text, textStyle]}>{text}</Text>
         )}
       </View>
     </TouchableOpacity>

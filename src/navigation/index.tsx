@@ -7,9 +7,11 @@ import { createStackNavigator } from '@react-navigation/stack'
 import React, { useRef } from 'react'
 import R from 'res'
 import { TTheme } from 'res/theme'
+import ChatsScreen from 'screens/Chats'
 import CreateProfileScreen from 'screens/CreateProfileScreen/CreateProfileScreen'
 import FirsStartScreen from 'screens/FirsStartScreen/FirsStartScreen'
 import HomeScreen from 'screens/Home'
+import ImportChatsScreen from 'screens/ImportChats'
 import LoginScreen from 'screens/Login'
 import OtpScreen from 'screens/Otp'
 import StartScreen from 'screens/StartScreen/StartScreen'
@@ -79,6 +81,26 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
           <RootStack.Screen
             component={CreateProfileScreen}
             name={R.routes.SCREEN_CREATE_PROFILE}
+            options={{
+              headerShown: false,
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
+
+          <RootStack.Screen
+            component={ImportChatsScreen}
+            name={R.routes.SCREEN_IMPORT_CHATS}
+            options={{
+              headerShown: false,
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
+
+          <RootStack.Screen
+            component={ChatsScreen}
+            name={R.routes.SCREEN_CHATS}
             options={{
               headerShown: false,
               headerTitleAlign: 'center',

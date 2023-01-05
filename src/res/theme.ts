@@ -20,7 +20,8 @@ const theme = {
 
       iconPrimary: '#B3C2CB',
       iconSecondary: '#6D7986',
-      iconLine: '#BCBCBC',
+      iconLine: '#E5E7E9',
+      textColor: '#8E8E93',
     },
   },
   dark: {
@@ -43,7 +44,8 @@ const theme = {
 
       iconPrimary: '#B3C2CB',
       iconSecondary: '#6D7986',
-      iconLine: '#BCBCBC',
+      iconLine: '#E5E7E9',
+      textColor: '#8E8E93',
     },
   },
 }

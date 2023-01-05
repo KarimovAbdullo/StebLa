@@ -1,6 +1,8 @@
 import OTPInputView from '@twotalltotems/react-native-otp-input'
+import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
 import { CustomButton } from 'components/CustomButton/CustomButton'
 import Typo from 'components/typo'
+import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import moment from 'moment'
 import React, { useEffect } from 'react'
@@ -14,6 +16,7 @@ export const OtpScreen = () => {
   const styles = useStyles(stylesConfig)
   const [code, setCode] = React.useState('')
   const [countdown, setCountdown] = React.useState(3)
+  const navigation = useSmartNavigation()
 
   console.log(code)
 
@@ -27,8 +30,15 @@ export const OtpScreen = () => {
 
   const onSubmit = () => {}
 
+  const goHomeScreen = () => {
+    // @ts-ignore
+    navigation.navigate(R.routes.SCREEN_HOME)
+  }
+
   return (
-    <KeyboardAwareScrollView style={{ flex: 1 }}>
+    <KeyboardAwareScrollView style={styles.contentItem}>
+      <FocusAwareStatusBar backgroundColor={R.colors.white} />
+
       <View style={styles.container}>
         <View style={styles.iconContent}>
           <R.icons.PhoneIcon />
@@ -64,14 +74,23 @@ export const OtpScreen = () => {
 
         <View style={styles.buttonContent}>
           <TouchableOpacity style={styles.refreshContent}>
-            <R.icons.LoadingIcon />
+            <R.icons.LoadingIcon
+              color={code.length > 3 ? R.colors.main : R.colors.iconPrimary}
+            />
 
-            <Typo.TextButton type="regular16" color="iconPrimary">
+            <Typo.TextButton
+              type="regular16"
+              color={code.length > 3 ? 'main' : 'iconPrimary'}>
               Получить повторно
             </Typo.TextButton>
           </TouchableOpacity>
 
-          <CustomButton text={'Далее'} style={styles.button} />
+          <CustomButton
+            text={'Далее'}
+            style={styles.button}
+            onPress={goHomeScreen}
+            disabled={code.length > 3 ? false : true}
+          />
         </View>
 
         <View style={styles.buttonContent}>

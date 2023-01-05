@@ -18,6 +18,7 @@ interface IProps {
     | 'reg21'
     | 'reg28'
     | 'regular28'
+    | 'bold1'
 
   style?: StyleProp<TextProps>
   numberOfLines?: number
@@ -113,6 +114,12 @@ const stylesConfig = createStyles((_colors, fonts) => ({
     fontWeight: '100',
     lineHeight: '29.08@ms',
     fontFamly: fonts.Inter.thin,
+  },
+  bold1: {
+    fontFamily: fonts.Inter.regular,
+    fontSize: '18@ms',
+    lineHeight: '24.93@ms',
+    fontWeight: '700',
   },
 }))
 

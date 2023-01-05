@@ -33,3 +33,8 @@ export interface IUserInfo {
   lastName: string
   firstName: string
 }
+// export interface IData {
+//   id: number
+//   text?: string
+//   icon?: ReactElement
+// }

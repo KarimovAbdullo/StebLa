@@ -1,24 +1,41 @@
-import { BottomSheetModal } from '@gorhom/bottom-sheet'
-import BottomSheet from 'components/BottomSheet'
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
 import Container from 'components/Container'
+import { CreateRuleItems } from 'components/CreateRuleItems/CreateRuleItems'
 import { CustomButton } from 'components/CustomButton/CustomButton'
 import Typo from 'components/typo'
 import { useStyles } from 'hooks/useStyles'
-import React, { useRef } from 'react'
-import { TouchableOpacity, View } from 'react-native'
+import React, { ReactElement, useState } from 'react'
+import {
+  FlatList,
+  SafeAreaView,
+  // TouchableOpacity,
+  View,
+} from 'react-native'
 import R from 'res'
 
 import styleConfig from './CreateRule.style'
 
+export interface IData {
+  id: number
+  text?: string
+  icon?: ReactElement
+}
+
 const CreateRuleScreen = () => {
   const styles = useStyles(styleConfig)
-  const bottomsheetRef = useRef<BottomSheetModal | null>(null)
-  const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
 
-  const onBottomSheetButton = () => {
-    bottomsheetRef2.current?.present()
-  }
+  const [state, setState] = useState<IData[]>([
+    { id: 1, text: 'Огонь' },
+    { id: 2, text: 'Ведро' },
+    { id: 3, text: 'Фабрикант' },
+    { id: 4, text: 'Молоко' },
+    { id: 5, text: 'Абрикос' },
+    { id: 6, icon: <R.icons.PlusCardIcon /> },
+    { id: 7, icon: <R.icons.PlusCardIcon /> },
+    { id: 8, icon: <R.icons.PlusCardIcon /> },
+    { id: 9, icon: <R.icons.PlusCardIcon /> },
+    { id: 10, icon: <R.icons.PlusCardIcon /> },
+  ])
 
   return (
     <Container>
@@ -34,95 +51,22 @@ const CreateRuleScreen = () => {
           <R.icons.HamburgerIcon />
         </View>
       </View>
+      <View />
 
-      <View style={styles.card}>
-        <TouchableOpacity style={styles.item} onPress={onBottomSheetButton}>
-          <Typo.Body type="regular16" color="textSecondary">
-            Огонь
-          </Typo.Body>
-        </TouchableOpacity>
+      <SafeAreaView>
+        <FlatList
+          data={state}
+          horizontal={false}
+          numColumns={2}
+          columnWrapperStyle={styles.itemContent}
+          keyExtractor={item => item.id.toString()}
+          renderItem={({ item }) => (
+            <CreateRuleItems item={item} state={state} setState={setState} />
+          )}
+        />
 
-        <TouchableOpacity style={styles.item} onPress={onBottomSheetButton}>
-          <Typo.Body type="regular16" color="textSecondary">
-            Ведро
-          </Typo.Body>
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.card}>
-        <TouchableOpacity style={styles.item} onPress={onBottomSheetButton}>
-          <Typo.Body type="regular16" color="textSecondary">
-            Фабрикант
-          </Typo.Body>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.item} onPress={onBottomSheetButton}>
-          <Typo.Body type="regular16" color="textSecondary">
-            Молоко
-          </Typo.Body>
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.card}>
-        <TouchableOpacity style={styles.item} onPress={onBottomSheetButton}>
-          <Typo.Body type="regular16" color="textSecondary">
-            Абрикос
-          </Typo.Body>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.item} onPress={onBottomSheetButton}>
-          <Typo.Body type="regular16" color="textSecondary">
-            <R.icons.PlusCardIcon />
-          </Typo.Body>
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.card}>
-        <TouchableOpacity style={styles.item} onPress={onBottomSheetButton}>
-          <Typo.Body type="regular16" color="textSecondary">
-            <R.icons.PlusCardIcon />
-          </Typo.Body>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.item} onPress={onBottomSheetButton}>
-          <Typo.Body type="regular16" color="textSecondary">
-            <R.icons.PlusCardIcon />
-          </Typo.Body>
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.card}>
-        <TouchableOpacity style={styles.item} onPress={onBottomSheetButton}>
-          <Typo.Body type="regular16" color="textSecondary">
-            <R.icons.PlusCardIcon />
-          </Typo.Body>
-        </TouchableOpacity>
-
-        <TouchableOpacity style={styles.item} onPress={onBottomSheetButton}>
-          <Typo.Body type="regular16" color="textSecondary">
-            <R.icons.PlusCardIcon />
-          </Typo.Body>
-        </TouchableOpacity>
-      </View>
-
-      <CustomButton text={'Далее'} style={styles.btn} />
-
-      <BottomSheet snapPoints={['33%']} ref={bottomsheetRef2}>
-        <View>
-          <Typo.Title center type="reg21">
-            Вы хотите изменить слово “Огонь” ?
-          </Typo.Title>
-
-          <View style={styles.btnCard}>
-            <CustomButton text={'Подтвердить'} style={styles.btnYes} />
-            <CustomButton
-              text={'Отменить'}
-              textStyle={styles.btnText}
-              style={styles.btnNo}
-            />
-          </View>
-        </View>
-      </BottomSheet>
+        <CustomButton text={'Далее'} style={styles.btn} />
+      </SafeAreaView>
     </Container>
   )
 }

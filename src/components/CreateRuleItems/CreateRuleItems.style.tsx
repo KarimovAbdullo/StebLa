@@ -1,6 +1,6 @@
 import { createStyles } from 'utils/createStyles'
 
-export default createStyles(colors => ({
+export default createStyles((colors, fonts) => ({
   container: {
     flex: 1,
   },
@@ -68,5 +68,19 @@ export default createStyles(colors => ({
   },
   itemContent: {
     justifyContent: 'space-between',
+  },
+  tt: {
+    fontFamily: fonts.Ubuntu.regular,
+    fontSize: '16@ms',
+    lineHeight: '22@ms',
+    paddingVertical: '20@vs',
+    color: colors.textSecondary,
+  },
+  input: {
+    width: '165@s',
+    borderRadius: '10@s',
+    backgroundColor: colors.backroundSecondary,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 }))

@@ -7,12 +7,16 @@ import { createStackNavigator } from '@react-navigation/stack'
 import React, { useRef } from 'react'
 import R from 'res'
 import { TTheme } from 'res/theme'
+import { AddTelegramCodeScreen } from 'screens/AddTelegramCodeScreen/AddTelegramCodeScreen'
+import { AddTelegramNumScreen } from 'screens/AddTelegramNumScreen/AddTelegramNumScreen'
 import ChatsScreen from 'screens/Chats'
 import CreateProfileScreen from 'screens/CreateProfileScreen/CreateProfileScreen'
+import CreateRuleScreen from 'screens/CreateRuleScreen/CreateRuleScreen'
 import FirsStartScreen from 'screens/FirsStartScreen/FirsStartScreen'
 import HomeScreen from 'screens/Home'
 import ImportChatsScreen from 'screens/ImportChats'
 import LoginScreen from 'screens/Login'
+import { MyProfileScreen } from 'screens/MyProfileScreen/MyProfileScreen'
 import OtpScreen from 'screens/Otp'
 import StartScreen from 'screens/StartScreen/StartScreen'
 import { TNavigationParams } from 'types/navigation'
@@ -31,7 +35,9 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
         routeNameRef.current = navigationRef.getCurrentRoute()?.name
       }}>
       <BottomSheetModalProvider>
-        <RootStack.Navigator screenOptions={{ headerShown: false }}>
+        <RootStack.Navigator
+          // initialRouteName={R.routes.CREATE_RULE_SCREEN}
+          screenOptions={{ headerShown: false }}>
           <RootStack.Screen
             component={FirsStartScreen}
             name={R.routes.SCREEN_FIRS_START}
@@ -99,8 +105,46 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
           />
 
           <RootStack.Screen
+            component={AddTelegramNumScreen}
+            name={R.routes.SCREEN_ADD_TELEGRAM_NUM}
+            options={{
+              headerShown: false,
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
+          <RootStack.Screen
+            component={AddTelegramCodeScreen}
+            name={R.routes.SCREEN_ADD_TELEGRAM_CODE}
+            options={{
+              headerShown: false,
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
+          <RootStack.Screen
+            component={MyProfileScreen}
+            name={R.routes.MY_PROFILE_SCREEN}
+            options={{
+              headerShown: false,
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
+
+          <RootStack.Screen
             component={ChatsScreen}
             name={R.routes.SCREEN_CHATS}
+            options={{
+              headerShown: false,
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
+
+          <RootStack.Screen
+            component={CreateRuleScreen}
+            name={R.routes.CREATE_RULE_SCREEN}
             options={{
               headerShown: false,
               headerTitleAlign: 'center',

@@ -6,11 +6,6 @@ import { vs } from 'react-native-size-matters'
 import R from 'res'
 
 const data = [
-  // {
-  //   title: 'Получайте только важную информацию ',
-  //   logo: <R.icons.LogoIcon />,
-  //   logoTitle: <R.icons.LogoTitle />,
-  // },
   {
     title:
       'Теперь вам не нужно самостоятельно искать нужную вам информацию в чатах телеграмм',
@@ -41,7 +36,11 @@ const StartScreen = () => {
         backgroundColor={R.colors.white}
         barStyle={'dark-content'}
       />
-      <OnboardFlow pages={data} style={{ marginTop: vs(150) }} />
+      <OnboardFlow
+        pages={data}
+        style={{ marginTop: vs(150) }}
+        // fullscreenModal={}
+      />
     </View>
   )
 }

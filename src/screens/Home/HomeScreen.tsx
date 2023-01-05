@@ -1,5 +1,4 @@
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
-import Container from 'components/Container'
 import Typo from 'components/typo'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
@@ -20,24 +19,24 @@ const HomeScreen = () => {
     navigate.navigate(R.routes.SCREEN_CREATE_PROFILE)
   }
   return (
-    <View>
+    <View style={styles.Main}>
       <FocusAwareStatusBar
         backgroundColor={'rgba(52, 52, 52, 0.78)'}
         barStyle={'dark-content'}
       />
       <View style={styles.topCard} />
 
-      <Container>
+      <View style={styles.container}>
         <TouchableOpacity style={styles.bottomCard} onPress={goCreateScreen}>
           <R.icons.PlusIcon />
           <Typo.Title type="regular18" color="main" style={styles.text}>
             Создать новое правило
           </Typo.Title>
         </TouchableOpacity>
-      </Container>
+      </View>
       <View style={styles.line} />
 
-      <Container>
+      <View style={styles.container}>
         <TouchableOpacity style={styles.menu}>
           <R.icons.ProfileIcon />
           <Typo.Title type="regular18" color="textPrimary" style={styles.text}>
@@ -72,7 +71,7 @@ const HomeScreen = () => {
             Управление подпиской
           </Typo.Title>
         </TouchableOpacity>
-      </Container>
+      </View>
     </View>
   )
 }

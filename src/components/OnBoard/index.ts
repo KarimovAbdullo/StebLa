@@ -1,3 +1,4 @@
+export { FrigadeProvider } from './FrigadeProvider'
 export { OnboardFlow } from './OnboardFlow'
 export type { ContinueButtonProps } from './OnboardFlow/ContinueButton'
 export type { PageProps } from './OnboardFlow/Page'

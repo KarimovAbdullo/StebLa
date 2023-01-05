@@ -14,11 +14,12 @@ interface IProps {
     | 'regular18'
     | 'regular21'
     | 'regular16'
+    | 'regular18bold'
     | 'header'
     | 'reg21'
     | 'reg28'
     | 'regular28'
-    | 'bold1'
+    | 'regular18bold'
 
   style?: StyleProp<TextProps>
   numberOfLines?: number
@@ -89,7 +90,7 @@ const stylesConfig = createStyles((_colors, fonts) => ({
     fontFamily: fonts.Inter.medium,
     fontSize: '28@ms',
     lineHeight: '38.78@ms',
-    fontWeight: '400',
+    fontWeight: '500',
   },
   regular21: {
     fontFamily: fonts.Ubuntu.medium,
@@ -115,7 +116,7 @@ const stylesConfig = createStyles((_colors, fonts) => ({
     lineHeight: '29.08@ms',
     fontFamly: fonts.Inter.thin,
   },
-  bold1: {
+  regular18bold: {
     fontFamily: fonts.Inter.regular,
     fontSize: '18@ms',
     lineHeight: '24.93@ms',

@@ -2,6 +2,7 @@ import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusB
 import Container from 'components/Container'
 import { CustomButton } from 'components/CustomButton/CustomButton'
 import Typo from 'components/typo'
+import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { useState } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
@@ -12,6 +13,7 @@ import styleConfig from './CreateProfileScreen.style'
 const CreateProfileScreen = () => {
   const styles = useStyles(styleConfig)
   const [check, setCheck] = useState('')
+  const navigation = useSmartNavigation()
 
   const freeBtn = () => {
     setCheck('standart')
@@ -19,6 +21,11 @@ const CreateProfileScreen = () => {
 
   const proBtn = () => {
     setCheck('pro')
+  }
+
+  const goTelegram = () => {
+    //@ts-ignore
+    navigation.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
   }
 
   return (
@@ -74,7 +81,11 @@ const CreateProfileScreen = () => {
         </TouchableOpacity>
 
         {check === 'pro' || check === 'standart' ? (
-          <CustomButton text={'Далее'} style={styles.btn} />
+          <CustomButton
+            text={'Далее'}
+            style={styles.btn}
+            onPress={goTelegram}
+          />
         ) : (
           <View style={styles.button}>
             <Text style={styles.textBtn}>Далее</Text>

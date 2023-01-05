@@ -25,4 +25,12 @@ export default createStyles(color => ({
     // borderWidth: 1,
     marginTop: '25@vs',
   },
+  Main: {
+    backgroundColor: color.white,
+    flex: 1,
+  },
+  container: {
+    paddingHorizontal: '18@s',
+    backgroundColor: color.white,
+  },
 }))

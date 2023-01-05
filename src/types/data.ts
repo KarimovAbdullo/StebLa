@@ -43,3 +43,8 @@ export interface IChatsInfo {
   image: ImageSourcePropType
   id: string
 }
+// export interface IData {
+//   id: number
+//   text?: string
+//   icon?: ReactElement
+// }

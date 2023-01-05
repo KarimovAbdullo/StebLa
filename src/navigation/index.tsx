@@ -33,7 +33,9 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
         routeNameRef.current = navigationRef.getCurrentRoute()?.name
       }}>
       <BottomSheetModalProvider>
-        <RootStack.Navigator screenOptions={{ headerShown: false }}>
+        <RootStack.Navigator
+          // initialRouteName={R.routes.CREATE_RULE_SCREEN}
+          screenOptions={{ headerShown: false }}>
           <RootStack.Screen
             component={FirsStartScreen}
             name={R.routes.SCREEN_FIRS_START}

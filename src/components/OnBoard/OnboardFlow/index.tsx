@@ -113,6 +113,7 @@ export const OnboardFlow: OnboardFlowPropsFC = ({
           onChangeIndex={handleIndexChange}
           //@ts-ignore
           ref={swiperRef}
+          disableGesture={true}
           index={currentPage}>
           {pages?.map((page, index) => (
             <PageComponent

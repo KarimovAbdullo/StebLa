@@ -43,7 +43,9 @@ export const LoginButton = ({
         {loading ? (
           <ActivityIndicator />
         ) : (
-          <Text style={styles.text}>{text}</Text>
+          <Text style={[styles.text, disabled ? styles.textDisabled : {}]}>
+            {text}
+          </Text>
         )}
       </View>
     </TouchableOpacity>

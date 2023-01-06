@@ -3,12 +3,12 @@ import { createStyles } from 'utils/createStyles'
 export default createStyles(colors => ({
   itemsContent: {
     borderRadius: '8@s',
-    borderColor: colors.iconLine,
+    borderColor: colors.lightGrey,
     marginTop: '5@vs',
   },
   input: {
     fontSize: '18@s',
-    color: colors.textSecondary,
+    color: colors.textPrimary,
     marginLeft: '13@s',
   },
   activeInput: {

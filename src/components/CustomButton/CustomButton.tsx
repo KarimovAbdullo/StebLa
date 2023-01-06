@@ -29,7 +29,14 @@ export const CustomButton = ({
         {loading ? (
           <ActivityIndicator />
         ) : (
-          <Text style={[styles.text, textStyle]}>{text}</Text>
+          <Text
+            style={[
+              styles.text,
+              disabled ? styles.textDisabled : {},
+              textStyle,
+            ]}>
+            {text}
+          </Text>
         )}
       </View>
     </TouchableOpacity>

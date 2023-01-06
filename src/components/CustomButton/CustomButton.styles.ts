@@ -20,4 +20,7 @@ export default createStyles(colors => ({
     shadowOpacity: 0,
     elevation: 0,
   },
+  textDisabled: {
+    color: colors.textPrimary,
+  },
 }))

@@ -5,8 +5,8 @@ export default createStyles(color => ({
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
-    // position: 'absolute',
-    marginTop: '150@vs',
+    backgroundColor: color.white,
+    paddingTop: '150@vs',
   },
   logoCard: {
     alignItems: 'center',
@@ -27,7 +27,7 @@ export default createStyles(color => ({
   },
   line: {
     marginVertical: '50@vs',
-    backgroundColor: 'grey',
+    backgroundColor: color.white,
     width: '98@s',
     borderWidth: 1,
     borderColor: '#F7F8F8',

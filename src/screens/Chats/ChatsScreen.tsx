@@ -2,6 +2,7 @@ import ChatsItem from 'components/ChatsItem'
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
 import { CustomButton } from 'components/CustomButton/CustomButton'
 import Typo from 'components/typo'
+import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { useState } from 'react'
 import { FlatList, TextInput, TouchableOpacity, View } from 'react-native'
@@ -14,13 +15,16 @@ export const ChatsScreen = () => {
   const styles = useStyles(stylesConfig)
   const [activeList, setActiveList] = useState<string[]>([])
   const [activeButton, setActiveButton] = useState(false)
+  const navigate = useSmartNavigation()
 
   const onLongPress = () => {
+    // @ts-ignore
     setActiveButton(!activeButton)
   }
 
   const changeButton = () => {
-    setActiveButton(!activeButton)
+    // @ts-ignore
+    navigate.navigate(R.routes.CREATE_RULE_SCREEN)
   }
 
   const deliteList = () => {
@@ -101,7 +105,7 @@ export const ChatsScreen = () => {
       <View style={styles.container}>
         <View style={styles.iconContent}>
           <View style={styles.item} />
-          <Typo.Title type="bold1">Chats</Typo.Title>
+          <Typo.Title type="regular18bold">Chats</Typo.Title>
 
           <R.icons.MenuIcon />
         </View>

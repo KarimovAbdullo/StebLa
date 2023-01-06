@@ -1,6 +1,6 @@
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
 import Typo from 'components/typo'
-// import useSmartNavigation from 'hooks/useSmartNavigation'
+import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { useState } from 'react'
 import { Image, SafeAreaView, TouchableOpacity, View } from 'react-native'
@@ -9,11 +9,13 @@ import R from 'res'
 import stylesConfig from './MyProfileScreen.style'
 
 export const MyProfileScreen = () => {
-  //   const navigation = useSmartNavigation()
+  const navigation = useSmartNavigation()
   const styles = useStyles(stylesConfig)
   const [check, setCheck] = useState('')
 
   const plus = () => {
+    // @ts-ignore
+    navigation.navigate(R.routes.SCREEN_IMPORT_CHATS)
     setCheck('plus')
   }
   const write = () => {
@@ -28,7 +30,7 @@ export const MyProfileScreen = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <FocusAwareStatusBar backgroundColor={R.colors.background} />
+      <FocusAwareStatusBar backgroundColor={R.colors.white} />
 
       <View style={styles.head}>
         <View style={styles.header}>

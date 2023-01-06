@@ -100,7 +100,9 @@ export const OtpScreen = () => {
 
           <View style={styles.timerContent}>
             <Typo.TextButton color="black" center>
-              {moment.utc(countdown * 100).format('mm:ss')}
+              {code.length > 3
+                ? moment.utc(countdown * 100).format('mm:ss')
+                : moment.utc(countdown * 100).format('01:ss')}
             </Typo.TextButton>
           </View>
         </View>

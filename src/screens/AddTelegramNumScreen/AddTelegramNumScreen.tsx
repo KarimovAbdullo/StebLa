@@ -30,7 +30,7 @@ export const AddTelegramNumScreen = () => {
 
   return (
     <View style={styles.container}>
-      <FocusAwareStatusBar backgroundColor={R.colors.background} />
+      <FocusAwareStatusBar backgroundColor={R.colors.white} />
       <Typo.Headline center={true}>Добавление профиля Telegram</Typo.Headline>
 
       <Typo.TextButton

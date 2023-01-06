@@ -34,7 +34,7 @@ export const AddTelegramCodeScreen = () => {
   const onSubmit = () => {}
 
   return (
-    <KeyboardAwareScrollView style={{ flex: 1 }}>
+    <KeyboardAwareScrollView style={{ flex: 1, backgroundColor: 'white' }}>
       <View style={styles.container}>
         <View style={styles.iconContent}>
           <R.icons.PhoneIcon />

@@ -1,10 +1,10 @@
 import { createStyles } from 'utils/createStyles'
 
-export default createStyles(() => ({
+export default createStyles(colors => ({
   container: {
     flex: 1,
     paddingHorizontal: '18@s',
-    // marginTop: '22@vs',
+    backgroundColor: colors.white,
   },
   header: {
     flexDirection: 'row',

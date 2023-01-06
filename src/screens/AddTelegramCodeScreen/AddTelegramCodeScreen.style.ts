@@ -6,6 +6,7 @@ export default createStyles(colors => ({
     paddingHorizontal: '18@s',
     flexDirection: 'column',
     justifyContent: 'space-between',
+    backgroundColor: colors.white,
   },
   textContent: {
     marginTop: '60@vs',
@@ -45,7 +46,7 @@ export default createStyles(colors => ({
     borderWidth: '0.5@s',
     borderColor: '#3BBE53',
     borderRadius: '16@s',
-    backgroundColor: colors.backroundPrimary,
+    backgroundColor: colors.white,
     color: colors.textPrimary,
   },
   titleContent: {

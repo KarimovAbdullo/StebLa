@@ -8,6 +8,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native'
+import { s, vs } from 'react-native-size-matters'
 
 import {
   COLOR_PAGINATION_DEFAULT,
@@ -176,7 +177,7 @@ const styles = StyleSheet.create({
     // flex: 1,
     paddingHorizontal: HORIZONTAL_PADDING_DEFAULT,
     flexDirection: 'column',
-    marginTop: 50,
+    marginTop: vs(50),
   },
   content: {
     // flex: 1,
@@ -187,7 +188,7 @@ const styles = StyleSheet.create({
   },
   buttonBackgroundImage: {
     borderRadius: 32,
-    marginHorizontal: 32,
+    marginHorizontal: s(32),
   },
 })
 

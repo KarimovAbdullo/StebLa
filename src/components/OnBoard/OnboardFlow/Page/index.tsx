@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   title: {
-    fontSize: 20,
+    fontSize: s(20),
     fontWeight: '400',
     color: COLOR_TEXT_DEFAULT,
     textAlign: 'center',
@@ -134,8 +134,9 @@ const styles = StyleSheet.create({
   },
   text: {
     textDecorationLine: 'underline',
-    fontSize: 15,
-    marginLeft: 10,
+    fontSize: s(15),
+    marginLeft: s(10),
+    color: 'grey',
   },
   circle: {
     backgroundColor: 'grey',

@@ -2,7 +2,6 @@ import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusB
 import { OnboardFlow } from 'components/OnBoard'
 import React from 'react'
 import { View } from 'react-native'
-import { vs } from 'react-native-size-matters'
 import R from 'res'
 
 const data = [
@@ -36,11 +35,7 @@ const StartScreen = () => {
         backgroundColor={R.colors.white}
         barStyle={'dark-content'}
       />
-      <OnboardFlow
-        pages={data}
-        style={{ marginTop: vs(150) }}
-        // fullscreenModal={}
-      />
+      <OnboardFlow pages={data} />
     </View>
   )
 }

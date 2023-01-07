@@ -32,6 +32,7 @@
     "moment": "^2.29.4",
     "react": "18.1.0",
     "react-native": "0.70.6",
+    "react-native-app-intro-slider": "^4.0.4",
     "react-native-bootsplash": "^4.4.0",
     "react-native-config": "^1.4.11",
     "react-native-contacts": "^7.0.5",

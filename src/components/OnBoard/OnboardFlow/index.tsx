@@ -174,14 +174,16 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   footer: {
-    // flex: 1,
+    // borderWidth: 1,
+    flex: 2,
     paddingHorizontal: HORIZONTAL_PADDING_DEFAULT,
     flexDirection: 'column',
     marginTop: vs(50),
+    backgroundColor: 'transparent',
   },
   content: {
     // flex: 1,
-    // flexGrow: 1,
+    flexGrow: 1,
   },
   backgroundImage: {
     // flex: 1,

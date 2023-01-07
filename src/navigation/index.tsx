@@ -18,6 +18,8 @@ import ImportChatsScreen from 'screens/ImportChats'
 import LoginScreen from 'screens/Login'
 import { MyProfileScreen } from 'screens/MyProfileScreen/MyProfileScreen'
 import OtpScreen from 'screens/Otp'
+import { RatesScreen } from 'screens/RatesScreen/RatesScreen'
+// import StartIntro from 'screens/StartIntro/StartIntro'
 import StartScreen from 'screens/StartScreen/StartScreen'
 import { TNavigationParams } from 'types/navigation'
 
@@ -38,6 +40,23 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
         <RootStack.Navigator
           // initialRouteName={R.routes.CREATE_RULE_SCREEN}
           screenOptions={{ headerShown: false }}>
+          {/* <RootStack.Screen
+            component={StartIntro}
+            name={R.routes.START_INTRO}
+            options={{
+              headerShown: false,
+              headerBackTitleVisible: false,
+            }}
+          /> */}
+          <RootStack.Screen
+            component={RatesScreen}
+            name={R.routes.RATES_SCREEN}
+            options={{
+              headerShown: false,
+              headerBackTitleVisible: false,
+            }}
+          />
+
           <RootStack.Screen
             component={FirsStartScreen}
             name={R.routes.SCREEN_FIRS_START}

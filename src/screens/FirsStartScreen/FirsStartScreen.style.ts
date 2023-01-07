@@ -6,12 +6,10 @@ export default createStyles(color => ({
     flexDirection: 'column',
     alignItems: 'center',
     backgroundColor: color.white,
-    paddingTop: '150@vs',
+    justifyContent: 'center',
   },
   logoCard: {
     alignItems: 'center',
-
-    paddingTop: '30@vs',
   },
   logoTitle: {
     alignItems: 'center',
@@ -29,8 +27,17 @@ export default createStyles(color => ({
     marginVertical: '50@vs',
     backgroundColor: color.white,
     width: '98@s',
-    borderWidth: 1,
+    borderWidth: 0.5,
     borderColor: '#F7F8F8',
     alignSelf: 'center',
+  },
+  img: {
+    width: '75@s',
+    height: '75@s',
+    marginBottom: '26@vs',
+  },
+  image: {
+    width: '141@s',
+    height: '32@s',
   },
 }))

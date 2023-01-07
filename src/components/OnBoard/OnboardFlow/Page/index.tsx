@@ -113,8 +113,8 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   bottomContainer: {
-    // flex: 1,
-    // justifyContent: 'flex-end',
+    flex: 1,
+    justifyContent: 'flex-end',
     // flexDirection: 'column',
   },
   bottomContainerText: {
@@ -134,15 +134,15 @@ const styles = StyleSheet.create({
   },
   text: {
     textDecorationLine: 'underline',
-    fontSize: s(15),
+    fontSize: 15,
     marginLeft: s(10),
-    color: 'grey',
+    color: R.colors.textColor,
   },
   circle: {
     backgroundColor: 'grey',
     borderRadius: vs(100),
-    height: 5,
-    width: 4,
+    height: vs(5),
+    width: s(4),
     marginTop: vs(5),
   },
 })

@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect, useRef, useState } from 'react'
 import { Animated, Easing, StyleSheet, View } from 'react-native'
 import { s, vs } from 'react-native-size-matters'
+import R from 'res'
 
 export function Dot({
   selected,
@@ -38,7 +39,11 @@ export function Dot({
       <Animated.View
         style={[
           styles.dot,
-          { backgroundColor: selected ? paginationSelectedColor : '#F7F8F8' },
+          {
+            backgroundColor: selected
+              ? paginationSelectedColor
+              : R.colors.backroundSecondary,
+          },
         ]}
       />
     </View>

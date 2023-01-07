@@ -43,8 +43,19 @@ export interface IChatsInfo {
   image: ImageSourcePropType
   id: string
 }
+
+export interface IListInfo {
+  text: string
+  id: string
+}
 // export interface IData {
 //   id: number
 //   text?: string
 //   icon?: ReactElement
 // }
+export interface IListUserInfo {
+  text: string
+  id: string
+  subTitle: string
+  image: ImageSourcePropType
+}

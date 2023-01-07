@@ -6,6 +6,9 @@ export default createStyles(colors => ({
     flexDirection: 'column',
     marginBottom: '5@s',
   },
+  main: {
+    backgroundColor: colors.white,
+  },
   iconContent: {
     marginTop: '15@vs',
     alignItems: 'center',
@@ -108,5 +111,15 @@ export default createStyles(colors => ({
     borderBottomWidth: 1,
     borderColor: colors.border,
     marginBottom: '20@vs',
+  },
+
+  button: {
+    marginHorizontal: '19@s',
+
+    backgroundColor: colors.backroundSecondary,
+    borderColor: colors.main,
+    alignItems: 'center',
+    paddingVertical: '20@vs',
+    marginVertical: '10@vs',
   },
 }))

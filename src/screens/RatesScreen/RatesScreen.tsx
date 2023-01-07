@@ -10,23 +10,31 @@ import stylesConfig from './RatesScreen.style'
 export const RatesScreen = () => {
   const styles = useStyles(stylesConfig)
   const [touch, setTouch] = useState(false)
+  const [touc, setTouc] = useState(false)
 
   const pressText = () => {
     setTouch(!touch)
   }
 
-  return (
-    <View style={styles.itemContent}>
-      <FocusAwareStatusBar backgroundColor={R.colors.white} />
-      <View style={styles.container}>
-        <View style={styles.iconContent}>
-          <R.icons.BackIcon />
-          <Typo.Title type="regular18bold">Тарифы</Typo.Title>
-          <R.icons.HamburgerIcon />
-        </View>
-      </View>
+  const presText = () => {
+    setTouc(!touc)
+  }
 
-      <ScrollView>
+  return (
+    <ScrollView style={styles.main}>
+      <View style={styles.itemContent}>
+        <FocusAwareStatusBar backgroundColor={R.colors.white} />
+        <View style={styles.container}>
+          <View style={styles.iconContent}>
+            <TouchableOpacity>
+              <R.icons.BackIcon />
+            </TouchableOpacity>
+
+            <Typo.Title type="regular18bold">Тарифы</Typo.Title>
+            <R.icons.HamburgerIcon />
+          </View>
+        </View>
+
         <View style={styles.labelCard}>
           <View style={styles.text}>
             <Typo.Title type="regular18">Вы подключены на</Typo.Title>
@@ -143,12 +151,12 @@ export const RatesScreen = () => {
 
         <View style={styles.line} />
 
-        <TouchableOpacity style={styles.foot} onPress={pressText}>
+        <TouchableOpacity style={styles.foot} onPress={presText}>
           <Typo.Title>Правила тарифа</Typo.Title>
-          {touch ? <R.icons.UpIcon /> : <R.icons.DownIcon />}
+          {touc ? <R.icons.UpIcon /> : <R.icons.DownIcon />}
         </TouchableOpacity>
         <View>
-          {touch ? (
+          {touc ? (
             <View style={styles.p}>
               <Typo.Title type="regular15" style={styles.t}>
                 Не пытайтесь перевести этот вопрос, он не существует ни на одном
@@ -167,7 +175,13 @@ export const RatesScreen = () => {
         </View>
 
         <View style={styles.line} />
-      </ScrollView>
-    </View>
+
+        <TouchableOpacity style={styles.button}>
+          <Typo.Body type="regular16" color="main">
+            Оплатить тариф
+          </Typo.Body>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   )
 }

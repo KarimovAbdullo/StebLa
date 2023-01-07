@@ -22,6 +22,7 @@ const theme = {
       iconSecondary: '#6D7986',
       iconLine: '#E5E7E9',
       textColor: '#8E8E93',
+      border: '#EDEFEF',
     },
   },
   dark: {
@@ -46,6 +47,7 @@ const theme = {
       iconSecondary: '#6D7986',
       iconLine: '#E5E7E9',
       textColor: '#8E8E93',
+      border: '#EDEFEF',
     },
   },
 }

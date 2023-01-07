@@ -12,6 +12,7 @@ interface IProps {
     | 'bold'
     | 'regular'
     | 'regular18'
+    | 'regular15'
     | 'regular21'
     | 'regular16'
     | 'regular18bold'
@@ -21,6 +22,7 @@ interface IProps {
     | 'regular28'
     | 'regular18bold'
     | 'regular021'
+    | 'regular016'
 
   style?: StyleProp<TextProps>
   numberOfLines?: number
@@ -128,6 +130,18 @@ const stylesConfig = createStyles((_colors, fonts) => ({
     fontSize: '21@ms',
     lineHeight: '29@ms',
     fontWeight: '600',
+  },
+  regular016: {
+    fontFamily: fonts.Inter.regular,
+    fontSize: '16@ms',
+    lineHeight: '19.36@ms',
+    fontWeight: '400',
+  },
+  regular15: {
+    fontFamily: fonts.Inter.regular,
+    fontSize: '15@ms',
+    fontWeight: '400',
+    lineHeight: '20.55@ms',
   },
 }))
 

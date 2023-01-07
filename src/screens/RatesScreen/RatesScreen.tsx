@@ -1,6 +1,5 @@
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
 import Typo from 'components/typo'
-// import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { useState } from 'react'
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
@@ -15,13 +14,6 @@ export const RatesScreen = () => {
   const pressText = () => {
     setTouch(!touch)
   }
-
-  //   const navigate = useSmartNavigation()
-
-  //   const onLongPress = () => {
-  //     // @ts-ignore
-  //     setActiveButton(!activeButton)
-  //   }
 
   return (
     <View style={styles.itemContent}>

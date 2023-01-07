@@ -50,14 +50,6 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
               headerBackTitleVisible: false,
             }}
           /> */}
-          <RootStack.Screen
-            component={RatesScreen}
-            name={R.routes.RATES_SCREEN}
-            options={{
-              headerShown: false,
-              headerBackTitleVisible: false,
-            }}
-          />
 
           <RootStack.Screen
             component={FirsStartScreen}
@@ -189,6 +181,14 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
             options={{
               headerShown: false,
               headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
+          <RootStack.Screen
+            component={RatesScreen}
+            name={R.routes.RATES_SCREEN}
+            options={{
+              headerShown: false,
               headerBackTitleVisible: false,
             }}
           />

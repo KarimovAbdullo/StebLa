@@ -4,23 +4,25 @@ export default createStyles(colors => ({
   button: {
     width: '100%',
     height: '49@vs',
-    borderRadius: '36@s',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: '10@vs',
-    backgroundColor: colors.main,
+    backgroundColor: colors.lightGrey,
+    borderWidth: '1@s',
+    borderColor: colors.main,
   },
   text: {
     fontSize: '16@s',
     textAlign: 'center',
-    color: colors.white,
+    color: colors.main,
   },
   disabled: {
-    backgroundColor: colors.backroundSecondary,
-    shadowOpacity: 0,
-    elevation: 0,
+    borderColor: colors.iconLine,
   },
   textDisabled: {
     color: colors.textPrimary,
+  },
+  buttonActive: {
+    borderColor: colors.red,
   },
 }))

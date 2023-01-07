@@ -15,12 +15,14 @@ import CreateRuleScreen from 'screens/CreateRuleScreen/CreateRuleScreen'
 import FirsStartScreen from 'screens/FirsStartScreen/FirsStartScreen'
 import HomeScreen from 'screens/Home'
 import ImportChatsScreen from 'screens/ImportChats'
+import ListUsersScreen from 'screens/ListUsers'
 import LoginScreen from 'screens/Login'
 import { MyProfileScreen } from 'screens/MyProfileScreen/MyProfileScreen'
 import OtpScreen from 'screens/Otp'
 import { RatesScreen } from 'screens/RatesScreen/RatesScreen'
 // import StartIntro from 'screens/StartIntro/StartIntro'
 import StartScreen from 'screens/StartScreen/StartScreen'
+import YourListsScreen from 'screens/YourLists'
 import { TNavigationParams } from 'types/navigation'
 
 const Navigator = ({ theme }: { theme: TTheme }) => {
@@ -164,6 +166,26 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
           <RootStack.Screen
             component={CreateRuleScreen}
             name={R.routes.CREATE_RULE_SCREEN}
+            options={{
+              headerShown: false,
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
+
+          <RootStack.Screen
+            component={YourListsScreen}
+            name={R.routes.SCREEN_YOUR_LIST}
+            options={{
+              headerShown: false,
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
+
+          <RootStack.Screen
+            component={ListUsersScreen}
+            name={R.routes.SCREEN_LIST_USERS}
             options={{
               headerShown: false,
               headerTitleAlign: 'center',

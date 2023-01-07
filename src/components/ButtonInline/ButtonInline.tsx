@@ -1,5 +1,5 @@
 import { useStyles } from 'hooks/useStyles'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native'
 
 interface IProps {
@@ -9,17 +9,19 @@ interface IProps {
   loading?: boolean
   disabled?: boolean
   textStyle?: object
+  icon?: ReactNode
 }
 
-import stylesConfig from './CustomButton.styles'
+import stylesConfig from './ButtonInline.styles'
 
-export const CustomButton = ({
+export const ButtonInline = ({
   text,
   onPress,
   style,
   loading,
   disabled = false,
   textStyle,
+  icon,
 }: IProps) => {
   const styles = useStyles(stylesConfig)
 
@@ -35,7 +37,7 @@ export const CustomButton = ({
               disabled ? styles.textDisabled : {},
               textStyle,
             ]}>
-            {text}
+            {icon} {text}
           </Text>
         )}
       </View>

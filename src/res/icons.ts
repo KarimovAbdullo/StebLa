@@ -2,10 +2,15 @@ import ActiveCheckIcon from 'assets/icons/ActiveCheckIcon'
 import AlertIcon from 'assets/icons/AlertIcon'
 import BackIcon from 'assets/icons/BackIcon'
 import BellIcon from 'assets/icons/BellIcon'
+import CaronaIcon from 'assets/icons/CaronaIcon'
+import ChangeIcon from 'assets/icons/ChangeIcon'
 import CheckIcon from 'assets/icons/CheckIcon'
+import DeliteIcon from 'assets/icons/DeliteIcon'
 import DollorIcon from 'assets/icons/DollorIcon'
 import DownIcon from 'assets/icons/DownIcon'
 import ExampleIcon from 'assets/icons/ExampleIcon'
+import FileIcon from 'assets/icons/FileIcon'
+import GroupIcon from 'assets/icons/GroupIcon'
 import HamburgerIcon from 'assets/icons/Hamburger'
 import HistoryIcon from 'assets/icons/HistoryIcon'
 import LoadingIcon from 'assets/icons/LoadingIcon'
@@ -18,6 +23,7 @@ import PlusCardIcon from 'assets/icons/PlusCardIcon'
 import PlusIcon from 'assets/icons/PlusIcon'
 import ProfileBellIcon from 'assets/icons/ProfileBellIcon'
 import ProfileIcon from 'assets/icons/ProfileIcon'
+import ReactIcon from 'assets/icons/ReactIcon'
 import SearchIcon from 'assets/icons/SearchIcon'
 import SettingIcon from 'assets/icons/SettingIcon'
 import StarIcon from 'assets/icons/StarIcon'
@@ -31,10 +37,15 @@ export {
   AlertIcon,
   BackIcon,
   BellIcon,
+  CaronaIcon,
+  ChangeIcon,
   CheckIcon,
+  DeliteIcon,
   DollorIcon,
   DownIcon,
   ExampleIcon,
+  FileIcon,
+  GroupIcon,
   HamburgerIcon,
   HistoryIcon,
   LoadingIcon,
@@ -47,6 +58,7 @@ export {
   PlusIcon,
   ProfileBellIcon,
   ProfileIcon,
+  ReactIcon,
   SearchIcon,
   SettingIcon,
   StarIcon,

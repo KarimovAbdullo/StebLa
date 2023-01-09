@@ -1,22 +1,30 @@
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
 import NotificationsItems from 'components/NotificationsItem'
 import Typo from 'components/typo'
+import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React from 'react'
-import { View } from 'react-native'
+import { TouchableOpacity, View } from 'react-native'
 import R from 'res'
 
 import stylesConfig from './NotificationsScreen.styles'
 
 export const NotificationsScreen = () => {
   const styles = useStyles(stylesConfig)
+  const navigate = useSmartNavigation()
+
+  const back = () => {
+    navigate.goBack()
+  }
 
   return (
     <View style={styles.container}>
       <FocusAwareStatusBar backgroundColor={R.colors.white} />
 
       <View style={styles.iconContent}>
-        <R.icons.BackIcon />
+        <TouchableOpacity onPress={back}>
+          <R.icons.BackIcon />
+        </TouchableOpacity>
 
         <Typo.Title type="regular18bold">Уведомления</Typo.Title>
 

@@ -28,7 +28,9 @@ export const ChatsItem = ({ item, activeList, setActiveList }: IProps) => {
   const active = activeList.find(i => i === item.id)
 
   return (
-    <View style={[styles.container, active ? styles.active : {}]}>
+    <TouchableOpacity
+      style={[styles.container, active ? styles.active : {}]}
+      onPress={onLongPress}>
       <Image source={item.image} style={styles.imageContent} />
       <View style={styles.textContent}>
         <View>
@@ -42,10 +44,10 @@ export const ChatsItem = ({ item, activeList, setActiveList }: IProps) => {
           ) : null}
         </View>
 
-        <TouchableOpacity style={styles.checkContent} onPress={onLongPress}>
+        <TouchableOpacity style={styles.checkContent}>
           {active ? <R.icons.ActiveCheckIcon /> : <R.icons.CheckIcon />}
         </TouchableOpacity>
       </View>
-    </View>
+    </TouchableOpacity>
   )
 }

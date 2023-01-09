@@ -1,9 +1,8 @@
 import ButtonInline from 'components/ButtonInline'
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
 import ListItem from 'components/ListItem'
-// import { CustomButton } from 'components/CustomButton/CustomButton'
 import Typo from 'components/typo'
-// import useSmartNavigation from 'hooks/useSmartNavigation'
+import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { useState } from 'react'
 import { FlatList, View } from 'react-native'
@@ -16,12 +15,7 @@ export const YourListsScreen = () => {
   const styles = useStyles(stylesConfig)
   const [activeList, setActiveList] = useState<string[]>([])
   const [activeButton, setActiveButton] = useState(false)
-  // const navigate = useSmartNavigation()
-
-  // const onLongPress = () => {
-  //   // @ts-ignore
-  //   setActiveButton(!activeButton)
-  // }
+  const navigate = useSmartNavigation()
 
   // const changeButton = () => {
   //   // @ts-ignore
@@ -37,6 +31,8 @@ export const YourListsScreen = () => {
     setTimeout(() => {
       setActiveButton(true)
     }, 100)
+    // @ts-ignore
+    navigate.navigate(R.routes.SCREEN_LIST_USERS)
   }
 
   const [data] = useState<IListInfo[]>([

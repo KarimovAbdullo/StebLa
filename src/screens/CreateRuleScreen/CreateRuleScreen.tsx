@@ -3,6 +3,7 @@ import Container from 'components/Container'
 import { CreateRuleItems } from 'components/CreateRuleItems/CreateRuleItems'
 import { CustomButton } from 'components/CustomButton/CustomButton'
 import Typo from 'components/typo'
+import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { ReactElement, useState } from 'react'
 import {
@@ -23,6 +24,12 @@ export interface IData {
 
 const CreateRuleScreen = () => {
   const styles = useStyles(styleConfig)
+  const navigation = useSmartNavigation()
+
+  const onYourList = () => {
+    // @ts-ignore
+    navigation.navigate(R.routes.SCREEN_YOUR_LIST)
+  }
 
   const [state, setState] = useState<IData[]>([
     { id: 1, text: 'Огонь.' },
@@ -65,7 +72,7 @@ const CreateRuleScreen = () => {
           )}
         />
 
-        <CustomButton text={'Далее'} style={styles.btn} />
+        <CustomButton text={'Далее'} style={styles.btn} onPress={onYourList} />
       </SafeAreaView>
     </Container>
   )

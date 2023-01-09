@@ -23,6 +23,9 @@ import OtpScreen from 'screens/Otp'
 import { RatesScreen } from 'screens/RatesScreen/RatesScreen'
 // import StartIntro from 'screens/StartIntro/StartIntro'
 import StartScreen from 'screens/StartScreen/StartScreen'
+import { StaticChatScreen } from 'screens/StaticChatScreen/StaticChatScreen'
+import { StaticListChatScreen } from 'screens/StaticListChatScreen/StaticListChatScreen'
+import { StaticWordScreen } from 'screens/StaticWordScreen/StaticWordScreen'
 import YourListsScreen from 'screens/YourLists'
 import { TNavigationParams } from 'types/navigation'
 
@@ -198,6 +201,32 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
           <RootStack.Screen
             component={RatesScreen}
             name={R.routes.RATES_SCREEN}
+            options={{
+              headerShown: false,
+              headerBackTitleVisible: false,
+            }}
+          />
+          <RootStack.Screen
+            component={StaticWordScreen}
+            name={R.routes.SCTATIC_WORD_SCREEN}
+            options={{
+              headerShown: false,
+              headerBackTitleVisible: false,
+            }}
+          />
+
+          <RootStack.Screen
+            component={StaticChatScreen}
+            name={R.routes.STATIC_CHAT_SCREEN}
+            options={{
+              headerShown: false,
+              headerBackTitleVisible: false,
+            }}
+          />
+
+          <RootStack.Screen
+            component={StaticListChatScreen}
+            name={R.routes.STATIC_LIST_CHAT_SCREEN}
             options={{
               headerShown: false,
               headerBackTitleVisible: false,

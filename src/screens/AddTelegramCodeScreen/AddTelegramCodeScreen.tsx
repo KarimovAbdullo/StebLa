@@ -69,7 +69,12 @@ export const AddTelegramCodeScreen = () => {
         />
 
         <View style={styles.buttonContent}>
-          <CustomButton text={'Далее'} style={styles.button} onPress={goHome} />
+          <CustomButton
+            text={'Далее'}
+            style={styles.button}
+            onPress={goHome}
+            disabled={code.length > 3 ? false : true}
+          />
         </View>
       </View>
     </KeyboardAwareScrollView>

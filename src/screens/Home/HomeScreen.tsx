@@ -18,6 +18,10 @@ const HomeScreen = () => {
     //@ts-ignore
     navigate.navigate(R.routes.SCREEN_CREATE_PROFILE)
   }
+
+  const goWord = () => {
+    navigate.navigate(R.routes.SCTATIC_WORD_SCREEN)
+  }
   return (
     <View style={styles.Main}>
       <FocusAwareStatusBar
@@ -58,7 +62,7 @@ const HomeScreen = () => {
           </Typo.Title>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.menu}>
+        <TouchableOpacity style={styles.menu} onPress={goWord}>
           <R.icons.StaticIcon />
           <Typo.Title type="regular18" color="textPrimary" style={styles.text}>
             Статистика

@@ -68,7 +68,7 @@ const CreateProfileScreen = () => {
               : { borderColor: R.colors.title },
           ]}>
           <View style={styles.iconCard}>
-            <R.icons.StarIcon />
+            <R.icons.StarIcon color={check === 'pro' ? '#2BB0AD' : '#B3C2CB'} />
           </View>
 
           <Typo.Title type="regular21" style={styles.title}>

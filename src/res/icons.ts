@@ -1,12 +1,15 @@
 import ActiveCheckIcon from 'assets/icons/ActiveCheckIcon'
 import AlertIcon from 'assets/icons/AlertIcon'
+import ArrowIcon from 'assets/icons/ArrowIcon'
 import BackIcon from 'assets/icons/BackIcon'
 import BellIcon from 'assets/icons/BellIcon'
 import CaronaIcon from 'assets/icons/CaronaIcon'
 import ChangeIcon from 'assets/icons/ChangeIcon'
+import ChatIcon from 'assets/icons/ChatIcon'
 import CheckIcon from 'assets/icons/CheckIcon'
 import DeliteIcon from 'assets/icons/DeliteIcon'
 import DollorIcon from 'assets/icons/DollorIcon'
+import DotIcon from 'assets/icons/DotIcon'
 import DownIcon from 'assets/icons/DownIcon'
 import ExampleIcon from 'assets/icons/ExampleIcon'
 import FileIcon from 'assets/icons/FileIcon'
@@ -31,17 +34,21 @@ import StaticIcon from 'assets/icons/StaticIcon'
 import TelegramIcon from 'assets/icons/TelegramIcon'
 import UpIcon from 'assets/icons/UpIcon'
 import WriteIcon from 'assets/icons/WriteIcon'
+import XIcon from 'assets/icons/XIcon'
 
 export {
   ActiveCheckIcon,
   AlertIcon,
+  ArrowIcon,
   BackIcon,
   BellIcon,
   CaronaIcon,
   ChangeIcon,
+  ChatIcon,
   CheckIcon,
   DeliteIcon,
   DollorIcon,
+  DotIcon,
   DownIcon,
   ExampleIcon,
   FileIcon,
@@ -66,4 +73,5 @@ export {
   TelegramIcon,
   UpIcon,
   WriteIcon,
+  XIcon,
 }

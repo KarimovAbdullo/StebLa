@@ -25,7 +25,7 @@ export const AddTelegramNumScreen = () => {
   }
 
   const initialValues: ILogin = {
-    phone: '+7',
+    phone: '',
   }
 
   return (

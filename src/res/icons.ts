@@ -6,6 +6,7 @@ import CaronaIcon from 'assets/icons/CaronaIcon'
 import ChangeIcon from 'assets/icons/ChangeIcon'
 import CheckIcon from 'assets/icons/CheckIcon'
 import DeliteIcon from 'assets/icons/DeliteIcon'
+import DisableIcon from 'assets/icons/DisableIcon'
 import DollorIcon from 'assets/icons/DollorIcon'
 import DownIcon from 'assets/icons/DownIcon'
 import ExampleIcon from 'assets/icons/ExampleIcon'
@@ -43,6 +44,7 @@ export {
   ChangeIcon,
   CheckIcon,
   DeliteIcon,
+  DisableIcon,
   DollorIcon,
   DownIcon,
   ExampleIcon,

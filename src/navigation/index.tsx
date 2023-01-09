@@ -7,6 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import React, { useRef } from 'react'
 import R from 'res'
 import { TTheme } from 'res/theme'
+import AccountsScreen from 'screens/Accounts'
 import { AddTelegramCodeScreen } from 'screens/AddTelegramCodeScreen/AddTelegramCodeScreen'
 import { AddTelegramNumScreen } from 'screens/AddTelegramNumScreen/AddTelegramNumScreen'
 import ChatsScreen from 'screens/Chats'
@@ -41,7 +42,7 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
       }}>
       <BottomSheetModalProvider>
         <RootStack.Navigator
-          initialRouteName={R.routes.SCREEN_NOTIFICATIONS}
+          initialRouteName={R.routes.SCREEN_ACCOUNTS}
           screenOptions={{ headerShown: false }}>
           {/* <RootStack.Screen
             component={StartIntro}
@@ -198,6 +199,15 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
           <RootStack.Screen
             component={RatesScreen}
             name={R.routes.RATES_SCREEN}
+            options={{
+              headerShown: false,
+              headerBackTitleVisible: false,
+            }}
+          />
+
+          <RootStack.Screen
+            component={AccountsScreen}
+            name={R.routes.SCREEN_ACCOUNTS}
             options={{
               headerShown: false,
               headerBackTitleVisible: false,

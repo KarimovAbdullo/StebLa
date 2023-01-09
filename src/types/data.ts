@@ -59,3 +59,18 @@ export interface IListUserInfo {
   subTitle: string
   image: ImageSourcePropType
 }
+
+export interface ITelegramData {
+  title: string
+  id: string
+}
+
+export interface IWhastAppData {
+  title: string
+  id: string
+}
+
+export interface IAddAcountInfo {
+  phone: string
+  code: string
+}

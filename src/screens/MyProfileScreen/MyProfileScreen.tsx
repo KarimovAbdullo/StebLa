@@ -28,6 +28,11 @@ export const MyProfileScreen = () => {
     setCheck('alert')
   }
 
+  const onNotification = () => {
+    //@ts-ignore
+    navigation.navigate(R.routes.SCREEN_NOTIFICATIONS)
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <FocusAwareStatusBar backgroundColor={R.colors.white} />
@@ -52,7 +57,7 @@ export const MyProfileScreen = () => {
 
       <View style={styles.profileCard}>
         <Typo.Headline type="bold28">Мой профиль</Typo.Headline>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={onNotification}>
           <R.icons.ProfileBellIcon />
         </TouchableOpacity>
       </View>

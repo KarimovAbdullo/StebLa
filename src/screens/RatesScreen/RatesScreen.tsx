@@ -1,5 +1,6 @@
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
 import Typo from 'components/typo'
+import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { useState } from 'react'
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
@@ -11,6 +12,11 @@ export const RatesScreen = () => {
   const styles = useStyles(stylesConfig)
   const [touch, setTouch] = useState(false)
   const [touc, setTouc] = useState(false)
+  const navigate = useSmartNavigation()
+
+  const back = () => {
+    navigate.goBack()
+  }
 
   const pressText = () => {
     setTouch(!touch)
@@ -26,7 +32,7 @@ export const RatesScreen = () => {
         <FocusAwareStatusBar backgroundColor={R.colors.white} />
         <View style={styles.container}>
           <View style={styles.iconContent}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={back}>
               <R.icons.BackIcon />
             </TouchableOpacity>
 

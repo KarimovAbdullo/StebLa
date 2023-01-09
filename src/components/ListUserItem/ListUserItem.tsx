@@ -3,6 +3,7 @@ import BottomSheet from 'components/BottomSheet'
 import BottomSheetButtons from 'components/BottomSheetButtons'
 import { CustomButton } from 'components/CustomButton/CustomButton'
 import Typo from 'components/typo'
+import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { useRef } from 'react'
 import { Image, TouchableOpacity, View } from 'react-native'
@@ -21,6 +22,7 @@ export const ListUserItem = ({ item, activeList, setActiveList }: IProps) => {
   const styles = useStyles(stylesConfig)
   const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
   const bottomsheetRef = useRef<BottomSheetModal | null>(null)
+  const navigate = useSmartNavigation()
 
   const onLongPress = () => {
     setActiveList([...activeList, item.id])
@@ -33,14 +35,23 @@ export const ListUserItem = ({ item, activeList, setActiveList }: IProps) => {
   }
 
   const onPress = () => {
+    bottomsheetRef2.current?.close()
+
     bottomsheetRef.current?.present()
   }
 
   const closed = () => {
-    bottomsheetRef.current?.close()
+    bottomsheetRef.current?.dismiss()
   }
 
   const active = activeList.find(i => i === item.id)
+
+  const onRules = async () => {
+    bottomsheetRef2.current?.dismiss()
+    bottomsheetRef.current?.dismiss()
+    // @ts-ignore
+    navigate.navigate(R.routes.RATES_SCREEN)
+  }
 
   return (
     <TouchableOpacity style={styles.container} onPress={onLongPress}>
@@ -101,7 +112,11 @@ export const ListUserItem = ({ item, activeList, setActiveList }: IProps) => {
           </View>
 
           <View style={styles.contentButtons}>
-            <CustomButton text={'Подтвердить'} style={styles.buttonShet} />
+            <CustomButton
+              text={'Подтвердить'}
+              style={styles.buttonShet}
+              onPress={onRules}
+            />
 
             <CustomButton
               text={'Отменить'}

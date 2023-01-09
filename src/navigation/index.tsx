@@ -45,7 +45,7 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
       }}>
       <BottomSheetModalProvider>
         <RootStack.Navigator
-          initialRouteName={R.routes.SCREEN_ACCOUNTS}
+          // initialRouteName={R.routes.SCREEN_ACCOUNTS}
           screenOptions={{ headerShown: false }}>
           {/* <RootStack.Screen
             component={StartIntro}

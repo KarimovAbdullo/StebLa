@@ -9,9 +9,10 @@ import TelegramItem from 'components/TelegramItem'
 import Typo from 'components/typo'
 import WhastAppItem from 'components/WhastAppItem'
 import { Formik } from 'formik'
+import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { useRef, useState } from 'react'
-import { FlatList, ScrollView, View } from 'react-native'
+import { FlatList, ScrollView, TouchableOpacity, View } from 'react-native'
 import R from 'res'
 import { ITelegramData, IWhastAppData } from 'types/data'
 import { IAddAcountInfo } from 'types/data'
@@ -21,6 +22,7 @@ import stylesConfig from './AccountsScreen.styles'
 
 export const AccountsScreen = () => {
   const styles = useStyles(stylesConfig)
+  const navigate = useSmartNavigation()
 
   const [activeButton, setActiveButton] = React.useState(false)
   const [activeList, setActiveList] = useState<string[]>([])
@@ -28,6 +30,10 @@ export const AccountsScreen = () => {
   const [code, setCode] = React.useState('')
 
   console.log(code)
+
+  const back = () => {
+    navigate.goBack()
+  }
 
   const [dataTelegram] = React.useState<ITelegramData[]>([
     {
@@ -79,7 +85,9 @@ export const AccountsScreen = () => {
       <FocusAwareStatusBar backgroundColor={R.colors.white} />
 
       <View style={styles.iconContent}>
-        <R.icons.BackIcon />
+        <TouchableOpacity onPress={back}>
+          <R.icons.BackIcon />
+        </TouchableOpacity>
 
         <Typo.Title type="regular18bold">Аккаунты</Typo.Title>
 

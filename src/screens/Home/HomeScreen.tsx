@@ -22,6 +22,27 @@ const HomeScreen = () => {
   const goWord = () => {
     navigate.navigate(R.routes.SCTATIC_WORD_SCREEN)
   }
+
+  const onNotification = () => {
+    //@ts-ignore
+    navigate.navigate(R.routes.SCREEN_NOTIFICATIONS)
+  }
+
+  const onAcounts = () => {
+    //@ts-ignore
+    navigate.navigate(R.routes.SCREEN_ACCOUNTS)
+  }
+
+  const onMyProfile = () => {
+    //@ts-ignore
+    navigate.navigate(R.routes.MY_PROFILE_SCREEN)
+  }
+
+  const onRule = () => {
+    //@ts-ignore
+    navigate.navigate(R.routes.RATES_SCREEN)
+  }
+
   return (
     <View style={styles.Main}>
       <FocusAwareStatusBar
@@ -41,21 +62,21 @@ const HomeScreen = () => {
       <View style={styles.line} />
 
       <View style={styles.container}>
-        <TouchableOpacity style={styles.menu}>
+        <TouchableOpacity style={styles.menu} onPress={onMyProfile}>
           <R.icons.ProfileIcon />
           <Typo.Title type="regular18" color="textPrimary" style={styles.text}>
             Мой профиль
           </Typo.Title>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.menu}>
+        <TouchableOpacity style={styles.menu} onPress={onAcounts}>
           <R.icons.TelegramIcon />
           <Typo.Title type="regular18" color="textPrimary" style={styles.text}>
             Телеграмм аккаунты
           </Typo.Title>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.menu}>
+        <TouchableOpacity style={styles.menu} onPress={onNotification}>
           <R.icons.BellIcon />
           <Typo.Title type="regular18" color="textPrimary" style={styles.text}>
             Уведомления
@@ -69,7 +90,7 @@ const HomeScreen = () => {
           </Typo.Title>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.menu}>
+        <TouchableOpacity style={styles.menu} onPress={onRule}>
           <R.icons.DollorIcon />
           <Typo.Title type="regular18" color="textPrimary" style={styles.text}>
             Управление подпиской

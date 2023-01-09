@@ -41,6 +41,7 @@ export default createStyles((colors, font) => ({
     fontSize: '16@ms',
     fontFamily: font.Inter.regular,
     fontWeight: '400',
+    color: colors.textPrimary,
   },
   item: {
     backgroundColor: colors.backroundSecondary,

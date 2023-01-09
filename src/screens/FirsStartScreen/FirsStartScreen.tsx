@@ -4,7 +4,7 @@ import Typo from 'components/typo'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React from 'react'
-import { View } from 'react-native'
+import { Image, View } from 'react-native'
 import R from 'res'
 
 import styleConfig from './FirsStartScreen.style'
@@ -23,12 +23,16 @@ const FirsStartScreen = () => {
         backgroundColor={R.colors.white}
         barStyle={'dark-content'}
       />
-      <View style={styles.logoCard}>
-        <R.icons.LogoIcon />
-      </View>
-      <View style={styles.logoTitle}>
-        <R.icons.LogoTitle />
-      </View>
+
+      <Image
+        source={require('./../../assets/images/logoB.png')}
+        style={styles.img}
+      />
+
+      <Image
+        source={require('./../../assets/images/loggo.png')}
+        style={styles.image}
+      />
 
       <View style={styles.text}>
         <Typo.Title type="regular18" center={true}>

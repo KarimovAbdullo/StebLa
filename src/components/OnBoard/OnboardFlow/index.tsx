@@ -8,6 +8,7 @@ import {
   View,
   ViewStyle,
 } from 'react-native'
+import { s, vs } from 'react-native-size-matters'
 
 import {
   COLOR_PAGINATION_DEFAULT,
@@ -173,21 +174,23 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   footer: {
-    // flex: 1,
+    // borderWidth: 1,
+    flex: 2,
     paddingHorizontal: HORIZONTAL_PADDING_DEFAULT,
     flexDirection: 'column',
-    marginTop: 50,
+    marginTop: vs(50),
+    backgroundColor: 'transparent',
   },
   content: {
     // flex: 1,
-    // flexGrow: 1,
+    flexGrow: 1,
   },
   backgroundImage: {
     // flex: 1,
   },
   buttonBackgroundImage: {
     borderRadius: 32,
-    marginHorizontal: 32,
+    marginHorizontal: s(32),
   },
 })
 

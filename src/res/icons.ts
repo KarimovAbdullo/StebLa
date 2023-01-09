@@ -1,15 +1,18 @@
 import ActiveCheckIcon from 'assets/icons/ActiveCheckIcon'
 import AlertIcon from 'assets/icons/AlertIcon'
+import BackIcon from 'assets/icons/BackIcon'
 import BellIcon from 'assets/icons/BellIcon'
 import CaronaIcon from 'assets/icons/CaronaIcon'
 import ChangeIcon from 'assets/icons/ChangeIcon'
 import CheckIcon from 'assets/icons/CheckIcon'
 import DeliteIcon from 'assets/icons/DeliteIcon'
 import DollorIcon from 'assets/icons/DollorIcon'
+import DownIcon from 'assets/icons/DownIcon'
 import ExampleIcon from 'assets/icons/ExampleIcon'
 import FileIcon from 'assets/icons/FileIcon'
 import GroupIcon from 'assets/icons/GroupIcon'
 import HamburgerIcon from 'assets/icons/Hamburger'
+import HistoryIcon from 'assets/icons/HistoryIcon'
 import LoadingIcon from 'assets/icons/LoadingIcon'
 import LogoIcon from 'assets/icons/LogoIcon'
 import LogoTitle from 'assets/icons/LogoTilte'
@@ -27,22 +30,26 @@ import StarIcon from 'assets/icons/StarIcon'
 import StaticIcon from 'assets/icons/StaticIcon'
 import TelegramIcon from 'assets/icons/TelegramIcon'
 import TelegrammIcon from 'assets/icons/TelegrammIcon'
+import UpIcon from 'assets/icons/UpIcon'
 import WhatsAppIcon from 'assets/icons/WhatsAppIcon'
 import WriteIcon from 'assets/icons/WriteIcon'
 
 export {
   ActiveCheckIcon,
   AlertIcon,
+  BackIcon,
   BellIcon,
   CaronaIcon,
   ChangeIcon,
   CheckIcon,
   DeliteIcon,
   DollorIcon,
+  DownIcon,
   ExampleIcon,
   FileIcon,
   GroupIcon,
   HamburgerIcon,
+  HistoryIcon,
   LoadingIcon,
   LogoIcon,
   LogoTitle,
@@ -60,6 +67,7 @@ export {
   StaticIcon,
   TelegramIcon,
   TelegrammIcon,
+  UpIcon,
   WhatsAppIcon,
   WriteIcon,
 }

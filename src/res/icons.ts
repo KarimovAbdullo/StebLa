@@ -26,6 +26,8 @@ import SettingIcon from 'assets/icons/SettingIcon'
 import StarIcon from 'assets/icons/StarIcon'
 import StaticIcon from 'assets/icons/StaticIcon'
 import TelegramIcon from 'assets/icons/TelegramIcon'
+import TelegrammIcon from 'assets/icons/TelegrammIcon'
+import WhatsAppIcon from 'assets/icons/WhatsAppIcon'
 import WriteIcon from 'assets/icons/WriteIcon'
 
 export {
@@ -57,5 +59,7 @@ export {
   StarIcon,
   StaticIcon,
   TelegramIcon,
+  TelegrammIcon,
+  WhatsAppIcon,
   WriteIcon,
 }

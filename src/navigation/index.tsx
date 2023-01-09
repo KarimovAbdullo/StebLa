@@ -18,6 +18,7 @@ import ImportChatsScreen from 'screens/ImportChats'
 import ListUsersScreen from 'screens/ListUsers'
 import LoginScreen from 'screens/Login'
 import { MyProfileScreen } from 'screens/MyProfileScreen/MyProfileScreen'
+import NotificationsScreen from 'screens/Notifications'
 import OtpScreen from 'screens/Otp'
 import StartScreen from 'screens/StartScreen/StartScreen'
 import YourListsScreen from 'screens/YourLists'
@@ -38,7 +39,7 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
       }}>
       <BottomSheetModalProvider>
         <RootStack.Navigator
-          // initialRouteName={R.routes.CREATE_RULE_SCREEN}
+          initialRouteName={R.routes.SCREEN_NOTIFICATIONS}
           screenOptions={{ headerShown: false }}>
           <RootStack.Screen
             component={FirsStartScreen}
@@ -167,6 +168,16 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
           <RootStack.Screen
             component={ListUsersScreen}
             name={R.routes.SCREEN_LIST_USERS}
+            options={{
+              headerShown: false,
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
+
+          <RootStack.Screen
+            component={NotificationsScreen}
+            name={R.routes.SCREEN_NOTIFICATIONS}
             options={{
               headerShown: false,
               headerTitleAlign: 'center',

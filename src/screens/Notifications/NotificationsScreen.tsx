@@ -38,12 +38,12 @@ export const NotificationsScreen = () => {
       <NotificationsItems
         name="Прочитанные"
         text="В чате “Иван Петров” было найдено ключевое слово “Огонь”"
-        icon={<R.icons.TelegrammIcon color={'#9fd2ed'} />}
+        icon={<R.icons.TelegrammIcon color="#9fd2ed" />}
       />
 
       <NotificationsItems
         text="В чате “Иван Петров” было найдено ключевое слово “Огонь”"
-        icon={<R.icons.WhatsAppIcon color={'#9beba1'} />}
+        icon={<R.icons.WhatsAppIcon color="#9beba1" />}
       />
     </View>
   )

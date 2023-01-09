@@ -8,6 +8,7 @@ import ChangeIcon from 'assets/icons/ChangeIcon'
 import ChatIcon from 'assets/icons/ChatIcon'
 import CheckIcon from 'assets/icons/CheckIcon'
 import DeliteIcon from 'assets/icons/DeliteIcon'
+import DisableIcon from 'assets/icons/DisableIcon'
 import DollorIcon from 'assets/icons/DollorIcon'
 import DotIcon from 'assets/icons/DotIcon'
 import DownIcon from 'assets/icons/DownIcon'
@@ -49,6 +50,7 @@ export {
   ChatIcon,
   CheckIcon,
   DeliteIcon,
+  DisableIcon,
   DollorIcon,
   DotIcon,
   DownIcon,

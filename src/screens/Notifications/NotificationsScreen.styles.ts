@@ -27,6 +27,6 @@ export default createStyles(colors => ({
     marginBottom: '15@vs',
   },
   item: {
-    width: '25@s',
+    width: '18@s',
   },
 }))

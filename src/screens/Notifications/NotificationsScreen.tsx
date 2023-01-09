@@ -16,7 +16,7 @@ export const NotificationsScreen = () => {
       <FocusAwareStatusBar backgroundColor={R.colors.white} />
 
       <View style={styles.iconContent}>
-        <R.icons.BellIcon />
+        <R.icons.BackIcon />
 
         <Typo.Title type="regular18bold">Уведомления</Typo.Title>
 

@@ -20,6 +20,12 @@ export function required(value: string) {
   }
 }
 
+export function requir(value: string) {
+  if (value.length < 4) {
+    return 'Неверное значение'
+  }
+}
+
 export function email(value: string) {
   const regx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   const cyrillic = /\p{sc=Cyrillic}/gu

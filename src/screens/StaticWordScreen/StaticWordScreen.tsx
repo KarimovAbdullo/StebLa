@@ -1,10 +1,12 @@
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
+import StaticWordItem from 'components/StaticWordItem'
 import Typo from 'components/typo'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
-import React from 'react'
-import { ScrollView, TextInput, TouchableOpacity, View } from 'react-native'
+import React, { useState } from 'react'
+import { FlatList, ScrollView, TextInput, View } from 'react-native'
 import R from 'res'
+import { IStaticWordInfo } from 'types/data'
 
 import stylesConfig from './StaticWordScreen.style'
 
@@ -19,6 +21,39 @@ export const StaticWordScreen = () => {
   const goChat = () => {
     navigation.navigate(R.routes.STATIC_CHAT_SCREEN)
   }
+
+  const [data] = useState<IStaticWordInfo[]>([
+    {
+      name: 'Огонь',
+      title: 'Количество повтороений',
+      subTitle: 'Количество чатов',
+    },
+    {
+      name: 'Ветер',
+      title: 'Количество повтороений',
+      subTitle: 'Количество чатов',
+    },
+    {
+      name: 'Огонь',
+      title: 'Количество повтороений',
+      subTitle: 'Количество чатов',
+    },
+    {
+      name: 'Ветер',
+      title: 'Количество повтороений',
+      subTitle: 'Количество чатов',
+    },
+    {
+      name: 'Огонь',
+      title: 'Количество повтороений',
+      subTitle: 'Количество чатов',
+    },
+    {
+      name: 'Ветер',
+      title: 'Количество повтороений',
+      subTitle: 'Количество чатов',
+    },
+  ])
 
   return (
     <ScrollView style={styles.main}>
@@ -40,129 +75,18 @@ export const StaticWordScreen = () => {
           style={styles.input}
         />
       </View>
-
-      <View style={styles.section}>
-        <View style={styles.card}>
-          <Typo.Title type="regular021" color="main">
-            Огонь
-          </Typo.Title>
-          <R.icons.DotIcon />
-        </View>
-
-        <View style={styles.card}>
-          <TouchableOpacity style={styles.left} onPress={goChat}>
-            <R.icons.ArrowIcon />
-            <Typo.Title
-              type="regular016"
-              color="textSecondary"
-              style={styles.typo}>
-              Количество повтороений
-            </Typo.Title>
-          </TouchableOpacity>
-
-          <View style={styles.right}>
-            <Typo.Title color="main">123</Typo.Title>
-          </View>
-        </View>
-
-        <View style={styles.card}>
-          <TouchableOpacity style={styles.left} onPress={goListChat}>
-            <R.icons.ChatIcon />
-            <Typo.Title
-              type="regular016"
-              color="textSecondary"
-              style={styles.typo}>
-              Количество чатов
-            </Typo.Title>
-          </TouchableOpacity>
-
-          <View style={styles.right}>
-            <Typo.Title color="main">12</Typo.Title>
-          </View>
-        </View>
-      </View>
-
-      <View style={styles.section}>
-        <View style={styles.card}>
-          <Typo.Title type="regular021" color="main">
-            Огонь
-          </Typo.Title>
-          <R.icons.DotIcon />
-        </View>
-
-        <View style={styles.card}>
-          <TouchableOpacity style={styles.left} onPress={goChat}>
-            <R.icons.ArrowIcon />
-            <Typo.Title
-              type="regular016"
-              color="textSecondary"
-              style={styles.typo}>
-              Количество повтороений
-            </Typo.Title>
-          </TouchableOpacity>
-
-          <View style={styles.right}>
-            <Typo.Title color="main">123</Typo.Title>
-          </View>
-        </View>
-
-        <View style={styles.card}>
-          <TouchableOpacity style={styles.left} onPress={goListChat}>
-            <R.icons.ChatIcon />
-            <Typo.Title
-              type="regular016"
-              color="textSecondary"
-              style={styles.typo}>
-              Количество чатов
-            </Typo.Title>
-          </TouchableOpacity>
-
-          <View style={styles.right}>
-            <Typo.Title color="main">12</Typo.Title>
-          </View>
-        </View>
-      </View>
-
-      <View style={styles.section}>
-        <View style={styles.card}>
-          <Typo.Title type="regular021" color="main">
-            Огонь
-          </Typo.Title>
-          <R.icons.DotIcon />
-        </View>
-
-        <View style={styles.card}>
-          <TouchableOpacity style={styles.left} onPress={goChat}>
-            <R.icons.ArrowIcon />
-            <Typo.Title
-              type="regular016"
-              color="textSecondary"
-              style={styles.typo}>
-              Количество повтороений
-            </Typo.Title>
-          </TouchableOpacity>
-
-          <View style={styles.right}>
-            <Typo.Title color="main">123</Typo.Title>
-          </View>
-        </View>
-
-        <View style={styles.card}>
-          <TouchableOpacity style={styles.left} onPress={goListChat}>
-            <R.icons.ChatIcon />
-            <Typo.Title
-              type="regular016"
-              color="textSecondary"
-              style={styles.typo}>
-              Количество чатов
-            </Typo.Title>
-          </TouchableOpacity>
-
-          <View style={styles.right}>
-            <Typo.Title color="main">12</Typo.Title>
-          </View>
-        </View>
-      </View>
+      <FlatList
+        data={data}
+        keyExtractor={(item, index) => item.toString() + index}
+        renderItem={({ item, index }) => (
+          <StaticWordItem
+            item={item}
+            key={index}
+            goListChat={goListChat}
+            goChat={goChat}
+          />
+        )}
+      />
     </ScrollView>
   )
 }

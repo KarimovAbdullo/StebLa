@@ -101,6 +101,7 @@ export const ListUsersScreen = () => {
           <R.icons.MenuIcon />
         </View>
       </View>
+
       <FlatList
         data={data}
         keyExtractor={(item, index) => item.id.toString() + index}

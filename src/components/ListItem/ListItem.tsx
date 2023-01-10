@@ -3,8 +3,9 @@ import BottomSheet from 'components/BottomSheet'
 import BottomSheetButtons from 'components/BottomSheetButtons'
 import Typo from 'components/typo'
 import { useStyles } from 'hooks/useStyles'
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { TouchableOpacity, View } from 'react-native'
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder'
 import R from 'res'
 import { IListInfo } from 'types/data'
 
@@ -19,6 +20,7 @@ interface IProps {
 export const ListItem = ({ item, activeList, setActiveList }: IProps) => {
   const styles = useStyles(stylesConfig)
   const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
+  const [loading, setLoading] = useState(false)
 
   const onLongPress = () => {
     setActiveList([...activeList, item.id])
@@ -30,50 +32,77 @@ export const ListItem = ({ item, activeList, setActiveList }: IProps) => {
     bottomsheetRef2.current?.present()
   }
 
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000)
+    setLoading(true)
+  }, [])
+
   const active = activeList.find(i => i === item.id)
 
   return (
-    <TouchableOpacity style={styles.container} onPress={onLongPress}>
-      <View style={styles.textContent}>
-        <Typo.TextButton color="textPrimary" type="regular16">
-          {item.text}
-        </Typo.TextButton>
-      </View>
+    <>
+      {loading ? (
+        <SkeletonPlaceholder borderRadius={4}>
+          <SkeletonPlaceholder.Item
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="center"
+            borderWidth={5.3}
+            borderColor={R.colors.lightGrey}
+            marginBottom={0.5}
+            paddingHorizontal={10}
+            paddingVertical={10}>
+            <SkeletonPlaceholder.Item width={290} height={30} />
 
-      <TouchableOpacity style={styles.checkContent} onPress={onLongPress}>
-        <R.icons.GroupIcon />
-      </TouchableOpacity>
+            <SkeletonPlaceholder.Item width={28} height={30} />
+          </SkeletonPlaceholder.Item>
+        </SkeletonPlaceholder>
+      ) : (
+        <TouchableOpacity style={styles.container} onPress={onLongPress}>
+          <View style={styles.textContent}>
+            <Typo.TextButton color="textPrimary" type="regular16">
+              {item.text}
+            </Typo.TextButton>
+          </View>
 
-      <BottomSheet
-        snapPoints={['35%']}
-        ref={bottomsheetRef2}
-        style={styles.bottomSheet}>
-        <View>
-          <BottomSheetButtons
-            text="Открыть"
-            icon={<R.icons.FileIcon />}
-            style={styles.button}
-          />
+          <TouchableOpacity style={styles.checkContent} onPress={onLongPress}>
+            <R.icons.GroupIcon />
+          </TouchableOpacity>
 
-          <BottomSheetButtons
-            text="Переименовать"
-            icon={<R.icons.ChangeIcon />}
-            style={styles.button}
-          />
+          <BottomSheet
+            snapPoints={['35%']}
+            ref={bottomsheetRef2}
+            style={styles.bottomSheet}>
+            <View>
+              <BottomSheetButtons
+                text="Открыть"
+                icon={<R.icons.FileIcon />}
+                style={styles.button}
+              />
 
-          <BottomSheetButtons
-            text="Редактировать"
-            icon={<R.icons.ReactIcon />}
-            style={styles.button}
-          />
+              <BottomSheetButtons
+                text="Переименовать"
+                icon={<R.icons.ChangeIcon />}
+                style={styles.button}
+              />
 
-          <BottomSheetButtons
-            text="Удалить"
-            icon={<R.icons.DeliteIcon />}
-            textColor="red"
-          />
-        </View>
-      </BottomSheet>
-    </TouchableOpacity>
+              <BottomSheetButtons
+                text="Редактировать"
+                icon={<R.icons.ReactIcon />}
+                style={styles.button}
+              />
+
+              <BottomSheetButtons
+                text="Удалить"
+                icon={<R.icons.DeliteIcon />}
+                textColor="red"
+              />
+            </View>
+          </BottomSheet>
+        </TouchableOpacity>
+      )}
+    </>
   )
 }

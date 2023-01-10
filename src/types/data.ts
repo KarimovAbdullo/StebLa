@@ -74,3 +74,9 @@ export interface IAddAcountInfo {
   phone: string
   code: string
 }
+
+export interface IStaticWordInfo {
+  name: string
+  title: string
+  subTitle: string
+}

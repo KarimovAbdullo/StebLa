@@ -5,8 +5,9 @@ import { CustomButton } from 'components/CustomButton/CustomButton'
 import Typo from 'components/typo'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Image, TouchableOpacity, View } from 'react-native'
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder'
 import R from 'res'
 import { IListUserInfo } from 'types/data'
 
@@ -23,6 +24,14 @@ export const ListUserItem = ({ item, activeList, setActiveList }: IProps) => {
   const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
   const bottomsheetRef = useRef<BottomSheetModal | null>(null)
   const navigate = useSmartNavigation()
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000)
+    setLoading(true)
+  }, [])
 
   const onLongPress = () => {
     setActiveList([...activeList, item.id])
@@ -54,79 +63,114 @@ export const ListUserItem = ({ item, activeList, setActiveList }: IProps) => {
   }
 
   return (
-    <TouchableOpacity style={styles.container} onPress={onLongPress}>
-      <View style={styles.itemContent}>
-        <Image source={item.image} style={styles.image} />
-        <View style={styles.textContent}>
-          <Typo.TextButton color="textPrimary" type="regular16">
-            {item.text}
-          </Typo.TextButton>
+    <>
+      {loading ? (
+        <SkeletonPlaceholder borderRadius={4}>
+          <SkeletonPlaceholder.Item
+            flexDirection="row"
+            justifyContent="space-between"
+            alignItems="center"
+            marginVertical={16.5}>
+            <SkeletonPlaceholder.Item flexDirection="row" alignItems="center">
+              <SkeletonPlaceholder.Item
+                width={40}
+                height={40}
+                borderRadius={30}
+                marginLeft={15}
+              />
 
-          <Typo.TextButton color="iconPrimary">{item.subTitle}</Typo.TextButton>
-        </View>
-      </View>
+              <SkeletonPlaceholder.Item marginHorizontal={10}>
+                <SkeletonPlaceholder.Item width={225} height={15} />
+                <SkeletonPlaceholder.Item
+                  marginTop={6}
+                  width={225}
+                  height={15}
+                />
+              </SkeletonPlaceholder.Item>
+            </SkeletonPlaceholder.Item>
 
-      <TouchableOpacity style={styles.checkContent} onPress={onLongPress}>
-        <R.icons.GroupIcon />
-      </TouchableOpacity>
+            <SkeletonPlaceholder.Item width={30} height={15} marginRight={15} />
+          </SkeletonPlaceholder.Item>
+        </SkeletonPlaceholder>
+      ) : (
+        <TouchableOpacity style={styles.container} onPress={onLongPress}>
+          <View style={styles.itemContent}>
+            <Image source={item.image} style={styles.image} />
+            <View style={styles.textContent}>
+              <Typo.TextButton color="textPrimary" type="regular16">
+                {item.text}
+              </Typo.TextButton>
 
-      <BottomSheet
-        snapPoints={['35%']}
-        ref={bottomsheetRef2}
-        style={styles.bottomSheet}>
-        <View>
-          <BottomSheetButtons
-            text="Дать статус “VIP”"
-            icon={<R.icons.CaronaIcon />}
-            style={styles.button}
-            textColor="main"
-            onPress={onPress}
-          />
-
-          <BottomSheetButtons
-            text="Переименовать"
-            icon={<R.icons.ChangeIcon />}
-            style={styles.button}
-          />
-
-          <BottomSheetButtons
-            text="Редактировать"
-            icon={<R.icons.ReactIcon />}
-            style={styles.button}
-          />
-
-          <BottomSheetButtons
-            text="Удалить"
-            icon={<R.icons.DeliteIcon />}
-            textColor="red"
-          />
-        </View>
-      </BottomSheet>
-
-      <BottomSheet snapPoints={['35%']} ref={bottomsheetRef}>
-        <>
-          <View style={styles.textContainer}>
-            <Typo.Title center type="reg21">
-              Вы точно хотите дать пользователю “Имя пользователя” VIP статус ?
-            </Typo.Title>
+              <Typo.TextButton color="iconPrimary">
+                {item.subTitle}
+              </Typo.TextButton>
+            </View>
           </View>
 
-          <View style={styles.contentButtons}>
-            <CustomButton
-              text={'Подтвердить'}
-              style={styles.buttonShet}
-              onPress={onRules}
-            />
+          <TouchableOpacity style={styles.checkContent} onPress={onLongPress}>
+            <R.icons.GroupIcon />
+          </TouchableOpacity>
 
-            <CustomButton
-              text={'Отменить'}
-              style={styles.buttonShet2}
-              textStyle={styles.textButton}
-              onPress={closed}
-            />
-          </View>
-        </>
-      </BottomSheet>
-    </TouchableOpacity>
+          <BottomSheet
+            snapPoints={['35%']}
+            ref={bottomsheetRef2}
+            style={styles.bottomSheet}>
+            <View>
+              <BottomSheetButtons
+                text="Дать статус “VIP”"
+                icon={<R.icons.CaronaIcon />}
+                style={styles.button}
+                textColor="main"
+                onPress={onPress}
+              />
+
+              <BottomSheetButtons
+                text="Переименовать"
+                icon={<R.icons.ChangeIcon />}
+                style={styles.button}
+              />
+
+              <BottomSheetButtons
+                text="Редактировать"
+                icon={<R.icons.ReactIcon />}
+                style={styles.button}
+              />
+
+              <BottomSheetButtons
+                text="Удалить"
+                icon={<R.icons.DeliteIcon />}
+                textColor="red"
+              />
+            </View>
+          </BottomSheet>
+
+          <BottomSheet snapPoints={['35%']} ref={bottomsheetRef}>
+            <>
+              <View style={styles.textContainer}>
+                <Typo.Title center type="reg21">
+                  Вы точно хотите дать пользователю “Имя пользователя” VIP
+                  статус ?
+                </Typo.Title>
+              </View>
+
+              <View style={styles.contentButtons}>
+                <CustomButton
+                  text={'Подтвердить'}
+                  style={styles.buttonShet}
+                  onPress={onRules}
+                />
+
+                <CustomButton
+                  text={'Отменить'}
+                  style={styles.buttonShet2}
+                  textStyle={styles.textButton}
+                  onPress={closed}
+                />
+              </View>
+            </>
+          </BottomSheet>
+        </TouchableOpacity>
+      )}
+    </>
   )
 }

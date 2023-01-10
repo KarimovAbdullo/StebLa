@@ -97,6 +97,7 @@ export const YourListsScreen = () => {
           </TouchableOpacity>
         </View>
       </View>
+
       <FlatList
         data={data}
         keyExtractor={(item, index) => item.id.toString() + index}

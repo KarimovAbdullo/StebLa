@@ -114,6 +114,7 @@ export const ListUsersScreen = () => {
           </TouchableOpacity>
         </View>
       </View>
+
       <FlatList
         data={data}
         keyExtractor={(item, index) => item.id.toString() + index}

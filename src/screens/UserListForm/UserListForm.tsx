@@ -9,18 +9,27 @@ import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import R from 'res'
 import { IForm } from 'types/data'
+import { IListUserInfo } from 'types/data'
 import { requir, validator } from 'utils/validators'
 
-import stylesConfig from './Form.style'
+import stylesConfig from './UserListForm.styles'
 
-export const FormScreen = () => {
+interface IProps {
+  route: {
+    params: {
+      item: IListUserInfo
+    }
+  }
+}
+
+export const UserListForm = ({ route }: IProps) => {
   const navigation = useSmartNavigation()
   const styles = useStyles(stylesConfig)
+  const { item } = route.params
 
-  const onSubmit = () => {
-    // @ts-ignore
-    navigation.navigate(R.routes.SCREEN_OTP)
-  }
+  console.log(item)
+
+  const onSubmit = () => {}
 
   const back = () => {
     // @ts-ignore
@@ -28,8 +37,8 @@ export const FormScreen = () => {
   }
 
   const initialValues: IForm = {
-    firsName: '',
-    secondName: '',
+    firsName: item.text,
+    secondName: item.subTitle,
     thirdNmae: '',
     fourthName: '',
   }
@@ -72,32 +81,6 @@ export const FormScreen = () => {
                   placeholderTextColor={R.colors.grey}
                   secureTextEntry={false}
                   keyboardType="numeric"
-                />
-              </View>
-
-              <View style={styles.inp}>
-                <FormInput
-                  label="+"
-                  validate={validator(requir)}
-                  name="thirdNmae"
-                  placeholder="_"
-                  placeholderTextColor={R.colors.grey}
-                  secureTextEntry={false}
-                  keyboardType="default"
-                  maxLength={12}
-                />
-              </View>
-
-              <View style={styles.inp}>
-                <FormInput
-                  label="+"
-                  validate={validator(requir)}
-                  name="fourthName"
-                  placeholder="_"
-                  placeholderTextColor={R.colors.grey}
-                  secureTextEntry={false}
-                  keyboardType="default"
-                  maxLength={12}
                 />
               </View>
             </View>

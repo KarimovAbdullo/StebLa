@@ -1,8 +1,11 @@
+import { BottomSheetModal } from '@gorhom/bottom-sheet'
+import BottomSheet from 'components/BottomSheet'
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
+import Menu from 'components/Menu/Menu'
 import Typo from 'components/typo'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import R from 'res'
 
@@ -13,6 +16,7 @@ export const RatesScreen = () => {
   const [touch, setTouch] = useState(false)
   const [touc, setTouc] = useState(false)
   const navigate = useSmartNavigation()
+  const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
 
   const back = () => {
     navigate.goBack()
@@ -26,6 +30,10 @@ export const RatesScreen = () => {
     setTouc(!touc)
   }
 
+  const menuBar = () => {
+    bottomsheetRef2.current?.present()
+  }
+
   return (
     <ScrollView style={styles.main}>
       <View style={styles.itemContent}>
@@ -37,7 +45,13 @@ export const RatesScreen = () => {
             </TouchableOpacity>
 
             <Typo.Title type="regular18bold">Тарифы</Typo.Title>
-            <R.icons.HamburgerIcon />
+
+            <TouchableOpacity style={styles.size} onPress={menuBar}>
+              <R.icons.HamburgerIcon />
+              <BottomSheet snapPoints={['50%']} ref={bottomsheetRef2}>
+                <Menu />
+              </BottomSheet>
+            </TouchableOpacity>
           </View>
         </View>
 

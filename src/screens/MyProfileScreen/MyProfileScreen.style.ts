@@ -15,6 +15,13 @@ export default createStyles(colors => ({
     alignItems: 'center',
     marginTop: '10@vs',
   },
+  icon: {
+    position: 'absolute',
+    right: 0,
+    alignItems: 'flex-end',
+    paddingVertical: '10@vs',
+    width: '50@s',
+  },
   text: {
     // justifyContent: 'center',
     position: 'absolute',

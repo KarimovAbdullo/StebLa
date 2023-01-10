@@ -9,17 +9,27 @@ import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import R from 'res'
 import { IForm } from 'types/data'
+import { IListInfo } from 'types/data'
 import { requir, validator } from 'utils/validators'
 
 import stylesConfig from './Form.style'
 
-export const FormScreen = () => {
+interface IProps {
+  route: {
+    params: {
+      item: IListInfo
+    }
+  }
+}
+
+export const FormScreen = ({ route }: IProps) => {
   const navigation = useSmartNavigation()
   const styles = useStyles(stylesConfig)
+  const { item } = route.params
+  console.log(item)
 
   const onSubmit = () => {
     // @ts-ignore
-    navigation.navigate(R.routes.SCREEN_OTP)
   }
 
   const back = () => {
@@ -28,10 +38,7 @@ export const FormScreen = () => {
   }
 
   const initialValues: IForm = {
-    firsName: '',
-    secondName: '',
-    thirdNmae: '',
-    fourthName: '',
+    firsName: item.text,
   }
 
   return (
@@ -55,45 +62,6 @@ export const FormScreen = () => {
                   label="+"
                   validate={validator(requir)}
                   name="firsName"
-                  placeholder="_"
-                  placeholderTextColor={R.colors.grey}
-                  secureTextEntry={false}
-                  keyboardType="default"
-                  maxLength={12}
-                />
-              </View>
-
-              <View style={styles.inp}>
-                <FormInput
-                  label="+"
-                  validate={validator(requir)}
-                  name="secondName"
-                  placeholder="_"
-                  placeholderTextColor={R.colors.grey}
-                  secureTextEntry={false}
-                  keyboardType="default"
-                  maxLength={12}
-                />
-              </View>
-
-              <View style={styles.inp}>
-                <FormInput
-                  label="+"
-                  validate={validator(requir)}
-                  name="thirdNmae"
-                  placeholder="_"
-                  placeholderTextColor={R.colors.grey}
-                  secureTextEntry={false}
-                  keyboardType="default"
-                  maxLength={12}
-                />
-              </View>
-
-              <View style={styles.inp}>
-                <FormInput
-                  label="+"
-                  validate={validator(requir)}
-                  name="fourthName"
                   placeholder="_"
                   placeholderTextColor={R.colors.grey}
                   secureTextEntry={false}

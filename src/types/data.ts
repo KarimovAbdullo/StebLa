@@ -11,9 +11,9 @@ export interface ILogin {
 }
 export interface IForm {
   firsName: string
-  secondName: string
-  thirdNmae: string
-  fourthName: string
+  // secondName: string
+  // thirdNmae: string
+  // fourthName: string
 }
 
 export interface ILoginSocial {

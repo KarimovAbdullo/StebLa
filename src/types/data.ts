@@ -9,6 +9,12 @@ export interface IUser {
 export interface ILogin {
   phone: string
 }
+export interface IForm {
+  firsName: string
+  secondName: string
+  thirdNmae: string
+  fourthName: string
+}
 
 export interface ILoginSocial {
   email: string

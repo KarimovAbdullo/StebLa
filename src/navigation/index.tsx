@@ -14,6 +14,7 @@ import ChatsScreen from 'screens/Chats'
 import CreateProfileScreen from 'screens/CreateProfileScreen/CreateProfileScreen'
 import CreateRuleScreen from 'screens/CreateRuleScreen/CreateRuleScreen'
 import FirsStartScreen from 'screens/FirsStartScreen/FirsStartScreen'
+import { FormScreen } from 'screens/Form/FormScreen'
 import HomeScreen from 'screens/Home'
 import ImportChatsScreen from 'screens/ImportChats'
 import ListUsersScreen from 'screens/ListUsers'
@@ -240,6 +241,15 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
             options={{
               headerShown: false,
               headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
+
+          <RootStack.Screen
+            component={FormScreen}
+            name={R.routes.FORM_SCREEN}
+            options={{
+              headerShown: false,
               headerBackTitleVisible: false,
             }}
           />

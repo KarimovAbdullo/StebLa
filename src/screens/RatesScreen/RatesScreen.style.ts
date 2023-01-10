@@ -15,6 +15,12 @@ export default createStyles(colors => ({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  size: {
+    width: '50@s',
+    height: '20@vs',
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+  },
 
   itemContent: {
     backgroundColor: colors.white,

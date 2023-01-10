@@ -93,16 +93,6 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
           />
 
           <RootStack.Screen
-            component={HomeScreen}
-            name={R.routes.SCREEN_HOME}
-            options={{
-              headerShown: false,
-              headerTitleAlign: 'center',
-              headerBackTitleVisible: false,
-            }}
-          />
-
-          <RootStack.Screen
             component={CreateProfileScreen}
             name={R.routes.SCREEN_CREATE_PROFILE}
             options={{
@@ -240,6 +230,16 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
             name={R.routes.STATIC_LIST_CHAT_SCREEN}
             options={{
               headerShown: false,
+              headerBackTitleVisible: false,
+            }}
+          />
+
+          <RootStack.Screen
+            component={HomeScreen}
+            name={R.routes.SCREEN_HOME}
+            options={{
+              headerShown: false,
+              headerTitleAlign: 'center',
               headerBackTitleVisible: false,
             }}
           />

@@ -1,14 +1,18 @@
+import { BottomSheetModal } from '@gorhom/bottom-sheet'
+import BottomSheet from 'components/BottomSheet'
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
 import Container from 'components/Container'
 import { CreateRuleItems } from 'components/CreateRuleItems/CreateRuleItems'
 import { CustomButton } from 'components/CustomButton/CustomButton'
+import Menu from 'components/Menu/Menu'
 import Typo from 'components/typo'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
-import React, { ReactElement, useState } from 'react'
+import React, { ReactElement, useRef, useState } from 'react'
 import {
   FlatList,
   SafeAreaView,
+  TouchableOpacity,
   // TouchableOpacity,
   View,
 } from 'react-native'
@@ -25,6 +29,11 @@ export interface IData {
 const CreateRuleScreen = () => {
   const styles = useStyles(styleConfig)
   const navigation = useSmartNavigation()
+  const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
+
+  const menuBar = () => {
+    bottomsheetRef2.current?.present()
+  }
 
   const onYourList = () => {
     // @ts-ignore
@@ -54,9 +63,12 @@ const CreateRuleScreen = () => {
         <Typo.Title type="regular18bold" center={true}>
           Создание правила
         </Typo.Title>
-        <View style={styles.icon}>
+        <TouchableOpacity style={styles.icon} onPress={menuBar}>
           <R.icons.HamburgerIcon />
-        </View>
+          <BottomSheet snapPoints={['50%']} ref={bottomsheetRef2}>
+            <Menu />
+          </BottomSheet>
+        </TouchableOpacity>
       </View>
       <View />
 

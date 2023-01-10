@@ -65,6 +65,13 @@ export default createStyles((colors, fonts) => ({
     marginVertical: '20@vs',
   },
   icon: {
+    width: '50@s',
+    height: '20@vs',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  x: {
     position: 'absolute',
     right: 22,
     width: 50,

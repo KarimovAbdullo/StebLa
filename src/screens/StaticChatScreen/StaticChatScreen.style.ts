@@ -16,6 +16,12 @@ export default createStyles((colors, font) => ({
     marginBottom: '30@vs',
     justifyContent: 'space-between',
   },
+  icon: {
+    width: '50@s',
+    height: '20@vs',
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+  },
 
   itemContent: {
     backgroundColor: colors.white,
@@ -57,6 +63,6 @@ export default createStyles((colors, font) => ({
     backgroundColor: colors.white,
     flexWrap: 'wrap',
     flex: 1,
-    marginTop: '20@vs',
+    marginTop: '10@vs',
   },
 }))

@@ -1,9 +1,12 @@
+import { BottomSheetModal } from '@gorhom/bottom-sheet'
+import BottomSheet from 'components/BottomSheet'
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
 import { CustomButton } from 'components/CustomButton/CustomButton'
+import Menu from 'components/Menu/Menu'
 import Typo from 'components/typo'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
-import React from 'react'
+import React, { useRef } from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import R from 'res'
 
@@ -12,6 +15,11 @@ import stylesConfig from './ImportChatsScreen.styles'
 export const ImportChatsScreen = () => {
   const styles = useStyles(stylesConfig)
   const navigation = useSmartNavigation()
+  const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
+
+  const menuBar = () => {
+    bottomsheetRef2.current?.present()
+  }
 
   const goChats = () => {
     //@ts-ignore
@@ -21,8 +29,11 @@ export const ImportChatsScreen = () => {
     <View style={styles.container}>
       <FocusAwareStatusBar backgroundColor={R.colors.white} />
 
-      <TouchableOpacity style={styles.iconContent}>
-        <R.icons.MenuIcon />
+      <TouchableOpacity style={styles.icon} onPress={menuBar}>
+        <R.icons.HamburgerIcon />
+        <BottomSheet snapPoints={['50%']} ref={bottomsheetRef2}>
+          <Menu />
+        </BottomSheet>
       </TouchableOpacity>
 
       <View style={styles.textContent}>

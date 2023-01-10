@@ -26,6 +26,13 @@ export default createStyles(colors => ({
   item: {
     width: '40@s',
   },
+  icon: {
+    position: 'absolute',
+    right: 0,
+    alignItems: 'flex-end',
+    paddingVertical: '10@vs',
+    width: '50@s',
+  },
   input: {
     width: '70%',
     color: colors.textPrimary,

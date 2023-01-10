@@ -1,11 +1,14 @@
+import { BottomSheetModal } from '@gorhom/bottom-sheet'
+import BottomSheet from 'components/BottomSheet'
 import ButtonInline from 'components/ButtonInline'
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
 import ListItem from 'components/ListItem'
+import Menu from 'components/Menu/Menu'
 import Typo from 'components/typo'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
-import React, { useState } from 'react'
-import { FlatList, View } from 'react-native'
+import React, { useRef, useState } from 'react'
+import { FlatList, TouchableOpacity, View } from 'react-native'
 import R from 'res'
 import { IListInfo } from 'types/data'
 
@@ -15,6 +18,7 @@ export const YourListsScreen = () => {
   const styles = useStyles(stylesConfig)
   const [activeList, setActiveList] = useState<string[]>([])
   const [activeButton, setActiveButton] = useState(false)
+  const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
   const navigate = useSmartNavigation()
 
   // const changeButton = () => {
@@ -26,6 +30,9 @@ export const YourListsScreen = () => {
   //   setActiveList([])
   // }
 
+  const menuBar = () => {
+    bottomsheetRef2.current?.present()
+  }
   const activeButtons = () => {
     setActiveButton(false)
     setTimeout(() => {
@@ -82,7 +89,12 @@ export const YourListsScreen = () => {
           <View style={styles.item} />
           <Typo.Title type="regular18bold">Ваши списки</Typo.Title>
 
-          <R.icons.MenuIcon />
+          <TouchableOpacity onPress={menuBar}>
+            <R.icons.HamburgerIcon />
+            <BottomSheet snapPoints={['50%']} ref={bottomsheetRef2}>
+              <Menu />
+            </BottomSheet>
+          </TouchableOpacity>
         </View>
       </View>
 

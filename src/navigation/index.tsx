@@ -163,16 +163,6 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
           />
 
           <RootStack.Screen
-            component={YourListsScreen}
-            name={R.routes.SCREEN_YOUR_LIST}
-            options={{
-              headerShown: false,
-              headerTitleAlign: 'center',
-              headerBackTitleVisible: false,
-            }}
-          />
-
-          <RootStack.Screen
             component={ListUsersScreen}
             name={R.routes.SCREEN_LIST_USERS}
             options={{
@@ -247,10 +237,22 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
           />
 
           <RootStack.Screen
+            //@ts-ignore
             component={FormScreen}
             name={R.routes.FORM_SCREEN}
             options={{
               headerShown: false,
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
+
+          <RootStack.Screen
+            component={YourListsScreen}
+            name={R.routes.SCREEN_YOUR_LIST}
+            options={{
+              headerShown: false,
+              headerTitleAlign: 'center',
               headerBackTitleVisible: false,
             }}
           />

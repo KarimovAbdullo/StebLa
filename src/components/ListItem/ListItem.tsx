@@ -2,6 +2,7 @@ import { BottomSheetModal } from '@gorhom/bottom-sheet'
 import BottomSheet from 'components/BottomSheet'
 import BottomSheetButtons from 'components/BottomSheetButtons'
 import Typo from 'components/typo'
+import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { useEffect, useRef, useState } from 'react'
 import { TouchableOpacity, View } from 'react-native'
@@ -20,6 +21,7 @@ interface IProps {
 export const ListItem = ({ item, activeList, setActiveList }: IProps) => {
   const styles = useStyles(stylesConfig)
   const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
+  const navigation = useSmartNavigation()
   const [loading, setLoading] = useState(false)
 
   const onLongPress = () => {
@@ -30,6 +32,12 @@ export const ListItem = ({ item, activeList, setActiveList }: IProps) => {
       setActiveList(delite)
     }
     bottomsheetRef2.current?.present()
+  }
+
+  const goForm = () => {
+    bottomsheetRef2.current?.dismiss()
+    //@ts-ignore
+    navigation.navigate(R.routes.FORM_SCREEN, { item: item })
   }
 
   useEffect(() => {
@@ -86,6 +94,7 @@ export const ListItem = ({ item, activeList, setActiveList }: IProps) => {
                 text="Переименовать"
                 icon={<R.icons.ChangeIcon />}
                 style={styles.button}
+                onPress={goForm}
               />
 
               <BottomSheetButtons

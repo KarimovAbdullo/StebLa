@@ -28,6 +28,7 @@ import StartScreen from 'screens/StartScreen/StartScreen'
 import { StaticChatScreen } from 'screens/StaticChatScreen/StaticChatScreen'
 import { StaticListChatScreen } from 'screens/StaticListChatScreen/StaticListChatScreen'
 import { StaticWordScreen } from 'screens/StaticWordScreen/StaticWordScreen'
+import UserListForm from 'screens/UserListForm'
 import YourListsScreen from 'screens/YourLists'
 import { TNavigationParams } from 'types/navigation'
 
@@ -46,7 +47,7 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
       }}>
       <BottomSheetModalProvider>
         <RootStack.Navigator
-          // initialRouteName={R.routes.SCTATIC_WORD_SCREEN}
+          // initialRouteName={R.routes.SCREEN_YOUR_LIST}
           screenOptions={{ headerShown: false }}>
           {/* <RootStack.Screen
             component={StartIntro}
@@ -249,6 +250,17 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
           <RootStack.Screen
             component={YourListsScreen}
             name={R.routes.SCREEN_YOUR_LIST}
+            options={{
+              headerShown: false,
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
+
+          <RootStack.Screen
+            // @ts-ignore
+            component={UserListForm}
+            name={R.routes.USER_LIST_FORM_SCREEN}
             options={{
               headerShown: false,
               headerTitleAlign: 'center',

@@ -93,7 +93,7 @@ export const ChatsItem = ({ item, activeList, setActiveList }: IProps) => {
               ) : null}
             </View>
 
-            <TouchableOpacity style={styles.checkContent}>
+            <TouchableOpacity style={styles.checkContent} onPress={onLongPress}>
               {active ? <R.icons.ActiveCheckIcon /> : <R.icons.CheckIcon />}
             </TouchableOpacity>
           </View>

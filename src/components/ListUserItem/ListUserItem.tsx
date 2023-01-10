@@ -62,6 +62,11 @@ export const ListUserItem = ({ item, activeList, setActiveList }: IProps) => {
     navigate.navigate(R.routes.RATES_SCREEN)
   }
 
+  const changeItem = () => {
+    bottomsheetRef.current?.dismiss()
+    navigate.navigate(R.routes.USER_LIST_FORM_SCREEN, { item: item })
+  }
+
   return (
     <>
       {loading ? (
@@ -128,6 +133,7 @@ export const ListUserItem = ({ item, activeList, setActiveList }: IProps) => {
                 text="Переименовать"
                 icon={<R.icons.ChangeIcon />}
                 style={styles.button}
+                onPress={changeItem}
               />
 
               <BottomSheetButtons

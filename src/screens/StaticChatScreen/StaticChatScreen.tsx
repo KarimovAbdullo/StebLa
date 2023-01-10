@@ -1,9 +1,19 @@
+import { BottomSheetModal } from '@gorhom/bottom-sheet'
+import BottomSheet from 'components/BottomSheet'
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
+import Menu from 'components/Menu/Menu'
+import { StaticChatItem } from 'components/StaticChatItems/StaticChatItem'
 import Typo from 'components/typo'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
-import React from 'react'
-import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
+import React, { useRef } from 'react'
+import {
+  FlatList,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  View,
+} from 'react-native'
 import R from 'res'
 
 import stylesConfig from './StaticChatScreen.style'
@@ -16,9 +26,14 @@ export interface IData {
 export const StaticChatScreen = () => {
   const styles = useStyles(stylesConfig)
   const navigation = useSmartNavigation()
+  const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
 
   const goBack = () => {
     navigation.goBack()
+  }
+
+  const menuBar = () => {
+    bottomsheetRef2.current?.present()
   }
 
   const data: IData[] = [
@@ -140,19 +155,26 @@ export const StaticChatScreen = () => {
             </Typo.Title>
           </View>
 
-          <R.icons.HamburgerIcon />
+          <TouchableOpacity style={styles.icon} onPress={menuBar}>
+            <R.icons.HamburgerIcon />
+            <BottomSheet snapPoints={['50%']} ref={bottomsheetRef2}>
+              <Menu />
+            </BottomSheet>
+          </TouchableOpacity>
         </View>
 
         <Typo.Body type="regular16" color="textTertiary">
           Найдено 27 ключевых слов
         </Typo.Body>
 
-        <View style={styles.board}>
-          {data.map(item => (
-            <TouchableOpacity key={item.id} style={styles.item}>
-              <Text style={styles.itemText}>{item.text}</Text>
-            </TouchableOpacity>
-          ))}
+        <View>
+          <FlatList
+            numColumns={3}
+            columnWrapperStyle={styles.board}
+            data={data}
+            keyExtractor={item => item.id}
+            renderItem={({ item }) => <StaticChatItem item={item} />}
+          />
         </View>
       </View>
     </ScrollView>

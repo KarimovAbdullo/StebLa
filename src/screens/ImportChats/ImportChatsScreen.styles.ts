@@ -23,4 +23,10 @@ export default createStyles(colors => ({
   subTitle: {
     marginTop: '17@vs',
   },
+  icon: {
+    position: 'absolute',
+    right: 0,
+    width: '50@s',
+    marginTop: '30@vs',
+  },
 }))

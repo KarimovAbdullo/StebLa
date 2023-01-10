@@ -1,10 +1,13 @@
+import { BottomSheetModal } from '@gorhom/bottom-sheet'
+import BottomSheet from 'components/BottomSheet'
 import ChatsItem from 'components/ChatsItem'
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
 import { CustomButton } from 'components/CustomButton/CustomButton'
+import Menu from 'components/Menu/Menu'
 import Typo from 'components/typo'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { FlatList, TextInput, TouchableOpacity, View } from 'react-native'
 import R from 'res'
 import { IChatsInfo } from 'types/data'
@@ -16,6 +19,7 @@ export const ChatsScreen = () => {
   const [activeList, setActiveList] = useState<string[]>([])
   const [activeButton, setActiveButton] = useState(false)
   const navigate = useSmartNavigation()
+  const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
 
   const onLongPress = () => {
     // @ts-ignore
@@ -99,6 +103,10 @@ export const ChatsScreen = () => {
     },
   ])
 
+  const menuBar = () => {
+    bottomsheetRef2.current?.present()
+  }
+
   return (
     <View style={styles.itemContent}>
       <FocusAwareStatusBar backgroundColor={R.colors.white} />
@@ -107,7 +115,12 @@ export const ChatsScreen = () => {
           <View style={styles.item} />
           <Typo.Title type="regular18bold">Chats</Typo.Title>
 
-          <R.icons.MenuIcon />
+          <TouchableOpacity onPress={menuBar}>
+            <R.icons.HamburgerIcon />
+            <BottomSheet snapPoints={['50%']} ref={bottomsheetRef2}>
+              <Menu />
+            </BottomSheet>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.inputContent}>

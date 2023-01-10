@@ -1,8 +1,11 @@
+import { BottomSheetModal } from '@gorhom/bottom-sheet'
+import BottomSheet from 'components/BottomSheet'
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
+import Menu from 'components/Menu/Menu'
 import Typo from 'components/typo'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Image, SafeAreaView, TouchableOpacity, View } from 'react-native'
 import R from 'res'
 
@@ -12,6 +15,7 @@ export const MyProfileScreen = () => {
   const navigation = useSmartNavigation()
   const styles = useStyles(stylesConfig)
   const [check, setCheck] = useState('')
+  const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
 
   const plus = () => {
     // @ts-ignore
@@ -26,6 +30,9 @@ export const MyProfileScreen = () => {
   }
   const alert = () => {
     setCheck('alert')
+  }
+  const menuBar = () => {
+    bottomsheetRef2.current?.present()
   }
 
   const onNotification = () => {
@@ -48,9 +55,12 @@ export const MyProfileScreen = () => {
           Никнейм пользователя
         </Typo.Title>
 
-        <View>
+        <TouchableOpacity style={styles.icon} onPress={menuBar}>
           <R.icons.HamburgerIcon />
-        </View>
+          <BottomSheet snapPoints={['50%']} ref={bottomsheetRef2}>
+            <Menu />
+          </BottomSheet>
+        </TouchableOpacity>
       </View>
 
       <View style={styles.hr} />

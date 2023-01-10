@@ -1,9 +1,12 @@
+import { BottomSheetModal } from '@gorhom/bottom-sheet'
+import BottomSheet from 'components/BottomSheet'
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
+import Menu from 'components/Menu/Menu'
 import { StaticItems } from 'components/StaticItems/StaticItems'
 import Typo from 'components/typo'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import {
   FlatList,
   SafeAreaView,
@@ -23,6 +26,7 @@ export const StaticListChatScreen = () => {
   // const [activeButton, setActiveButton] = useState(false)
   const navigation = useSmartNavigation()
   const [valu, setValu] = useState('Огонь')
+  const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
 
   // const onLongPress = () => {
   //   // @ts-ignore
@@ -42,6 +46,10 @@ export const StaticListChatScreen = () => {
   }
   const inpX = () => {
     setValu('')
+  }
+
+  const menuBar = () => {
+    bottomsheetRef2.current?.present()
   }
 
   const [data] = useState<IChatsInfo[]>([
@@ -122,13 +130,18 @@ export const StaticListChatScreen = () => {
           </TouchableOpacity>
 
           <Typo.Title type="regular18bold">Статистика</Typo.Title>
-          <R.icons.HamburgerIcon />
+          <TouchableOpacity style={styles.icon} onPress={menuBar}>
+            <R.icons.HamburgerIcon />
+            <BottomSheet snapPoints={['50%']} ref={bottomsheetRef2}>
+              <Menu />
+            </BottomSheet>
+          </TouchableOpacity>
         </View>
       </View>
       <ScrollView>
         <View style={styles.inputContent}>
           <TextInput style={styles.input} onChangeText={setValu} value={valu} />
-          <TouchableOpacity style={styles.icon} onPress={inpX}>
+          <TouchableOpacity style={styles.x} onPress={inpX}>
             <R.icons.XIcon />
           </TouchableOpacity>
         </View>

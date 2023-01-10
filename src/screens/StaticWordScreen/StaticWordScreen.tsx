@@ -1,8 +1,11 @@
+import { BottomSheetModal } from '@gorhom/bottom-sheet'
+import BottomSheet from 'components/BottomSheet'
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
+import Menu from 'components/Menu/Menu'
 import Typo from 'components/typo'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
-import React from 'react'
+import React, { useRef } from 'react'
 import { ScrollView, TextInput, TouchableOpacity, View } from 'react-native'
 import R from 'res'
 
@@ -11,6 +14,11 @@ import stylesConfig from './StaticWordScreen.style'
 export const StaticWordScreen = () => {
   const navigation = useSmartNavigation()
   const styles = useStyles(stylesConfig)
+  const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
+
+  const menuBar = () => {
+    bottomsheetRef2.current?.present()
+  }
 
   const goListChat = () => {
     navigation.navigate(R.routes.STATIC_LIST_CHAT_SCREEN)
@@ -27,9 +35,12 @@ export const StaticWordScreen = () => {
       <View style={styles.container}>
         <View style={styles.iconContent}>
           <Typo.Title type="regular18bold">Статистика</Typo.Title>
-          <View style={styles.icon}>
+          <TouchableOpacity style={styles.icon} onPress={menuBar}>
             <R.icons.HamburgerIcon />
-          </View>
+            <BottomSheet snapPoints={['50%']} ref={bottomsheetRef2}>
+              <Menu />
+            </BottomSheet>
+          </TouchableOpacity>
         </View>
       </View>
 

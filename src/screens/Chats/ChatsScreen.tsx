@@ -11,8 +11,11 @@ import React, { useRef, useState } from 'react'
 import { FlatList, TextInput, TouchableOpacity, View } from 'react-native'
 import R from 'res'
 import { IChatsInfo } from 'types/data'
+import { lang } from 'utils/lang'
 
 import stylesConfig from './ChatsScreen.styles'
+
+const T = R.lang.screen_chats
 
 export const ChatsScreen = () => {
   const styles = useStyles(stylesConfig)
@@ -34,6 +37,8 @@ export const ChatsScreen = () => {
   const deliteList = () => {
     setActiveList([])
   }
+
+  //      {lang(`${T}.`)}
 
   const [data] = useState<IChatsInfo[]>([
     {
@@ -113,7 +118,7 @@ export const ChatsScreen = () => {
       <View style={styles.container}>
         <View style={styles.iconContent}>
           <View style={styles.item} />
-          <Typo.Title type="regular18bold">Chats</Typo.Title>
+          <Typo.Title type="regular18bold">{lang(`${T}.label`)}</Typo.Title>
 
           <TouchableOpacity onPress={menuBar}>
             <R.icons.HamburgerIcon />
@@ -129,7 +134,7 @@ export const ChatsScreen = () => {
           </TouchableOpacity>
 
           <TextInput
-            placeholder="Поиск среди чатов телеграм"
+            placeholder={lang(`${T}.inputTitle`)}
             placeholderTextColor={R.colors.textPrimary}
             style={styles.input}
           />
@@ -156,19 +161,19 @@ export const ChatsScreen = () => {
           ]}>
           {activeButton ? (
             <CustomButton
-              text={'Создать правило для этого списка'}
+              text={lang(`${T}.bottomText`)}
               onPress={changeButton}
             />
           ) : (
             <>
               <CustomButton
-                text={'Добавить'}
+                text={lang(`${T}.BtnTitle1`)}
                 style={styles.buttonBottom}
                 onPress={onLongPress}
               />
 
               <CustomButton
-                text={'Отменить'}
+                text={lang(`${T}.BtnTitle2`)}
                 style={styles.buttonBottom2}
                 textStyle={styles.textButton}
                 onPress={deliteList}

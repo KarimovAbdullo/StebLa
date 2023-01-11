@@ -10,8 +10,11 @@ import { Image, TouchableOpacity, View } from 'react-native'
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder'
 import R from 'res'
 import { IListUserInfo } from 'types/data'
+import { lang } from 'utils/lang'
 
 import stylesConfig from './ListUserItem.styles'
+
+const T = R.lang.screen_listUser
 
 interface IProps {
   activeList: string[]
@@ -122,7 +125,7 @@ export const ListUserItem = ({ item, activeList, setActiveList }: IProps) => {
             style={styles.bottomSheet}>
             <View>
               <BottomSheetButtons
-                text="Дать статус “VIP”"
+                text={lang(`${T}.btnTitle`)}
                 icon={<R.icons.CaronaIcon />}
                 style={styles.button}
                 textColor="main"
@@ -130,20 +133,20 @@ export const ListUserItem = ({ item, activeList, setActiveList }: IProps) => {
               />
 
               <BottomSheetButtons
-                text="Переименовать"
+                text={lang(`${T}.label`)}
                 icon={<R.icons.ChangeIcon />}
                 style={styles.button}
                 onPress={changeItem}
               />
 
               <BottomSheetButtons
-                text="Редактировать"
+                text={lang(`${T}.btnTitle1`)}
                 icon={<R.icons.ReactIcon />}
                 style={styles.button}
               />
 
               <BottomSheetButtons
-                text="Удалить"
+                text={lang(`${T}.btnTitle2`)}
                 icon={<R.icons.DeliteIcon />}
                 textColor="red"
               />

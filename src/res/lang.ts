@@ -5,7 +5,17 @@ export const screen_acounts = 'screens.acounts'
 export const screen_addCode = 'screens.addCode'
 export const screen_addNumb = 'screens.addNumb'
 export const screen_login = 'screens.login'
-
+export const screen_chats = 'screens.chats'
+export const screen_createProfile = 'screens.createProfile'
+export const screen_createRule = 'screens.createRule'
+export const screen_form = 'screens.form'
+export const screen_home = 'screens.home'
+export const screen_myProfile = 'screens.myProfile'
+export const screen_listUser = 'screens.listUser'
+export const screen_importChats = 'screens.importChats'
+export const screen_notification = 'screens.notification'
+export const screen_otp = 'screens.otp'
+export const screen_menu = 'screens.menu'
 export const utils_util_name = 'utils.util_name'
 
 //navigations

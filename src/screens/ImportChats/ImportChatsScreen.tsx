@@ -9,8 +9,11 @@ import { useStyles } from 'hooks/useStyles'
 import React, { useRef } from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import R from 'res'
+import { lang } from 'utils/lang'
 
 import stylesConfig from './ImportChatsScreen.styles'
+
+const T = R.lang.screen_importChats
 
 export const ImportChatsScreen = () => {
   const styles = useStyles(stylesConfig)
@@ -37,14 +40,14 @@ export const ImportChatsScreen = () => {
       </TouchableOpacity>
 
       <View style={styles.textContent}>
-        <Typo.Title type="regular28">Импорт чатов</Typo.Title>
+        <Typo.Title type="regular28">{lang(`${T}.name`)}</Typo.Title>
 
         <Typo.Title center style={styles.subTitle}>
-          Для работы приложения необходимо импортировать чаты из телеграм
+          {lang(`${T}.label`)}
         </Typo.Title>
 
         <CustomButton
-          text={'Импортировать'}
+          text={lang(`${T}.btnTitle`)}
           style={styles.button}
           onPress={goChats}
         />

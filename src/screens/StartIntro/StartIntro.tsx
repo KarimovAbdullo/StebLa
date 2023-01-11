@@ -1,32 +1,29 @@
-import Typo from 'components/typo'
+import useSmartNavigation from 'hooks/useSmartNavigation'
 import React, { useRef, useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { s, vs } from 'react-native-size-matters'
 import Swiper from 'react-native-swiper'
+import R from 'res'
 
 const StartIntro = () => {
   const data = [
     {
-      // id: 1,
       title:
         'Теперь вам не нужно самостоятельно искать нужную вам информацию в чатах телеграмм',
     },
     {
-      // id: 2,
       title:
         'Вы устанавливаете чаты и  слова, которые хотите отслеживать в телеграмм или в whatapp',
     },
     {
-      // id: 3,
       title:
         'Приложение находит упоминание слов в чатах  и направляет  вам оповещение с ссылкой на сообщение в телеграм или в WhatsApp',
     },
     {
-      // id: 4,
       title:
         'Для работы  в приложении вам необходимо ознакомиться  с  нашей политикой конфиденциальности и условиями использования,  и дать свое согласие.',
     },
     {
-      // id: 5,
       title:
         'Даю свое согласие на обработку персональных данных,  а также согласие с:',
       politice: 'политикой конфиденциальности ',
@@ -36,75 +33,94 @@ const StartIntro = () => {
   const swiperRef = useRef<Swiper | null>(null)
   const [currentPage, setCurrentPage] = useState(1)
   // const [modalVisible, setModalVisible] = useState(true)
+  const navigation = useSmartNavigation()
 
   const next = () => {
     if (currentPage === data.length) {
       console.log('====================================')
-      console.log('asdads')
-      console.log('====================================')
+
       return
     }
     swiperRef.current?.scrollBy(+1)
   }
 
-  // onPressNext = () => {
-  //   if (currentPage < 5) {
-  //     //@ts-ignore
-  //     swiperRef.current?.scrollBy(1)
-  //   }
-  // }
+  const goLogin = () => {
+    navigation.navigate(R.routes.SCREEN_LOGIN)
+  }
 
   return (
-    <View style={styles.main}>
-      <Swiper
-        loop={false}
-        showsHorizontalScrollIndicator={false}
-        ref={swiperRef}
-        paginationStyle={{ position: 'absolute', bottom: '30%' }}
-        activeDotColor="blue"
-        dotStyle={styles.dod}
-        activeDotStyle={styles.dod}
-        index={0}
-        onIndexChanged={index => setCurrentPage(index + 1)}
-        nextButton={true}>
-        {data.map((i, index) => (
-          <View style={styles.card} key={index}>
-            <Typo.Body type="regular22" center={true}>
-              {i.title}
-            </Typo.Body>
-          </View>
-        ))}
-      </Swiper>
+    <View style={styles.wrapper}>
+      <View style={styles.main}>
+        <Swiper
+          loop={false}
+          showsHorizontalScrollIndicator={false}
+          ref={swiperRef}
+          paginationStyle={styles.panig}
+          activeDotColor={
+            data.length === currentPage ? R.colors.main : R.colors.black
+          }
+          dotStyle={styles.dod}
+          activeDotStyle={styles.dod}
+          index={0}
+          onIndexChanged={index => setCurrentPage(index + 1)}
+          nextButton={true}>
+          {data.map((i, index) => (
+            <View style={styles.card} key={index}>
+              <Text style={styles.title}>{i.title}</Text>
+              {i.politice ? (
+                <TouchableOpacity style={styles.pol}>
+                  <View style={styles.circle} />
+                  <Text style={styles.text}>{i.politice}</Text>
+                </TouchableOpacity>
+              ) : null}
+              {i.conditions ? (
+                <TouchableOpacity style={styles.pol}>
+                  <View style={styles.circle} />
+                  <Text style={styles.text}>{i.conditions}</Text>
+                </TouchableOpacity>
+              ) : null}
+            </View>
+          ))}
+        </Swiper>
 
-      <View style={styles.footer}>
-        <TouchableOpacity style={styles.btn} onPress={next}>
-          <Text>{currentPage === data.length ? 'aaaaa' : 'bbbbb'}</Text>
-        </TouchableOpacity>
+        <View style={styles.footer}>
+          <TouchableOpacity
+            style={styles.btn}
+            onPress={currentPage === data.length ? goLogin : next}>
+            <Text style={styles.textBtn}>
+              {currentPage === data.length ? 'Согласен' : 'Далее'}
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   )
 }
 export default StartIntro
 const styles = StyleSheet.create({
-  wrapper: {},
+  wrapper: {
+    flex: 1,
+  },
   main: {
     flex: 1,
     backgroundColor: 'white',
-    marginBottom: 100,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   card: {
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignContent: 'center',
-    height: '100%',
-    paddingHorizontal: 20,
-    paddingBottom: 120,
-    borderWidth: 1,
+    height: '50%',
+    backgroundColor: R.colors.white,
+    paddingHorizontal: s(20),
+
+    // position: 'absolute',
+    // top: vs(180),
   },
   footer: {
     position: 'absolute',
-    bottom: '20%',
+    bottom: '30%',
     left: 0,
-
     right: 0,
     justifyContent: 'center',
     alignItems: 'center',
@@ -112,13 +128,54 @@ const styles = StyleSheet.create({
   btn: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'green',
-    paddingHorizontal: 100,
-    paddingVertical: 20,
-    borderRadius: 20,
+    backgroundColor: R.colors.main,
+    paddingHorizontal: s(35),
+    height: vs(49),
+    borderRadius: 36,
   },
   dod: {
     width: 30,
     height: 3,
+  },
+  typo: {
+    borderWidth: 1,
+    textAlign: 'center',
+  },
+
+  pol: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    marginTop: vs(5),
+    marginLeft: s(15),
+  },
+  text: {
+    textDecorationLine: 'underline',
+    fontSize: 15,
+    marginLeft: s(10),
+    color: R.colors.textColor,
+  },
+  circle: {
+    backgroundColor: R.colors.grey,
+    borderRadius: vs(100),
+    height: vs(4),
+    width: s(4),
+    marginTop: vs(5),
+  },
+  title: {
+    fontSize: s(20),
+    fontWeight: '400',
+    color: R.colors.black,
+    textAlign: 'center',
+    lineHeight: 29.08,
+    paddingHorizontal: s(20),
+  },
+
+  panig: {
+    position: 'absolute',
+    bottom: '44%',
+  },
+  textBtn: {
+    color: R.colors.white,
+    fontSize: 16,
   },
 })

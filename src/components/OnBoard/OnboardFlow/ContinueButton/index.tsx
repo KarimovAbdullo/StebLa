@@ -33,7 +33,6 @@ export const ContinueButton: FC<ContinueButtonProps> = ({
   const navigation = useSmartNavigation()
 
   const goLogin = () => {
-    //@ts-ignore
     navigation.navigate(R.routes.SCREEN_LOGIN)
   }
 

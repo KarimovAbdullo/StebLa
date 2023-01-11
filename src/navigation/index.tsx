@@ -23,8 +23,8 @@ import { MyProfileScreen } from 'screens/MyProfileScreen/MyProfileScreen'
 import NotificationsScreen from 'screens/Notifications'
 import OtpScreen from 'screens/Otp'
 import { RatesScreen } from 'screens/RatesScreen/RatesScreen'
-// import StartIntro from 'screens/StartIntro/StartIntro'
-import StartScreen from 'screens/StartScreen/StartScreen'
+import StartIntro from 'screens/StartIntro/StartIntro'
+// import StartScreen from 'screens/StartScreen/StartScreen'
 import { StaticChatScreen } from 'screens/StaticChatScreen/StaticChatScreen'
 import { StaticListChatScreen } from 'screens/StaticListChatScreen/StaticListChatScreen'
 import { StaticWordScreen } from 'screens/StaticWordScreen/StaticWordScreen'
@@ -48,15 +48,6 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
         <RootStack.Navigator
           // initialRouteName={R.routes.SCTATIC_WORD_SCREEN}
           screenOptions={{ headerShown: false }}>
-          {/* <RootStack.Screen
-            component={StartIntro}
-            name={R.routes.START_INTRO}
-            options={{
-              headerShown: false,
-              headerBackTitleVisible: false,
-            }}
-          /> */}
-
           <RootStack.Screen
             component={FirsStartScreen}
             name={R.routes.SCREEN_FIRS_START}
@@ -65,15 +56,23 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
               headerBackTitleVisible: false,
             }}
           />
-
           <RootStack.Screen
+            component={StartIntro}
+            name={R.routes.START_INTRO}
+            options={{
+              headerShown: false,
+              headerBackTitleVisible: false,
+            }}
+          />
+
+          {/* <RootStack.Screen
             component={StartScreen}
             name={R.routes.SCREEN_START}
             options={{
               headerShown: false,
               headerBackTitleVisible: false,
             }}
-          />
+          /> */}
 
           <RootStack.Screen
             component={LoginScreen}

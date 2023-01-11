@@ -14,8 +14,7 @@ const FirsStartScreen = () => {
   const navigation = useSmartNavigation()
 
   const goStart = () => {
-    //@ts-ignore
-    navigation.navigate(R.routes.SCREEN_START)
+    navigation.navigate(R.routes.START_INTRO)
   }
   return (
     <View style={styles.container}>

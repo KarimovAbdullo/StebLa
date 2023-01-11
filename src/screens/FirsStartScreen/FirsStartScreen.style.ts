@@ -40,4 +40,28 @@ export default createStyles(color => ({
     width: '141@s',
     height: '32@s',
   },
+  changeLangContent: {
+    position: 'absolute',
+    right: '20@s',
+    top: '40@vs',
+    padding: '10@s',
+  },
+  buttonShet: {
+    width: '167@s',
+  },
+  contentButtons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingVertical: '20@vs',
+  },
+  buttonShet2: {
+    width: '167@s',
+    backgroundColor: color.background,
+  },
+  textButton: {
+    color: color.textPrimary,
+  },
+  textContainer: {
+    paddingHorizontal: '15@s',
+  },
 }))

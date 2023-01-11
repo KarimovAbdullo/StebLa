@@ -9,7 +9,10 @@ import React from 'react'
 import { View } from 'react-native'
 import R from 'res'
 import { ILogin } from 'types/data'
+import { lang } from 'utils/lang'
 import { required, validator } from 'utils/validators'
+
+const T = R.lang.screen_addNumb
 
 import stylesConfig from './AddTelegramNumScreen.style'
 
@@ -28,18 +31,19 @@ export const AddTelegramNumScreen = () => {
     phone: '',
   }
 
+  //      {lang(`${T}.`)}
+
   return (
     <View style={styles.container}>
       <FocusAwareStatusBar backgroundColor={R.colors.white} />
-      <Typo.Headline center={true}>Добавление профиля Telegram</Typo.Headline>
+      <Typo.Headline center={true}> {lang(`${T}.text`)}</Typo.Headline>
 
       <Typo.TextButton
         center={true}
         type="regular16"
         color="textPrimary"
         style={styles.text}>
-        Введите ваш номер телефона и мы отправим код с подтверждением на ваш
-        аккаунт Телеграм
+        {lang(`${T}.title`)}
       </Typo.TextButton>
 
       <Formik onSubmit={onSubmit} initialValues={initialValues}>
@@ -59,7 +63,10 @@ export const AddTelegramNumScreen = () => {
             </View>
 
             <View style={styles.buttonContent}>
-              <LoginButton text={'Далее'} style={styles.button} />
+              <LoginButton
+                text={lang(`${T}.buttonText`)}
+                style={styles.button}
+              />
             </View>
           </>
         )}

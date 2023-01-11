@@ -7,8 +7,11 @@ import React, { useEffect } from 'react'
 import { View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import R from 'res'
+import { lang } from 'utils/lang'
 
 import stylesConfig from './AddTelegramCodeScreen.style'
+
+const T = R.lang.screen_addCode
 
 export const AddTelegramCodeScreen = () => {
   const styles = useStyles(stylesConfig)
@@ -46,12 +49,12 @@ export const AddTelegramCodeScreen = () => {
         </View>
 
         <Typo.Title type="regular28" center={true} style={styles.textContent}>
-          Добавление профиля Telegram
+          {lang(`${T}.titleTop`)}
         </Typo.Title>
 
         <View style={styles.titleContent}>
           <Typo.TextButton type="regular16" center={true}>
-            Введите код, полученный в Телеграм
+            {lang(`${T}.label`)}
           </Typo.TextButton>
         </View>
 
@@ -70,7 +73,7 @@ export const AddTelegramCodeScreen = () => {
 
         <View style={styles.buttonContent}>
           <CustomButton
-            text={'Далее'}
+            text={lang(`${T}.button`)}
             style={styles.button}
             onPress={goHome}
             disabled={code.length > 3 ? false : true}

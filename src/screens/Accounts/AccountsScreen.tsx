@@ -16,9 +16,12 @@ import { FlatList, ScrollView, TouchableOpacity, View } from 'react-native'
 import R from 'res'
 import { ITelegramData, IWhastAppData } from 'types/data'
 import { IAddAcountInfo } from 'types/data'
+import { lang } from 'utils/lang'
 import { required, validator } from 'utils/validators'
 
 import stylesConfig from './AccountsScreen.styles'
+
+const T = R.lang.screen_acounts
 
 export const AccountsScreen = () => {
   const styles = useStyles(stylesConfig)
@@ -89,7 +92,7 @@ export const AccountsScreen = () => {
           <R.icons.BackIcon />
         </TouchableOpacity>
 
-        <Typo.Title type="regular18bold">Аккаунты</Typo.Title>
+        <Typo.Title type="regular18bold">{lang(`${T}.label`)}</Typo.Title>
 
         <R.icons.PlusCardIcon />
       </View>
@@ -99,7 +102,7 @@ export const AccountsScreen = () => {
         ListHeaderComponentStyle={styles.headerList}
         ListHeaderComponent={
           <Typo.Title center type="regular016" color="iconPrimary">
-            Телеграм
+            {lang(`${T}.title`)}
           </Typo.Title>
         }
         keyExtractor={(item, index) => item.id.toString() + index}
@@ -117,7 +120,7 @@ export const AccountsScreen = () => {
         ListHeaderComponentStyle={styles.headerList}
         ListHeaderComponent={
           <Typo.Title center type="regular016" color="iconPrimary">
-            Whatsapp
+            {lang(`${T}.text`)}
           </Typo.Title>
         }
         keyExtractor={(item, index) => item.id.toString() + index}
@@ -132,7 +135,7 @@ export const AccountsScreen = () => {
 
       <View style={styles.buttonContainer}>
         <ButtonInline
-          text={'Добавить аккаунт'}
+          text={lang(`${T}.bottomText`)}
           style={activeButton ? styles.buttonActive : {}}
           onPress={activeButtons}
           icon={<R.icons.PlusCardIcon />}
@@ -145,7 +148,7 @@ export const AccountsScreen = () => {
         style={styles.bottomSheet}>
         <View>
           <Typo.Title center type="reg28">
-            Добавление аккаунта
+            {lang(`${T}.modalTitle`)}
           </Typo.Title>
 
           <Formik onSubmit={onSubmit} initialValues={initialValues}>
@@ -178,7 +181,10 @@ export const AccountsScreen = () => {
                 />
 
                 <View style={styles.buttonContent}>
-                  <LoginButton text={'Выслать код'} style={styles.button} />
+                  <LoginButton
+                    text={lang(`${T}.modalBtnTitle`)}
+                    style={styles.button}
+                  />
                 </View>
               </>
             )}

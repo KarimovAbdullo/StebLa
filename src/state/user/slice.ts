@@ -1,13 +1,14 @@
 import AsyncStorage from '@react-native-community/async-storage'
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { PersistConfig, persistReducer } from 'redux-persist'
-import { signInUser, signOutUser } from 'state/user/actions'
+import { changeLanguage, signOutUser } from 'state/user/actions'
 import { UserState } from 'state/user/types'
 
 const initialState: UserState = {
   user: null,
   loading: false,
   token: null,
+  language: 'ru',
 }
 
 const userSlice = createSlice({
@@ -19,6 +20,9 @@ const userSlice = createSlice({
       state.user = null
       state.loading = false
       state.token = null
+    },
+    [changeLanguage.type]: (state, action: PayloadAction<'ru' | 'en'>) => {
+      state.language = action.payload
     },
 
     // [userInfo.pending.type]: state => {
@@ -34,17 +38,17 @@ const userSlice = createSlice({
     // [userInfo.rejected.type]: state => {
     //   state.loading = false
     // },
-
-    [signInUser.pending.type]: state => {
-      state.loading = true
-    },
-    [signInUser.fulfilled.type]: state => {
-      state.loading = false
-    },
-    [signInUser.rejected.type]: state => {
-      state.loading = false
-    },
-
+    //
+    // [signInUser.pending.type]: state => {
+    //   state.loading = true
+    // },
+    // [signInUser.fulfilled.type]: state => {
+    //   state.loading = false
+    // },
+    // [signInUser.rejected.type]: state => {
+    //   state.loading = false
+    // },
+    //
     // [verifyUser.pending.type]: state => {
     //   state.loading = true
     // },
@@ -65,7 +69,7 @@ const userSlice = createSlice({
 const persistConfig: PersistConfig<UserState> = {
   key: 'auth',
   storage: AsyncStorage,
-  whitelist: ['user', 'token'],
+  whitelist: ['user', 'token', 'language'],
 }
 
 export const userReducer = persistReducer(persistConfig, userSlice.reducer)

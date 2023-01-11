@@ -9,7 +9,10 @@ import React from 'react'
 import { View } from 'react-native'
 import R from 'res'
 import { ILogin } from 'types/data'
+import { lang } from 'utils/lang'
 import { required, validator } from 'utils/validators'
+
+const T = R.lang.screen_login
 
 import stylesConfig from './LoginScreen.styles'
 
@@ -29,15 +32,14 @@ export const LoginScreen = () => {
   return (
     <View style={styles.container}>
       <FocusAwareStatusBar backgroundColor={R.colors.white} />
-      <Typo.Headline>Вход</Typo.Headline>
+      <Typo.Headline>{lang(`${T}.title`)}</Typo.Headline>
 
       <Typo.TextButton type="regular16" color="textPrimary" style={styles.text}>
-        Введите номер телефона.
+        {lang(`${T}.topTitle`)}
       </Typo.TextButton>
 
       <Typo.TextButton type="regular16" color="textPrimary">
-        Вам поступит звонок. Нужно будет ввести последние четыре цифры входящего
-        номера
+        {lang(`${T}.midTitle`)}
       </Typo.TextButton>
 
       <Formik onSubmit={onSubmit} initialValues={initialValues}>
@@ -57,7 +59,7 @@ export const LoginScreen = () => {
             </View>
 
             <View style={styles.buttonContent}>
-              <LoginButton text={'Получить звонок'} style={styles.button} />
+              <LoginButton text={lang(`${T}.BtnTitle`)} style={styles.button} />
             </View>
           </>
         )}

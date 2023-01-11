@@ -24,21 +24,18 @@ export const CustomButton = ({
   const styles = useStyles(stylesConfig)
 
   return (
-    <TouchableOpacity onPress={onPress} disabled={loading || disabled}>
-      <View style={[styles.button, disabled ? styles.disabled : {}, style]}>
-        {loading ? (
-          <ActivityIndicator />
-        ) : (
-          <Text
-            style={[
-              styles.text,
-              disabled ? styles.textDisabled : {},
-              textStyle,
-            ]}>
-            {text}
-          </Text>
-        )}
-      </View>
+    <TouchableOpacity
+      onPress={onPress}
+      disabled={loading || disabled}
+      style={[styles.button, disabled ? styles.disabled : {}, style]}>
+      {loading ? (
+        <ActivityIndicator />
+      ) : (
+        <Text
+          style={[styles.text, disabled ? styles.textDisabled : {}, textStyle]}>
+          {text}
+        </Text>
+      )}
     </TouchableOpacity>
   )
 }

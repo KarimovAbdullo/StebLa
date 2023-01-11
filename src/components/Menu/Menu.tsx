@@ -5,8 +5,11 @@ import { useStyles } from 'hooks/useStyles'
 import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import R from 'res'
+import { lang } from 'utils/lang'
 
 import stylesConfig from './Menu.ts.style'
+
+const T = R.lang.screen_menu
 
 const Menu = () => {
   const styles = useStyles(stylesConfig)
@@ -56,7 +59,7 @@ const Menu = () => {
         <TouchableOpacity style={styles.bottomCard} onPress={goCreateScreen}>
           <R.icons.PlusIcon />
           <Typo.Title type="regular18" color="main" style={styles.text}>
-            Создать новое правило
+            {lang(`${T}.btnTitle`)}
           </Typo.Title>
         </TouchableOpacity>
       </View>
@@ -66,35 +69,35 @@ const Menu = () => {
         <TouchableOpacity style={styles.menu} onPress={onMyProfile}>
           <R.icons.ProfileIcon />
           <Typo.Title type="regular18" color="textPrimary" style={styles.text}>
-            Мой профиль
+            {lang(`${T}.btnSubTitle`)}
           </Typo.Title>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.menu} onPress={onAcounts}>
           <R.icons.TelegramIcon />
           <Typo.Title type="regular18" color="textPrimary" style={styles.text}>
-            Телеграмм аккаунты
+            {lang(`${T}.btnLabel`)}
           </Typo.Title>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.menu} onPress={onNotification}>
           <R.icons.BellIcon />
           <Typo.Title type="regular18" color="textPrimary" style={styles.text}>
-            Уведомления
+            {lang(`${T}.btnSubLabel`)}
           </Typo.Title>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.menu} onPress={goWord}>
           <R.icons.StaticIcon />
           <Typo.Title type="regular18" color="textPrimary" style={styles.text}>
-            Статистика
+            {lang(`${T}.btnText`)}
           </Typo.Title>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.menu} onPress={onRule}>
           <R.icons.DollorIcon />
           <Typo.Title type="regular18" color="textPrimary" style={styles.text}>
-            Управление подпиской
+            {lang(`${T}.btnSubText`)}
           </Typo.Title>
         </TouchableOpacity>
       </View>

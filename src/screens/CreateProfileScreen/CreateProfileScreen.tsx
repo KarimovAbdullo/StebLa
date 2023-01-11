@@ -5,10 +5,13 @@ import Typo from 'components/typo'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { useState } from 'react'
-import { Text, TouchableOpacity, View } from 'react-native'
+import { TouchableOpacity, View } from 'react-native'
 import R from 'res'
+import { lang } from 'utils/lang'
 
 import styleConfig from './CreateProfileScreen.style'
+
+const T = R.lang.screen_createProfile
 
 const CreateProfileScreen = () => {
   const styles = useStyles(styleConfig)
@@ -28,6 +31,8 @@ const CreateProfileScreen = () => {
     navigation.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
   }
 
+  //      {lang(`${T}.`)}
+
   return (
     <Container>
       <FocusAwareStatusBar
@@ -36,11 +41,11 @@ const CreateProfileScreen = () => {
       />
       <View style={styles.main}>
         <Typo.Title type="reg28" center={true} style={styles.text}>
-          Создание профиля
+          {lang(`${T}.name`)}
         </Typo.Title>
 
         <Typo.Title type="regular18" color="main" center={true}>
-          Выберите тариф
+          {lang(`${T}.label`)}
         </Typo.Title>
 
         <TouchableOpacity
@@ -52,10 +57,10 @@ const CreateProfileScreen = () => {
               : { borderColor: R.colors.title },
           ]}>
           <Typo.Title type="regular21" style={styles.title}>
-            Бесплатный тариф
+            {lang(`${T}.title`)}
           </Typo.Title>
           <Typo.Title type="regular16" color="title">
-            Информация о тарифе
+            {lang(`${T}.subTitle`)}
           </Typo.Title>
         </TouchableOpacity>
 
@@ -72,25 +77,20 @@ const CreateProfileScreen = () => {
           </View>
 
           <Typo.Title type="regular21" style={styles.title}>
-            Платный тариф
+            {lang(`${T}.text`)}
           </Typo.Title>
 
           <Typo.Title type="regular16" color="title">
-            Информация о тарифе
+            {lang(`${T}.subText`)}
           </Typo.Title>
         </TouchableOpacity>
 
-        {check === 'pro' || check === 'standart' ? (
-          <CustomButton
-            text={'Далее'}
-            style={styles.btn}
-            onPress={goTelegram}
-          />
-        ) : (
-          <View style={styles.button}>
-            <Text style={styles.textBtn}>Далее</Text>
-          </View>
-        )}
+        <CustomButton
+          text={lang(`${T}.BtnTitle`)}
+          disabled={!check}
+          style={styles.btn}
+          onPress={goTelegram}
+        />
       </View>
     </Container>
   )

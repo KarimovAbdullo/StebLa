@@ -8,8 +8,11 @@ import { useStyles } from 'hooks/useStyles'
 import React, { useRef, useState } from 'react'
 import { Image, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
 import R from 'res'
+import { lang } from 'utils/lang'
 
 import stylesConfig from './MyProfileScreen.style'
+
+const T = R.lang.screen_myProfile
 
 export const MyProfileScreen = () => {
   const navigation = useSmartNavigation()
@@ -56,7 +59,7 @@ export const MyProfileScreen = () => {
           />
         </View>
         <Typo.Title type="regular18" style={styles.text}>
-          Никнейм пользователя
+          {lang(`${T}.name`)}
         </Typo.Title>
 
         <TouchableOpacity style={styles.icon} onPress={menuBar}>
@@ -70,7 +73,7 @@ export const MyProfileScreen = () => {
       <View style={styles.hr} />
 
       <View style={styles.profileCard}>
-        <Typo.Headline type="bold28">Мой профиль</Typo.Headline>
+        <Typo.Headline type="bold28">{lang(`${T}.label`)}</Typo.Headline>
         <TouchableOpacity onPress={onNotification}>
           <R.icons.ProfileBellIcon />
         </TouchableOpacity>
@@ -90,7 +93,7 @@ export const MyProfileScreen = () => {
             color={check === 'plus' ? R.colors.main : R.colors.grey}
           />
           <Typo.Body type="regular16" style={styles.title}>
-            Добавить
+            {lang(`${T}.title`)}
           </Typo.Body>
         </TouchableOpacity>
 
@@ -107,7 +110,7 @@ export const MyProfileScreen = () => {
             color={check === 'setting' ? R.colors.main : R.colors.grey}
           />
           <Typo.Body type="regular16" style={styles.title}>
-            Перейти к управлению
+            {lang(`${T}.subTitle`)}
           </Typo.Body>
         </TouchableOpacity>
       </View>
@@ -126,7 +129,7 @@ export const MyProfileScreen = () => {
             color={check === 'write' ? R.colors.main : R.colors.grey}
           />
           <Typo.Body type="regular16" style={styles.title}>
-            Изменить
+            {lang(`${T}.text`)}
           </Typo.Body>
         </TouchableOpacity>
 
@@ -143,7 +146,7 @@ export const MyProfileScreen = () => {
             color={check === 'alert' ? R.colors.main : R.colors.grey}
           />
           <Typo.Body type="regular16" style={styles.title}>
-            Продлить
+            {lang(`${T}.subText`)}
           </Typo.Body>
         </TouchableOpacity>
       </View>

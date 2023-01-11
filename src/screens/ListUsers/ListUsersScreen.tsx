@@ -11,8 +11,11 @@ import React, { useRef, useState } from 'react'
 import { FlatList, TouchableOpacity, View } from 'react-native'
 import R from 'res'
 import { IListUserInfo } from 'types/data'
+import { lang } from 'utils/lang'
 
 import stylesConfig from './ListUsersScreen.styles'
+
+const T = R.lang.screen_listUser
 
 export const ListUsersScreen = () => {
   const styles = useStyles(stylesConfig)
@@ -104,7 +107,7 @@ export const ListUsersScreen = () => {
       <View style={styles.container}>
         <View style={styles.iconContent}>
           <View style={styles.item} />
-          <Typo.Title type="regular18bold">Список пользователей</Typo.Title>
+          <Typo.Title type="regular18bold">{lang(`${T}.name`)}</Typo.Title>
 
           <TouchableOpacity onPress={menuBar}>
             <R.icons.HamburgerIcon />

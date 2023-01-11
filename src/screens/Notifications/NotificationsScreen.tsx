@@ -6,8 +6,11 @@ import { useStyles } from 'hooks/useStyles'
 import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import R from 'res'
+import { lang } from 'utils/lang'
 
 import stylesConfig from './NotificationsScreen.styles'
+
+const T = R.lang.screen_notification
 
 export const NotificationsScreen = () => {
   const styles = useStyles(stylesConfig)
@@ -26,31 +29,31 @@ export const NotificationsScreen = () => {
           <R.icons.BackIcon />
         </TouchableOpacity>
 
-        <Typo.Title type="regular18bold">Уведомления</Typo.Title>
+        <Typo.Title type="regular18bold">{lang(`${T}.name`)}</Typo.Title>
 
         <View style={styles.item} />
       </View>
 
       <NotificationsItems
-        name="Непрочитанные"
-        label="Отметить все"
-        text="В чате “Иван Петров” было найдено ключевое слово “Огонь”"
+        name={lang(`${T}.text`)}
+        label={lang(`${T}.label`)}
+        text={lang(`${T}.title`)}
         icon={<R.icons.TelegrammIcon />}
       />
 
       <NotificationsItems
-        text="В чате “Иван Петров” было найдено ключевое слово “Огонь”"
+        text={lang(`${T}.title`)}
         icon={<R.icons.WhatsAppIcon />}
       />
 
       <NotificationsItems
-        name="Прочитанные"
-        text="В чате “Иван Петров” было найдено ключевое слово “Огонь”"
+        name={lang(`${T}.text`)}
+        text={lang(`${T}.title`)}
         icon={<R.icons.TelegrammIcon color="#9fd2ed" />}
       />
 
       <NotificationsItems
-        text="В чате “Иван Петров” было найдено ключевое слово “Огонь”"
+        text={lang(`${T}.title`)}
         icon={<R.icons.WhatsAppIcon color="#9beba1" />}
       />
     </View>

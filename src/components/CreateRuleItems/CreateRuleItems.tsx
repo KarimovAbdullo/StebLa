@@ -5,7 +5,9 @@ import Typo from 'components/typo'
 import { useStyles } from 'hooks/useStyles'
 import React, { useRef, useState } from 'react'
 import { TextInput, TouchableOpacity, View } from 'react-native'
+import R from 'res'
 import { IData } from 'screens/CreateRuleScreen/CreateRuleScreen'
+import { lang } from 'utils/lang'
 
 import styleConfig from './CreateRuleItems.style'
 
@@ -14,6 +16,8 @@ interface IProps {
   state: IData[]
   setState: (state: IData[]) => void
 }
+
+const T = R.lang.screen_createRule
 
 export const CreateRuleItems = ({ state, item, setState }: IProps) => {
   const styles = useStyles(styleConfig)
@@ -67,17 +71,17 @@ export const CreateRuleItems = ({ state, item, setState }: IProps) => {
       <BottomSheet snapPoints={['33%']} ref={bottomsheetRef2}>
         <View>
           <Typo.Body center type="regular22">
-            Вы хотите изменить слово “{item.text ? item.text : item.icon}” ?
+            {lang(`${T}.label`)}“{item.text ? item.text : item.icon}” ?
           </Typo.Body>
 
           <View style={styles.btnCard}>
             <CustomButton
-              text={'Подтвердить'}
+              text={lang(`${T}.btnTitle1`)}
               style={styles.btnYes}
               onPress={pressInput}
             />
             <CustomButton
-              text={'Отменить'}
+              text={lang(`${T}.btnTitle2`)}
               textStyle={styles.btnText}
               style={styles.btnNo}
             />

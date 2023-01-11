@@ -9,8 +9,11 @@ import React, { useEffect } from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import R from 'res'
+import { lang } from 'utils/lang'
 
 import stylesConfig from './OtpScreen.styles'
+
+const T = R.lang.screen_otp
 
 export const OtpScreen = () => {
   const styles = useStyles(stylesConfig)
@@ -55,12 +58,12 @@ export const OtpScreen = () => {
         </TouchableOpacity>
 
         <Typo.Title type="regular28" style={styles.textContent}>
-          Вход
+          {lang(`${T}.name`)}
         </Typo.Title>
 
         <View style={styles.titleContent}>
           <Typo.TextButton type="regular16">
-            Введите последние 4 цифры входящего номера
+            {lang(`${T}.label`)}
           </Typo.TextButton>
         </View>
 
@@ -86,12 +89,12 @@ export const OtpScreen = () => {
             <Typo.TextButton
               type="regular16"
               color={code.length > 3 ? 'main' : 'iconPrimary'}>
-              Получить повторно
+              {lang(`${T}.title`)}
             </Typo.TextButton>
           </TouchableOpacity>
 
           <CustomButton
-            text={'Далее'}
+            text={lang(`${T}.btn`)}
             style={styles.button}
             onPress={goHomeScreen}
             disabled={code.length > 3 ? false : true}
@@ -100,7 +103,7 @@ export const OtpScreen = () => {
 
         <View style={styles.buttonContent}>
           <Typo.TextButton type="regular2" style={styles.buttonContainer}>
-            Возможность повторного звонка будет доступна через
+            {lang(`${T}.subTitle`)}
           </Typo.TextButton>
 
           <View style={styles.timerContent}>
@@ -114,10 +117,10 @@ export const OtpScreen = () => {
 
         <TouchableOpacity>
           <Typo.TextButton center color="iconPrimary" style={styles.bottomText}>
-            Не приходит звонок?
+            {lang(`${T}.text`)}
           </Typo.TextButton>
           <Typo.TextButton color="main" center>
-            Заказать SMS сообщение
+            {lang(`${T}.subText`)}
           </Typo.TextButton>
         </TouchableOpacity>
       </View>

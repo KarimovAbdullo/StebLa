@@ -28,9 +28,89 @@
 			"button": "Further"
 		},
 		"addNumb": {
-			"text": "Добавление профиля Telegram",
+			"text": "Adding a Telegram profile",
 			"title": "Enter your phone number and we will send a confirmation code to your Telegram account",
 			"buttonText": "Further"
+		},
+		"chats": {
+			"label": "Chats",
+			"inputTitle": "Search among telegram chats",
+			"bottomText": "Create a rule for this list",
+			"BtnTitle1": "Add",
+			"BtnTitle2": "Cancel"
+		},
+		"createProfile": {
+			"name": "Create a profile",
+			"label": "Choose a plan",
+			"title": "Free rate",
+			"subTitle": "Tariff Information",
+			"text": "Paid tariff",
+			"subText": "Tariff Information",
+			"BtnTitle": "Further"
+		},
+		"createRule": {
+			"name": "Create a rule",
+			"btnTitle": "Further",
+	
+			"label": "Do you want to change the word",
+			"btnTitle1": "Confirm",
+			"btnTitle2": "Cancel"
+		},
+		"form": {
+			"name": "Back",
+			"btnTitle": "Save"
+		},
+		"home": {
+			"btnTitle": "Create a new rule",
+			"btnSubTitle": "My profile",
+			"btnLabel": "Telegram accounts",
+			"btnSubLabel": "Notifications",
+			"btnText": "Statistics",
+			"btnSubText": "Subscription Management"
+		},
+		"importChats": {
+			"name": "Import chats",
+			"label": "For the application to work, you need to import chats from telegrams",
+			"btnTitle": "Import"
+		},
+		"listUser": {
+			"name": "A list of users",
+			
+			"btnTitle": "Give VIP status",
+			"label": "Rename",
+			"btnTitle1": "Edit",
+			"btnTitle2": "Delete"
+		},
+		"myProfile": {
+			"name": "User nickname",
+			"label": "My profile",
+			"title": "Add",
+			"subTitle": "Go to management",
+			"text": "Change",
+			"subText": "Extend"
+		},
+		"notification": {
+			"name": "Notifications",
+			"text": "Unread",
+			"label": "Select all",
+			"title": "The keyword “Огонь” was found in the chat “Ivan Petrov”"
+		},
+		"otp": {
+			"name": "Entrance",
+			"label": "Enter the last 4 digits of the incoming number",
+			"title": "Retrieve",
+			"subTitle": "The option to call back will be available via",
+			"text": "Call not coming?",
+			"subText": "Order SMS message",
+			"btn": "Further"
+		},
+		"menu": {
+			"btnTitle": "Create a new rule",
+			"btnSubTitle": "My profile",
+			"btnLabel": "Telegram accounts",
+			"btnSubLabel": "Notifications",
+			"btnText": "Statistics",
+			"btnSubText": "Subscription Management"
 		},
 		"yourList": {
 			"title": "Your lists",

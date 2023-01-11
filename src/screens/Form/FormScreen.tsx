@@ -10,6 +10,7 @@ import { TouchableOpacity, View } from 'react-native'
 import R from 'res'
 import { IForm } from 'types/data'
 import { IListInfo } from 'types/data'
+import { lang } from 'utils/lang'
 import { requir, validator } from 'utils/validators'
 
 import stylesConfig from './Form.style'
@@ -21,6 +22,8 @@ interface IProps {
     }
   }
 }
+
+const T = R.lang
 
 export const FormScreen = ({ route }: IProps) => {
   const navigation = useSmartNavigation()
@@ -49,7 +52,7 @@ export const FormScreen = ({ route }: IProps) => {
         <R.icons.BackIcon />
 
         <Typo.Title type="regular18" color="textTertiary">
-          Назад
+          {lang(`${T}.name`)}
         </Typo.Title>
       </TouchableOpacity>
 
@@ -72,7 +75,7 @@ export const FormScreen = ({ route }: IProps) => {
             </View>
 
             <View style={styles.buttonContent}>
-              <LoginButton text={'Сохранить'} style={styles.button} />
+              <LoginButton text={lang(`${T}.btnTitle`)} style={styles.button} />
             </View>
           </>
         )}

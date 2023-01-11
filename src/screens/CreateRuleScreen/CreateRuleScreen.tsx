@@ -17,8 +17,11 @@ import {
   View,
 } from 'react-native'
 import R from 'res'
+import { lang } from 'utils/lang'
 
 import styleConfig from './CreateRule.style'
+
+const T = R.lang.screen_createRule
 
 export interface IData {
   id: number
@@ -61,7 +64,7 @@ const CreateRuleScreen = () => {
       />
       <View style={styles.header}>
         <Typo.Title type="regular18bold" center={true}>
-          Создание правила
+          {lang(`${T}.name`)}
         </Typo.Title>
         <TouchableOpacity style={styles.icon} onPress={menuBar}>
           <R.icons.HamburgerIcon />
@@ -84,7 +87,11 @@ const CreateRuleScreen = () => {
           )}
         />
 
-        <CustomButton text={'Далее'} style={styles.btn} onPress={onYourList} />
+        <CustomButton
+          text={lang(`${T}.btnTitle`)}
+          style={styles.btn}
+          onPress={onYourList}
+        />
       </SafeAreaView>
     </Container>
   )

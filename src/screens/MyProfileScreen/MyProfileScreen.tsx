@@ -6,7 +6,7 @@ import Typo from 'components/typo'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { useRef, useState } from 'react'
-import { Image, SafeAreaView, TouchableOpacity, View } from 'react-native'
+import { Image, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
 import R from 'res'
 
 import stylesConfig from './MyProfileScreen.style'
@@ -22,14 +22,18 @@ export const MyProfileScreen = () => {
     navigation.navigate(R.routes.SCREEN_IMPORT_CHATS)
     setCheck('plus')
   }
+
   const write = () => {
     setCheck('write')
+    navigation.navigate(R.routes.SCREEN_CREATE_PROFILE)
   }
   const setting = () => {
     setCheck('setting')
+    navigation.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
   }
-  const alert = () => {
-    setCheck('alert')
+  const alert = async () => {
+    await setCheck('alert')
+    navigation.navigate(R.routes.SCREEN_CREATE_PROFILE)
   }
   const menuBar = () => {
     bottomsheetRef2.current?.present()
@@ -143,6 +147,9 @@ export const MyProfileScreen = () => {
           </Typo.Body>
         </TouchableOpacity>
       </View>
+      <TouchableOpacity>
+        <Text style={styles.mail}>Email</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   )
 }

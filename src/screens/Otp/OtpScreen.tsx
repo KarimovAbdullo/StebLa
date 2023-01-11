@@ -35,19 +35,24 @@ export const OtpScreen = () => {
     navigation.navigate(R.routes.SCREEN_HOME)
   }
 
+  const goLogin = () => {
+    // @ts-ignore
+    navigation.navigate(R.routes.SCREEN_LOGIN)
+  }
+
   return (
     <KeyboardAwareScrollView style={styles.contentItem}>
       <FocusAwareStatusBar backgroundColor={R.colors.white} />
 
       <View style={styles.container}>
-        <View style={styles.iconContent}>
+        <TouchableOpacity style={styles.iconContent} onPress={goLogin}>
           <R.icons.PhoneIcon />
 
           <Typo.TextButton color="iconPrimary">
             + 7 987 789 456 21
           </Typo.TextButton>
           <R.icons.PensilIcon />
-        </View>
+        </TouchableOpacity>
 
         <Typo.Title type="regular28" style={styles.textContent}>
           Вход

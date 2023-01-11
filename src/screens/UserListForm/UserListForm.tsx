@@ -10,7 +10,10 @@ import { TouchableOpacity, View } from 'react-native'
 import R from 'res'
 import { IForm } from 'types/data'
 import { IListUserInfo } from 'types/data'
+import { lang } from 'utils/lang'
 import { requir, validator } from 'utils/validators'
+
+const T = R.lang.screen_userListFrom
 
 import stylesConfig from './UserListForm.styles'
 
@@ -51,7 +54,7 @@ export const UserListForm = ({ route }: IProps) => {
         <R.icons.BackIcon />
 
         <Typo.Title type="regular18" color="textTertiary">
-          Назад
+          {lang(`${T}.title`)}
         </Typo.Title>
       </TouchableOpacity>
 
@@ -86,7 +89,10 @@ export const UserListForm = ({ route }: IProps) => {
             </View>
 
             <View style={styles.buttonContent}>
-              <LoginButton text={'Сохранить'} style={styles.button} />
+              <LoginButton
+                text={lang(`${T}.buttonText`)}
+                style={styles.button}
+              />
             </View>
           </>
         )}

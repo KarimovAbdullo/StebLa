@@ -16,8 +16,11 @@ import {
 } from 'react-native'
 import R from 'res'
 import { IStaticWordInfo } from 'types/data'
+import { lang } from 'utils/lang'
 
 import stylesConfig from './StaticWordScreen.style'
+
+const T = R.lang.screen_staticWord
 
 export const StaticWordScreen = () => {
   const navigation = useSmartNavigation()
@@ -39,33 +42,21 @@ export const StaticWordScreen = () => {
   const [data] = useState<IStaticWordInfo[]>([
     {
       name: 'Огонь',
-      title: 'Количество повтороений',
-      subTitle: 'Количество чатов',
     },
     {
       name: 'Ветер',
-      title: 'Количество повтороений',
-      subTitle: 'Количество чатов',
     },
     {
       name: 'Огонь',
-      title: 'Количество повтороений',
-      subTitle: 'Количество чатов',
     },
     {
       name: 'Ветер',
-      title: 'Количество повтороений',
-      subTitle: 'Количество чатов',
     },
     {
       name: 'Огонь',
-      title: 'Количество повтороений',
-      subTitle: 'Количество чатов',
     },
     {
       name: 'Ветер',
-      title: 'Количество повтороений',
-      subTitle: 'Количество чатов',
     },
   ])
 
@@ -75,7 +66,7 @@ export const StaticWordScreen = () => {
 
       <View style={styles.container}>
         <View style={styles.iconContent}>
-          <Typo.Title type="regular18bold">Статистика</Typo.Title>
+          <Typo.Title type="regular18bold">{lang(`${T}.title`)}</Typo.Title>
           <TouchableOpacity style={styles.icon} onPress={menuBar}>
             <R.icons.HamburgerIcon />
             <BottomSheet snapPoints={['50%']} ref={bottomsheetRef2}>
@@ -87,7 +78,7 @@ export const StaticWordScreen = () => {
 
       <View style={styles.inputContent}>
         <TextInput
-          placeholder="Напишите слово, которе нужно найти"
+          placeholder={lang(`${T}.search`)}
           placeholderTextColor={R.colors.black}
           style={styles.input}
         />

@@ -6,6 +6,9 @@ import { StaticItems } from 'components/StaticItems/StaticItems'
 import Typo from 'components/typo'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
+import { lang } from 'utils/lang'
+
+const T = R.lang.screen_staticListChat
 import React, { useRef, useState } from 'react'
 import {
   FlatList,
@@ -129,7 +132,7 @@ export const StaticListChatScreen = () => {
             <R.icons.BackIcon />
           </TouchableOpacity>
 
-          <Typo.Title type="regular18bold">Статистика</Typo.Title>
+          <Typo.Title type="regular18bold">{lang(`${T}.title`)}</Typo.Title>
           <TouchableOpacity style={styles.icon} onPress={menuBar}>
             <R.icons.HamburgerIcon />
             <BottomSheet snapPoints={['50%']} ref={bottomsheetRef2}>
@@ -151,7 +154,7 @@ export const StaticListChatScreen = () => {
           center={true}
           color="textTertiary"
           style={styles.midText}>
-          Найдено 13 чатов со словом “Огонь”
+          {lang(`${T}.tint`)}
         </Typo.Title>
 
         <FlatList

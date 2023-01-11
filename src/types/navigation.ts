@@ -7,8 +7,11 @@ export type TNavigationParams = {
   [R.routes.STATIC_CHAT_SCREEN]: undefined
   [R.routes.START_INTRO]: undefined
   [R.routes.SCREEN_LOGIN]: undefined
+  [R.routes.SCREEN_CREATE_PROFILE]: undefined
+  [R.routes.SCREEN_ADD_TELEGRAM_NUM]: undefined
+  [R.routes.MY_PROFILE_SCREEN]: undefined
   [R.routes.FORM_SCREEN]: { item: object } | undefined
   [R.routes.SCREEN_OTP]: { phone: string }
-  [R.routes.FORM_SCREEN]: undefined
+  // [R.routes.FORM_SCREEN]: undefined
   [R.routes.USER_LIST_FORM_SCREEN]: { item: object } | undefined
 }

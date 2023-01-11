@@ -4,7 +4,7 @@ import Typo from 'components/typo'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { useEffect } from 'react'
-import { View } from 'react-native'
+import { TouchableOpacity, View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import R from 'res'
 import { lang } from 'utils/lang'
@@ -20,8 +20,11 @@ export const AddTelegramCodeScreen = () => {
   const navigation = useSmartNavigation()
 
   const goHome = () => {
-    //@ts-ignore
     navigation.navigate(R.routes.MY_PROFILE_SCREEN)
+  }
+
+  const goNum = () => {
+    navigation.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
   }
 
   console.log(code)
@@ -39,14 +42,14 @@ export const AddTelegramCodeScreen = () => {
   return (
     <KeyboardAwareScrollView style={{ flex: 1, backgroundColor: 'white' }}>
       <View style={styles.container}>
-        <View style={styles.iconContent}>
+        <TouchableOpacity style={styles.iconContent} onPress={goNum}>
           <R.icons.PhoneIcon />
 
           <Typo.TextButton color="iconPrimary">
             + 7 987 789 456 21
           </Typo.TextButton>
           <R.icons.PensilIcon />
-        </View>
+        </TouchableOpacity>
 
         <Typo.Title type="regular28" center={true} style={styles.textContent}>
           {lang(`${T}.titleTop`)}

@@ -15,6 +15,7 @@ import {
   View,
 } from 'react-native'
 import R from 'res'
+import { lang } from 'utils/lang'
 
 import stylesConfig from './StaticChatScreen.style'
 
@@ -22,6 +23,8 @@ export interface IData {
   id: string
   text?: string
 }
+
+const T = R.lang.screen_staticChat
 
 export const StaticChatScreen = () => {
   const styles = useStyles(stylesConfig)
@@ -164,7 +167,7 @@ export const StaticChatScreen = () => {
         </View>
 
         <Typo.Body type="regular16" color="textTertiary">
-          Найдено 27 ключевых слов
+          {lang(`${T}.title`)}
         </Typo.Body>
 
         <View>

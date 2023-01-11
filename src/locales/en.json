@@ -1,0 +1,41 @@
+{
+	"screens": {
+		"firsStart":{
+			"title":"Get only important information",
+			"btn":"Get to know the service",
+			"btnSheet1": "Russian",
+			"btnSheet2": "English",
+			"label": "English"
+			
+		},
+		"login": {
+			"title": "Entrance",
+			"topTitle":"Enter a phone number.",
+			"midTitle":"You will receive a call. You will need to enter the last four digits of the incoming number",
+			"BtnTitle": "Get a call"
+		},
+		"acounts": {
+			"label": "Accounts",
+			"title": "Telegram",
+			"text": "Whatsapp",
+			"bottomText": "Add account",
+			"modalTitle": "Adding an account",
+			"modalBtnTitle": "Send code"
+		},
+		"addCode": {
+			"titleTop": "Adding a Telegram profile",
+			"label": "Enter the code received in Telegram",
+			"button": "Further"
+		},
+		"addNumb": {
+			"text": "Добавление профиля Telegram",
+			"title": "Enter your phone number and we will send a confirmation code to your Telegram account",
+			"buttonText": "Further"
+		}
+	},
+	"utils": {
+		"util": {
+			"util_name": "util text"
+		}
+	}
+}

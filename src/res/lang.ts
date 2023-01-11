@@ -16,6 +16,14 @@ export const screen_importChats = 'screens.importChats'
 export const screen_notification = 'screens.notification'
 export const screen_otp = 'screens.otp'
 export const screen_menu = 'screens.menu'
+export const screen_yourList = 'screens.yourList'
+export const screen_userListFrom = 'screens.userListForm'
+export const screen_staticWord = 'screens.staticWord'
+export const screen_staticListChat = 'screens.staticListChat'
+export const screen_staticChat = 'screens.staticChat'
+export const screen_start = 'screens.start'
+export const screen_rates = 'screens.rates'
+
 export const utils_util_name = 'utils.util_name'
 
 //navigations

@@ -7,12 +7,16 @@ import Menu from 'components/Menu/Menu'
 import Typo from 'components/typo'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
+// import I18n from 'i18n-js'
 import React, { useRef, useState } from 'react'
 import { FlatList, TouchableOpacity, View } from 'react-native'
 import R from 'res'
 import { IListInfo } from 'types/data'
+import { lang } from 'utils/lang'
 
 import stylesConfig from './YourListsScreen.styles'
+
+const T = R.lang.screen_yourList
 
 export const YourListsScreen = () => {
   const styles = useStyles(stylesConfig)
@@ -21,14 +25,7 @@ export const YourListsScreen = () => {
   const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
   const navigate = useSmartNavigation()
 
-  // const changeButton = () => {
-  //   // @ts-ignore
-  //   navigate.navigate(R.routes.CREATE_RULE_SCREEN)
-  // }
-
-  // const deliteList = () => {
-  //   setActiveList([])
-  // }
+  // I18n.locale = 'en'
 
   const menuBar = () => {
     bottomsheetRef2.current?.present()
@@ -87,7 +84,7 @@ export const YourListsScreen = () => {
       <View style={styles.container}>
         <View style={styles.iconContent}>
           <View style={styles.item} />
-          <Typo.Title type="regular18bold">Ваши списки</Typo.Title>
+          <Typo.Title type="regular18bold">{lang(`${T}.title`)}</Typo.Title>
 
           <TouchableOpacity onPress={menuBar}>
             <R.icons.HamburgerIcon />
@@ -103,7 +100,7 @@ export const YourListsScreen = () => {
         keyExtractor={(item, index) => item.id.toString() + index}
         ListFooterComponent={() => (
           <ButtonInline
-            text={'Добавить'}
+            text={lang(`${T}.buttonText`)}
             icon={<R.icons.PlusCardIcon />}
             style={activeButton ? styles.buttonActive : {}}
             onPress={activeButtons}

@@ -111,6 +111,57 @@
 			"btnSubLabel": "Notifications",
 			"btnText": "Statistics",
 			"btnSubText": "Subscription Management"
+		},
+		"yourList": {
+			"title": "Your lists",
+			"buttonText": "Add"
+		},
+		"userListForm": {
+			"title": "Back",
+			"buttonText": "Save"
+		},
+		"staticWord": {
+			"title": "Statistics",
+			"search": "Write the word to be found",
+			"retry": "Number of repetitions",
+			"chat": "Number of chats"
+		},
+		"staticListChat": {
+			"title": "Statistics",
+			"tint": "Found 13 chats with the word “Fire”"	
+		},
+		"staticChat": {
+			"title": "Found 27 keywords"		
+		},
+		"start": {
+			"1": "Now you do not need to independently search for the information you need in telegram chats",	
+			"2": "You set the chats and words you want to track in telegram or whatapp",	
+			"3": "The application finds the mention of words in chats and sends you an alert with a link to a message in Telegram or WhatsApp",	
+			"4": "To use the application, you need to read our privacy policy and terms of use, and give your consent.",	
+			"5": "I give my consent to the processing of personal data, as well as consent to:",
+			"a":"privacy policy",
+			"b":"application terms of use",
+			"btnN":"Next",
+			"btnR":"Agree"
+		},
+		"rates":{
+			"head":"Rates",
+			"mini":"You are connected to",
+			"big":"Free rate",
+			"miniBtn":"Change",
+			"history":"Open transaction history",
+			"date":"Date of operation",
+			"time":"Operation time",
+			"price":"Transaction amount",
+			"type":"Type of transaction",
+			"typeA":"Open",
+			"topH":"Fare Terms",
+			"topP":"Don't try to translate this question, it doesn't exist in any language. This senseless phrase only looks like Latin, is it Latin?",
+			"topP2":"Meanwhile, if you type Lorem ipsum in any Internet search engine, the number of pages where this phrase is found will exceed 80 thousand. This does not happen with nonsense or blunders. So this phrase, although meaningless, is still of great importance.",
+			"bottomH":"Fare Rules",
+			"bottomP":"Don't try to translate this question, it doesn't exist in any language. This meaningless phrase only looks like Latin, but is it Latin?",
+			"bottomP2":"Meanwhile, if you type Lorem ipsum in any Internet search engine, the number of pages where this phrase is found will exceed 80 thousand. This does not happen with nonsense or blunders. So this phrase, although meaningless, is still of great importance.",
+			"btnText":"Pay the rate"
 		}
 	},
 	"utils": {

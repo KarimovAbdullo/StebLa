@@ -4,30 +4,28 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { s, vs } from 'react-native-size-matters'
 import Swiper from 'react-native-swiper'
 import R from 'res'
+import { lang } from 'utils/lang'
+
+const T = R.lang.screen_start
 
 const StartIntro = () => {
   const data = [
     {
-      title:
-        'Теперь вам не нужно самостоятельно искать нужную вам информацию в чатах телеграмм',
+      title: lang(`${T}.1`),
     },
     {
-      title:
-        'Вы устанавливаете чаты и  слова, которые хотите отслеживать в телеграмм или в whatapp',
+      title: lang(`${T}.2`),
     },
     {
-      title:
-        'Приложение находит упоминание слов в чатах  и направляет  вам оповещение с ссылкой на сообщение в телеграм или в WhatsApp',
+      title: lang(`${T}.3`),
     },
     {
-      title:
-        'Для работы  в приложении вам необходимо ознакомиться  с  нашей политикой конфиденциальности и условиями использования,  и дать свое согласие.',
+      title: lang(`${T}.4`),
     },
     {
-      title:
-        'Даю свое согласие на обработку персональных данных,  а также согласие с:',
-      politice: 'политикой конфиденциальности ',
-      conditions: 'условиями использования приложения',
+      title: lang(`${T}.5`),
+      politice: lang(`${T}.a`),
+      conditions: lang(`${T}.b`),
     },
   ]
   const swiperRef = useRef<Swiper | null>(null)
@@ -88,7 +86,9 @@ const StartIntro = () => {
             style={styles.btn}
             onPress={currentPage === data.length ? goLogin : next}>
             <Text style={styles.textBtn}>
-              {currentPage === data.length ? 'Согласен' : 'Далее'}
+              {currentPage === data.length
+                ? lang(`${T}.btnR`)
+                : lang(`${T}.btnN`)}
             </Text>
           </TouchableOpacity>
         </View>
@@ -147,6 +147,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: vs(5),
     marginLeft: s(15),
+    alignSelf: 'center',
   },
   text: {
     textDecorationLine: 'underline',

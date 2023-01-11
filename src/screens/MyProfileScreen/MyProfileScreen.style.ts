@@ -72,4 +72,10 @@ export default createStyles(colors => ({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  mail: {
+    color: colors.textTertiary,
+    marginTop: '20@vs',
+    fontSize: 15,
+    textDecorationLine: 'underline',
+  },
 }))

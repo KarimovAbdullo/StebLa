@@ -8,8 +8,10 @@ import { useStyles } from 'hooks/useStyles'
 import React, { useRef, useState } from 'react'
 import { ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import R from 'res'
+import { lang } from 'utils/lang'
 
 import stylesConfig from './RatesScreen.style'
+const T = R.lang.screen_rates
 
 export const RatesScreen = () => {
   const styles = useStyles(stylesConfig)
@@ -44,7 +46,7 @@ export const RatesScreen = () => {
               <R.icons.BackIcon />
             </TouchableOpacity>
 
-            <Typo.Title type="regular18bold">Тарифы</Typo.Title>
+            <Typo.Title type="regular18bold">{lang(`${T}.head`)}</Typo.Title>
 
             <TouchableOpacity style={styles.size} onPress={menuBar}>
               <R.icons.HamburgerIcon />
@@ -57,14 +59,14 @@ export const RatesScreen = () => {
 
         <View style={styles.labelCard}>
           <View style={styles.text}>
-            <Typo.Title type="regular18">Вы подключены на</Typo.Title>
+            <Typo.Title type="regular18">{lang(`${T}.mini`)}</Typo.Title>
             <Typo.Title type="regular021" color="main">
-              Бесплатный тариф
+              {lang(`${T}.big`)}
             </Typo.Title>
           </View>
 
           <TouchableOpacity style={styles.btn}>
-            <Text style={styles.btnText}>Изменить</Text>
+            <Text style={styles.btnText}>{lang(`${T}.miniBtn`)}</Text>
           </TouchableOpacity>
         </View>
 
@@ -74,7 +76,7 @@ export const RatesScreen = () => {
           </View>
 
           <Typo.Title type="regular016" color="textPrimary" style={styles.icon}>
-            Открыть историю операций
+            {lang(`${T}.history`)}
           </Typo.Title>
         </View>
 
@@ -84,7 +86,7 @@ export const RatesScreen = () => {
               type="regular016"
               color="textPrimary"
               style={styles.titles}>
-              Дата операции
+              {lang(`${T}.date`)}
             </Typo.Title>
 
             <View style={{ width: 100 }}>
@@ -102,7 +104,7 @@ export const RatesScreen = () => {
               type="regular016"
               color="textPrimary"
               style={styles.titles}>
-              Время операции
+              {lang(`${T}.time`)}
             </Typo.Title>
 
             <View style={{ width: 100 }}>
@@ -120,7 +122,7 @@ export const RatesScreen = () => {
               type="regular016"
               color="textPrimary"
               style={styles.titles}>
-              Тип операции
+              {lang(`${T}.type`)}
             </Typo.Title>
 
             <View style={{ width: 100 }}>
@@ -128,14 +130,14 @@ export const RatesScreen = () => {
                 type="regular016"
                 color="textSecondary"
                 style={styles.titles}>
-                Открытая
+                {lang(`${T}.typeA`)}
               </Typo.Title>
             </View>
           </View>
 
           <View style={styles.titleCard}>
             <Typo.Title type="regular016" color="textPrimary">
-              Сумма операции
+              {lang(`${T}.price`)}
             </Typo.Title>
 
             <View style={{ width: 100 }}>
@@ -147,23 +149,17 @@ export const RatesScreen = () => {
         </View>
 
         <TouchableOpacity style={styles.footer} onPress={pressText}>
-          <Typo.Title>Условия тарифа</Typo.Title>
+          <Typo.Title>{lang(`${T}.topH`)}</Typo.Title>
           {touch ? <R.icons.UpIcon /> : <R.icons.DownIcon />}
         </TouchableOpacity>
         <View>
           {touch ? (
             <View style={styles.p}>
               <Typo.Title type="regular15" style={styles.t}>
-                Не пытайтесь перевести этот вопрос, он не существует ни на одном
-                языке. Бессмыссленная эта фраза только похожа на латынь, но
-                латынь ли это?
+                {lang(`${T}.topP`)}
               </Typo.Title>
               <Typo.Title type="regular15" style={styles.t}>
-                Между тем если набрать Lorem ipsum в каком-нибудь поисковике
-                Интернета, число страниц, где отыщется эта фраза, превысит 80
-                тысяч. С бессмыслицами или очепятками такого не случается.
-                Значит эта фраза, хоть и бессмысленная, имеет все же большое
-                значение.
+                {lang(`${T}.topP2`)}
               </Typo.Title>
             </View>
           ) : null}
@@ -172,23 +168,17 @@ export const RatesScreen = () => {
         <View style={styles.line} />
 
         <TouchableOpacity style={styles.foot} onPress={presText}>
-          <Typo.Title>Правила тарифа</Typo.Title>
+          <Typo.Title>{lang(`${T}.bottomH`)}</Typo.Title>
           {touc ? <R.icons.UpIcon /> : <R.icons.DownIcon />}
         </TouchableOpacity>
         <View>
           {touc ? (
             <View style={styles.p}>
               <Typo.Title type="regular15" style={styles.t}>
-                Не пытайтесь перевести этот вопрос, он не существует ни на одном
-                языке. Бессмыссленная эта фраза только похожа на латынь, но
-                латынь ли это?
+                {lang(`${T}.bottomP`)}
               </Typo.Title>
               <Typo.Title type="regular15" style={styles.t}>
-                Между тем если набрать Lorem ipsum в каком-нибудь поисковике
-                Интернета, число страниц, где отыщется эта фраза, превысит 80
-                тысяч. С бессмыслицами или очепятками такого не случается.
-                Значит эта фраза, хоть и бессмысленная, имеет все же большое
-                значение.
+                {lang(`${T}.bottomP2`)}
               </Typo.Title>
             </View>
           ) : null}
@@ -198,7 +188,7 @@ export const RatesScreen = () => {
 
         <TouchableOpacity style={styles.button}>
           <Typo.Body type="regular16" color="main">
-            Оплатить тариф
+            {lang(`${T}.btnText`)}
           </Typo.Body>
         </TouchableOpacity>
       </View>

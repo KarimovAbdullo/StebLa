@@ -5,6 +5,7 @@ import { TouchableOpacity, View } from 'react-native'
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder'
 import R from 'res'
 import { IStaticWordInfo } from 'types/data'
+import { lang } from 'utils/lang'
 
 import stylesConfig from './StaticWordItem.styles'
 
@@ -13,6 +14,8 @@ interface IProps {
   goListChat: () => void
   goChat: () => void
 }
+
+const T = R.lang.screen_staticWord
 
 export const StaticWordItem = ({ item, goListChat, goChat }: IProps) => {
   const styles = useStyles(stylesConfig)
@@ -123,7 +126,7 @@ export const StaticWordItem = ({ item, goListChat, goChat }: IProps) => {
                 type="regular016"
                 color="textSecondary"
                 style={styles.typo}>
-                {item.title}
+                {lang(`${T}.retry`)}
               </Typo.Title>
             </TouchableOpacity>
 
@@ -139,7 +142,7 @@ export const StaticWordItem = ({ item, goListChat, goChat }: IProps) => {
                 type="regular016"
                 color="textSecondary"
                 style={styles.typo}>
-                {item.subTitle}
+                {lang(`${T}.chat`)}
               </Typo.Title>
             </TouchableOpacity>
 

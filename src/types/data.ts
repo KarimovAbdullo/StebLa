@@ -83,6 +83,4 @@ export interface IAddAcountInfo {
 
 export interface IStaticWordInfo {
   name: string
-  title: string
-  subTitle: string
 }

@@ -18,7 +18,7 @@ export const RegisteredTelegrammInfo = () => {
 
   const onSubmit = () => {
     // @ts-ignore
-    navigation.navigate(R.routes.MY_PROFILE_SCREEN)
+    navigation.navigate(R.routes.SCREEN_IMPORT_CHATS)
   }
 
   return (

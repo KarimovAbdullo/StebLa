@@ -1,7 +1,11 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { PersistConfig, persistReducer } from 'redux-persist'
-import { changeLanguage, signOutUser } from 'state/user/actions'
+import {
+  changeLanguage,
+  confirmOnBoarding,
+  signOutUser,
+} from 'state/user/actions'
 import { UserState } from 'state/user/types'
 
 const initialState: UserState = {
@@ -9,6 +13,7 @@ const initialState: UserState = {
   loading: false,
   token: null,
   language: 'ru',
+  onboardingSuccess: false,
 }
 
 const userSlice = createSlice({
@@ -23,6 +28,10 @@ const userSlice = createSlice({
     },
     [changeLanguage.type]: (state, action: PayloadAction<'ru' | 'en'>) => {
       state.language = action.payload
+    },
+
+    [confirmOnBoarding.type]: (state, action: PayloadAction<boolean>) => {
+      state.onboardingSuccess = action.payload
     },
 
     // [userInfo.pending.type]: state => {
@@ -69,7 +78,7 @@ const userSlice = createSlice({
 const persistConfig: PersistConfig<UserState> = {
   key: 'auth',
   storage: AsyncStorage,
-  whitelist: ['user', 'token', 'language'],
+  whitelist: ['user', 'token', 'language', 'onboardingSuccess'],
 }
 
 export const userReducer = persistReducer(persistConfig, userSlice.reducer)

@@ -20,7 +20,8 @@ export const AddTelegramCodeScreen = () => {
   const navigation = useSmartNavigation()
 
   const goHome = () => {
-    navigation.navigate(R.routes.MY_PROFILE_SCREEN)
+    //@ts-ignore
+    navigation.navigate(R.routes.screen_REGISTERED_TELEGRAMM_INFO)
   }
 
   const goNum = () => {
@@ -40,7 +41,7 @@ export const AddTelegramCodeScreen = () => {
   const onSubmit = () => {}
 
   return (
-    <KeyboardAwareScrollView style={{ flex: 1, backgroundColor: 'white' }}>
+    <KeyboardAwareScrollView style={styles.itemContent}>
       <View style={styles.container}>
         <TouchableOpacity style={styles.iconContent} onPress={goNum}>
           <R.icons.PhoneIcon />
@@ -64,7 +65,7 @@ export const AddTelegramCodeScreen = () => {
         <OTPInputView
           // @ts-ignore
           style={styles.otpContent}
-          pinCount={4}
+          pinCount={6}
           onCodeChanged={setCode}
           autoFocusOnLoad
           // @ts-ignore
@@ -79,7 +80,7 @@ export const AddTelegramCodeScreen = () => {
             text={lang(`${T}.button`)}
             style={styles.button}
             onPress={goHome}
-            disabled={code.length > 3 ? false : true}
+            disabled={code.length > 5 ? false : true}
           />
         </View>
       </View>

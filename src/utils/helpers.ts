@@ -1,3 +1,5 @@
+import { Linking } from 'react-native'
+
 export const getFormData = (data: object) => {
   const formData = new FormData()
   Object.entries(data).forEach(([key, value]) => {
@@ -25,6 +27,9 @@ export const wait = (millisecond: number = 1000) => {
     setTimeout(() => resolve(null), millisecond)
   })
 }
+
+export const openEmail = (email: string) => () =>
+  Linking.openURL('mailto:' + email)
 
 export const distance = (
   lat1: number,

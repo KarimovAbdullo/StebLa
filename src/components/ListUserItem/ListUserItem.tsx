@@ -157,20 +157,19 @@ export const ListUserItem = ({ item, activeList, setActiveList }: IProps) => {
             <>
               <View style={styles.textContainer}>
                 <Typo.Title center type="reg21">
-                  Вы точно хотите дать пользователю “Имя пользователя” VIP
-                  статус ?
+                  {lang(`${T}.btnLabel`)}
                 </Typo.Title>
               </View>
 
               <View style={styles.contentButtons}>
                 <CustomButton
-                  text={'Подтвердить'}
+                  text={lang(`${T}.btnLeft`)}
                   style={styles.buttonShet}
                   onPress={onRules}
                 />
 
                 <CustomButton
-                  text={'Отменить'}
+                  text={lang(`${T}.btnRight`)}
                   style={styles.buttonShet2}
                   textStyle={styles.textButton}
                   onPress={closed}

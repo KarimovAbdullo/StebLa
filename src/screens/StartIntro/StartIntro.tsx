@@ -1,14 +1,18 @@
+import { useAppDispatch } from 'hooks/redux'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import React, { useRef, useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { s, vs } from 'react-native-size-matters'
 import Swiper from 'react-native-swiper'
 import R from 'res'
+import { confirmOnBoarding } from 'state/user/actions'
 import { lang } from 'utils/lang'
 
 const T = R.lang.screen_start
 
 const StartIntro = () => {
+  const dispatch = useAppDispatch()
+
   const data = [
     {
       title: lang(`${T}.1`),
@@ -43,7 +47,9 @@ const StartIntro = () => {
   }
 
   const goLogin = () => {
-    navigation.navigate(R.routes.SCREEN_LOGIN)
+    dispatch(confirmOnBoarding(true))
+    //@ts-ignore
+    navigation.navigate(R.routes.SCREEN_START_INFO)
   }
 
   return (

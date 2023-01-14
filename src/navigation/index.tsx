@@ -4,11 +4,13 @@ import {
   useNavigationContainerRef,
 } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
+import { useAppSelector } from 'hooks/redux'
 import React, { useRef } from 'react'
 import R from 'res'
 import { TTheme } from 'res/theme'
 import AccountsScreen from 'screens/Accounts'
 import { AddTelegramCodeScreen } from 'screens/AddTelegramCodeScreen/AddTelegramCodeScreen'
+import AddTelegrammInfoScreen from 'screens/AddTelegrammInfo'
 import { AddTelegramNumScreen } from 'screens/AddTelegramNumScreen/AddTelegramNumScreen'
 import ChatsScreen from 'screens/Chats'
 import CreateProfileScreen from 'screens/CreateProfileScreen/CreateProfileScreen'
@@ -23,6 +25,8 @@ import { MyProfileScreen } from 'screens/MyProfileScreen/MyProfileScreen'
 import NotificationsScreen from 'screens/Notifications'
 import OtpScreen from 'screens/Otp'
 import { RatesScreen } from 'screens/RatesScreen/RatesScreen'
+import RegisteredTelegrammInfo from 'screens/RegisteredTelegrammInfo'
+import StartInfoScreen from 'screens/StartInfo'
 import StartIntro from 'screens/StartIntro/StartIntro'
 // import StartScreen from 'screens/StartScreen/StartScreen'
 import { StaticChatScreen } from 'screens/StaticChatScreen/StaticChatScreen'
@@ -30,12 +34,15 @@ import { StaticListChatScreen } from 'screens/StaticListChatScreen/StaticListCha
 import { StaticWordScreen } from 'screens/StaticWordScreen/StaticWordScreen'
 import UserListForm from 'screens/UserListForm'
 import YourListsScreen from 'screens/YourLists'
+import { getUser } from 'state/user/selectors'
 import { TNavigationParams } from 'types/navigation'
 
 const Navigator = ({ theme }: { theme: TTheme }) => {
   const RootStack = createStackNavigator()
   const navigationRef = useNavigationContainerRef<TNavigationParams>()
   const routeNameRef = useRef()
+  const { onboardingSuccess } = useAppSelector(getUser)
+  console.log(onboardingSuccess)
 
   return (
     <NavigationContainer
@@ -47,7 +54,11 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
       }}>
       <BottomSheetModalProvider>
         <RootStack.Navigator
-          // initialRouteName={R.routes.SCREEN_YOUR_LIST}
+          initialRouteName={
+            onboardingSuccess
+              ? R.routes.SCREEN_LOGIN
+              : R.routes.SCREEN_FIRS_START
+          }
           screenOptions={{ headerShown: false }}>
           <RootStack.Screen
             component={FirsStartScreen}
@@ -260,6 +271,39 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
             // @ts-ignore
             component={UserListForm}
             name={R.routes.USER_LIST_FORM_SCREEN}
+            options={{
+              headerShown: false,
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
+
+          <RootStack.Screen
+            // @ts-ignore
+            component={StartInfoScreen}
+            name={R.routes.SCREEN_START_INFO}
+            options={{
+              headerShown: false,
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
+
+          <RootStack.Screen
+            // @ts-ignore
+            component={AddTelegrammInfoScreen}
+            name={R.routes.SCREEN_ADD_TELEGRAM_INFO}
+            options={{
+              headerShown: false,
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
+
+          <RootStack.Screen
+            // @ts-ignore
+            component={RegisteredTelegrammInfo}
+            name={R.routes.screen_REGISTERED_TELEGRAMM_INFO}
             options={{
               headerShown: false,
               headerTitleAlign: 'center',

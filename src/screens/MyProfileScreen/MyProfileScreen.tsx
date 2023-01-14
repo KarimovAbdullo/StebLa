@@ -8,6 +8,7 @@ import { useStyles } from 'hooks/useStyles'
 import React, { useRef, useState } from 'react'
 import { Image, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
 import R from 'res'
+import { openEmail } from 'utils/helpers'
 import { lang } from 'utils/lang'
 
 import stylesConfig from './MyProfileScreen.style'
@@ -150,8 +151,8 @@ export const MyProfileScreen = () => {
           </Typo.Body>
         </TouchableOpacity>
       </View>
-      <TouchableOpacity>
-        <Text style={styles.mail}>Email</Text>
+      <TouchableOpacity onPress={openEmail('test@gmail.com')}>
+        <Text style={styles.mail}>{lang(`${T}.email`)}</Text>
       </TouchableOpacity>
     </SafeAreaView>
   )

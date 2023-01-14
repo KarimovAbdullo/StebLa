@@ -23,6 +23,9 @@ export const screen_staticListChat = 'screens.staticListChat'
 export const screen_staticChat = 'screens.staticChat'
 export const screen_start = 'screens.start'
 export const screen_rates = 'screens.rates'
+export const screen_startInfo = 'screens.startInfo'
+export const screen_addTelegInfo = 'screens.addTelegInfo'
+export const screen_regTelegInfo = 'screens.regTelegInfo'
 
 export const utils_util_name = 'utils.util_name'
 

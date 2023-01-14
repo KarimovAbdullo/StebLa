@@ -9,9 +9,11 @@ import { TouchableOpacity, View } from 'react-native'
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder'
 import R from 'res'
 import { IListInfo } from 'types/data'
+import { lang } from 'utils/lang'
 
 import stylesConfig from './ListItem.styles'
 
+const T = R.lang.screen_yourList
 interface IProps {
   activeList: string[]
   item: IListInfo
@@ -85,26 +87,26 @@ export const ListItem = ({ item, activeList, setActiveList }: IProps) => {
             style={styles.bottomSheet}>
             <View>
               <BottomSheetButtons
-                text="Открыть"
+                text={lang(`${T}.btn1`)}
                 icon={<R.icons.FileIcon />}
                 style={styles.button}
               />
 
               <BottomSheetButtons
-                text="Переименовать"
+                text={lang(`${T}.btn2`)}
                 icon={<R.icons.ChangeIcon />}
                 style={styles.button}
                 onPress={goForm}
               />
 
               <BottomSheetButtons
-                text="Редактировать"
+                text={lang(`${T}.btn3`)}
                 icon={<R.icons.ReactIcon />}
                 style={styles.button}
               />
 
               <BottomSheetButtons
-                text="Удалить"
+                text={lang(`${T}.btn4`)}
                 icon={<R.icons.DeliteIcon />}
                 textColor="red"
               />

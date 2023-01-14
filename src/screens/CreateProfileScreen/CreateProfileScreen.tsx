@@ -28,7 +28,7 @@ const CreateProfileScreen = () => {
 
   const goTelegram = () => {
     //@ts-ignore
-    navigation.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
+    navigation.navigate(R.routes.SCREEN_ADD_TELEGRAM_INFO)
   }
 
   //      {lang(`${T}.`)}

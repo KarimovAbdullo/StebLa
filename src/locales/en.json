@@ -25,12 +25,12 @@
 		"addCode": {
 			"titleTop": "Adding a Telegram profile",
 			"label": "Enter the code received in Telegram",
-			"button": "Further"
+			"button": "Continue"
 		},
 		"addNumb": {
 			"text": "Adding a Telegram profile",
 			"title": "Enter your phone number and we will send a confirmation code to your Telegram account",
-			"buttonText": "Further"
+			"buttonText": "Continue"
 		},
 		"chats": {
 			"label": "Chats",
@@ -46,11 +46,11 @@
 			"subTitle": "Tariff Information",
 			"text": "Paid tariff",
 			"subText": "Tariff Information",
-			"BtnTitle": "Further"
+			"BtnTitle": "Continue"
 		},
 		"createRule": {
 			"name": "Create a rule",
-			"btnTitle": "Further",
+			"btnTitle": "Continue",
 	
 			"label": "Do you want to change the word",
 			"btnTitle1": "Confirm",
@@ -79,7 +79,11 @@
 			"btnTitle": "Give VIP status",
 			"label": "Rename",
 			"btnTitle1": "Edit",
-			"btnTitle2": "Delete"
+			"btnTitle2": "Delete",
+
+			"btnLabel": "You definitely want to give the user a “Username” VIP",
+			"btnLeft": "Confirm",
+			"btnRight": "Cancel"
 		},
 		"myProfile": {
 			"name": "User nickname",
@@ -87,7 +91,8 @@
 			"title": "Add",
 			"subTitle": "Go to management",
 			"text": "Change",
-			"subText": "Extend"
+			"subText": "Extend",
+			"email": "Technical support"
 		},
 		"notification": {
 			"name": "Notifications",
@@ -102,7 +107,7 @@
 			"subTitle": "The option to call back will be available via",
 			"text": "Call not coming?",
 			"subText": "Order SMS message",
-			"btn": "Further"
+			"btn": "Continue"
 		},
 		"menu": {
 			"btnTitle": "Create a new rule",
@@ -114,7 +119,11 @@
 		},
 		"yourList": {
 			"title": "Your lists",
-			"buttonText": "Add"
+			"buttonText": "Add",
+			"btn1": "Open",
+			"btn2": "Rename",
+			"btn3": "Edit",
+			"btn4": "Delete"
 		},
 		"userListForm": {
 			"title": "Back",
@@ -162,6 +171,20 @@
 			"bottomP":"Don't try to translate this question, it doesn't exist in any language. This meaningless phrase only looks like Latin, but is it Latin?",
 			"bottomP2":"Meanwhile, if you type Lorem ipsum in any Internet search engine, the number of pages where this phrase is found will exceed 80 thousand. This does not happen with nonsense or blunders. So this phrase, although meaningless, is still of great importance.",
 			"btnText":"Pay the rate"
+		},
+		"startInfo": {
+			"name": "Excellent !",
+			"label": "To work, you need to register in the offer and link your account to telegrams",
+			"btnTitle": "Continue"
+		},
+		"addTelegInfo": {
+			"label": "Now we bind the offer to the telegram",
+			"btnTitle": "Далее"
+		},
+		"regTelegInfo": {
+			"name": "Have you registered !",
+			"label": "Now you need to customize the offer for yourself",
+			"btnTitle": "Create a new rule"
 		}
 	},
 	"utils": {

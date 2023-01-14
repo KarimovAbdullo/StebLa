@@ -6,6 +6,8 @@ import { ILogin, IUserInfo, IVerifyUser, IVerifyUserData } from 'types/data'
 export const signOutUser = createAction('user/signOut')
 export const changeLanguage = createAction<'ru' | 'en'>('user/language')
 
+export const confirmOnBoarding = createAction<boolean>('user/startedData')
+
 // export const signInUser = createAsyncThunk<
 //   {} | null,
 //   {

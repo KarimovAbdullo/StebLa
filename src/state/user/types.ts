@@ -5,4 +5,5 @@ export type UserState = {
   loading: boolean
   token: string | null
   language: 'ru' | 'en'
+  onboardingSuccess: boolean
 }

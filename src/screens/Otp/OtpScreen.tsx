@@ -35,7 +35,7 @@ export const OtpScreen = () => {
 
   const goHomeScreen = () => {
     // @ts-ignore
-    navigation.navigate(R.routes.SCREEN_HOME)
+    navigation.navigate(R.routes.SCREEN_ADD_TELEGRAM_INFO)
   }
 
   const goLogin = () => {

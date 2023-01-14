@@ -41,8 +41,8 @@ export default createStyles(colors => ({
   },
   active: {
     fontSize: '24@ms',
-    width: '69@s',
-    height: '69@s',
+    width: '49@s',
+    height: '49@s',
     borderWidth: '0.5@s',
     borderColor: '#3BBE53',
     borderRadius: '16@s',
@@ -73,5 +73,9 @@ export default createStyles(colors => ({
   },
   bottomText: {
     marginTop: '50@vs',
+  },
+  itemContent: {
+    flex: 1,
+    backgroundColor: colors.white,
   },
 }))

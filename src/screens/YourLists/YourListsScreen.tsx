@@ -7,7 +7,6 @@ import Menu from 'components/Menu/Menu'
 import Typo from 'components/typo'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
-// import I18n from 'i18n-js'
 import React, { useRef, useState } from 'react'
 import { FlatList, TouchableOpacity, View } from 'react-native'
 import R from 'res'
@@ -25,8 +24,6 @@ export const YourListsScreen = () => {
   const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
   const navigate = useSmartNavigation()
 
-  // I18n.locale = 'en'
-
   const menuBar = () => {
     bottomsheetRef2.current?.present()
   }
@@ -35,7 +32,7 @@ export const YourListsScreen = () => {
     setTimeout(() => {
       setActiveButton(true)
     }, 100)
-    // @ts-ignore
+
     navigate.navigate(R.routes.SCREEN_LIST_USERS)
   }
 

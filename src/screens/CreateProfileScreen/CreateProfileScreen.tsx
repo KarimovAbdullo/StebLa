@@ -31,8 +31,6 @@ const CreateProfileScreen = () => {
     navigation.navigate(R.routes.SCREEN_ADD_TELEGRAM_INFO)
   }
 
-  //      {lang(`${T}.`)}
-
   return (
     <Container>
       <FocusAwareStatusBar

@@ -45,7 +45,6 @@ export default createStyles(colors => ({
   },
   modal: {
     backgroundColor: 'red',
-    // padding: 100,
     height: 10,
   },
   text: {

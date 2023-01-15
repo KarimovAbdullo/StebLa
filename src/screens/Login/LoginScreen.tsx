@@ -21,7 +21,6 @@ export const LoginScreen = () => {
   const styles = useStyles(stylesConfig)
 
   const onSubmit = () => {
-    // @ts-ignore
     navigation.navigate(R.routes.SCREEN_OTP)
   }
 

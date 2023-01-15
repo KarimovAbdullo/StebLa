@@ -25,20 +25,16 @@ export const ChatsScreen = () => {
   const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
 
   const onLongPress = () => {
-    // @ts-ignore
     setActiveButton(!activeButton)
   }
 
   const changeButton = () => {
-    // @ts-ignore
     navigate.navigate(R.routes.CREATE_RULE_SCREEN)
   }
 
   const deliteList = () => {
     setActiveList([])
   }
-
-  //      {lang(`${T}.`)}
 
   const [data] = useState<IChatsInfo[]>([
     {

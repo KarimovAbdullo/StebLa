@@ -8,7 +8,7 @@ import { useStyles } from 'hooks/useStyles'
 import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import R from 'res'
-import { IForm } from 'types/data'
+import { IUserListForm } from 'types/data'
 import { IListUserInfo } from 'types/data'
 import { lang } from 'utils/lang'
 import { requir, validator } from 'utils/validators'
@@ -39,11 +39,9 @@ export const UserListForm = ({ route }: IProps) => {
     navigation.goBack()
   }
 
-  const initialValues: IForm = {
+  const initialValues: IUserListForm = {
     firsName: item.text,
     secondName: item.subTitle,
-    thirdNmae: '',
-    fourthName: '',
   }
 
   return (

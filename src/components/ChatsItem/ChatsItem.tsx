@@ -1,4 +1,5 @@
 import Typo from 'components/typo'
+import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { useEffect, useState } from 'react'
 import { Image, TouchableOpacity, View } from 'react-native'
@@ -17,6 +18,7 @@ interface IProps {
 export const ChatsItem = ({ item, activeList, setActiveList }: IProps) => {
   const styles = useStyles(stylesConfig)
   const [loading, setLoading] = useState(false)
+  const navigate = useSmartNavigation()
 
   useEffect(() => {
     setTimeout(() => {
@@ -24,6 +26,10 @@ export const ChatsItem = ({ item, activeList, setActiveList }: IProps) => {
     }, 2000)
     setLoading(true)
   }, [])
+
+  const onStatickChats = () => {
+    navigate.navigate(R.routes.STATIC_CHAT_SCREEN)
+  }
 
   const onLongPress = () => {
     setActiveList([...activeList, item.id])
@@ -79,7 +85,8 @@ export const ChatsItem = ({ item, activeList, setActiveList }: IProps) => {
       ) : (
         <TouchableOpacity
           style={[styles.container, active ? styles.active : {}]}
-          onPress={onLongPress}>
+          onLongPress={onLongPress}
+          onPress={onStatickChats}>
           <Image source={item.image} style={styles.imageContent} />
           <View style={styles.textContent}>
             <View>

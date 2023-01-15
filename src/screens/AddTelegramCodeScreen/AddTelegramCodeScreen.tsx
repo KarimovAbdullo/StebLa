@@ -20,7 +20,6 @@ export const AddTelegramCodeScreen = () => {
   const navigation = useSmartNavigation()
 
   const goHome = () => {
-    //@ts-ignore
     navigation.navigate(R.routes.screen_REGISTERED_TELEGRAMM_INFO)
   }
 

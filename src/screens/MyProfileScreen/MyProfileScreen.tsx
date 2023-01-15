@@ -22,7 +22,6 @@ export const MyProfileScreen = () => {
   const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
 
   const plus = () => {
-    // @ts-ignore
     navigation.navigate(R.routes.SCREEN_IMPORT_CHATS)
     setCheck('plus')
   }
@@ -44,7 +43,6 @@ export const MyProfileScreen = () => {
   }
 
   const onNotification = () => {
-    //@ts-ignore
     navigation.navigate(R.routes.SCREEN_NOTIFICATIONS)
   }
 

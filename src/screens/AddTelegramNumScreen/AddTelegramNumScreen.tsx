@@ -53,7 +53,7 @@ export const AddTelegramNumScreen = () => {
                 placeholderTextColor={R.colors.textPrimary}
                 secureTextEntry={false}
                 keyboardType="numeric"
-                maxLength={12}
+                maxLength={17}
               />
             </View>
 

@@ -2,6 +2,7 @@ import { useField, useFormikContext } from 'formik'
 import { useStyles } from 'hooks/useStyles'
 import React, { useCallback, useRef, useState } from 'react'
 import { Text, TextInput, TextInputProps, View } from 'react-native'
+import MaskInput from 'react-native-mask-input'
 
 import stylesConfig from './LoginInput.style'
 interface IProps extends TextInputProps {
@@ -51,23 +52,47 @@ export const LoginInput = ({
           <Text style={styles.errorText}>{meta.error}</Text>
         ) : null}
         <View style={styles.inputContent}>
-          <TextInput
-            style={[
-              styles.input,
-              // ref?.current?.isFocused() ? styles.activeInput : {},
-              inputStyle,
-            ]}
+          <MaskInput
             placeholder={placeholder}
             value={String(field.value)}
             ref={ref}
             keyboardType={keyboardType}
             onFocus={onFocus}
             onBlur={onBlur}
-            onChangeText={onChangeText}
             autoCapitalize={autoCapitalize}
             placeholderTextColor={placeholderTextColor}
             secureTextEntry={secureTextEntry}
             {...attributes}
+            style={[
+              styles.input,
+              // ref?.current?.isFocused() ? styles.activeInput : {},
+              inputStyle,
+            ]}
+            onChangeText={(masked, unmasked) => {
+              onChangeText(masked) // you can use the unmasked value as well
+
+              // assuming you typed "12" all the way:
+              console.log(masked) // (99) 99999-9999
+              console.log(unmasked) // 99999999999
+            }}
+            mask={[
+              '+7',
+              ' ',
+              '(',
+              /\d/,
+              /\d/,
+              /\d/,
+              ')',
+              ' ',
+              /\d/,
+              /\d/,
+              /\d/,
+              /\d/,
+              /\d/,
+              /\d/,
+              /\d/,
+              /\d/,
+            ]}
           />
         </View>
       </View>

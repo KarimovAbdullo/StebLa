@@ -70,7 +70,7 @@ export const OtpScreen = () => {
         <OTPInputView
           // @ts-ignore
           style={styles.otpContent}
-          pinCount={4}
+          pinCount={6}
           onCodeChanged={setCode}
           autoFocusOnLoad
           // @ts-ignore
@@ -108,7 +108,7 @@ export const OtpScreen = () => {
 
           <View style={styles.timerContent}>
             <Typo.TextButton color="black" center>
-              {code.length > 3
+              {code.length > 5
                 ? moment.utc(countdown * 100).format('mm:ss')
                 : moment.utc(countdown * 100).format('01:ss')}
             </Typo.TextButton>

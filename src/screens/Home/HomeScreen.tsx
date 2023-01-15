@@ -18,7 +18,6 @@ const HomeScreen = () => {
   const navigate = useSmartNavigation()
 
   const goCreateScreen = () => {
-    //@ts-ignore
     navigate.navigate(R.routes.SCREEN_CREATE_PROFILE)
   }
 
@@ -27,22 +26,18 @@ const HomeScreen = () => {
   }
 
   const onNotification = () => {
-    //@ts-ignore
     navigate.navigate(R.routes.SCREEN_NOTIFICATIONS)
   }
 
   const onAcounts = () => {
-    //@ts-ignore
     navigate.navigate(R.routes.SCREEN_ACCOUNTS)
   }
 
   const onMyProfile = () => {
-    //@ts-ignore
     navigate.navigate(R.routes.MY_PROFILE_SCREEN)
   }
 
   const onRule = () => {
-    //@ts-ignore
     navigate.navigate(R.routes.RATES_SCREEN)
   }
 

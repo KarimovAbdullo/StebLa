@@ -21,7 +21,7 @@ const Menu = () => {
   const goCreateScreen = () => {
     dismissAll()
     //@ts-ignore
-    navigate.navigate(R.routes.SCREEN_CREATE_PROFILE)
+    navigate.navigate(R.routes.SCREEN_CHATS)
   }
 
   const goWord = () => {
@@ -44,7 +44,7 @@ const Menu = () => {
   const onMyProfile = () => {
     dismissAll()
     //@ts-ignore
-    navigate.navigate(R.routes.MY_PROFILE_SCREEN)
+    navigate.navigate(R.routes.SCREEN_LIST_USERS)
   }
 
   const onRule = () => {

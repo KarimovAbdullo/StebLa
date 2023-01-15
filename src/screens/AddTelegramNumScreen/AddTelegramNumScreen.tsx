@@ -20,18 +20,13 @@ export const AddTelegramNumScreen = () => {
   const navigation = useSmartNavigation()
   const styles = useStyles(stylesConfig)
 
-  // const [check, setCheck] = useState(false)
-
   const onSubmit = () => {
-    // @ts-ignore
     navigation.navigate(R.routes.SCREEN_ADD_TELEGRAM_CODE)
   }
 
   const initialValues: ILogin = {
     phone: '',
   }
-
-  //      {lang(`${T}.`)}
 
   return (
     <View style={styles.container}>

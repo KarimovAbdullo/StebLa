@@ -17,7 +17,6 @@ export const RegisteredTelegrammInfo = () => {
   const styles = useStyles(stylesConfig)
 
   const onSubmit = () => {
-    // @ts-ignore
     navigation.navigate(R.routes.SCREEN_IMPORT_CHATS)
   }
 

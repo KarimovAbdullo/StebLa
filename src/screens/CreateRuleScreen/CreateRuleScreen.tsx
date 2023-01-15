@@ -9,13 +9,7 @@ import Typo from 'components/typo'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { ReactElement, useRef, useState } from 'react'
-import {
-  FlatList,
-  SafeAreaView,
-  TouchableOpacity,
-  // TouchableOpacity,
-  View,
-} from 'react-native'
+import { FlatList, SafeAreaView, TouchableOpacity, View } from 'react-native'
 import R from 'res'
 import { lang } from 'utils/lang'
 

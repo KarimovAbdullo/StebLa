@@ -17,7 +17,6 @@ export const AddTelegrammInfoScreen = () => {
   const styles = useStyles(stylesConfig)
 
   const onSubmit = () => {
-    // @ts-ignore
     navigation.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
   }
 

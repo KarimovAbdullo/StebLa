@@ -25,9 +25,9 @@ export const ImportChatsScreen = () => {
   }
 
   const goChats = () => {
-    //@ts-ignore
     navigation.navigate(R.routes.SCREEN_CHATS)
   }
+
   return (
     <View style={styles.container}>
       <FocusAwareStatusBar backgroundColor={R.colors.white} />

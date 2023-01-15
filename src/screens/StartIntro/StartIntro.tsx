@@ -34,7 +34,7 @@ const StartIntro = () => {
   ]
   const swiperRef = useRef<Swiper | null>(null)
   const [currentPage, setCurrentPage] = useState(1)
-  // const [modalVisible, setModalVisible] = useState(true)
+
   const navigation = useSmartNavigation()
 
   const next = () => {
@@ -48,7 +48,7 @@ const StartIntro = () => {
 
   const goLogin = () => {
     dispatch(confirmOnBoarding(true))
-    //@ts-ignore
+
     navigation.navigate(R.routes.SCREEN_START_INFO)
   }
 

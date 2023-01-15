@@ -12,8 +12,6 @@ export interface ILogin {
 export interface IForm {
   firsName: string
   // secondName: string
-  // thirdNmae: string
-  // fourthName: string
 }
 
 export interface ILoginSocial {
@@ -83,4 +81,9 @@ export interface IAddAcountInfo {
 
 export interface IStaticWordInfo {
   name: string
+}
+
+export interface IUserListForm {
+  firsName: string
+  secondName: string
 }

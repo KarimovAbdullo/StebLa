@@ -76,8 +76,8 @@ export const LoginInput = ({
               console.log(unmasked) // 99999999999
             }}
             mask={[
-              '+7',
-              ' ',
+              '+',
+              '7',
               '(',
               /\d/,
               /\d/,

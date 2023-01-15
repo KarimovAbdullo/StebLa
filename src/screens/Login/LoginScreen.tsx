@@ -53,7 +53,7 @@ export const LoginScreen = () => {
                 placeholderTextColor={R.colors.textPrimary}
                 secureTextEntry={false}
                 keyboardType="numeric"
-                maxLength={17}
+                maxLength={15}
               />
             </View>
 

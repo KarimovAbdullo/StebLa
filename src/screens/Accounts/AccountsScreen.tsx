@@ -163,7 +163,7 @@ export const AccountsScreen = () => {
                     placeholderTextColor={R.colors.main}
                     secureTextEntry={false}
                     keyboardType="numeric"
-                    maxLength={12}
+                    maxLength={17}
                   />
                 </View>
 

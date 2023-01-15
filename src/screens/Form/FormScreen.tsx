@@ -23,7 +23,7 @@ interface IProps {
   }
 }
 
-const T = R.lang
+const T = R.lang.screen_form
 
 export const FormScreen = ({ route }: IProps) => {
   const navigation = useSmartNavigation()

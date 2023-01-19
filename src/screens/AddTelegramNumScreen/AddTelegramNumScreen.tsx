@@ -3,12 +3,14 @@ import { LoginButton } from 'components/LoginButton/LoginButtton'
 import { LoginInput } from 'components/LoginInput/LoginInput'
 import Typo from 'components/typo'
 import { Formik } from 'formik'
+import { useAppDispatch } from 'hooks/redux'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React from 'react'
 import { View } from 'react-native'
 import R from 'res'
-import { ILogin } from 'types/data'
+import { addTelegram } from 'state/addTelegramAcaunt/action'
+import { ITelegram } from 'types/data'
 import { lang } from 'utils/lang'
 import { required, validator } from 'utils/validators'
 
@@ -19,12 +21,31 @@ import stylesConfig from './AddTelegramNumScreen.style'
 export const AddTelegramNumScreen = () => {
   const navigation = useSmartNavigation()
   const styles = useStyles(stylesConfig)
+  const dispatch = useAppDispatch()
 
-  const onSubmit = () => {
-    navigation.navigate(R.routes.SCREEN_ADD_TELEGRAM_CODE)
+  const onSubmit = async (data: ITelegram) => {
+    const response = await dispatch(
+      addTelegram({
+        data,
+        onSuccess: () => {
+          //@ts-ignore
+          navigation.navigate(R.routes.SCREEN_ADD_TELEGRAM_CODE, {
+            phone: data.phone,
+          })
+        },
+        onError: () => {
+          //@ts-ignore
+          navigation.navigate(R.routes.SCREEN_ADD_TELEGRAM_CODE, {
+            phone: data.phone,
+          })
+        },
+      }),
+    )
+
+    return response
   }
 
-  const initialValues: ILogin = {
+  const initialValues: ITelegram = {
     phone: '',
   }
 

@@ -5,6 +5,10 @@ import Config from 'react-native-config'
 export const API_BASE_URL = Config.API_BASE_URL
 
 export const API_PATH_LOGIN = 'users/signin'
+export const API_PATH_TELEGRAM_INIT =
+  'https://stebla.dev-webdevep.ru/bot-telegram-service/public/init'
+export const API_PATH_TELEGRAM_VERFY =
+  'https://stebla.dev-webdevep.ru/bot-telegram-service/public/code'
 
 //Device
 export const IS_ANDROID = Platform.OS === 'android'

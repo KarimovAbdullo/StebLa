@@ -87,3 +87,11 @@ export interface IUserListForm {
   firsName: string
   secondName: string
 }
+
+export interface ITelegram {
+  phone: string
+}
+
+export interface ITelegramVeryfiy {
+  code: string
+}

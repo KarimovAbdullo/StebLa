@@ -2,6 +2,7 @@ import OTPInputView from '@twotalltotems/react-native-otp-input'
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
 import { CustomButton } from 'components/CustomButton/CustomButton'
 import Typo from 'components/typo'
+import { useAppDispatch, useAppSelector } from 'hooks/redux'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import moment from 'moment'
@@ -9,19 +10,30 @@ import React, { useEffect } from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import R from 'res'
+import { login } from 'state/user/actions'
+import { getUser } from 'state/user/selectors'
 import { lang } from 'utils/lang'
 
 import stylesConfig from './OtpScreen.styles'
 
 const T = R.lang.screen_otp
 
-export const OtpScreen = () => {
+interface IProps {
+  route: {
+    params: {
+      phone: string
+    }
+  }
+}
+
+export const OtpScreen: React.FC<IProps> = ({ route }) => {
+  const { phone } = route.params || {}
   const styles = useStyles(stylesConfig)
   const [code, setCode] = React.useState('')
   const [countdown, setCountdown] = React.useState(3)
   const navigation = useSmartNavigation()
-
-  console.log(code)
+  const dispatch = useAppDispatch()
+  const { loading } = useAppSelector(getUser)
 
   useEffect(() => {
     if (countdown > 0) {
@@ -31,11 +43,15 @@ export const OtpScreen = () => {
     }
   }, [countdown])
 
-  const onSubmit = () => {}
-
-  const goHomeScreen = () => {
-    // @ts-ignore
-    navigation.navigate(R.routes.SCREEN_CREATE_PROFILE)
+  const onSubmit = (value?: string) => {
+    dispatch(
+      login({
+        data: { code: value ? value : code, credential: phone },
+        onSuccess: () => {
+          navigation.navigate(R.routes.SCREEN_CREATE_PROFILE)
+        },
+      }),
+    )
   }
 
   const goLogin = () => {
@@ -51,9 +67,7 @@ export const OtpScreen = () => {
         <TouchableOpacity style={styles.iconContent} onPress={goLogin}>
           <R.icons.PhoneIcon />
 
-          <Typo.TextButton color="iconPrimary">
-            + 7 987 789 456 21
-          </Typo.TextButton>
+          <Typo.TextButton color="iconPrimary">{phone}</Typo.TextButton>
           <R.icons.PensilIcon />
         </TouchableOpacity>
 
@@ -83,12 +97,12 @@ export const OtpScreen = () => {
         <View style={styles.buttonContent}>
           <TouchableOpacity style={styles.refreshContent}>
             <R.icons.LoadingIcon
-              color={code.length > 3 ? R.colors.main : R.colors.iconPrimary}
+              color={code.length > 5 ? R.colors.main : R.colors.iconPrimary}
             />
 
             <Typo.TextButton
               type="regular16"
-              color={code.length > 3 ? 'main' : 'iconPrimary'}>
+              color={code.length > 5 ? 'main' : 'iconPrimary'}>
               {lang(`${T}.title`)}
             </Typo.TextButton>
           </TouchableOpacity>
@@ -96,8 +110,9 @@ export const OtpScreen = () => {
           <CustomButton
             text={lang(`${T}.btn`)}
             style={styles.button}
-            onPress={goHomeScreen}
-            disabled={code.length > 3 ? false : true}
+            loading={loading}
+            onPress={onSubmit}
+            disabled={code.length > 5 ? false : true}
           />
         </View>
 

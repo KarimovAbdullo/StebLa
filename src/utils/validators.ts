@@ -20,6 +20,17 @@ export function required(value: string) {
   }
 }
 
+export function LoginRequired(value: string) {
+  if (
+    value === '' ||
+    value === null ||
+    value === undefined ||
+    value.length < 15
+  ) {
+    return 'Неверный номер телефон'
+  }
+}
+
 export function requir(value: string) {
   if (value.length < 4) {
     return 'Неверное значение'

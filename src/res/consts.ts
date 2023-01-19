@@ -4,7 +4,9 @@ import Config from 'react-native-config'
 // API list
 export const API_BASE_URL = Config.API_BASE_URL
 
-export const API_PATH_LOGIN = 'users/signin'
+export const API_PATH_SEND_CONFIRM_CODE = '/auth-back/api/v2/sendConfirmCode'
+export const API_PATH_LOGIN = '/auth-back/api/v2/login'
+export const API_PATH_GET_USER_INFO = '/auth-back/api/v2/getUserInfo'
 
 //Device
 export const IS_ANDROID = Platform.OS === 'android'

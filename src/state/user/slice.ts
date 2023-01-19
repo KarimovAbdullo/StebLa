@@ -4,14 +4,17 @@ import { PersistConfig, persistReducer } from 'redux-persist'
 import {
   changeLanguage,
   confirmOnBoarding,
-  signOutUser,
+  login,
+  sendConfirmCode,
+  // signOutUser,
 } from 'state/user/actions'
 import { UserState } from 'state/user/types'
+import { ILoginResponse, IUser } from 'types/data'
 
 const initialState: UserState = {
   user: null,
   loading: false,
-  token: null,
+  token: '' || {},
   language: 'ru',
   onboardingSuccess: false,
 }
@@ -21,11 +24,11 @@ const userSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [signOutUser.type]: state => {
-      state.user = null
-      state.loading = false
-      state.token = null
-    },
+    // [signOutUser.type]: state => {
+    //   state.user = null
+    //   state.loading = false
+    //   state.token = null
+    // },
     [changeLanguage.type]: (state, action: PayloadAction<'ru' | 'en'>) => {
       state.language = action.payload
     },
@@ -34,44 +37,30 @@ const userSlice = createSlice({
       state.onboardingSuccess = action.payload
     },
 
-    // [userInfo.pending.type]: state => {
-    //   state.loading = true
-    // },
-    // [userInfo.fulfilled.type]: (state, action: PayloadAction<IUserInfo>) => {
-    //   if (state.user) {
-    //     state.user.firstName = action.payload.firstName
-    //     state.user.lastName = action.payload.lastName
-    //     state.loading = false
-    //   }
-    // },
-    // [userInfo.rejected.type]: state => {
-    //   state.loading = false
-    // },
-    //
-    // [signInUser.pending.type]: state => {
-    //   state.loading = true
-    // },
-    // [signInUser.fulfilled.type]: state => {
-    //   state.loading = false
-    // },
-    // [signInUser.rejected.type]: state => {
-    //   state.loading = false
-    // },
-    //
-    // [verifyUser.pending.type]: state => {
-    //   state.loading = true
-    // },
-    // [verifyUser.fulfilled.type]: (
-    //   state,
-    //   action: PayloadAction<IVerifyUser>,
-    // ) => {
-    //   state.loading = false
-    //   state.user = action.payload.user
-    //   state.token = action.payload.token
-    // },
-    // [verifyUser.rejected.type]: state => {
-    //   state.loading = false
-    // },
+    [sendConfirmCode.pending.type]: state => {
+      state.loading = true
+    },
+    [sendConfirmCode.fulfilled.type]: state => {
+      state.loading = false
+    },
+    [sendConfirmCode.rejected.type]: state => {
+      state.loading = false
+    },
+
+    [login.pending.type]: state => {
+      state.loading = true
+    },
+    [login.fulfilled.type]: (
+      state,
+      action: PayloadAction<{ token: ILoginResponse; user: IUser }>,
+    ) => {
+      state.loading = false
+      state.token = action.payload.token
+      state.user = action.payload.user
+    },
+    [login.rejected.type]: state => {
+      state.loading = false
+    },
   },
 })
 

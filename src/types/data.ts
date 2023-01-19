@@ -1,14 +1,5 @@
 import { ImageSourcePropType } from 'react-native'
 
-export interface IUser {
-  firstName: string
-  lastName: string
-  id: string
-}
-
-export interface ILogin {
-  phone: string
-}
 export interface IForm {
   firsName: string
   // secondName: string
@@ -23,11 +14,6 @@ export interface IRegisterData {
   name: string
   email: string
   password: string
-}
-
-export interface IVerifyUser {
-  user: IUser
-  token: string
 }
 
 export interface IVerifyUserData {
@@ -86,4 +72,40 @@ export interface IStaticWordInfo {
 export interface IUserListForm {
   firsName: string
   secondName: string
+}
+
+export interface ISendCode {
+  phone: string | number
+  use_call: boolean
+}
+
+export interface ISendCodeResponse {
+  ok: boolean
+  msg?: string
+}
+
+export interface ILogin {
+  credential: string
+  code: string
+}
+
+export interface ILoginResponse {
+  ok: boolean
+  accessToken: string
+  refreshToken: string
+}
+
+export interface IUser {
+  ok: true
+  roles: [string]
+  email: string
+  emailIsConfirmed: boolean
+  phone: string
+  phoneIsConfirmed: boolean
+  inn: string
+  is_online: boolean
+  userinfo: {
+    property1: {}
+    property2: {}
+  }
 }

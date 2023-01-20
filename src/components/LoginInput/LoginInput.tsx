@@ -68,12 +68,8 @@ export const LoginInput = ({
               // ref?.current?.isFocused() ? styles.activeInput : {},
               inputStyle,
             ]}
-            onChangeText={(masked, unmasked) => {
+            onChangeText={masked => {
               onChangeText(masked) // you can use the unmasked value as well
-
-              // assuming you typed "12" all the way:
-              console.log(masked) // (99) 99999-9999
-              console.log(unmasked) // 99999999999
             }}
             mask={[
               '+',

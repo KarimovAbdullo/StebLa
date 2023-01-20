@@ -11,7 +11,7 @@ export type TNavigationParams = {
   [R.routes.SCREEN_ADD_TELEGRAM_NUM]: undefined
   [R.routes.MY_PROFILE_SCREEN]: undefined
   [R.routes.FORM_SCREEN]: { item: object } | undefined
-  [R.routes.SCREEN_OTP]: { phone: string } | undefined
+  [R.routes.SCREEN_OTP]: { phone: string | number } | undefined
   [R.routes.CREATE_RULE_SCREEN]: undefined
   [R.routes.USER_LIST_FORM_SCREEN]: { item: object } | undefined
   [R.routes.SCREEN_LIST_USERS]: undefined

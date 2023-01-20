@@ -3,14 +3,17 @@ import { LoginButton } from 'components/LoginButton/LoginButtton'
 import { LoginInput } from 'components/LoginInput/LoginInput'
 import Typo from 'components/typo'
 import { Formik } from 'formik'
+import { useAppDispatch, useAppSelector } from 'hooks/redux'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React from 'react'
 import { View } from 'react-native'
 import R from 'res'
-import { ILogin } from 'types/data'
+import { sendConfirmCode } from 'state/user/actions'
+import { getUser } from 'state/user/selectors'
+import { ISendCode } from 'types/data'
 import { lang } from 'utils/lang'
-import { required, validator } from 'utils/validators'
+import { LoginRequired, validator } from 'utils/validators'
 
 const T = R.lang.screen_login
 
@@ -19,13 +22,22 @@ import stylesConfig from './LoginScreen.styles'
 export const LoginScreen = () => {
   const navigation = useSmartNavigation()
   const styles = useStyles(stylesConfig)
+  const dispatch = useAppDispatch()
+  const { loading } = useAppSelector(getUser)
 
-  const onSubmit = () => {
-    navigation.navigate(R.routes.SCREEN_OTP)
+  const onSubmit = async (data: ISendCode) => {
+    dispatch(
+      sendConfirmCode({
+        data,
+        onSuccess: () => {
+          navigation.navigate(R.routes.SCREEN_OTP, { phone: data.phone })
+        },
+      }),
+    )
   }
-
-  const initialValues: ILogin = {
+  const initialValues: ISendCode = {
     phone: '',
+    use_call: false,
   }
 
   return (
@@ -47,7 +59,7 @@ export const LoginScreen = () => {
             <View style={styles.inputContent}>
               <LoginInput
                 label="+"
-                validate={validator(required)}
+                validate={validator(LoginRequired)}
                 name="phone"
                 placeholder="+ _ (_ _ _) _ _ _ _ _ _ _ _"
                 placeholderTextColor={R.colors.textPrimary}
@@ -58,7 +70,11 @@ export const LoginScreen = () => {
             </View>
 
             <View style={styles.buttonContent}>
-              <LoginButton text={lang(`${T}.BtnTitle`)} style={styles.button} />
+              <LoginButton
+                text={lang(`${T}.BtnTitle`)}
+                style={styles.button}
+                loading={loading}
+              />
             </View>
           </>
         )}

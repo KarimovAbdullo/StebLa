@@ -62,13 +62,8 @@ export const login = createAsyncThunk<
 
     if (response.ok) {
       const { data: loginResponse } = await apiClient.post<IUser>(
-        R.consts.API_PATH_LOGIN,
-        {
-          ...arg.data,
-          credential: arg.data.credential.toString().replace(/\D/g, ''),
-          code: +arg.data.code,
-          headers: { token: response.accessToken },
-        },
+        R.consts.API_PATH_GET_USER_INFO,
+        { accessToken: response.accessToken },
       )
 
       arg.onSuccess?.({ token: response, user: loginResponse })

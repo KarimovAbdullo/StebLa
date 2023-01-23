@@ -1,8 +1,10 @@
 import axios from 'axios'
+import { AxiosRequestConfig } from 'axios'
 import { Platform } from 'react-native'
 import DeviceInfo from 'react-native-device-info'
 import * as RNLocalize from 'react-native-localize'
 import R from 'res'
+import { store } from 'state'
 
 const apiClient = axios.create({
   baseURL: R.consts.API_BASE_URL,
@@ -23,19 +25,19 @@ const apiClient = axios.create({
 //   params: humps.decamelizeKeys(config.params),
 // }))
 //
-// apiClient.interceptors.request.use((req: AxiosRequestConfig) => {
-//   const token = store.getState().user?.token
-//
-//   if (req.headers === undefined) {
-//     req.headers = {}
-//   }
-//
-//   if (token) {
-//     req.headers.authorization = `Token ${token}`
-//   }
-//
-//   return req
-// })
+apiClient.interceptors.request.use((req: AxiosRequestConfig) => {
+  const token = store.getState().user?.token?.accessToken
+
+  if (req.headers === undefined) {
+    req.headers = {}
+  }
+
+  if (token) {
+    req.headers.authorization = `Bearer ${token}`
+  }
+
+  return req
+})
 
 // function decamelize(object: any) {
 //   // @ts-ignore

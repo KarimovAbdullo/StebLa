@@ -89,10 +89,15 @@ export interface ILogin {
   code: string
 }
 
-export interface ILoginResponse {
-  ok: boolean
+export interface IToken {
+  ok: true
   accessToken: string
   refreshToken: string
+}
+
+export interface IError {
+  ok: false
+  msg: string
 }
 
 export interface IUser {
@@ -108,4 +113,12 @@ export interface IUser {
     property1: {}
     property2: {}
   }
+}
+
+export interface ITelegram {
+  phone: string
+}
+
+export interface ITelegramVeryfiy {
+  code: string
 }

@@ -1,23 +1,34 @@
 import OTPInputView from '@twotalltotems/react-native-otp-input'
 import { CustomButton } from 'components/CustomButton/CustomButton'
 import Typo from 'components/typo'
+import { useAppDispatch } from 'hooks/redux'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { useEffect } from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import R from 'res'
+import { verifyTelegram } from 'state/addTelegramAcaunt/action'
 import { lang } from 'utils/lang'
 
 import stylesConfig from './AddTelegramCodeScreen.style'
 
 const T = R.lang.screen_addCode
 
-export const AddTelegramCodeScreen = () => {
+interface IProps {
+  route: {
+    params: {
+      phone: string
+    }
+  }
+}
+export const AddTelegramCodeScreen: React.FC<IProps> = ({ route }) => {
   const styles = useStyles(stylesConfig)
   const [code, setCode] = React.useState('')
   const [countdown, setCountdown] = React.useState(3)
   const navigation = useSmartNavigation()
+  const { phone } = route.params || {}
+  const dispatch = useAppDispatch()
 
   const goHome = () => {
     navigation.navigate(R.routes.screen_REGISTERED_TELEGRAMM_INFO)
@@ -37,7 +48,18 @@ export const AddTelegramCodeScreen = () => {
     }
   }, [countdown])
 
-  const onSubmit = () => {}
+  const onSubmit = (value?: string) => {
+    dispatch(
+      verifyTelegram({
+        data: { code: value ? value : code, credential: phone },
+        onSuccess: response => {
+          response.code
+            ? navigation.navigate(R.routes.SCREEN_IMPORT_CHATS)
+            : navigation.navigate(R.routes.SCREEN_IMPORT_CHATS)
+        },
+      }),
+    )
+  }
 
   return (
     <KeyboardAwareScrollView style={styles.itemContent}>

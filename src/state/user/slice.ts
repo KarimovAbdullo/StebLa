@@ -9,12 +9,12 @@ import {
   // signOutUser,
 } from 'state/user/actions'
 import { UserState } from 'state/user/types'
-import { ILoginResponse, IUser } from 'types/data'
+import { IToken, IUser } from 'types/data'
 
 const initialState: UserState = {
   user: null,
   loading: false,
-  token: '' || {},
+  token: null,
   language: 'ru',
   onboardingSuccess: false,
 }
@@ -52,7 +52,7 @@ const userSlice = createSlice({
     },
     [login.fulfilled.type]: (
       state,
-      action: PayloadAction<{ token: ILoginResponse; user: IUser }>,
+      action: PayloadAction<{ token: IToken; user: IUser }>,
     ) => {
       state.loading = false
       state.token = action.payload.token

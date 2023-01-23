@@ -5,11 +5,13 @@ import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusB
 import { CustomButton } from 'components/CustomButton/CustomButton'
 import Menu from 'components/Menu/Menu'
 import Typo from 'components/typo'
+import { useAppSelector } from 'hooks/redux'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { useRef, useState } from 'react'
 import { FlatList, TextInput, TouchableOpacity, View } from 'react-native'
 import R from 'res'
+import { getChats } from 'state/chats/selectors'
 import { IChatsInfo } from 'types/data'
 import { lang } from 'utils/lang'
 
@@ -23,6 +25,9 @@ export const ChatsScreen = () => {
   const [activeButton, setActiveButton] = useState(false)
   const navigate = useSmartNavigation()
   const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
+  const { chats } = useAppSelector(getChats)
+
+  console.log(chats)
 
   const onLongPress = () => {
     setActiveButton(!activeButton)

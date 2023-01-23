@@ -115,6 +115,16 @@ export interface IUser {
   }
 }
 
+export interface IChats {
+  id: 0
+  name: string
+  thumbnail: string
+}
+export interface IChatsList<T> {
+  chatInfos: T[]
+  message: string
+  error: boolean
+}
 export interface ITelegram {
   phone: string
 }

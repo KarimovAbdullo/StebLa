@@ -2,10 +2,11 @@ import { createAction, createAsyncThunk } from '@reduxjs/toolkit'
 import apiClient from 'api/instance'
 import R from 'res'
 import {
+  IError,
   ILogin,
-  ILoginResponse,
   ISendCode,
   ISendCodeResponse,
+  IToken,
   IUser,
 } from 'types/data'
 
@@ -36,6 +37,7 @@ export const sendConfirmCode = createAsyncThunk<
       return response
     }
     arg.onError?.(response.msg)
+    throw response.msg
   } catch (e) {
     arg.onError?.()
     throw e
@@ -43,15 +45,15 @@ export const sendConfirmCode = createAsyncThunk<
 })
 //
 export const login = createAsyncThunk<
-  { token: ILoginResponse; user: IUser } | null,
+  { token: IToken; user: IUser } | null,
   {
     data: ILogin
-    onSuccess?: (data: { token: ILoginResponse; user: IUser }) => void
-    onError?: () => void
+    onSuccess?: (data: { token: IToken; user: IUser }) => void
+    onError?: (error?: string) => void
   }
 >('user/login', async arg => {
   try {
-    const { data: response } = await apiClient.post<ILoginResponse>(
+    const { data: response } = await apiClient.post<IToken | IError>(
       R.consts.API_PATH_LOGIN,
       {
         ...arg.data,
@@ -60,17 +62,23 @@ export const login = createAsyncThunk<
       },
     )
 
-    if (response.ok) {
-      const { data: loginResponse } = await apiClient.post<IUser>(
+    if (response.ok && response?.accessToken) {
+      const { data: loginResponse } = await apiClient.post<IUser | IError>(
         R.consts.API_PATH_GET_USER_INFO,
-        { accessToken: response.accessToken },
+        { accessToken: response?.accessToken },
       )
 
-      arg.onSuccess?.({ token: response, user: loginResponse })
-      return { token: response, user: loginResponse }
+      if (loginResponse.ok) {
+        arg.onSuccess?.({ token: response, user: loginResponse })
+        return { token: response, user: loginResponse }
+      } else {
+        arg.onError?.(loginResponse.msg)
+        throw loginResponse.msg
+      }
     }
-    arg.onError?.()
-    return null
+
+    arg.onError?.(!response.ok ? response.msg : 'Error')
+    throw !response.ok ? response.msg : 'Error'
   } catch (e) {
     arg.onError?.()
     throw e

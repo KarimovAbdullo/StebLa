@@ -51,7 +51,7 @@ export const AddTelegramCodeScreen: React.FC<IProps> = ({ route }) => {
   const onSubmit = (value?: string) => {
     dispatch(
       verifyTelegram({
-        data: { code: value ? value : code, phone: phone },
+        data: { code: value ? value : code, credential: phone },
         onSuccess: response => {
           response.code
             ? navigation.navigate(R.routes.SCREEN_IMPORT_CHATS)

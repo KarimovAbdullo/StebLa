@@ -4,12 +4,14 @@ import { LoginInput } from 'components/LoginInput/LoginInput'
 import Typo from 'components/typo'
 import { Formik } from 'formik'
 import { useAppDispatch } from 'hooks/redux'
+import { useAppSelector } from 'hooks/redux'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React from 'react'
 import { View } from 'react-native'
 import R from 'res'
 import { addTelegram } from 'state/addTelegramAcaunt/action'
+import { addTelegramSelector } from 'state/addTelegramAcaunt/selectors'
 import { ITelegram } from 'types/data'
 import { lang } from 'utils/lang'
 import { required, validator } from 'utils/validators'
@@ -22,22 +24,23 @@ export const AddTelegramNumScreen = () => {
   const navigation = useSmartNavigation()
   const styles = useStyles(stylesConfig)
   const dispatch = useAppDispatch()
+  const { loading } = useAppSelector(addTelegramSelector)
 
   const onSubmit = async (data: ITelegram) => {
     const response = await dispatch(
       addTelegram({
         data,
         onSuccess: () => {
-          //@ts-ignore
           navigation.navigate(R.routes.SCREEN_ADD_TELEGRAM_CODE, {
             phone: data.phone,
           })
         },
         onError: () => {
-          //@ts-ignore
-          navigation.navigate(R.routes.SCREEN_ADD_TELEGRAM_CODE, {
-            phone: data.phone,
-          })
+          // //@ts-ignore
+          // navigation.navigate(R.routes.SCREEN_ADD_TELEGRAM_CODE, {
+          //   phone: data.phone,
+          // })
+          console.log('kornakdawtas')
         },
       }),
     )
@@ -74,7 +77,7 @@ export const AddTelegramNumScreen = () => {
                 placeholderTextColor={R.colors.textPrimary}
                 secureTextEntry={false}
                 keyboardType="numeric"
-                maxLength={17}
+                maxLength={18}
               />
             </View>
 
@@ -82,6 +85,7 @@ export const AddTelegramNumScreen = () => {
               <LoginButton
                 text={lang(`${T}.buttonText`)}
                 style={styles.button}
+                loading={loading}
               />
             </View>
           </>

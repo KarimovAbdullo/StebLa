@@ -3,38 +3,29 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { PersistConfig, persistReducer } from 'redux-persist'
 
 // import { ITelegramVeryfiy } from 'types/data'
-import { addTelegram, verifyTelegram } from './action'
+import { addTelegram, confirmOnBoarding, verifyTelegram } from './action'
 import { changeLanguage } from './action'
 import { TelegramState } from './types'
 
 const initialState: TelegramState = {
   loading: false,
   language: 'ru',
+  token: '',
+  onboardingSuccess: false,
 }
 
 const addTelegramSlice = createSlice({
-  name: 'user',
+  name: 'addTelegram',
   initialState,
   reducers: {},
   extraReducers: {
     [changeLanguage.type]: (state, action: PayloadAction<'ru' | 'en'>) => {
       state.language = action.payload
     },
+    [confirmOnBoarding.type]: (state, action: PayloadAction<boolean>) => {
+      state.onboardingSuccess = action.payload
+    },
 
-    // [userInfo.pending.type]: state => {
-    //   state.loading = true
-    // },
-    // [userInfo.fulfilled.type]: (state, action: PayloadAction<IUserInfo>) => {
-    //   if (state.user) {
-    //     state.user.firstName = action.payload.firstName
-    //     state.user.lastName = action.payload.lastName
-    //     state.loading = false
-    //   }
-    // },
-    // [userInfo.rejected.type]: state => {
-    //   state.loading = false
-    // },
-    //
     [addTelegram.pending.type]: state => {
       state.loading = true
     },
@@ -48,7 +39,7 @@ const addTelegramSlice = createSlice({
     },
 
     [verifyTelegram.pending.type]: state => {
-      state.loading = true
+      state.loading = false
     },
     [verifyTelegram.fulfilled.type]: (
       state,
@@ -66,7 +57,7 @@ const addTelegramSlice = createSlice({
 const persistConfig: PersistConfig<TelegramState> = {
   key: 'addAcount',
   storage: AsyncStorage,
-  whitelist: ['addTelegram', 'language'],
+  whitelist: ['addTelegram', 'language', 'onboardingSuccess', 'token'],
 }
 
 export const addTelegramReducer = persistReducer(

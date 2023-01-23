@@ -1,3 +1,3 @@
 import { RootState } from 'state'
 
-export const addTelegram = (state: RootState) => state.addTelegram
+export const addTelegramSelector = (state: RootState) => state.addTelegram

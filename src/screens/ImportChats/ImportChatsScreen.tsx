@@ -4,11 +4,13 @@ import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusB
 import { CustomButton } from 'components/CustomButton/CustomButton'
 import Menu from 'components/Menu/Menu'
 import Typo from 'components/typo'
+import { useAppDispatch } from 'hooks/redux'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { useRef } from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import R from 'res'
+import { getChatsAction } from 'state/chats/actions'
 import { lang } from 'utils/lang'
 
 import stylesConfig from './ImportChatsScreen.styles'
@@ -19,12 +21,14 @@ export const ImportChatsScreen = () => {
   const styles = useStyles(stylesConfig)
   const navigation = useSmartNavigation()
   const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
+  const dispatch = useAppDispatch()
 
   const menuBar = () => {
     bottomsheetRef2.current?.present()
   }
 
   const goChats = () => {
+    dispatch(getChatsAction())
     navigation.navigate(R.routes.SCREEN_CHATS)
   }
 

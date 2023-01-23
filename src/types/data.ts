@@ -109,3 +109,14 @@ export interface IUser {
     property2: {}
   }
 }
+
+export interface IChats {
+  id: 0
+  name: string
+  thumbnail: string
+}
+export interface IChatsList<T> {
+  chatInfos: T[]
+  message: string
+  error: boolean
+}

@@ -55,7 +55,7 @@ export const AddTelegramCodeScreen: React.FC<IProps> = ({ route }) => {
         onSuccess: response => {
           response.code
             ? navigation.navigate(R.routes.SCREEN_IMPORT_CHATS)
-            : navigation.navigate(R.routes.SCREEN_IMPORT_CHATS)
+            : null
         },
       }),
     )
@@ -86,7 +86,7 @@ export const AddTelegramCodeScreen: React.FC<IProps> = ({ route }) => {
         <OTPInputView
           // @ts-ignore
           style={styles.otpContent}
-          pinCount={6}
+          pinCount={5}
           onCodeChanged={setCode}
           autoFocusOnLoad
           // @ts-ignore
@@ -101,7 +101,7 @@ export const AddTelegramCodeScreen: React.FC<IProps> = ({ route }) => {
             text={lang(`${T}.button`)}
             style={styles.button}
             onPress={goHome}
-            disabled={code.length > 5 ? false : true}
+            disabled={code.length > 4 ? false : true}
           />
         </View>
       </View>

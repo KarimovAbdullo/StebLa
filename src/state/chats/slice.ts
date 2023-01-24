@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { PersistConfig, persistReducer } from 'redux-persist'
-import { IChats, IChatsList } from 'types/data'
+import { IChatsList } from 'types/data'
 
 import { getChatsAction } from './actions'
 import { ChatsState } from './types'
@@ -22,7 +22,7 @@ const chatSlice = createSlice({
     },
     [getChatsAction.fulfilled.type]: (
       state,
-      action: PayloadAction<IChatsList<IChats>>,
+      action: PayloadAction<IChatsList>,
     ) => {
       state.loading = false
       state.chats = action.payload.chatInfos

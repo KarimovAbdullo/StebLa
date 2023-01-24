@@ -27,11 +27,9 @@ export interface IUserInfo {
 }
 
 export interface IChatsInfo {
-  name: string
-  fayl?: string
-  text?: string
-  image: ImageSourcePropType
-  id: string
+  id: 0
+  name?: string
+  thumbnail?: string
 }
 
 export interface IListInfo {
@@ -115,13 +113,13 @@ export interface IUser {
   }
 }
 
-export interface IChats {
-  id: 0
+export interface IChat {
+  id: string
   name: string
   thumbnail: string
 }
-export interface IChatsList<T> {
-  chatInfos: T[]
+export interface IChatsList {
+  chatInfos: IChat[]
   message: string
   error: boolean
 }

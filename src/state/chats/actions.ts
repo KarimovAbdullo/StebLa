@@ -1,13 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import apiClient from 'api/instance'
 import R from 'res'
-import { IChats, IChatsList } from 'types/data'
+import { IChatsList } from 'types/data'
 
-export const getChatsAction = createAsyncThunk<IChatsList<IChats>>(
+export const getChatsAction = createAsyncThunk<IChatsList>(
   'chats/get',
   async () => {
     try {
-      const { data: response } = await apiClient.get<IChatsList<IChats>>(
+      const { data: response } = await apiClient.get<IChatsList>(
         R.consts.API_PATH_GET_CHATS,
       )
 

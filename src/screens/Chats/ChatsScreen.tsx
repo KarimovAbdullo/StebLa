@@ -5,12 +5,14 @@ import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusB
 import { CustomButton } from 'components/CustomButton/CustomButton'
 import Menu from 'components/Menu/Menu'
 import Typo from 'components/typo'
+import { useAppDispatch, useAppSelector } from 'hooks/redux'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { FlatList, TextInput, TouchableOpacity, View } from 'react-native'
 import R from 'res'
-import { IChatsInfo } from 'types/data'
+import { getChatsAction } from 'state/chats/actions'
+import { getChats } from 'state/chats/selectors'
 import { lang } from 'utils/lang'
 
 import stylesConfig from './ChatsScreen.styles'
@@ -23,10 +25,17 @@ export const ChatsScreen = () => {
   const [activeButton, setActiveButton] = useState(false)
   const navigate = useSmartNavigation()
   const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
+  const { chats } = useAppSelector(getChats)
+  const dispatch = useAppDispatch()
 
   const onLongPress = () => {
     setActiveButton(!activeButton)
   }
+  console.log('chatList', chats)
+
+  useEffect(() => {
+    dispatch(getChatsAction())
+  }, [])
 
   const changeButton = () => {
     navigate.navigate(R.routes.CREATE_RULE_SCREEN)
@@ -36,73 +45,73 @@ export const ChatsScreen = () => {
     setActiveList([])
   }
 
-  const [data] = useState<IChatsInfo[]>([
-    {
-      name: 'Александр',
-      image: require('../../assets/images/1.png'),
-      fayl: 'Веб-программа',
-      text: 'GIF',
-      id: '1',
-    },
-    {
-      name: 'Евгений',
-      image: require('../../assets/images/2.png'),
-      text: 'Давайте выберем первую возможность',
-      id: '2',
-    },
-    {
-      name: 'Алексей',
-      image: require('../../assets/images/3.png'),
-      text: '👋 Привет, как дела?',
-      id: '3',
-    },
-    {
-      name: 'Владимир',
-      image: require('../../assets/images/4.png'),
-      fayl: '🤖 Работа 👨‍💻',
-      text: 'Давайте выберем первую возмо…',
-      id: '4',
-    },
-    {
-      name: 'Александр',
-      image: require('../../assets/images/1.png'),
-      fayl: 'Веб-программа',
-      text: 'GIF',
-      id: '5',
-    },
-    {
-      name: 'Евгений',
-      image: require('../../assets/images/2.png'),
-      text: 'Давайте выберем первую возможность',
-      id: '6',
-    },
-    {
-      name: 'Алексей',
-      image: require('../../assets/images/3.png'),
-      text: '👋 Привет, как дела?',
-      id: '7',
-    },
-    {
-      name: 'Владимир',
-      image: require('../../assets/images/4.png'),
-      fayl: '🤖 Работа 👨‍💻',
-      text: 'Давайте выберем первую возмо…',
-      id: '8',
-    },
-    {
-      name: 'Александр',
-      image: require('../../assets/images/1.png'),
-      fayl: 'Веб-программа',
-      text: 'GIF',
-      id: '9',
-    },
-    {
-      name: 'Евгений',
-      image: require('../../assets/images/2.png'),
-      text: 'Давайте выберем первую возможность',
-      id: '10',
-    },
-  ])
+  // const [data] = useState<IChatsInfo[]>([
+  //   {
+  //     name: 'Александр',
+  //     image: require('../../assets/images/1.png'),
+  //     fayl: 'Веб-программа',
+  //     text: 'GIF',
+  //     id: '1',
+  //   },
+  //   {
+  //     name: 'Евгений',
+  //     image: require('../../assets/images/2.png'),
+  //     text: 'Давайте выберем первую возможность',
+  //     id: '2',
+  //   },
+  //   {
+  //     name: 'Алексей',
+  //     image: require('../../assets/images/3.png'),
+  //     text: '👋 Привет, как дела?',
+  //     id: '3',
+  //   },
+  //   {
+  //     name: 'Владимир',
+  //     image: require('../../assets/images/4.png'),
+  //     fayl: '🤖 Работа 👨‍💻',
+  //     text: 'Давайте выберем первую возмо…',
+  //     id: '4',
+  //   },
+  //   {
+  //     name: 'Александр',
+  //     image: require('../../assets/images/1.png'),
+  //     fayl: 'Веб-программа',
+  //     text: 'GIF',
+  //     id: '5',
+  //   },
+  //   {
+  //     name: 'Евгений',
+  //     image: require('../../assets/images/2.png'),
+  //     text: 'Давайте выберем первую возможность',
+  //     id: '6',
+  //   },
+  //   {
+  //     name: 'Алексей',
+  //     image: require('../../assets/images/3.png'),
+  //     text: '👋 Привет, как дела?',
+  //     id: '7',
+  //   },
+  //   {
+  //     name: 'Владимир',
+  //     image: require('../../assets/images/4.png'),
+  //     fayl: '🤖 Работа 👨‍💻',
+  //     text: 'Давайте выберем первую возмо…',
+  //     id: '8',
+  //   },
+  //   {
+  //     name: 'Александр',
+  //     image: require('../../assets/images/1.png'),
+  //     fayl: 'Веб-программа',
+  //     text: 'GIF',
+  //     id: '9',
+  //   },
+  //   {
+  //     name: 'Евгений',
+  //     image: require('../../assets/images/2.png'),
+  //     text: 'Давайте выберем первую возможность',
+  //     id: '10',
+  //   },
+  // ])
 
   const menuBar = () => {
     bottomsheetRef2.current?.present()
@@ -138,8 +147,8 @@ export const ChatsScreen = () => {
       </View>
 
       <FlatList
-        data={data}
-        keyExtractor={(item, index) => item.image.toString() + index}
+        data={chats}
+        keyExtractor={(item, index) => item.toString() + index}
         renderItem={({ item, index }) => (
           <ChatsItem
             activeList={activeList}

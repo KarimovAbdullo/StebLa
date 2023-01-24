@@ -3,10 +3,12 @@ import Reactotron from 'reactotron'
 import { persistStore } from 'redux-persist'
 
 import { addTelegramReducer } from './addTelegramAcaunt/slice'
+import { chatReducer } from './chats/slice'
 import { userReducer } from './user/slice'
 
 const rootReducer = combineReducers({
   user: userReducer,
+  chats: chatReducer,
   addTelegram: addTelegramReducer,
 })
 

@@ -5,13 +5,13 @@ import React, { useEffect, useState } from 'react'
 import { Image, TouchableOpacity, View } from 'react-native'
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder'
 import R from 'res'
-import { IChatsInfo } from 'types/data'
+import { IChat } from 'types/data'
 
 import stylesConfig from './ChatsItem.styles'
 
 interface IProps {
   activeList: string[]
-  item: IChatsInfo
+  item: IChat
   setActiveList: (value: string[]) => void
 }
 
@@ -31,14 +31,14 @@ export const ChatsItem = ({ item, activeList, setActiveList }: IProps) => {
     navigate.navigate(R.routes.STATIC_CHAT_SCREEN)
   }
 
-  const onLongPress = () => {
-    setActiveList([...activeList, item.id])
-    console.log(activeList)
-    if (active) {
-      const delite = activeList.filter(i => i !== item.id)
-      setActiveList(delite)
-    }
-  }
+  // const onLongPress = () => {
+  //   setActiveList([...activeList, item.id])
+  //   console.log(activeList)
+  //   if (active) {
+  //     const delite = activeList.filter(i => i !== item.id)
+  //     setActiveList(delite)
+  //   }
+  // }
 
   const active = activeList.find(i => i === item.id)
 
@@ -85,9 +85,9 @@ export const ChatsItem = ({ item, activeList, setActiveList }: IProps) => {
       ) : (
         <TouchableOpacity
           style={[styles.container, active ? styles.active : {}]}
-          onLongPress={onLongPress}
+          // onLongPress={onLongPress}
           onPress={onStatickChats}>
-          <Image source={item.image} style={styles.imageContent} />
+          <Image source={item.thumbnail} style={styles.imageContent} />
           <View style={styles.textContent}>
             <View>
               <Typo.TextButton type="regular16">{item.name}</Typo.TextButton>
@@ -95,12 +95,15 @@ export const ChatsItem = ({ item, activeList, setActiveList }: IProps) => {
                 <Typo.TextButton type="regular15">{item.fayl}</Typo.TextButton>
               ) : null}
 
-              {item.text ? (
+              {item ? (
                 <Typo.TextButton color="textColor">{item.text}</Typo.TextButton>
               ) : null}
             </View>
 
-            <TouchableOpacity style={styles.checkContent} onPress={onLongPress}>
+            <TouchableOpacity
+              style={styles.checkContent}
+              //  onPress={onLongPress}
+            >
               {active ? <R.icons.ActiveCheckIcon /> : <R.icons.CheckIcon />}
             </TouchableOpacity>
           </View>

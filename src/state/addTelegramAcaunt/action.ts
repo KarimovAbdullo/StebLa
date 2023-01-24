@@ -1,7 +1,13 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit'
 import apiClient from 'api/instance'
 import R from 'res'
-import { ILogin, ITelegram, ITelegramVeryfiy } from 'types/data'
+import { store } from 'state'
+import {
+  ILogin,
+  ITelegram,
+  ITelegramVeryfiy,
+  IUpdateUserInfo,
+} from 'types/data'
 
 // export const signOutUser = createAction('user/signOut')
 export const changeLanguage = createAction<'ru' | 'en'>('addTelegram/language')
@@ -46,6 +52,13 @@ export const verifyTelegram = createAsyncThunk<
       R.consts.API_PATH_TELEGRAM_VERFY,
       { ...arg.data, code: arg.data.code.toString().replace(/\D/g, '') },
     )
+    if (!response?.error) {
+      // const token = store.getState().user?.token?.accessToken
+      // const { data: updateRes } = await apiClient.post<IUpdateUserInfo>(
+      //   R.consts.API_PATH_UPDATE_USER_INFO,
+      //   { accessToken: token, userInfo: { hasTelegram: true } },
+      // )
+    }
 
     arg.onSuccess?.(response)
     return response

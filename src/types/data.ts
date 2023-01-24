@@ -121,4 +121,13 @@ export interface ITelegram {
 
 export interface ITelegramVeryfiy {
   code: string
+  error?: string
+}
+interface IhasTelegram {
+  hasTelegram: boolean
+}
+
+export interface IUpdateUserInfo {
+  accessToken: string
+  userInfo: IhasTelegram
 }

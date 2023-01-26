@@ -1,12 +1,12 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit'
 import apiClient from 'api/instance'
 import R from 'res'
-import { store } from 'state'
+// import { store } from 'state'
 import {
   ILogin,
   ITelegram,
   ITelegramVeryfiy,
-  IUpdateUserInfo,
+  // IUpdateUserInfo,
 } from 'types/data'
 
 // export const signOutUser = createAction('user/signOut')

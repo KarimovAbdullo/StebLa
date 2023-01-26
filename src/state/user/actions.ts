@@ -2,8 +2,10 @@ import { createAction, createAsyncThunk } from '@reduxjs/toolkit'
 import apiClient from 'api/instance'
 import R from 'res'
 import {
+  IChatsList,
   IError,
   ILogin,
+  ILoginSuccessResponse,
   ISendCode,
   ISendCodeResponse,
   IToken,
@@ -43,12 +45,12 @@ export const sendConfirmCode = createAsyncThunk<
     throw e
   }
 })
-//
+
 export const login = createAsyncThunk<
-  { token: IToken; user: IUser } | null,
+  ILoginSuccessResponse | null,
   {
     data: ILogin
-    onSuccess?: (data: { token: IToken; user: IUser }) => void
+    onSuccess?: (data: ILoginSuccessResponse) => void
     onError?: (error?: string) => void
   }
 >('user/login', async arg => {
@@ -68,9 +70,22 @@ export const login = createAsyncThunk<
         { accessToken: response?.accessToken },
       )
 
+      let hasTelegram = false
+
+      try {
+        await apiClient.get<IChatsList>(R.consts.API_PATH_GET_CHATS)
+        hasTelegram = true
+      } catch {
+        hasTelegram = false
+      }
+
       if (loginResponse.ok) {
-        arg.onSuccess?.({ token: response, user: loginResponse })
-        return { token: response, user: loginResponse }
+        arg.onSuccess?.({
+          token: response,
+          user: loginResponse,
+          hasTelegram,
+        })
+        return { token: response, user: loginResponse, hasTelegram: true }
       } else {
         arg.onError?.(loginResponse.msg)
         throw loginResponse.msg

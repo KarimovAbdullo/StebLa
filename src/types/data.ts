@@ -107,6 +107,7 @@ export interface IUser {
   phoneIsConfirmed: boolean
   inn: string
   is_online: boolean
+  hasTelegram: boolean
   userinfo: {
     property1: {}
     property2: {}
@@ -131,11 +132,17 @@ export interface ITelegramVeryfiy {
   code: string
   error?: string
 }
-interface IhasTelegram {
+export interface IHasTelegram {
   hasTelegram: boolean
 }
 
 export interface IUpdateUserInfo {
   accessToken: string
-  userInfo: IhasTelegram
+  // userInfo: IHasTelegram
+}
+
+export interface ILoginSuccessResponse {
+  token: IToken
+  user: IUser
+  hasTelegram: boolean
 }

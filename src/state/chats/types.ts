@@ -1,7 +1,7 @@
-import { IChats } from 'types/data'
+import { IChat } from 'types/data'
 
 export type ChatsState = {
-  chats: IChats[]
+  chats: IChat[]
   loading: boolean
   language: 'ru' | 'en'
 }

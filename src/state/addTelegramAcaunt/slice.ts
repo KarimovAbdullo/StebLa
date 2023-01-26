@@ -31,7 +31,7 @@ const addTelegramSlice = createSlice({
     },
     [addTelegram.fulfilled.type]: state => {
       console.log('okey')
-      state.loading = true
+      state.loading = false
     },
     [addTelegram.rejected.type]: state => {
       console.log('xato')

@@ -148,6 +148,14 @@ export interface ILoginSuccessResponse {
   hasTelegram: boolean
 }
 
+export interface IIcon {
+  iconId: string | number
+}
+
+export interface IIcondata {
+  id: string | number
+  thumbnail: string
+}
 export interface IRuleResponse {
   chatId: number
   userId: string | undefined

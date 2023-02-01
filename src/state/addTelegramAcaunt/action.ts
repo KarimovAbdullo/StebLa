@@ -28,7 +28,7 @@ export const addTelegram = createAsyncThunk<
     console.log('asdasd')
     const { data: response } = await apiClient.post<string>(
       R.consts.API_PATH_TELEGRAM_INIT,
-      { ...arg.data, phone: arg.data.phone.toString().replace(/\D/g, '') },
+      { ...arg.data, phone: arg.data.phone.toString() },
     )
 
     arg.onSuccess?.(response)

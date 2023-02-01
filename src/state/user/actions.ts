@@ -6,6 +6,7 @@ import {
   IError,
   ILogin,
   ILoginSuccessResponse,
+  IPubliKey,
   ISendCode,
   ISendCodeResponse,
   IToken,
@@ -69,6 +70,19 @@ export const login = createAsyncThunk<
         R.consts.API_PATH_GET_USER_INFO,
         { accessToken: response?.accessToken },
       )
+      const jwtDecode = require('jwt-decode')
+      const token = response.accessToken
+      const decoded = jwtDecode(token)
+      console.log('TOOOOOKEEEENNN')
+
+      try {
+        ////
+        console.log('PUBLIK KEY')
+        await apiClient.post<IPubliKey>(R.consts.API_PATH_GET_PUBLIC_KEY, {})
+      } catch (e) {
+        arg.onError?.()
+        throw e
+      }
 
       let hasTelegram = false
 
@@ -88,7 +102,11 @@ export const login = createAsyncThunk<
           user: loginResponse,
           hasTelegram,
         })
-        return { token: response, user: loginResponse, hasTelegram: true }
+        return {
+          token: response,
+          user: { ...loginResponse, id: decoded.sub },
+          hasTelegram: true,
+        }
       } else {
         arg.onError?.(loginResponse.msg)
         throw loginResponse.msg

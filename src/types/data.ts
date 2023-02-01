@@ -1,3 +1,4 @@
+import { ReactElement } from 'react'
 import { ImageSourcePropType } from 'react-native'
 
 export interface IForm {
@@ -27,7 +28,7 @@ export interface IUserInfo {
 }
 
 export interface IChatsInfo {
-  id: 0
+  id: string
   name?: string
   thumbnail?: string
 }
@@ -115,7 +116,7 @@ export interface IUser {
 }
 
 export interface IChat {
-  id: string
+  id: number
   name: string
   thumbnail: string
 }
@@ -154,4 +155,21 @@ export interface IIcon {
 export interface IIcondata {
   id: string | number
   thumbnail: string
+}
+export interface IRuleResponse {
+  chatId: number
+  userId: string | undefined
+  rules: string[]
+}
+
+export interface IRuleData {
+  id: number
+  text?: string
+  icon?: ReactElement
+}
+
+export interface IPubliKey {
+  kty: string
+  n: string
+  e: string
 }

@@ -61,13 +61,13 @@ export const StaticListChatScreen = () => {
       image: require('../../assets/images/1.png'),
       fayl: 'Веб-программа',
       text: 'GIF',
-      id: '1',
+      id: 1,
     },
     {
       name: 'Евгений',
       image: require('../../assets/images/2.png'),
       text: 'Давайте выберем первую возможность',
-      id: '2',
+      id: 2,
     },
     {
       name: 'Алексей',

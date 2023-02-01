@@ -12,10 +12,10 @@ export type TNavigationParams = {
   [R.routes.MY_PROFILE_SCREEN]: string
   [R.routes.FORM_SCREEN]: { item: object } | undefined
   [R.routes.SCREEN_OTP]: { phone: string | number } | undefined
-  [R.routes.CREATE_RULE_SCREEN]: undefined
+  [R.routes.CREATE_RULE_SCREEN]: { chatId: number } | undefined
   [R.routes.USER_LIST_FORM_SCREEN]: { item: object } | undefined
   [R.routes.SCREEN_LIST_USERS]: undefined
-  [R.routes.CREATE_RULE_SCREEN]: undefined
+
   [R.routes.SCREEN_ADD_TELEGRAM_CODE]: { phone: string | number } | undefined
   [R.routes.SCREEN_ADD_TELEGRAM_NUM]: undefined
   [R.routes.screen_REGISTERED_TELEGRAMM_INFO]: undefined
@@ -26,4 +26,5 @@ export type TNavigationParams = {
   [R.routes.SCREEN_IMPORT_CHATS]: undefined
   [R.routes.SCREEN_START_INFO]: undefined
   [R.routes.SCREEN_HOME]: undefined
+  [R.routes.SCREEN_YOUR_LIST]: undefined
 }

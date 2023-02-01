@@ -20,6 +20,7 @@ import {
 import R from 'res'
 import { getChatsAction } from 'state/chats/actions'
 import { getChats } from 'state/chats/selectors'
+import { IChat } from 'types/data'
 import { lang } from 'utils/lang'
 
 import stylesConfig from './ChatsScreen.styles'
@@ -68,8 +69,8 @@ export const ChatsScreen = () => {
     dispatch(getChatsAction())
   }, [])
 
-  const changeButton = () => {
-    navigate.navigate(R.routes.CREATE_RULE_SCREEN)
+  const changeButton = (chatId: IChat) => {
+    navigate.navigate(R.routes.CREATE_RULE_SCREEN, { chatId: chatId.id })
   }
 
   const deliteList = () => {
@@ -143,7 +144,7 @@ export const ChatsScreen = () => {
           {activeButton ? (
             <CustomButton
               text={lang(`${T}.bottomText`)}
-              onPress={changeButton}
+              onPress={() => changeButton}
             />
           ) : (
             <>

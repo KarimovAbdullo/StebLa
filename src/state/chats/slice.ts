@@ -4,7 +4,7 @@ import { uniqBy } from 'lodash'
 import { PersistConfig, persistReducer } from 'redux-persist'
 import { IChatsList } from 'types/data'
 
-import { getChatsAction, getMoreChatsAction } from './actions'
+import { getChatsAction, getMoreChatsAction, getRuleAction } from './actions'
 import { ChatsState } from './types'
 
 const initialState: ChatsState = {
@@ -54,6 +54,16 @@ const chatSlice = createSlice({
       }
     },
     [getMoreChatsAction.rejected.type]: state => {
+      state.loading = false
+    },
+
+    [getRuleAction.pending.type]: state => {
+      state.loading = true
+    },
+    [getRuleAction.fulfilled.type]: state => {
+      state.loading = false
+    },
+    [getRuleAction.rejected.type]: state => {
       state.loading = false
     },
   },

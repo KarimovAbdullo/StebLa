@@ -12,6 +12,8 @@ export default createStyles(colors => ({
     marginBottom: '9@vs',
     marginTop: '7@vs',
     marginLeft: '9@s',
+    borderRadius: '40@s',
+    backgroundColor: colors.iconLine,
   },
   checkContent: {
     justifyContent: 'center',
@@ -44,5 +46,8 @@ export default createStyles(colors => ({
   sheetContent: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+  },
+  textContainer: {
+    justifyContent: 'center',
   },
 }))

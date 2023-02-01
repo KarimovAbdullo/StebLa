@@ -60,9 +60,9 @@ export const ChatsScreen = () => {
     navigate.navigate(R.routes.CREATE_RULE_SCREEN, { chatId: chatId.id })
   }
 
-  const deliteList = () => {
-    setActiveList([])
-  }
+  // const deliteList = () => {
+  //   setActiveList([])
+  // }
 
   const menuBar = () => {
     bottomsheetRef2.current?.present()
@@ -124,29 +124,57 @@ export const ChatsScreen = () => {
             styles.bottomContent,
             activeButton ? styles.activeButtonStyle : {},
           ]}>
-          {activeButton ? (
-            <CustomButton
-              text={lang(`${T}.bottomText`)}
-              onPress={() => changeButton}
-            />
-          ) : (
-            <>
-              <CustomButton
-                text={lang(`${T}.BtnTitle1`)}
-                style={styles.buttonBottom}
-                onPress={onLongPress}
-              />
+          <CustomButton
+            text={lang(`${T}.bottomText`)}
+            onPress={activeButton ? () => changeButton : onLongPress}
+          />
 
-              <CustomButton
-                text={lang(`${T}.BtnTitle2`)}
-                style={styles.buttonBottom2}
-                textStyle={styles.textButton}
-                onPress={deliteList}
-              />
-            </>
-          )}
+          {/* <>
+            <CustomButton
+              text={lang(`${T}.BtnTitle1`)}
+              style={styles.buttonBottom}
+              onPress={onLongPress}
+            />
+
+            <CustomButton
+              text={lang(`${T}.BtnTitle2`)}
+              style={styles.buttonBottom2}
+              textStyle={styles.textButton}
+              onPress={deliteList}
+            />
+          </> */}
         </View>
       ) : null}
     </View>
   )
 }
+
+// {activeList.length > 0 ? (
+//   <View
+//     style={[
+//       styles.bottomContent,
+//       activeButton ? styles.activeButtonStyle : {},
+//     ]}>
+//     {activeButton ? (
+//       <CustomButton
+//         text={lang(`${T}.bottomText`)}
+//         onPress={() => changeButton}
+//       />
+//     ) : (
+//       <>
+//         <CustomButton
+//           text={lang(`${T}.BtnTitle1`)}
+//           style={styles.buttonBottom}
+//           onPress={onLongPress}
+//         />
+
+//         <CustomButton
+//           text={lang(`${T}.BtnTitle2`)}
+//           style={styles.buttonBottom2}
+//           textStyle={styles.textButton}
+//           onPress={deliteList}
+//         />
+//       </>
+//     )}
+//   </View>
+// ) : null}

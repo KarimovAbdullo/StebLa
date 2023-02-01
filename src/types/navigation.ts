@@ -12,7 +12,7 @@ export type TNavigationParams = {
   [R.routes.MY_PROFILE_SCREEN]: string
   [R.routes.FORM_SCREEN]: { item: object } | undefined
   [R.routes.SCREEN_OTP]: { phone: string | number } | undefined
-  [R.routes.CREATE_RULE_SCREEN]: { chatId: number } | undefined
+  [R.routes.CREATE_RULE_SCREEN]: { chatId: string } | undefined
   [R.routes.USER_LIST_FORM_SCREEN]: { item: object } | undefined
   [R.routes.SCREEN_LIST_USERS]: undefined
 

@@ -49,5 +49,6 @@ export default createStyles(colors => ({
   },
   textContainer: {
     justifyContent: 'center',
+    width: '240@s',
   },
 }))

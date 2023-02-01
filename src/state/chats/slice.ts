@@ -1,15 +1,18 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { uniqBy } from 'lodash'
 import { PersistConfig, persistReducer } from 'redux-persist'
 import { IChatsList } from 'types/data'
 
-import { getChatsAction, getRuleAction } from './actions'
+import { getChatsAction, getMoreChatsAction, getRuleAction } from './actions'
 import { ChatsState } from './types'
 
 const initialState: ChatsState = {
   chats: [],
   loading: false,
   language: 'ru',
+  chatListPage: 1,
+  next: null,
 }
 
 const chatSlice = createSlice({
@@ -27,8 +30,30 @@ const chatSlice = createSlice({
     ) => {
       state.loading = false
       state.chats = action.payload.chatInfos
+      state.chatListPage = 1
     },
     [getChatsAction.rejected.type]: state => {
+      state.loading = false
+    },
+
+    [getMoreChatsAction.pending.type]: state => {
+      state.loading = true
+    },
+    [getMoreChatsAction.fulfilled.type]: (
+      state,
+      action: PayloadAction<IChatsList>,
+    ) => {
+      state.loading = false
+      if (state.chats) {
+        const newData = uniqBy(
+          [...state.chats, ...action.payload.chatInfos],
+          'id',
+        )
+        state.chats = newData
+        state.chatListPage += 1
+      }
+    },
+    [getMoreChatsAction.rejected.type]: state => {
       state.loading = false
     },
 

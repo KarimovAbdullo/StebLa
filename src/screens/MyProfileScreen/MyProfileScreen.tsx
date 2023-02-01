@@ -24,8 +24,6 @@ export const MyProfileScreen = () => {
   const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
   const { user } = useAppSelector(getUser)
 
-  console.log('fdfdfddf')
-
   const plus = () => {
     navigation.navigate(R.routes.SCREEN_IMPORT_CHATS)
     setCheck('plus')

@@ -146,3 +146,12 @@ export interface ILoginSuccessResponse {
   user: IUser
   hasTelegram: boolean
 }
+
+export interface IIcon {
+  iconId: string | number
+}
+
+export interface IIcondata {
+  id: string | number
+  thumbnail: string
+}

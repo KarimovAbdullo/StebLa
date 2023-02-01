@@ -10,7 +10,13 @@ import { useAppDispatch, useAppSelector } from 'hooks/redux'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { useEffect, useRef, useState } from 'react'
-import { FlatList, TextInput, TouchableOpacity, View } from 'react-native'
+import {
+  FlatList,
+  RefreshControl,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native'
 import R from 'res'
 import { getChatsAction } from 'state/chats/actions'
 import { getChats } from 'state/chats/selectors'
@@ -26,9 +32,20 @@ export const ChatsScreen = () => {
   const [activeButton, setActiveButton] = useState(false)
   const navigate = useSmartNavigation()
   const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
-  const { chats } = useAppSelector(getChats)
+  const { chats, loading } = useAppSelector(getChats)
   const dispatch = useAppDispatch()
-  const [loading, setLoading] = useState(false)
+
+  console.log(chats)
+
+  // const onLoad = () => {
+  //   // if (next) {
+  //   dispatch(getMoreChatsAction())
+  //   // }
+  // }
+
+  const onRefresh = () => {
+    dispatch(getChatsAction())
+  }
 
   const [loadingData] = useState([
     { id: '1' },
@@ -48,10 +65,6 @@ export const ChatsScreen = () => {
   console.log('chatList', chats)
 
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false)
-    }, 2000)
-    setLoading(true)
     dispatch(getChatsAction())
   }, [])
 
@@ -105,6 +118,10 @@ export const ChatsScreen = () => {
       ) : (
         <FlatList
           data={chats}
+          // onEndReached={onLoad}
+          refreshControl={
+            <RefreshControl refreshing={loading} onRefresh={onRefresh} />
+          }
           keyExtractor={(item, index) => item.toString() + index}
           renderItem={({ item }) => (
             <ChatsItem

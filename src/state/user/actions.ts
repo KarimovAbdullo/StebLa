@@ -73,7 +73,10 @@ export const login = createAsyncThunk<
       let hasTelegram = false
 
       try {
-        await apiClient.get<IChatsList>(R.consts.API_PATH_GET_CHATS)
+        await apiClient.get<IChatsList>(R.consts.API_PATH_GET_CHATS, {
+          params: { limit: 10, offset: 1 },
+        })
+
         hasTelegram = true
       } catch {
         hasTelegram = false

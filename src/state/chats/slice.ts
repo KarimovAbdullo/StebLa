@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { PersistConfig, persistReducer } from 'redux-persist'
 import { IChatsList } from 'types/data'
 
-import { getChatsAction } from './actions'
+import { getChatsAction, getRuleAction } from './actions'
 import { ChatsState } from './types'
 
 const initialState: ChatsState = {
@@ -29,6 +29,16 @@ const chatSlice = createSlice({
       state.chats = action.payload.chatInfos
     },
     [getChatsAction.rejected.type]: state => {
+      state.loading = false
+    },
+
+    [getRuleAction.pending.type]: state => {
+      state.loading = true
+    },
+    [getRuleAction.fulfilled.type]: state => {
+      state.loading = false
+    },
+    [getRuleAction.rejected.type]: state => {
       state.loading = false
     },
   },

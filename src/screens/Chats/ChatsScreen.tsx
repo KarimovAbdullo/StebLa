@@ -60,6 +60,10 @@ export const ChatsScreen = () => {
     { id: '9' },
   ])
 
+  // const onLoading = () => {
+  //   dispatch(getMoreChatsAction({ offset: chatListPage }))
+  // }
+
   const onLongPress = () => {
     setActiveButton(!activeButton)
   }

@@ -15,6 +15,7 @@ import {
   View,
 } from 'react-native'
 import R from 'res'
+import { IChat } from 'types/data'
 import { lang } from 'utils/lang'
 
 import stylesConfig from './StaticChatScreen.style'
@@ -24,12 +25,21 @@ export interface IData {
   text?: string
 }
 
+interface IProps {
+  route: {
+    params: {
+      itemData: IChat
+    }
+  }
+}
+
 const T = R.lang.screen_staticChat
 
-export const StaticChatScreen = () => {
+export const StaticChatScreen = ({ route }: IProps) => {
   const styles = useStyles(stylesConfig)
   const navigation = useSmartNavigation()
   const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
+  const { itemData } = route.params
 
   const goBack = () => {
     navigation.goBack()
@@ -150,11 +160,11 @@ export const StaticChatScreen = () => {
             </TouchableOpacity>
 
             <Image
-              source={require('./../../assets/images/1.png')}
+              source={{ uri: 'data:image/png;base64,' + itemData.thumbnail }}
               style={styles.img}
             />
             <Typo.Title type="regular8" style={styles.text}>
-              Иван Петров
+              {itemData.name}
             </Typo.Title>
           </View>
 

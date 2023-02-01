@@ -30,6 +30,7 @@ export default createStyles(colors => ({
   img: {
     width: '44@vs',
     height: '44@vs',
+    borderRadius: '40@s',
   },
   hr: {
     width: '100%',

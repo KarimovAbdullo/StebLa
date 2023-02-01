@@ -59,10 +59,10 @@ export const ListUserItem = ({ item, activeList, setActiveList }: IProps) => {
   const active = activeList.find(i => i === item.id)
 
   const onRules = async () => {
-    bottomsheetRef2.current?.dismiss()
-    bottomsheetRef.current?.dismiss()
     // @ts-ignore
     navigate.navigate(R.routes.RATES_SCREEN)
+    bottomsheetRef2.current?.dismiss()
+    bottomsheetRef.current?.dismiss()
   }
 
   const changeItem = () => {

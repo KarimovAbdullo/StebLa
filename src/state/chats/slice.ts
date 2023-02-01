@@ -19,6 +19,7 @@ const chatSlice = createSlice({
   extraReducers: {
     [getChatsAction.pending.type]: state => {
       state.loading = true
+      state.chats = []
     },
     [getChatsAction.fulfilled.type]: (
       state,

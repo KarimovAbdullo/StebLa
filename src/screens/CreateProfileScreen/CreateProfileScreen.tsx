@@ -27,12 +27,8 @@ const CreateProfileScreen = () => {
   }
 
   const goTelegram = () => {
-    if (check === 'pro') {
-      //@ts-ignore
-      navigation.navigate(R.routes.SCREEN_ADD_TELEGRAM_INFO)
-    } else {
-      navigation.navigate(R.routes.SCREEN_CHATS)
-    }
+    //@ts-ignore
+    navigation.navigate(R.routes.SCREEN_ADD_TELEGRAM_INFO)
   }
 
   return (

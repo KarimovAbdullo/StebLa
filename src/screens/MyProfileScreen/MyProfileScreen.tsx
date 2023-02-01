@@ -3,11 +3,13 @@ import BottomSheet from 'components/BottomSheet'
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
 import Menu from 'components/Menu/Menu'
 import Typo from 'components/typo'
+import { useAppSelector } from 'hooks/redux'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { useRef, useState } from 'react'
 import { Image, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
 import R from 'res'
+import { getUser } from 'state/user/selectors'
 import { openEmail } from 'utils/helpers'
 import { lang } from 'utils/lang'
 
@@ -20,6 +22,9 @@ export const MyProfileScreen = () => {
   const styles = useStyles(stylesConfig)
   const [check, setCheck] = useState('')
   const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
+  const { user } = useAppSelector(getUser)
+
+  console.log('fdfdfddf')
 
   const plus = () => {
     navigation.navigate(R.routes.SCREEN_IMPORT_CHATS)
@@ -32,7 +37,7 @@ export const MyProfileScreen = () => {
   }
   const setting = () => {
     setCheck('setting')
-    navigation.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
+    navigation.navigate(R.routes.RATES_SCREEN)
   }
   const alert = async () => {
     await setCheck('alert')
@@ -53,12 +58,12 @@ export const MyProfileScreen = () => {
       <View style={styles.head}>
         <View style={styles.header}>
           <Image
-            source={require('./../../assets/images/ell.png')}
+            source={require('./../../assets/images/avatar.png')}
             style={styles.img}
           />
         </View>
         <Typo.Title type="regular18" style={styles.text}>
-          {lang(`${T}.name`)}
+          {user?.phone || ''}
         </Typo.Title>
 
         <TouchableOpacity style={styles.icon} onPress={menuBar}>

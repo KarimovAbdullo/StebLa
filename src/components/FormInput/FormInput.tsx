@@ -18,6 +18,7 @@ export const FormInput = ({
   placeholder,
   validate,
   name,
+  label,
   autoCapitalize,
   inputStyle,
   secureTextEntry,
@@ -53,7 +54,7 @@ export const FormInput = ({
           ref?.current?.isFocused() ? styles.activeInput : {},
         ]}>
         <View style={[styles.itemsContent]}>
-          <Text style={styles.t}>Имя пользователя</Text>
+          <Text style={styles.t}>{label}</Text>
           <View style={styles.inputContent}>
             <TextInput
               style={[styles.input, inputStyle]}

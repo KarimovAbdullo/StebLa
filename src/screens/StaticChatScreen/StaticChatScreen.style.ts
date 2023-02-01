@@ -38,6 +38,7 @@ export default createStyles((colors, font) => ({
     width: '40@s',
     height: '40@s',
     marginLeft: '10@s',
+    borderRadius: '30@s',
   },
   itemConten: {
     justifyContent: 'space-between',

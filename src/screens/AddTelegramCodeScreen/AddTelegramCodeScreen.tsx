@@ -65,9 +65,7 @@ export const AddTelegramCodeScreen: React.FC<IProps> = ({ route }) => {
         <TouchableOpacity style={styles.iconContent} onPress={goNum}>
           <R.icons.PhoneIcon />
 
-          <Typo.TextButton color="iconPrimary">
-            + 7 987 789 456 21
-          </Typo.TextButton>
+          <Typo.TextButton color="iconPrimary">{phone}</Typo.TextButton>
           <R.icons.PensilIcon />
         </TouchableOpacity>
 

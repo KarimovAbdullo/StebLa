@@ -6,15 +6,15 @@ import { useStyles } from 'hooks/useStyles'
 import React, { useRef, useState } from 'react'
 import { TextInput, TouchableOpacity, View } from 'react-native'
 import R from 'res'
-import { IData } from 'screens/CreateRuleScreen/CreateRuleScreen'
+import { IRuleData } from 'types/data'
 import { lang } from 'utils/lang'
 
 import styleConfig from './CreateRuleItems.style'
 
 interface IProps {
-  item: IData
-  state: IData[]
-  setState: (state: IData[]) => void
+  item: IRuleData
+  state: IRuleData[]
+  setState: (state: IRuleData[]) => void
 }
 
 const T = R.lang.screen_createRule

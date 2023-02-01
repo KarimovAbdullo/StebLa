@@ -6,25 +6,34 @@ import { CreateRuleItems } from 'components/CreateRuleItems/CreateRuleItems'
 import { CustomButton } from 'components/CustomButton/CustomButton'
 import Menu from 'components/Menu/Menu'
 import Typo from 'components/typo'
+import { useAppDispatch, useAppSelector } from 'hooks/redux'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
-import React, { ReactElement, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { FlatList, SafeAreaView, TouchableOpacity, View } from 'react-native'
 import R from 'res'
+import { getRuleAction } from 'state/chats/actions'
+import { IRuleData, IRuleResponse } from 'types/data'
 import { lang } from 'utils/lang'
 
 import styleConfig from './CreateRule.style'
 
 const T = R.lang.screen_createRule
 
-export interface IData {
-  id: number
-  text?: string
-  icon?: ReactElement
+interface IProps {
+  route: {
+    params: {
+      chatId: number
+    }
+  }
 }
 
-const CreateRuleScreen = () => {
+const CreateRuleScreen: React.FC<IProps> = ({ route }) => {
+  const UserId = useAppSelector(state => state.user.token?.accessToken)
+
+  const { chatId } = route.params || {}
   const styles = useStyles(styleConfig)
+  const dispatch = useAppDispatch()
   const navigation = useSmartNavigation()
   const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
 
@@ -32,12 +41,24 @@ const CreateRuleScreen = () => {
     bottomsheetRef2.current?.present()
   }
 
-  const onYourList = () => {
-    // @ts-ignore
-    navigation.navigate(R.routes.SCREEN_YOUR_LIST)
+  const onYourList = async (data: IRuleResponse) => {
+    const rule: string[] = state.filter(i => i.text).map(i => i.text || '')
+    dispatch(
+      getRuleAction({
+        data: { ...data, rules: rule, chatId, userId: UserId },
+        onSuccess: () => {
+          navigation.navigate(R.routes.SCREEN_YOUR_LIST)
+        },
+      }),
+    )
   }
 
-  const [state, setState] = useState<IData[]>([
+  // const onYourList = () => {
+  //   // @ts-ignore
+  //   navigation.navigate(R.routes.SCREEN_YOUR_LIST)
+  // }
+
+  const [state, setState] = useState<IRuleData[]>([
     { id: 1, text: 'Огонь.' },
     { id: 2, text: 'Ведро' },
     { id: 3, text: 'Фабрикант' },
@@ -84,7 +105,7 @@ const CreateRuleScreen = () => {
         <CustomButton
           text={lang(`${T}.btnTitle`)}
           style={styles.btn}
-          onPress={onYourList}
+          onPress={() => onYourList}
         />
       </SafeAreaView>
     </Container>

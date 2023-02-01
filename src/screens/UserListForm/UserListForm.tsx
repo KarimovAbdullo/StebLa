@@ -29,6 +29,7 @@ export const UserListForm = ({ route }: IProps) => {
   const navigation = useSmartNavigation()
   const styles = useStyles(stylesConfig)
   const { item } = route.params
+  const [newTitle, setNewTitle] = React.useState('')
 
   console.log(item)
 
@@ -38,6 +39,13 @@ export const UserListForm = ({ route }: IProps) => {
     // @ts-ignore
     navigation.goBack()
   }
+
+  // const endInput = () => {
+  //   const newData = state.map(i =>
+  //     i.id === item.id ? { ...i, text: newTitle } : i,
+  //   )
+  //   setState(newData)
+  // }
 
   const initialValues: IUserListForm = {
     firsName: item.text,
@@ -62,20 +70,29 @@ export const UserListForm = ({ route }: IProps) => {
             <View style={styles.inputContent}>
               <View style={styles.inp}>
                 <FormInput
-                  label="+"
+                  label="Имя пользователя"
                   validate={validator(requir)}
                   name="firsName"
                   placeholder="_"
                   placeholderTextColor={R.colors.grey}
                   secureTextEntry={false}
                   keyboardType="default"
-                  maxLength={12}
+                  value={newTitle}
+                  onChangeText={setNewTitle}
                 />
+                {/* <TextInput
+                    defaultValue={item.text}
+                    style={styles.tt}
+                    autoFocus={true}
+                    onEndEditing={endInput}
+                    onChangeText={setNewText}
+                    value={newText} */}
+                {/* /> */}
               </View>
 
               <View style={styles.inp}>
                 <FormInput
-                  label="+"
+                  label="Номер пользователя"
                   validate={validator(requir)}
                   name="secondName"
                   placeholder="_"

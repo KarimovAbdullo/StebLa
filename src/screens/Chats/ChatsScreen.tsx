@@ -4,6 +4,7 @@ import ChatsItem from 'components/ChatsItem'
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
 import { CustomButton } from 'components/CustomButton/CustomButton'
 import Menu from 'components/Menu/Menu'
+import { SkeletLoading } from 'components/SkeletLoading/SkeletLoading'
 import Typo from 'components/typo'
 import { useAppDispatch, useAppSelector } from 'hooks/redux'
 import useSmartNavigation from 'hooks/useSmartNavigation'
@@ -28,6 +29,19 @@ export const ChatsScreen = () => {
   const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
   const { chats } = useAppSelector(getChats)
   const dispatch = useAppDispatch()
+  const [loading, setLoading] = useState(false)
+
+  const [loadingData] = useState([
+    { id: '1' },
+    { id: '2' },
+    { id: '3' },
+    { id: '4' },
+    { id: '5' },
+    { id: '6' },
+    { id: '7' },
+    { id: '8' },
+    { id: '9' },
+  ])
 
   const onLongPress = () => {
     setActiveButton(!activeButton)
@@ -35,6 +49,10 @@ export const ChatsScreen = () => {
   console.log('chatList', chats)
 
   useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000)
+    setLoading(true)
     dispatch(getChatsAction())
   }, [])
 
@@ -45,74 +63,6 @@ export const ChatsScreen = () => {
   const deliteList = () => {
     setActiveList([])
   }
-
-  // const [data] = useState<IChatsInfo[]>([
-  //   {
-  //     name: 'Александр',
-  //     image: require('../../assets/images/1.png'),
-  //     fayl: 'Веб-программа',
-  //     text: 'GIF',
-  //     id: '1',
-  //   },
-  //   {
-  //     name: 'Евгений',
-  //     image: require('../../assets/images/2.png'),
-  //     text: 'Давайте выберем первую возможность',
-  //     id: '2',
-  //   },
-  //   {
-  //     name: 'Алексей',
-  //     image: require('../../assets/images/3.png'),
-  //     text: '👋 Привет, как дела?',
-  //     id: '3',
-  //   },
-  //   {
-  //     name: 'Владимир',
-  //     image: require('../../assets/images/4.png'),
-  //     fayl: '🤖 Работа 👨‍💻',
-  //     text: 'Давайте выберем первую возмо…',
-  //     id: '4',
-  //   },
-  //   {
-  //     name: 'Александр',
-  //     image: require('../../assets/images/1.png'),
-  //     fayl: 'Веб-программа',
-  //     text: 'GIF',
-  //     id: '5',
-  //   },
-  //   {
-  //     name: 'Евгений',
-  //     image: require('../../assets/images/2.png'),
-  //     text: 'Давайте выберем первую возможность',
-  //     id: '6',
-  //   },
-  //   {
-  //     name: 'Алексей',
-  //     image: require('../../assets/images/3.png'),
-  //     text: '👋 Привет, как дела?',
-  //     id: '7',
-  //   },
-  //   {
-  //     name: 'Владимир',
-  //     image: require('../../assets/images/4.png'),
-  //     fayl: '🤖 Работа 👨‍💻',
-  //     text: 'Давайте выберем первую возмо…',
-  //     id: '8',
-  //   },
-  //   {
-  //     name: 'Александр',
-  //     image: require('../../assets/images/1.png'),
-  //     fayl: 'Веб-программа',
-  //     text: 'GIF',
-  //     id: '9',
-  //   },
-  //   {
-  //     name: 'Евгений',
-  //     image: require('../../assets/images/2.png'),
-  //     text: 'Давайте выберем первую возможность',
-  //     id: '10',
-  //   },
-  // ])
 
   const menuBar = () => {
     bottomsheetRef2.current?.present()
@@ -147,18 +97,27 @@ export const ChatsScreen = () => {
         </View>
       </View>
 
-      <FlatList
-        data={chats}
-        keyExtractor={(item, index) => item.toString() + index}
-        renderItem={({ item, index }) => (
-          <ChatsItem
-            activeList={activeList}
-            item={item}
-            key={index}
-            setActiveList={setActiveList}
-          />
-        )}
-      />
+      {loading ? (
+        <FlatList
+          data={loadingData}
+          keyExtractor={(item, index) => item.toString() + index}
+          renderItem={({ item }) => <SkeletLoading key={item.id} />}
+        />
+      ) : (
+        <FlatList
+          data={chats}
+          keyExtractor={(item, index) => item.toString() + index}
+          renderItem={({ item }) => (
+            <ChatsItem
+              activeList={activeList}
+              item={item}
+              key={item.id}
+              setActiveList={setActiveList}
+            />
+          )}
+        />
+      )}
+
       {activeList.length > 0 ? (
         <View
           style={[

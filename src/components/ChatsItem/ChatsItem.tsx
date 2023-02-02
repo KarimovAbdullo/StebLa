@@ -10,9 +10,9 @@ import { IChat, IIcondata } from 'types/data'
 import stylesConfig from './ChatsItem.styles'
 
 interface IProps {
-  activeList: string[]
+  activeList: number[]
   item: IChat
-  setActiveList: (value: string[]) => void
+  setActiveList: (value: number[]) => void
 }
 
 export const ChatsItem = ({ item, activeList, setActiveList }: IProps) => {
@@ -25,8 +25,6 @@ export const ChatsItem = ({ item, activeList, setActiveList }: IProps) => {
   }, [item])
 
   const active = activeList.find(i => i === item.id)
-
-  console.log('host', active)
 
   const onLongPress = () => {
     setActiveList([...activeList, item.id])

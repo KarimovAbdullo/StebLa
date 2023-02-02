@@ -1,6 +1,6 @@
 import { useStyles } from 'hooks/useStyles'
 import React from 'react'
-import { ActivityIndicator, Text, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, Text, TouchableOpacity } from 'react-native'
 
 interface IProps {
   text: string | string[] | undefined

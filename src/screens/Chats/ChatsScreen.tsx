@@ -21,7 +21,6 @@ import {
 import R from 'res'
 import { getChatsAction, getMoreChatsAction } from 'state/chats/actions'
 import { getChats } from 'state/chats/selectors'
-import { IChat } from 'types/data'
 import { lang } from 'utils/lang'
 
 import stylesConfig from './ChatsScreen.styles'
@@ -30,7 +29,7 @@ const T = R.lang.screen_chats
 
 export const ChatsScreen = () => {
   const styles = useStyles(stylesConfig)
-  const [activeList, setActiveList] = useState<string[]>([])
+  const [activeList, setActiveList] = useState<number[]>([])
   const [activeButton, setActiveButton] = useState(false)
   const navigate = useSmartNavigation()
   const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
@@ -60,16 +59,18 @@ export const ChatsScreen = () => {
   }
   console.log('chatList', chats)
 
-  useEffect(() => {
-    onRefresh()
-  }, [])
-
   const onRefresh = () => {
     dispatch(getChatsAction())
   }
 
-  const changeButton = (chatId: IChat) => {
-    navigate.navigate(R.routes.CREATE_RULE_SCREEN, { chatId: chatId.id })
+  useEffect(() => {
+    onRefresh()
+  }, [])
+
+  const changeButton = () => {
+    navigate.navigate(R.routes.CREATE_RULE_SCREEN, {
+      chatId: activeList[0],
+    })
   }
 
   const deliteList = () => {
@@ -134,7 +135,7 @@ export const ChatsScreen = () => {
             <ChatsItem
               activeList={activeList}
               item={item}
-              key={item.id}
+              key={item.id.toString()}
               setActiveList={setActiveList}
             />
           )}
@@ -150,7 +151,7 @@ export const ChatsScreen = () => {
           {activeButton ? (
             <CustomButton
               text={lang(`${T}.bottomText`)}
-              onPress={() => changeButton}
+              onPress={changeButton}
             />
           ) : (
             <>

@@ -39,9 +39,11 @@ export default createStyles(colors => ({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: '10@vs',
-    backgroundColor: colors.main,
     alignSelf: 'center',
     marginTop: '30@vs',
+  },
+  button: {
+    width: '120@s',
   },
   modal: {
     backgroundColor: 'red',

@@ -13,7 +13,7 @@ import React, { useRef, useState } from 'react'
 import { FlatList, SafeAreaView, TouchableOpacity, View } from 'react-native'
 import R from 'res'
 import { getRuleAction } from 'state/chats/actions'
-import { IRuleData, IRuleResponse } from 'types/data'
+import { IRuleData } from 'types/data'
 import { lang } from 'utils/lang'
 
 import styleConfig from './CreateRule.style'
@@ -29,7 +29,7 @@ interface IProps {
 }
 
 const CreateRuleScreen: React.FC<IProps> = ({ route }) => {
-  const UserId = useAppSelector(state => state.user.token?.accessToken)
+  const userId = useAppSelector(state => state.user.user?.id)
 
   const { chatId } = route.params || {}
   const styles = useStyles(styleConfig)
@@ -41,11 +41,11 @@ const CreateRuleScreen: React.FC<IProps> = ({ route }) => {
     bottomsheetRef2.current?.present()
   }
 
-  const onYourList = async (data: IRuleResponse) => {
+  const onYourList = async () => {
     const rule: string[] = state.filter(i => i.text).map(i => i.text || '')
     dispatch(
       getRuleAction({
-        data: { ...data, rules: rule, chatId, userId: UserId },
+        data: { rules: rule, chatId, userId },
         onSuccess: () => {
           navigation.navigate(R.routes.SCREEN_YOUR_LIST)
         },
@@ -59,17 +59,18 @@ const CreateRuleScreen: React.FC<IProps> = ({ route }) => {
   // }
 
   const [state, setState] = useState<IRuleData[]>([
-    { id: 1, text: 'Огонь.' },
-    { id: 2, text: 'Ведро' },
-    { id: 3, text: 'Фабрикант' },
-    { id: 4, text: 'Молоко' },
-    { id: 5, text: 'Абрикос' },
-    { id: 6, icon: <R.icons.PlusCardIcon /> },
-    { id: 7, icon: <R.icons.PlusCardIcon /> },
-    { id: 8, icon: <R.icons.PlusCardIcon /> },
-    { id: 9, icon: <R.icons.PlusCardIcon /> },
-    { id: 10, icon: <R.icons.PlusCardIcon /> },
+    { id: 1 },
+    { id: 2 },
+    { id: 3 },
+    { id: 4 },
+    { id: 5 },
+    { id: 6 },
+    { id: 7 },
+    { id: 8 },
+    { id: 9 },
+    { id: 10 },
   ])
+  const isValid = state.find(i => i.text)
 
   return (
     <Container>
@@ -105,7 +106,8 @@ const CreateRuleScreen: React.FC<IProps> = ({ route }) => {
         <CustomButton
           text={lang(`${T}.btnTitle`)}
           style={styles.btn}
-          onPress={() => onYourList}
+          disabled={!isValid}
+          onPress={onYourList}
         />
       </SafeAreaView>
     </Container>

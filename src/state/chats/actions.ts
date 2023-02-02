@@ -68,16 +68,20 @@ export const getRuleAction = createAsyncThunk<
     onSuccess?: () => void
     onError?: () => void
   }
->('rule/get', async arg => {
+>('rule/posttttt', async arg => {
   try {
+    console.log('data', arg.data)
+
     const { data: response } = await apiClient.post<IRuleResponse>(
       R.consts.API_PATH_RULES,
+      arg.data,
     )
 
     if (response) {
       arg.onSuccess?.()
       return response
     }
+
     arg.onError?.()
     throw response
   } catch (e) {

@@ -20,7 +20,6 @@ import {
 import R from 'res'
 import { getChatsAction } from 'state/chats/actions'
 import { getChats } from 'state/chats/selectors'
-import { IChat } from 'types/data'
 import { lang } from 'utils/lang'
 
 import stylesConfig from './ChatsScreen.styles'
@@ -29,7 +28,7 @@ const T = R.lang.screen_chats
 
 export const ChatsScreen = () => {
   const styles = useStyles(stylesConfig)
-  const [activeList, setActiveList] = useState<string[]>([])
+  const [activeList, setActiveList] = useState<number[]>([])
   const [activeButton, setActiveButton] = useState(false)
   const navigate = useSmartNavigation()
   const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
@@ -73,8 +72,10 @@ export const ChatsScreen = () => {
     dispatch(getChatsAction())
   }, [])
 
-  const changeButton = (chatId: IChat) => {
-    navigate.navigate(R.routes.CREATE_RULE_SCREEN, { chatId: chatId.id })
+  const changeButton = () => {
+    navigate.navigate(R.routes.CREATE_RULE_SCREEN, {
+      chatId: activeList[0],
+    })
   }
 
   const deliteList = () => {
@@ -148,7 +149,7 @@ export const ChatsScreen = () => {
           {activeButton ? (
             <CustomButton
               text={lang(`${T}.bottomText`)}
-              onPress={() => changeButton}
+              onPress={changeButton}
             />
           ) : (
             <>
@@ -171,3 +172,33 @@ export const ChatsScreen = () => {
     </View>
   )
 }
+
+// {activeList.length > 0 ? (
+//   <View
+//     style={[
+//       styles.bottomContent,
+//       activeButton ? styles.activeButtonStyle : {},
+//     ]}>
+//     {activeButton ? (
+//       <CustomButton
+//         text={lang(`${T}.bottomText`)}
+//         onPress={() => changeButton}
+//       />
+//     ) : (
+//       <>
+//         <CustomButton
+//           text={lang(`${T}.BtnTitle1`)}
+//           style={styles.buttonBottom}
+//           onPress={onLongPress}
+//         />
+
+//         <CustomButton
+//           text={lang(`${T}.BtnTitle2`)}
+//           style={styles.buttonBottom2}
+//           textStyle={styles.textButton}
+//           onPress={deliteList}
+//         />
+//       </>
+//     )}
+//   </View>
+// ) : null}

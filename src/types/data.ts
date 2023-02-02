@@ -117,7 +117,7 @@ export interface IUser {
 }
 
 export interface IChat {
-  id: string
+  id: number
   name: string
   thumbnail: string
 }

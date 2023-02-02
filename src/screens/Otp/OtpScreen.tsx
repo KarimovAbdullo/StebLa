@@ -49,6 +49,7 @@ export const OtpScreen: React.FC<IProps> = ({ route }) => {
         data: { code: value ? value : code, credential: phone },
         onSuccess: data => {
           if (data.hasTelegram) {
+            // @ts-ignore
             navigation.navigate(R.routes.MY_PROFILE_SCREEN)
           } else {
             navigation.navigate(R.routes.SCREEN_CREATE_PROFILE)

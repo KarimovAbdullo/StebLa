@@ -11,6 +11,7 @@ import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { useEffect, useRef, useState } from 'react'
 import {
+  ActivityIndicator,
   FlatList,
   RefreshControl,
   TextInput,
@@ -18,7 +19,7 @@ import {
   View,
 } from 'react-native'
 import R from 'res'
-import { getChatsAction } from 'state/chats/actions'
+import { getChatsAction, getMoreChatsAction } from 'state/chats/actions'
 import { getChats } from 'state/chats/selectors'
 import { IChat } from 'types/data'
 import { lang } from 'utils/lang'
@@ -33,20 +34,10 @@ export const ChatsScreen = () => {
   const [activeButton, setActiveButton] = useState(false)
   const navigate = useSmartNavigation()
   const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
-  const { chats, loading } = useAppSelector(getChats)
+  const { chats, loading, offset, moreLoading } = useAppSelector(getChats)
   const dispatch = useAppDispatch()
 
   console.log(chats)
-
-  // const onLoad = () => {
-  //   // if (next) {
-  //   dispatch(getMoreChatsAction())
-  //   // }
-  // }
-
-  const onRefresh = () => {
-    dispatch(getChatsAction())
-  }
 
   const [loadingData] = useState([
     { id: '1' },
@@ -60,9 +51,9 @@ export const ChatsScreen = () => {
     { id: '9' },
   ])
 
-  // const onLoading = () => {
-  //   dispatch(getMoreChatsAction({ offset: chatListPage }))
-  // }
+  const onLoading = () => {
+    dispatch(getMoreChatsAction({ offset }))
+  }
 
   const onLongPress = () => {
     setActiveButton(!activeButton)
@@ -70,8 +61,12 @@ export const ChatsScreen = () => {
   console.log('chatList', chats)
 
   useEffect(() => {
-    dispatch(getChatsAction())
+    onRefresh()
   }, [])
+
+  const onRefresh = () => {
+    dispatch(getChatsAction())
+  }
 
   const changeButton = (chatId: IChat) => {
     navigate.navigate(R.routes.CREATE_RULE_SCREEN, { chatId: chatId.id })
@@ -123,9 +118,16 @@ export const ChatsScreen = () => {
       ) : (
         <FlatList
           data={chats}
-          // onEndReached={onLoad}
+          onEndReached={onLoading}
           refreshControl={
             <RefreshControl refreshing={loading} onRefresh={onRefresh} />
+          }
+          ListFooterComponent={
+            moreLoading
+              ? () => (
+                  <ActivityIndicator size="large" style={styles.loadingStyle} />
+                )
+              : undefined
           }
           keyExtractor={(item, index) => item.toString() + index}
           renderItem={({ item }) => (

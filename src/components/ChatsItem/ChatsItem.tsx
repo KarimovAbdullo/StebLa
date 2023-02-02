@@ -2,7 +2,7 @@ import apiClient from 'api/instance'
 import Typo from 'components/typo'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
-import React, { useCallback, useEffect, useMemo } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { Image, TouchableOpacity, View } from 'react-native'
 import R from 'res'
 import { IChat, IIcondata } from 'types/data'
@@ -24,7 +24,9 @@ export const ChatsItem = ({ item, activeList, setActiveList }: IProps) => {
     navigate.navigate(R.routes.STATIC_CHAT_SCREEN, { itemData: item })
   }, [item])
 
-  const active = useMemo(() => activeList.find(i => i === item.id), [item])
+  const active = activeList.find(i => i === item.id)
+
+  console.log('host', active)
 
   const onLongPress = () => {
     setActiveList([...activeList, item.id])

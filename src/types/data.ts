@@ -100,6 +100,7 @@ export interface IError {
 }
 
 export interface IUser {
+  id?: string
   ok: true
   roles: [string]
   email: string

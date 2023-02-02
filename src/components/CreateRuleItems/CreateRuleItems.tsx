@@ -63,7 +63,7 @@ export const CreateRuleItems = ({ state, item, setState }: IProps) => {
           style={styles.item}
           onPress={item.text ? onBottomSheetButton : pressInput}>
           <Typo.Body type="regular16" color="textSecondary">
-            {item.text ? item.text : item.icon}
+            {item.text || <R.icons.PlusCardIcon />}
           </Typo.Body>
         </TouchableOpacity>
       )}

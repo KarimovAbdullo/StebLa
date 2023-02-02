@@ -28,6 +28,7 @@ const T = R.lang.screen_form
 export const FormScreen = ({ route }: IProps) => {
   const navigation = useSmartNavigation()
   const styles = useStyles(stylesConfig)
+  // const [newText, setNewText] = useState('')
   const { item } = route.params
   console.log(item)
 

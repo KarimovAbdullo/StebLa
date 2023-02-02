@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-community/async-storage'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { uniqBy } from 'lodash'
 import { PersistConfig, persistReducer } from 'redux-persist'
+import R from 'res'
 import { IChatsList, IRuleResponse } from 'types/data'
 
 import { getChatsAction, getMoreChatsAction, getRuleAction } from './actions'
@@ -11,8 +12,9 @@ const initialState: ChatsState = {
   chats: [],
   loading: false,
   language: 'ru',
-  chatListPage: 1,
-  next: null,
+  offset: 0,
+  hasMore: true,
+  moreLoading: false,
 }
 
 const chatSlice = createSlice({
@@ -30,31 +32,27 @@ const chatSlice = createSlice({
     ) => {
       state.loading = false
       state.chats = action.payload.chatInfos
-      state.chatListPage = 1
+      state.offset = 9
     },
     [getChatsAction.rejected.type]: state => {
       state.loading = false
     },
 
     [getMoreChatsAction.pending.type]: state => {
-      state.loading = true
+      state.moreLoading = true
     },
     [getMoreChatsAction.fulfilled.type]: (
       state,
       action: PayloadAction<IChatsList>,
     ) => {
-      state.loading = false
-      if (state.chats) {
-        const newData = uniqBy(
-          [...state.chats, ...action.payload.chatInfos],
-          'id',
-        )
-        state.chats = newData
-        state.chatListPage += 1
-      }
+      state.moreLoading = false
+      state.chats = uniqBy([...state.chats, ...action.payload.chatInfos], 'id')
+      state.hasMore =
+        action.payload.chatInfos.length === R.consts.BASE_PAGE_LIMIT
+      state.offset += action.payload.chatInfos.length
     },
     [getMoreChatsAction.rejected.type]: state => {
-      state.loading = false
+      state.moreLoading = false
     },
 
     [getRuleAction.pending.type]: state => {

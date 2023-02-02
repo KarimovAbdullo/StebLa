@@ -18,7 +18,7 @@ const HomeScreen = () => {
   const navigate = useSmartNavigation()
 
   const goCreateScreen = () => {
-    navigate.navigate(R.routes.SCREEN_CREATE_PROFILE)
+    navigate.navigate(R.routes.CREATE_RULE_SCREEN)
   }
 
   const goWord = () => {
@@ -34,6 +34,7 @@ const HomeScreen = () => {
   }
 
   const onMyProfile = () => {
+    // @ts-ignore
     navigate.navigate(R.routes.MY_PROFILE_SCREEN)
   }
 

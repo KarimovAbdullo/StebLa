@@ -10,7 +10,7 @@ export const getChatsAction = createAsyncThunk<IChatsList>(
       const { data: response } = await apiClient.get<IChatsList>(
         R.consts.API_PATH_GET_CHATS,
         {
-          params: { limit: 10, offset: 1 },
+          params: { limit: 9, offset: 0 },
         },
       )
 
@@ -23,13 +23,16 @@ export const getChatsAction = createAsyncThunk<IChatsList>(
 
 export const getMoreChatsAction = createAsyncThunk<
   IChatsList,
-  { limit: number; offset: number }
+  { offset: number }
 >('chats/get-more-cahts', async arg => {
   try {
     const { data: response } = await apiClient.get<IChatsList>(
       R.consts.API_PATH_GET_CHATS,
       {
-        params: { limit: arg.limit, offset: arg.offset },
+        params: {
+          limit: R.consts.BASE_PAGE_LIMIT + arg.offset,
+          offset: arg.offset,
+        },
       },
     )
 

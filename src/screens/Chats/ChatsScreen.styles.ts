@@ -76,4 +76,7 @@ export default createStyles(colors => ({
     justifyContent: 'center',
     flexDirection: 'column',
   },
+  loadingStyle: {
+    marginVertical: '20@s',
+  },
 }))

@@ -11,6 +11,7 @@ import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { useEffect, useRef, useState } from 'react'
 import {
+  ActivityIndicator,
   FlatList,
   RefreshControl,
   TextInput,
@@ -18,7 +19,7 @@ import {
   View,
 } from 'react-native'
 import R from 'res'
-import { getChatsAction } from 'state/chats/actions'
+import { getChatsAction, getMoreChatsAction } from 'state/chats/actions'
 import { getChats } from 'state/chats/selectors'
 import { lang } from 'utils/lang'
 
@@ -32,20 +33,10 @@ export const ChatsScreen = () => {
   const [activeButton, setActiveButton] = useState(false)
   const navigate = useSmartNavigation()
   const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
-  const { chats, loading } = useAppSelector(getChats)
+  const { chats, loading, offset, moreLoading } = useAppSelector(getChats)
   const dispatch = useAppDispatch()
 
   console.log(chats)
-
-  // const onLoad = () => {
-  //   // if (next) {
-  //   dispatch(getMoreChatsAction())
-  //   // }
-  // }
-
-  const onRefresh = () => {
-    dispatch(getChatsAction())
-  }
 
   const [loadingData] = useState([
     { id: '1' },
@@ -59,17 +50,21 @@ export const ChatsScreen = () => {
     { id: '9' },
   ])
 
-  // const onLoading = () => {
-  //   dispatch(getMoreChatsAction({ offset: chatListPage }))
-  // }
+  const onLoading = () => {
+    dispatch(getMoreChatsAction({ offset }))
+  }
 
   const onLongPress = () => {
     setActiveButton(!activeButton)
   }
   console.log('chatList', chats)
 
-  useEffect(() => {
+  const onRefresh = () => {
     dispatch(getChatsAction())
+  }
+
+  useEffect(() => {
+    onRefresh()
   }, [])
 
   const changeButton = () => {
@@ -124,16 +119,23 @@ export const ChatsScreen = () => {
       ) : (
         <FlatList
           data={chats}
-          // onEndReached={onLoad}
+          onEndReached={onLoading}
           refreshControl={
             <RefreshControl refreshing={loading} onRefresh={onRefresh} />
+          }
+          ListFooterComponent={
+            moreLoading
+              ? () => (
+                  <ActivityIndicator size="large" style={styles.loadingStyle} />
+                )
+              : undefined
           }
           keyExtractor={(item, index) => item.toString() + index}
           renderItem={({ item }) => (
             <ChatsItem
               activeList={activeList}
               item={item}
-              key={item.id}
+              key={item.id.toString()}
               setActiveList={setActiveList}
             />
           )}
@@ -172,33 +174,3 @@ export const ChatsScreen = () => {
     </View>
   )
 }
-
-// {activeList.length > 0 ? (
-//   <View
-//     style={[
-//       styles.bottomContent,
-//       activeButton ? styles.activeButtonStyle : {},
-//     ]}>
-//     {activeButton ? (
-//       <CustomButton
-//         text={lang(`${T}.bottomText`)}
-//         onPress={() => changeButton}
-//       />
-//     ) : (
-//       <>
-//         <CustomButton
-//           text={lang(`${T}.BtnTitle1`)}
-//           style={styles.buttonBottom}
-//           onPress={onLongPress}
-//         />
-
-//         <CustomButton
-//           text={lang(`${T}.BtnTitle2`)}
-//           style={styles.buttonBottom2}
-//           textStyle={styles.textButton}
-//           onPress={deliteList}
-//         />
-//       </>
-//     )}
-//   </View>
-// ) : null}

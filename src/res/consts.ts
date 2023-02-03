@@ -3,6 +3,7 @@ import Config from 'react-native-config'
 
 // API list
 export const API_BASE_URL = Config.API_BASE_URL
+export const BASE_PAGE_LIMIT = 10
 
 export const API_PATH_SEND_CONFIRM_CODE = '/auth-back/api/v2/sendConfirmCode'
 export const API_PATH_LOGIN = '/auth-back/api/v2/login'

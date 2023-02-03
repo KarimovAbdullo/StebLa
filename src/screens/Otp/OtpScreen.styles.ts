@@ -52,6 +52,7 @@ export default createStyles(colors => ({
     borderRadius: '16@s',
     backgroundColor: colors.white,
     color: colors.textPrimary,
+    alignItems: 'center',
   },
   titleContent: {
     width: '210@s',

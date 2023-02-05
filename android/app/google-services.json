@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "496797471399",
-    "project_id": "notification-bceb4",
-    "storage_bucket": "notification-bceb4.appspot.com"
+    "project_number": "768124359182",
+    "project_id": "steblanoty",
+    "storage_bucket": "steblanoty.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:496797471399:android:c2c020588389c1b4dd8182",
+        "mobilesdk_app_id": "1:768124359182:android:667bc1f5759b5ff77ee25f",
         "android_client_info": {
           "package_name": "com.stebla"
         }
       },
       "oauth_client": [
         {
-          "client_id": "496797471399-fcprrg72uhatetgc7ab0ekn24m5cgs03.apps.googleusercontent.com",
+          "client_id": "768124359182-7fct1ummsi4um44cllb5vafn2qkn6bpa.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA2JTQ-xKgxl-lJFGObSqxfX6_J4Z8WUSs"
+          "current_key": "AIzaSyDJqrt8WzNGNNSHAM6rytx6gNXE-7EWqvs"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "496797471399-fcprrg72uhatetgc7ab0ekn24m5cgs03.apps.googleusercontent.com",
+              "client_id": "768124359182-7fct1ummsi4um44cllb5vafn2qkn6bpa.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -1,11 +1,13 @@
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
 import Typo from 'components/typo'
+import { useAppSelector } from 'hooks/redux'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import Config from 'react-native-config'
 import R from 'res'
+import { getUser } from 'state/user/selectors'
 import { lang } from 'utils/lang'
 
 import stylesConfig from './HomeScreen.styles'
@@ -16,30 +18,55 @@ const HomeScreen = () => {
   const styles = useStyles(stylesConfig)
   console.log(Config.SIZE_MATTERS_BASE_WIDTH)
   const navigate = useSmartNavigation()
+  const { user } = useAppSelector(getUser)
 
   const goCreateScreen = () => {
-    navigate.navigate(R.routes.CREATE_RULE_SCREEN)
+    if (user?.hasTelegram) {
+      navigate.navigate(R.routes.screen_REGISTERED_TELEGRAMM_INFO)
+    } else {
+      navigate.navigate(R.routes.CREATE_RULE_SCREEN)
+    }
   }
 
   const goWord = () => {
-    navigate.navigate(R.routes.SCTATIC_WORD_SCREEN)
+    if (user?.hasTelegram) {
+      navigate.navigate(R.routes.screen_REGISTERED_TELEGRAMM_INFO)
+    } else {
+      navigate.navigate(R.routes.SCTATIC_WORD_SCREEN)
+    }
   }
 
   const onNotification = () => {
-    navigate.navigate(R.routes.SCREEN_NOTIFICATIONS)
+    if (user?.hasTelegram) {
+      navigate.navigate(R.routes.screen_REGISTERED_TELEGRAMM_INFO)
+    } else {
+      navigate.navigate(R.routes.SCREEN_NOTIFICATIONS)
+    }
   }
 
   const onAcounts = () => {
+    if (user?.hasTelegram) {
+    } else {
+      navigate.navigate(R.routes.SCREEN_ACCOUNTS)
+    }
     navigate.navigate(R.routes.SCREEN_ACCOUNTS)
   }
 
   const onMyProfile = () => {
-    // @ts-ignore
-    navigate.navigate(R.routes.MY_PROFILE_SCREEN)
+    if (user?.hasTelegram) {
+      navigate.navigate(R.routes.screen_REGISTERED_TELEGRAMM_INFO)
+    } else {
+      // @ts-ignore
+      navigate.navigate(R.routes.MY_PROFILE_SCREEN)
+    }
   }
 
   const onRule = () => {
-    navigate.navigate(R.routes.RATES_SCREEN)
+    if (user?.hasTelegram) {
+      navigate.navigate(R.routes.screen_REGISTERED_TELEGRAMM_INFO)
+    } else {
+      navigate.navigate(R.routes.RATES_SCREEN)
+    }
   }
 
   return (

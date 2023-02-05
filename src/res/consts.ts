@@ -5,6 +5,8 @@ import Config from 'react-native-config'
 export const API_BASE_URL = Config.API_BASE_URL
 export const BASE_PAGE_LIMIT = 10
 
+export const FCM_TOKEN = '/noty/api/v1/firebaseToken'
+
 export const API_PATH_SEND_CONFIRM_CODE = '/auth-back/api/v2/sendConfirmCode'
 export const API_PATH_LOGIN = '/auth-back/api/v2/login'
 export const API_PATH_GET_USER_INFO = '/auth-back/api/v2/getUserInfo'
@@ -15,6 +17,7 @@ export const API_PATH_UPDATE_USER_INFO = '/auth-back/api/v2/updateUserInfo'
 export const API_PATH_TELEGRAM_INIT = '/bot-telegram-service/public/init'
 export const API_PATH_TELEGRAM_VERFY = '/bot-telegram-service/public/code'
 export const API_PATH_GET_CHATS_ICON = '/bot-telegram-service/public/icon'
+export const API_PATH_POST_NOTIFICATION_MESSAGE = '/api/private/putInboxMessage'
 //Device
 export const IS_ANDROID = Platform.OS === 'android'
 export const IS_IOS = !IS_ANDROID

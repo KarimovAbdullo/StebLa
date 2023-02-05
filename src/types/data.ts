@@ -174,3 +174,9 @@ export interface IPubliKey {
   n: string
   e: string
 }
+
+export interface INottificationData {
+  message: string
+  recipient: string
+  subject: string
+}

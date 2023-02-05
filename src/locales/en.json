@@ -71,7 +71,9 @@
 		"importChats": {
 			"name": "Import chats",
 			"label": "For the application to work, you need to import chats from telegrams",
-			"btnTitle": "Import"
+			"btnTitle": "Import",
+			"text": "Have you registered !",
+			"subText": "Now you need to customize the offer for yourself"
 		},
 		"listUser": {
 			"name": "A list of users",

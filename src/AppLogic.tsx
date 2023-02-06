@@ -8,7 +8,7 @@ import R from 'res'
 import { getUser } from 'state/user/selectors'
 import {
   getFCMToken,
-  NotificationListner,
+  notificationListner,
   requestUserPermission,
 } from 'utils/pushNotification'
 
@@ -32,11 +32,18 @@ const AppLogic = (props: IAppLogic) => {
   }, [])
 
   useEffect(() => {
-    NotificationListner()
-    requestUserPermission()
-    getFCMToken()
-    sendToken()
+    notification()
   }, [])
+
+  useEffect(() => {
+    sendToken()
+  }, [user])
+
+  const notification = async () => {
+    await requestUserPermission()
+
+    notificationListner()
+  }
 
   // App state
   useEffect(() => {}, [appState])
@@ -48,12 +55,17 @@ const AppLogic = (props: IAppLogic) => {
   })
 
   const sendToken = async () => {
-    const fcmToken = await getFCMToken()
-    console.log('hey', fcmToken)
+    if (!user) {
+      setTimeout(() => {
+        sendToken()
+      }, 1000)
+      return
+    }
 
-    // @ts-ignore
+    const fcmToken = await getFCMToken()
+
     if (fcmToken) {
-      apiClient.post(R.consts.FCM_TOKEN, { token: fcmToken, uid: user?.id })
+      apiClient.post(R.consts.FCM_TOKEN, { token: fcmToken, uid: user.id })
     }
   }
 

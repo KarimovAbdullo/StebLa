@@ -29,9 +29,7 @@ export async function getFCMToken() {
   return fcmToken
 }
 
-export const NotificationListner = () => {
-  // Assume a message-notification contains a "type" property in the data payload of the screen to open
-
+export const notificationListner = () => {
   messaging().onNotificationOpenedApp(remoteMessage => {
     console.log(
       'Notification caused app to open from background state:',

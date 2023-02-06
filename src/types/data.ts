@@ -194,3 +194,9 @@ export interface IReadNotification {
   msg_id: string
   msg_ids: string[]
 }
+
+export interface INottificationData {
+  message: string
+  recipient: string
+  subject: string
+}

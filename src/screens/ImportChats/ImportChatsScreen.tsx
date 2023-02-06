@@ -29,7 +29,7 @@ export const ImportChatsScreen = () => {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container]}>
       <FocusAwareStatusBar backgroundColor={R.colors.white} />
 
       <TouchableOpacity style={styles.icon} onPress={menuBar}>
@@ -39,8 +39,11 @@ export const ImportChatsScreen = () => {
         </BottomSheet>
       </TouchableOpacity>
 
-      <View style={styles.textContent}>
-        <Typo.Title type="regular28">{lang(`${T}.name`)}</Typo.Title>
+      <View style={[styles.textContent]}>
+        <Typo.Title type="regular021">{lang(`${T}.text`)}</Typo.Title>
+        <Typo.Title type="reg21" center style={styles.subTitle}>
+          {lang(`${T}.subText`)}
+        </Typo.Title>
 
         <Typo.Title center style={styles.subTitle}>
           {lang(`${T}.label`)}

@@ -16,7 +16,7 @@ export const getChatsAction = createAsyncThunk<IChatsList>(
 
       return response
     } catch (e) {
-      thunk.dispatch(getChatsAction)
+      thunk.dispatch(getChatsAction())
       throw e
     }
   },

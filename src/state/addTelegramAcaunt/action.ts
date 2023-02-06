@@ -12,10 +12,6 @@ import {
 // export const signOutUser = createAction('user/signOut')
 export const changeLanguage = createAction<'ru' | 'en'>('addTelegram/language')
 
-export const confirmOnBoarding = createAction<boolean>(
-  'addTelegram/startedData',
-)
-
 export const addTelegram = createAsyncThunk<
   string | null,
   {

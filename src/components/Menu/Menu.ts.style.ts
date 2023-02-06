@@ -23,7 +23,7 @@ export default createStyles(color => ({
     flexDirection: 'row',
     aligItems: 'center',
     // borderWidth: 1,
-    marginTop: '25@vs',
+    marginTop: '20@vs',
   },
   Main: {
     backgroundColor: color.white,

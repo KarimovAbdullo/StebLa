@@ -5,14 +5,14 @@ export default createStyles(colors => ({
     flexDirection: 'column',
     borderBottomWidth: '1.5@s',
     borderColor: colors.lightGrey,
-    paddingHorizontal: '20@s',
+    paddingRight: '20@s',
   },
   textContent: {
     justifyContent: 'center',
   },
   iconContent: {
     justifyContent: 'center',
-    paddingVertical: '15@vs',
+    paddingVertical: '10@vs',
     paddingRight: '15@s',
     alignItems: 'center',
   },
@@ -25,10 +25,5 @@ export default createStyles(colors => ({
 
   textContainer: {
     paddingHorizontal: '15@s',
-  },
-
-  labelStyle: {
-    marginTop: '25@vs',
-    marginBottom: '5@vs',
   },
 }))

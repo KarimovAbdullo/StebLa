@@ -15,6 +15,9 @@ export const API_PATH_UPDATE_USER_INFO = '/auth-back/api/v2/updateUserInfo'
 export const API_PATH_TELEGRAM_INIT = '/bot-telegram-service/public/init'
 export const API_PATH_TELEGRAM_VERFY = '/bot-telegram-service/public/code'
 export const API_PATH_GET_CHATS_ICON = '/bot-telegram-service/public/icon'
+export const API_PATH_GET_NOTIFICATION = '/noty/api/v1/getInboxMessages'
+export const API_PATH_READ_NOTIFICATION = '/noty/api/v1/markMessageRead'
+
 //Device
 export const IS_ANDROID = Platform.OS === 'android'
 export const IS_IOS = !IS_ANDROID

@@ -39,6 +39,13 @@ apiClient.interceptors.request.use((req: AxiosRequestConfig) => {
   return req
 })
 
+// apiClient.interceptors.request.use((req: AxiosRequestConfig) => {
+//   const token = store.getState().user?.token?.accessToken
+//   req.data = { ...(req.data || {}), accessToken: token }
+
+//   return req
+// })
+
 // function decamelize(object: any) {
 //   // @ts-ignore
 //   if (!(object && !(object instanceof File))) {

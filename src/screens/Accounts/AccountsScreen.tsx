@@ -9,12 +9,14 @@ import TelegramItem from 'components/TelegramItem'
 import Typo from 'components/typo'
 import WhastAppItem from 'components/WhastAppItem'
 import { Formik } from 'formik'
+// import { useAppSelector } from 'hooks/redux'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { useRef, useState } from 'react'
 import { FlatList, ScrollView, TouchableOpacity, View } from 'react-native'
 import R from 'res'
-import { ITelegramData, IWhastAppData } from 'types/data'
+// import { addTelegramSelector } from 'state/addTelegramAcaunt/selectors'
+import { IWhastAppData } from 'types/data'
 import { IAddAcountInfo } from 'types/data'
 import { lang } from 'utils/lang'
 import { required, validator } from 'utils/validators'
@@ -26,6 +28,7 @@ const T = R.lang.screen_acounts
 export const AccountsScreen = () => {
   const styles = useStyles(stylesConfig)
   const navigate = useSmartNavigation()
+  // const addTelegram = useAppSelector(addTelegramSelector)
 
   const [activeButton, setActiveButton] = React.useState(false)
   const [activeList, setActiveList] = useState<string[]>([])
@@ -38,9 +41,9 @@ export const AccountsScreen = () => {
     navigate.goBack()
   }
 
-  const [dataTelegram] = React.useState<ITelegramData[]>([
+  const [dataTelegram] = useState([
     {
-      title: 'Аккаунт Телеграмм 1',
+      title: 'addTelegram.token',
       id: '1',
     },
     {

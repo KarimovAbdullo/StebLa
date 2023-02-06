@@ -75,19 +75,22 @@ export const TelegramItem = ({ item, activeList, setActiveList }: IProps) => {
               {item.title}
             </Typo.Title>
           </View>
-
-          <R.icons.GroupIcon />
+          <TouchableOpacity
+            onPress={onLongPress}
+            style={{ paddingVertical: 10 }}>
+            <R.icons.GroupIcon />
+          </TouchableOpacity>
 
           <BottomSheet
             snapPoints={['20%']}
             ref={bottomsheetRef2}
             style={styles.bottomSheet}>
             <View>
-              <BottomSheetButtons
+              {/* <BottomSheetButtons
                 text="Открыть"
                 icon={<R.icons.DisableIcon />}
                 style={styles.button}
-              />
+              /> */}
 
               <BottomSheetButtons
                 text="Удалить"

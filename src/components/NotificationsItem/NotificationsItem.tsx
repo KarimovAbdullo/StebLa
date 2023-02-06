@@ -1,6 +1,6 @@
 import Typo from 'components/typo'
 import { useStyles } from 'hooks/useStyles'
-import React, { ReactNode, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder'
 import R from 'res'
@@ -8,13 +8,12 @@ import R from 'res'
 import stylesConfig from './NotificationsItem.styles'
 
 interface IProps {
-  name?: string
-  label?: string
   text: string
-  icon: ReactNode
+  // icon: ReactNode
+  onPress: () => void
 }
 
-export const NotificationsItems = ({ name, label, text, icon }: IProps) => {
+export const NotificationsItems = ({ text, onPress }: IProps) => {
   const styles = useStyles(stylesConfig)
   const [loading, setLoading] = useState(false)
 
@@ -67,22 +66,12 @@ export const NotificationsItems = ({ name, label, text, icon }: IProps) => {
         </SkeletonPlaceholder>
       ) : (
         <View style={styles.container}>
-          {name ? (
-            <Typo.Title center color="iconPrimary">
-              {name}
-            </Typo.Title>
-          ) : null}
-
-          {label ? (
-            <TouchableOpacity>
-              <Typo.Title color="main" style={styles.labelStyle}>
-                {label}
-              </Typo.Title>
-            </TouchableOpacity>
-          ) : null}
-
-          <TouchableOpacity style={styles.itemContent}>
-            <View style={styles.iconContent}>{icon}</View>
+          <TouchableOpacity style={styles.itemContent} onPress={onPress}>
+            {text ? (
+              <View style={styles.iconContent}>
+                <R.icons.TelegrammIcon />
+              </View>
+            ) : null}
 
             <View style={styles.textContent}>
               <Typo.Title type="regular16">{text}</Typo.Title>

@@ -25,6 +25,7 @@ export const AddTelegramNumScreen = () => {
   const styles = useStyles(stylesConfig)
   const dispatch = useAppDispatch()
   const { loading } = useAppSelector(addTelegramSelector)
+  const [error, setError] = React.useState('')
 
   const onSubmit = async (data: ITelegram) => {
     const response = await dispatch(
@@ -35,12 +36,8 @@ export const AddTelegramNumScreen = () => {
             phone: data.phone,
           })
         },
-        onError: () => {
-          // //@ts-ignore
-          // navigation.navigate(R.routes.SCREEN_ADD_TELEGRAM_CODE, {
-          //   phone: data.phone,
-          // })
-          console.log('kornakdawtas')
+        onError: e => {
+          setError(e || 'Server error')
         },
       }),
     )
@@ -80,6 +77,11 @@ export const AddTelegramNumScreen = () => {
                 maxLength={18}
               />
             </View>
+            {error ? (
+              <Typo.TextButton color="red" style={styles.errorText}>
+                {error || 'Server error'}
+              </Typo.TextButton>
+            ) : null}
 
             <View style={styles.buttonContent}>
               <LoginButton

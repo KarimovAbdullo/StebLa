@@ -5,6 +5,7 @@ import {
   changeLanguage,
   confirmOnBoarding,
   login,
+  onChangeTelegram,
   sendConfirmCode,
   // signOutUser,
 } from 'state/user/actions'
@@ -17,6 +18,7 @@ const initialState: UserState = {
   token: null,
   language: 'ru',
   onboardingSuccess: false,
+  hasTelegram: false,
 }
 
 const userSlice = createSlice({
@@ -52,14 +54,23 @@ const userSlice = createSlice({
     },
     [login.fulfilled.type]: (
       state,
-      action: PayloadAction<{ token: IToken; user: IUser }>,
+      action: PayloadAction<{
+        token: IToken
+        user: IUser
+        hasTelegram: boolean
+      }>,
     ) => {
       state.loading = false
       state.token = action.payload.token
       state.user = action.payload.user
+      state.hasTelegram = action.payload.hasTelegram
     },
     [login.rejected.type]: state => {
       state.loading = false
+    },
+
+    [onChangeTelegram.type]: (state, action: PayloadAction<boolean>) => {
+      state.hasTelegram = action.payload
     },
   },
 })

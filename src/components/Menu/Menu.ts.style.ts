@@ -7,7 +7,7 @@ export default createStyles(color => ({
     opacity: 0.6,
   },
   bottomCard: {
-    marginVertical: '25@vs',
+    marginVertical: '10@vs',
     flexDirection: 'row',
     aligItems: 'center',
   },

@@ -7,7 +7,7 @@ import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import Config from 'react-native-config'
 import R from 'res'
-import { getChats } from 'state/chats/selectors'
+import { getUser } from 'state/user/selectors'
 import { lang } from 'utils/lang'
 
 import stylesConfig from './HomeScreen.styles'
@@ -18,10 +18,11 @@ const HomeScreen = () => {
   const styles = useStyles(stylesConfig)
   console.log(Config.SIZE_MATTERS_BASE_WIDTH)
   const navigate = useSmartNavigation()
-  const { chats } = useAppSelector(getChats)
+
+  const { hasTelegram } = useAppSelector(getUser)
 
   const goCreateScreen = () => {
-    if (chats.length > 0) {
+    if (hasTelegram) {
       navigate.navigate(R.routes.CREATE_RULE_SCREEN)
     } else {
       navigate.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
@@ -29,7 +30,7 @@ const HomeScreen = () => {
   }
 
   const goWord = () => {
-    if (chats.length > 0) {
+    if (hasTelegram) {
       navigate.navigate(R.routes.SCTATIC_WORD_SCREEN)
     } else {
       navigate.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
@@ -37,7 +38,7 @@ const HomeScreen = () => {
   }
 
   const onNotification = () => {
-    if (chats.length > 0) {
+    if (hasTelegram) {
       navigate.navigate(R.routes.SCREEN_NOTIFICATIONS)
     } else {
       navigate.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
@@ -45,7 +46,7 @@ const HomeScreen = () => {
   }
 
   const onAcounts = () => {
-    if (chats.length > 0) {
+    if (hasTelegram) {
       navigate.navigate(R.routes.SCREEN_ACCOUNTS)
     } else {
       navigate.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
@@ -53,7 +54,7 @@ const HomeScreen = () => {
   }
 
   const onMyProfile = () => {
-    if (chats.length > 0) {
+    if (hasTelegram) {
       //@ts-ignore
       navigate.navigate(R.routes.MY_PROFILE_SCREEN)
     } else {
@@ -62,7 +63,7 @@ const HomeScreen = () => {
   }
 
   const onRule = () => {
-    if (chats.length > 0) {
+    if (hasTelegram) {
       navigate.navigate(R.routes.RATES_SCREEN)
     } else {
       navigate.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)

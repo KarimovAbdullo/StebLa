@@ -25,9 +25,15 @@ export const StartInfoScreen = () => {
     <View style={styles.container}>
       <FocusAwareStatusBar backgroundColor={R.colors.white} />
 
-      <View>
-        <Typo.Headline>{lang(`${T}.name`)}</Typo.Headline>
-        <Typo.Headline>{lang(`${T}.label`)}</Typo.Headline>
+      <View style={styles.card}>
+        <View style={{ flexDirection: 'column' }}>
+          <Typo.Headline type="reg20" center={true}>
+            {lang(`${T}.name`)}
+          </Typo.Headline>
+          <Typo.Headline center={true} type="reg20">
+            {lang(`${T}.label`)}
+          </Typo.Headline>
+        </View>
       </View>
 
       <CustomButton text={lang(`${T}.btnTitle`)} onPress={onSubmit} />

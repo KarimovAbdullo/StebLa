@@ -63,7 +63,7 @@ export const AddTelegramNumScreen = () => {
       </Typo.TextButton>
 
       <Formik onSubmit={onSubmit} initialValues={initialValues}>
-        {() => (
+        {({ values }) => (
           <>
             <View style={styles.inputContent}>
               <LoginInput
@@ -88,6 +88,7 @@ export const AddTelegramNumScreen = () => {
                 text={lang(`${T}.buttonText`)}
                 style={styles.button}
                 loading={loading}
+                disabled={values.phone === '' ? true : false}
               />
             </View>
           </>

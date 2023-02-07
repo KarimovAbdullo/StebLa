@@ -20,4 +20,7 @@ export default createStyles(color => ({
   inputContent: {
     marginTop: '25@vs',
   },
+  subtext: {
+    marginBottom: '20@vs',
+  },
 }))

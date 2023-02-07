@@ -14,7 +14,7 @@ import { addTelegram } from 'state/addTelegramAcaunt/action'
 import { addTelegramSelector } from 'state/addTelegramAcaunt/selectors'
 import { ITelegram } from 'types/data'
 import { lang } from 'utils/lang'
-import { required, validator } from 'utils/validators'
+import { LoginRequired, validator } from 'utils/validators'
 
 const T = R.lang.screen_addNumb
 
@@ -71,7 +71,7 @@ export const AddTelegramNumScreen = () => {
             <View style={styles.inputContent}>
               <LoginInput
                 label="+"
-                validate={validator(required)}
+                validate={validator(LoginRequired)}
                 name="phone"
                 placeholder="+ _ (_ _ _) _ _ _ _ _ _ _ _"
                 placeholderTextColor={R.colors.textPrimary}

@@ -20,4 +20,11 @@ export default createStyles(color => ({
   inputContent: {
     marginTop: '25@vs',
   },
+  card: {
+    flexDirection: 'row',
+    height: '200@vs',
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    paddingBottom: '10@vs',
+  },
 }))

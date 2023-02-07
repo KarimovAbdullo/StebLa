@@ -13,7 +13,14 @@ interface IProps {
     | number
     | (ReactNode | string | number)[]
   center?: boolean
-  type?: 'bold28' | 'bold24' | 'bold38' | 'bold42' | 'bold20' | 'bold16'
+  type?:
+    | 'bold28'
+    | 'bold24'
+    | 'bold38'
+    | 'bold42'
+    | 'bold20'
+    | 'bold16'
+    | 'reg20'
   style?: StyleProp<TextProps>
   numberOfLines?: number
   color?: keyof TThemeColors
@@ -73,6 +80,11 @@ const stylesConfig = createStyles((_colors, fonts) => ({
   },
   center: {
     textAlign: 'center',
+  },
+  reg20: {
+    fontSize: '22@ms',
+    fontFamily: fonts.Inter.medium,
+    lineHeight: '25@ms',
   },
 }))
 

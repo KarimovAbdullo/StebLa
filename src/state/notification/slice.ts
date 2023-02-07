@@ -1,16 +1,21 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { PersistConfig, persistReducer } from 'redux-persist'
-import { IGetNotification } from 'types/data'
+import { IGetNotification, IReadNotification } from 'types/data'
 
-import { getNotification, readNotification } from './action'
+import {
+  getReadNotification,
+  getUnreadNotification,
+  markNotification,
+} from './action'
 import { INotificationState } from './types'
 
 const initialState: INotificationState = {
-  ntfData: [],
+  unreadData: [],
+  readData: [],
   loading: false,
   language: 'ru',
-  unread_only: true,
+  msg_id: '',
 }
 
 const NotificSlice = createSlice({
@@ -18,30 +23,46 @@ const NotificSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    [getNotification.pending.type]: state => {
+    [getUnreadNotification.pending.type]: state => {
       state.loading = true
     },
-    [getNotification.fulfilled.type]: (
+    [getUnreadNotification.fulfilled.type]: (
       state,
       action: PayloadAction<IGetNotification[]>,
     ) => {
       state.loading = false
-      state.ntfData = action.payload
+      state.unreadData = action.payload
     },
-    [getNotification.rejected.type]: state => {
+    [getUnreadNotification.rejected.type]: state => {
       state.loading = false
     },
-    [readNotification.pending.type]: state => {
+    ///////////////////////////////////////////
+    [getReadNotification.pending.type]: state => {
       state.loading = true
     },
-    [readNotification.fulfilled.type]: (
+    [getReadNotification.fulfilled.type]: (
       state,
-      action: PayloadAction<{ read: boolean }>,
+      action: PayloadAction<IGetNotification[]>,
     ) => {
       state.loading = false
-      action.payload.read = true
+      state.readData = action.payload
     },
-    [readNotification.rejected.type]: state => {
+    [getReadNotification.rejected.type]: state => {
+      state.loading = false
+    },
+    ///////////////////////////////////////////////////
+
+    [markNotification.pending.type]: state => {
+      state.loading = true
+    },
+    [markNotification.fulfilled.type]: (
+      state,
+      action: PayloadAction<IReadNotification>,
+    ) => {
+      state.loading = false
+      state.msg_id = action.payload.msg_id
+    },
+    [markNotification.rejected.type]: state => {
       state.loading = false
     },
   },

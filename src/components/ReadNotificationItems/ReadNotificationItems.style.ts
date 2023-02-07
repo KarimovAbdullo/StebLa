@@ -5,8 +5,7 @@ export default createStyles(colors => ({
     flexDirection: 'column',
     borderBottomWidth: '1.5@s',
     borderColor: colors.lightGrey,
-    paddingRight: '40@s',
-    borderWidth: 1,
+    paddingRight: '20@s',
   },
   textContent: {
     justifyContent: 'center',

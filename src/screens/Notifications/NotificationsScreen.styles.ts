@@ -5,7 +5,7 @@ export default createStyles(colors => ({
     flexDirection: 'column',
     backgroundColor: colors.white,
     flex: 1,
-    paddingHorizontal: '15@s',
+    paddingHorizontal: '10@s',
   },
   text: {
     marginVertical: '20@vs',

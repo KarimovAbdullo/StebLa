@@ -1,5 +1,6 @@
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
 import NotificationsItems from 'components/NotificationsItem'
+import { ReadNotificationItems } from 'components/ReadNotificationItems/ReadNotificationItems'
 import Typo from 'components/typo'
 import { useAppSelector } from 'hooks/redux'
 import { useAppDispatch } from 'hooks/redux'
@@ -7,9 +8,13 @@ import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import { useEffect } from 'react'
 import React from 'react'
-import { TouchableOpacity, View } from 'react-native'
+import { ScrollView, TouchableOpacity, View } from 'react-native'
 import R from 'res'
-import { getNotification, readNotification } from 'state/notification/action'
+import {
+  getReadNotification,
+  getUnreadNotification,
+  markNotification,
+} from 'state/notification/action'
 import { GetNotification } from 'state/notification/selectors'
 import { lang } from 'utils/lang'
 
@@ -26,17 +31,26 @@ export const NotificationsScreen = () => {
   const back = () => {
     navigate.goBack()
   }
+  // const active = activeList.find(i => i === item.id)
 
-  const pressRead = () => {
-    dispatch(readNotification({}))
+  // const onLongPress = () => {
+  //   setActiveList([...activeList, item.id])
+
+  const pressRead = (id: string) => {
+    dispatch(markNotification({ data: { msg_id: id } }))
+  }
+
+  const pressAllRead = ([]: string[]) => {
+    dispatch(markNotification({ data: { msg_id: '*' } }))
   }
 
   useEffect(() => {
-    dispatch(getNotification({}))
+    dispatch(getUnreadNotification())
+    dispatch(getReadNotification())
   }, [])
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <FocusAwareStatusBar backgroundColor={R.colors.white} />
 
       <View style={styles.iconContent}>
@@ -51,15 +65,28 @@ export const NotificationsScreen = () => {
         {lang(`${T}.text`)}
       </Typo.Title>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => pressAllRead(['*'])}>
         <Typo.Title color="main" style={styles.labelStyle}>
           {lang(`${T}.label`)}
         </Typo.Title>
       </TouchableOpacity>
 
-      {textNtf.ntfData?.map(i => (
-        <NotificationsItems text={i.msg} onPress={pressRead} />
+      {textNtf.readData?.map(item => (
+        <NotificationsItems
+          text={item.msg}
+          onPress={() => pressRead(item.id)}
+        />
       ))}
-    </View>
+      <Typo.Title center color="iconPrimary">
+        "Прочитанные"
+      </Typo.Title>
+
+      {textNtf.unreadData?.map(item => (
+        <ReadNotificationItems
+          text={item.msg}
+          onPress={() => pressRead(item.id)}
+        />
+      ))}
+    </ScrollView>
   )
 }

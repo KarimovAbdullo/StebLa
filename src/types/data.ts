@@ -179,6 +179,7 @@ export interface IReadNotific {
 }
 
 export interface IGetNotification {
+  id: string
   access_token: string
   desc: boolean
   limit: number
@@ -190,9 +191,9 @@ export interface IGetNotification {
 }
 
 export interface IReadNotification {
-  access_token: string
-  msg_id: string
-  msg_ids: string[]
+  access_token?: string
+  msg_id: string | string[]
+  msg_ids?: string[]
 }
 
 export interface INottificationData {

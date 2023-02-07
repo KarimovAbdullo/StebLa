@@ -2,6 +2,7 @@ import OTPInputView from '@twotalltotems/react-native-otp-input'
 import { CustomButton } from 'components/CustomButton/CustomButton'
 import Typo from 'components/typo'
 import { useAppDispatch } from 'hooks/redux'
+import { useAppSelector } from 'hooks/redux'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { useEffect } from 'react'
@@ -9,6 +10,7 @@ import { TouchableOpacity, View } from 'react-native'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import R from 'res'
 import { verifyTelegram } from 'state/addTelegramAcaunt/action'
+import { addTelegramSelector } from 'state/addTelegramAcaunt/selectors'
 import { lang } from 'utils/lang'
 
 import stylesConfig from './AddTelegramCodeScreen.style'
@@ -29,6 +31,7 @@ export const AddTelegramCodeScreen: React.FC<IProps> = ({ route }) => {
   const navigation = useSmartNavigation()
   const { phone } = route.params || {}
   const dispatch = useAppDispatch()
+  const { loading } = useAppSelector(addTelegramSelector)
 
   const goHome = () => {
     navigation.navigate(R.routes.screen_REGISTERED_TELEGRAMM_INFO)
@@ -97,6 +100,7 @@ export const AddTelegramCodeScreen: React.FC<IProps> = ({ route }) => {
             text={lang(`${T}.button`)}
             style={styles.button}
             onPress={goHome}
+            loading={loading}
             disabled={code.length > 4 ? false : true}
           />
         </View>

@@ -39,7 +39,7 @@ const addTelegramSlice = createSlice({
     },
 
     [verifyTelegram.pending.type]: state => {
-      state.loading = false
+      state.loading = true
     },
     [verifyTelegram.fulfilled.type]: (
       state,

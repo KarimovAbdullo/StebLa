@@ -6,7 +6,7 @@ import { useStyles } from 'hooks/useStyles'
 import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import R from 'res'
-import { getChats } from 'state/chats/selectors'
+import { getUser } from 'state/user/selectors'
 import { lang } from 'utils/lang'
 
 import stylesConfig from './Menu.ts.style'
@@ -18,13 +18,13 @@ const Menu = () => {
   const navigate = useSmartNavigation()
   const { dismissAll } = useBottomSheetModal()
 
-  const { chats } = useAppSelector(getChats)
+  const { hasTelegram } = useAppSelector(getUser)
 
   // const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
 
   const goCreateScreen = () => {
     dismissAll()
-    if (chats.length > 0) {
+    if (hasTelegram) {
       navigate.navigate(R.routes.CREATE_RULE_SCREEN)
     } else {
       navigate.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
@@ -33,7 +33,7 @@ const Menu = () => {
 
   const goWord = () => {
     dismissAll()
-    if (chats.length > 0) {
+    if (hasTelegram) {
       navigate.navigate(R.routes.SCTATIC_WORD_SCREEN)
     } else {
       navigate.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
@@ -42,7 +42,7 @@ const Menu = () => {
 
   const onNotification = () => {
     dismissAll()
-    if (chats.length > 0) {
+    if (hasTelegram) {
       navigate.navigate(R.routes.SCREEN_NOTIFICATIONS)
     } else {
       navigate.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
@@ -51,7 +51,7 @@ const Menu = () => {
 
   const onAcounts = () => {
     dismissAll()
-    if (chats.length > 0) {
+    if (hasTelegram) {
       navigate.navigate(R.routes.SCREEN_ACCOUNTS)
     } else {
       navigate.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
@@ -60,7 +60,7 @@ const Menu = () => {
 
   const onMyProfile = () => {
     dismissAll()
-    if (chats.length > 0) {
+    if (hasTelegram) {
       //@ts-ignore
       navigate.navigate(R.routes.MY_PROFILE_SCREEN)
     } else {
@@ -70,7 +70,7 @@ const Menu = () => {
 
   const onRule = () => {
     dismissAll()
-    if (chats.length > 0) {
+    if (hasTelegram) {
       navigate.navigate(R.routes.RATES_SCREEN)
     } else {
       navigate.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)

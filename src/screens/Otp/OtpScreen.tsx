@@ -43,7 +43,7 @@ export const OtpScreen: React.FC<IProps> = ({ route }) => {
     }
   }, [countdown])
 
-  const onSubmit = (value?: string) => {
+  const onSubmit = async (value?: string) => {
     dispatch(
       login({
         data: { code: value ? value : code, credential: phone },

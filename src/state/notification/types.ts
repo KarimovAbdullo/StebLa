@@ -1,8 +1,10 @@
 import { IGetNotification } from 'types/data'
 
 export type INotificationState = {
-  ntfData: IGetNotification[]
+  readData: IGetNotification[]
+  unreadData: IGetNotification[]
   loading: boolean
   language: 'ru' | 'en'
-  unread_only: boolean
+  unread_only?: boolean
+  msg_id: string | string[]
 }

@@ -201,3 +201,7 @@ export interface INottificationData {
   recipient: string
   subject: string
 }
+
+export interface IPriceData {
+  price: string
+}

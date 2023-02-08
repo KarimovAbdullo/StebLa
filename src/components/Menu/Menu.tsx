@@ -6,6 +6,7 @@ import { useStyles } from 'hooks/useStyles'
 import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import R from 'res'
+import { getChats } from 'state/chats/selectors'
 import { getUser } from 'state/user/selectors'
 import { lang } from 'utils/lang'
 
@@ -19,13 +20,18 @@ const Menu = () => {
   const { dismissAll } = useBottomSheetModal()
 
   const { hasTelegram } = useAppSelector(getUser)
+  const { chats } = useAppSelector(getChats)
 
   // const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
 
   const goCreateScreen = () => {
     dismissAll()
     if (hasTelegram) {
-      navigate.navigate(R.routes.CREATE_RULE_SCREEN)
+      if (chats.length > 0) {
+        navigate.navigate(R.routes.SCREEN_CHATS)
+      } else {
+        navigate.navigate(R.routes.SCREEN_IMPORT_CHATS)
+      }
     } else {
       navigate.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
     }

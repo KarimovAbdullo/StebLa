@@ -5,6 +5,7 @@ export default createStyles(colors => ({
     flexDirection: 'column',
     backgroundColor: colors.white,
     flex: 1,
+    paddingHorizontal: '10@s',
   },
   text: {
     marginVertical: '20@vs',
@@ -23,10 +24,14 @@ export default createStyles(colors => ({
     marginTop: '30@vs',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: '18@s',
+    // paddingHorizontal: '18@s',
     marginBottom: '15@vs',
   },
   item: {
     width: '18@s',
+  },
+  labelStyle: {
+    marginTop: '25@vs',
+    marginBottom: '5@vs',
   },
 }))

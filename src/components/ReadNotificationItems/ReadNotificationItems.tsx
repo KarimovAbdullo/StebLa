@@ -5,7 +5,7 @@ import { TouchableOpacity, View } from 'react-native'
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder'
 import R from 'res'
 
-import stylesConfig from './NotificationsItem.styles'
+import stylesConfig from './ReadNotificationItems.style'
 
 interface IProps {
   text: string
@@ -13,7 +13,7 @@ interface IProps {
   onPress: () => void
 }
 
-export const NotificationsItems = ({ text, onPress }: IProps) => {
+export const ReadNotificationItems = ({ text, onPress }: IProps) => {
   const styles = useStyles(stylesConfig)
   const [loading, setLoading] = useState(false)
 
@@ -69,12 +69,14 @@ export const NotificationsItems = ({ text, onPress }: IProps) => {
           <TouchableOpacity style={styles.itemContent} onPress={onPress}>
             {text ? (
               <View style={styles.iconContent}>
-                <R.icons.TelegrammIcon />
+                <R.icons.TelegrammIcon color="#bfe5f9" />
               </View>
             ) : null}
 
             <View style={styles.textContent}>
-              <Typo.Title type="regular16">{text}</Typo.Title>
+              <Typo.Title type="regular16" color="iconPrimary">
+                {text}
+              </Typo.Title>
             </View>
           </TouchableOpacity>
         </View>

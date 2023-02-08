@@ -23,10 +23,11 @@ export const AddTelegrammInfoScreen = () => {
   return (
     <View style={styles.container}>
       <FocusAwareStatusBar backgroundColor={R.colors.white} />
-
-      <Typo.Headline center type="bold26">
-        {lang(`${T}.label`)}
-      </Typo.Headline>
+      <View style={styles.card}>
+        <Typo.Headline center={true} type="reg20">
+          {lang(`${T}.label`)}
+        </Typo.Headline>
+      </View>
 
       <CustomButton text={lang(`${T}.btnTitle`)} onPress={onSubmit} />
     </View>

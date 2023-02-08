@@ -13,6 +13,7 @@ import React, { useRef, useState } from 'react'
 import { FlatList, SafeAreaView, TouchableOpacity, View } from 'react-native'
 import R from 'res'
 import { getRuleAction } from 'state/chats/actions'
+import { getChats } from 'state/chats/selectors'
 import { IRuleData } from 'types/data'
 import { lang } from 'utils/lang'
 
@@ -30,6 +31,7 @@ interface IProps {
 
 const CreateRuleScreen: React.FC<IProps> = ({ route }) => {
   const userId = useAppSelector(state => state.user.user?.id)
+  const { loading } = useAppSelector(getChats)
 
   const { chatId } = route.params || {}
   const styles = useStyles(styleConfig)
@@ -108,6 +110,7 @@ const CreateRuleScreen: React.FC<IProps> = ({ route }) => {
           style={styles.btn}
           disabled={!isValid}
           onPress={onYourList}
+          loading={loading}
         />
       </SafeAreaView>
     </Container>

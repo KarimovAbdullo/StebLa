@@ -3,4 +3,5 @@ export type TelegramState = {
   language: 'ru' | 'en'
   token?: string
   onboardingSuccess: boolean
+  number?: number
 }

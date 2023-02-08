@@ -21,6 +21,7 @@ interface IProps {
     | 'bold20'
     | 'bold16'
     | 'bold26'
+    | 'reg20'
   style?: StyleProp<TextProps>
   numberOfLines?: number
   color?: keyof TThemeColors
@@ -85,6 +86,11 @@ const stylesConfig = createStyles((_colors, fonts) => ({
     fontFamily: fonts.Ubuntu.regular,
     fontSize: '26@ms',
     lineHeight: '34@ms',
+  },
+  reg20: {
+    fontSize: '22@ms',
+    fontFamily: fonts.Inter.medium,
+    lineHeight: '25@ms',
   },
 }))
 

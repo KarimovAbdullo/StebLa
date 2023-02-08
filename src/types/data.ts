@@ -174,6 +174,27 @@ export interface IPubliKey {
   n: string
   e: string
 }
+export interface IReadNotific {
+  unread_only: boolean
+}
+
+export interface IGetNotification {
+  id: string
+  access_token: string
+  desc: boolean
+  limit: number
+  offset: number
+  subject: string
+  unread_only: boolean
+  ok: boolean
+  msg: string
+}
+
+export interface IReadNotification {
+  access_token?: string
+  msg_id: string | string[]
+  msg_ids?: string[]
+}
 
 export interface INottificationData {
   message: string

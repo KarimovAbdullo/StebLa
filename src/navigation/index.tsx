@@ -24,6 +24,7 @@ import LoginScreen from 'screens/Login'
 import { MyProfileScreen } from 'screens/MyProfileScreen/MyProfileScreen'
 import NotificationsScreen from 'screens/Notifications'
 import OtpScreen from 'screens/Otp'
+import { PayScreen } from 'screens/PayScreen/PayScreen'
 import { RatesScreen } from 'screens/RatesScreen/RatesScreen'
 import RegisteredTelegrammInfo from 'screens/RegisteredTelegrammInfo'
 import StartInfoScreen from 'screens/StartInfo'
@@ -97,6 +98,7 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
           />
 
           <RootStack.Screen
+            //@ts-ignore
             component={OtpScreen}
             name={R.routes.SCREEN_OTP}
             options={{
@@ -135,6 +137,7 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
             }}
           />
           <RootStack.Screen
+            //@ts-ignore
             component={AddTelegramCodeScreen}
             name={R.routes.SCREEN_ADD_TELEGRAM_CODE}
             options={{
@@ -164,6 +167,7 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
           />
 
           <RootStack.Screen
+            //@ts-ignore
             component={CreateRuleScreen}
             name={R.routes.CREATE_RULE_SCREEN}
             options={{
@@ -220,6 +224,7 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
           />
 
           <RootStack.Screen
+            //@ts-ignore
             component={StaticChatScreen}
             name={R.routes.STATIC_CHAT_SCREEN}
             options={{
@@ -259,6 +264,7 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
           />
 
           <RootStack.Screen
+            //@ts-ignore
             component={YourListsScreen}
             name={R.routes.SCREEN_YOUR_LIST}
             options={{
@@ -308,6 +314,14 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
             options={{
               headerShown: false,
               headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
+          <RootStack.Screen
+            component={PayScreen}
+            name={R.routes.SCREEN_PAY}
+            options={{
+              headerShown: false,
               headerBackTitleVisible: false,
             }}
           />

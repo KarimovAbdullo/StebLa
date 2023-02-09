@@ -44,12 +44,12 @@ const CreateRuleScreen: React.FC<IProps> = ({ route }) => {
   }
 
   const onYourList = async () => {
-    const rule: string[] = state.filter(i => i.text).map(i => i.text || '')
+    const rules: string[] = state.filter(i => i.text).map(i => i.text || '')
     dispatch(
       getRuleAction({
-        data: { rules: rule, chatId, userId },
+        data: { rules: rules, chatId, userId },
         onSuccess: () => {
-          navigation.navigate(R.routes.SCREEN_YOUR_LIST)
+          navigation.navigate(R.routes.SCREEN_YOUR_LIST, { chatId, rules })
         },
       }),
     )

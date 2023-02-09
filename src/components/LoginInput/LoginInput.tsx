@@ -73,6 +73,7 @@ export const LoginInput = ({
             }}
             mask={[
               '+',
+              ' ',
               '7',
               '(',
               /\d/,

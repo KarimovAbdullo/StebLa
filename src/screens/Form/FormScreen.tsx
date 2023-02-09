@@ -57,7 +57,7 @@ export const FormScreen = ({ route }: IProps) => {
         </Typo.Title>
       </TouchableOpacity>
 
-      <Formik onSubmit={onSubmit} initialValues={initialValues}>
+      <Formik onSubmit={onSubmit}>
         {() => (
           <>
             <View style={styles.inputContent}>

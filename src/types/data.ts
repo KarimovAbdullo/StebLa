@@ -163,6 +163,16 @@ export interface IRuleResponse {
   rules: string[]
 }
 
+export interface IruleList {
+  chatId: number
+  groupName: string | string[]
+  rules: string[]
+}
+
+export interface IRuleListRes {
+  words: IruleList
+}
+
 export interface IRuleData {
   id: number
   text?: string

@@ -26,5 +26,5 @@ export type TNavigationParams = {
   [R.routes.SCREEN_IMPORT_CHATS]: undefined
   [R.routes.SCREEN_START_INFO]: undefined
   [R.routes.SCREEN_HOME]: undefined
-  [R.routes.SCREEN_YOUR_LIST]: undefined
+  [R.routes.SCREEN_YOUR_LIST]: { chatId: number; rules: string[] } | undefined
 }

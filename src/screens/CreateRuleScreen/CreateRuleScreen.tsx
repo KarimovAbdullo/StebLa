@@ -24,7 +24,7 @@ const T = R.lang.screen_createRule
 interface IProps {
   route: {
     params: {
-      chatId: number
+      chatIds: string[]
     }
   }
 }
@@ -33,7 +33,10 @@ const CreateRuleScreen: React.FC<IProps> = ({ route }) => {
   const userId = useAppSelector(state => state.user.user?.id)
   const { loading } = useAppSelector(getChats)
 
-  const { chatId } = route.params || {}
+  const { chatIds } = route.params || {}
+
+  console.log(chatIds)
+
   const styles = useStyles(styleConfig)
   const dispatch = useAppDispatch()
   const navigation = useSmartNavigation()
@@ -44,15 +47,16 @@ const CreateRuleScreen: React.FC<IProps> = ({ route }) => {
   }
 
   const onYourList = async () => {
-    const rules: string[] = state.filter(i => i.text).map(i => i.text || '')
-    dispatch(
-      getRuleAction({
-        data: { rules: rules, chatId, userId },
-        onSuccess: () => {
-          navigation.navigate(R.routes.SCREEN_YOUR_LIST, { chatId, rules })
-        },
-      }),
-    )
+    // const rules: string[] = state.filter(i => i.text).map(i => i.text || '')
+    // const newData = chatIds.map(chatId => ({ rules, chatId, userId }))
+    // dispatch(
+    //   getRuleAction({
+    //     data: newData,
+    //     onSuccess: () => {
+    navigation.navigate(R.routes.SCREEN_YOUR_LIST)
+    //   },
+    // }),
+    // )
   }
 
   // const onYourList = () => {

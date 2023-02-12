@@ -8401,6 +8401,11 @@ rn-host-detect@1.2.0:
   resolved "https://registry.yarnpkg.com/rn-host-detect/-/rn-host-detect-1.2.0.tgz#8b0396fc05631ec60c1cb8789e5070cdb04d0da0"
   integrity sha512-btNg5kzHcjZZ7t7mvvV/4wNJ9e3MPgrWivkRgWURzXL0JJ0pwWlU4zrbmdlz3HHzHOxhBhHB4D+/dbMFfu4/4A==
 
+rn-yookassa@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/rn-yookassa/-/rn-yookassa-1.0.7.tgz#81b840a17a3590920b85cfd2b95512c94b40f23c"
+  integrity sha512-Bfq9ZssIDlrTa9AxgjwwygnXpMJUzxUR3Vg91ySr39IcBPZsRAUgE9naH3vkUbZV3VyJd66kCbcSFL/rjqRP4g==
+
 run-parallel@^1.1.9:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/run-parallel/-/run-parallel-1.2.0.tgz#66d1368da7bdf921eb9d95bd1a9229e7f21a43ee"

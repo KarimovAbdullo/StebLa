@@ -11,7 +11,7 @@ import { useStyles } from 'hooks/useStyles'
 import React, { useRef, useState } from 'react'
 import { FlatList, TouchableOpacity, View } from 'react-native'
 import R from 'res'
-import { getRuleList } from 'state/rule/action'
+import { getGroups } from 'state/rule/action'
 import { IListInfo } from 'types/data'
 import { lang } from 'utils/lang'
 
@@ -20,22 +20,22 @@ import stylesConfig from './YourListsScreen.styles'
 interface IProps {
   route: {
     params: {
-      chatId: number
-      rules: string[]
+      // chatId: number
+      // rules: string[]
     }
   }
 }
 
 const T = R.lang.screen_yourList
 
-export const YourListsScreen: React.FC<IProps> = ({ route }) => {
+export const YourListsScreen: React.FC<IProps> = ({}) => {
   const dispatch = useAppDispatch()
   const styles = useStyles(stylesConfig)
   const [activeList, setActiveList] = useState<string[]>([])
   const [activeButton, setActiveButton] = useState(false)
   const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
   const navigate = useSmartNavigation()
-  const { chatId, rules } = route.params || {}
+  // const { chatId, rules } = route.params || {}
 
   const menuBar = () => {
     bottomsheetRef2.current?.present()
@@ -58,13 +58,14 @@ export const YourListsScreen: React.FC<IProps> = ({ route }) => {
       setActiveButton(true)
     }, 100)
 
-    const group: string[] = data.filter(i => i.text).map(i => i.text || '')
-    dispatch(
-      getRuleList({
-        data: { rules: rules, chatId, groupName: group },
-      }),
-    )
-    navigate.navigate(R.routes.CREATE_RULE_SCREEN)
+    // const group: string[] = data.filter(i => i.text).map(i => i.text || '')
+    // dispatch(
+    //   getRuleList({
+    //     data: { rules: rules, chatId, groupName: group },
+    //   }),
+    // )
+    // navigate.navigate(R.routes.CREATE_RULE_SCREEN)
+    dispatch(getGroups())
   }
 
   const [data] = useState<IListInfo[]>([
@@ -141,7 +142,7 @@ export const YourListsScreen: React.FC<IProps> = ({ route }) => {
             item={item}
             key={index}
             setActiveList={setActiveList}
-            onPress={() => activeButtons(item.id)}
+            onPress={() => activeButtons()}
           />
         )}
       />

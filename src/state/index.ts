@@ -5,6 +5,7 @@ import { persistStore } from 'redux-persist'
 import { addTelegramReducer } from './addTelegramAcaunt/slice'
 import { chatReducer } from './chats/slice'
 import { NotificationReducer } from './notification/slice'
+import { payReducer } from './payment/slice'
 import { ruleReducer } from './rule/slice'
 import { userReducer } from './user/slice'
 
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   addTelegram: addTelegramReducer,
   Notification: NotificationReducer,
   rules: ruleReducer,
+  payment: payReducer,
 })
 
 const setupStore = () => {

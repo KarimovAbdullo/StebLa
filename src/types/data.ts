@@ -158,7 +158,7 @@ export interface IIcondata {
   thumbnail: string
 }
 export interface IRuleResponse {
-  chatId: number
+  chatId: string
   userId: string | undefined
   rules: string[]
 }
@@ -167,6 +167,14 @@ export interface IruleList {
   chatId: number
   groupName: string | string[]
   rules: string[]
+}
+
+export interface IRuleGroups {
+  groupName: string
+}
+
+export interface IGroups {
+  groups: IRuleGroups
 }
 
 export interface IRuleListRes {
@@ -210,4 +218,13 @@ export interface INottificationData {
   message: string
   recipient: string
   subject: string
+}
+
+export interface IPay {
+  value: string
+  currency: string
+}
+
+export interface IPayment {
+  amount: IPay
 }

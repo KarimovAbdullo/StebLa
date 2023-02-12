@@ -2,11 +2,22 @@ import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusB
 import Container from 'components/Container'
 import { CustomButton } from 'components/CustomButton/CustomButton'
 import Typo from 'components/typo'
+// import { YooKassa } from 'components/YookoKassa/YookoKassa'
+import { useAppDispatch } from 'hooks/redux'
+import { useAppSelector } from 'hooks/redux'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { useState } from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import R from 'res'
+// import {
+//   confirmPayment,
+//   dismiss,
+//   ErrorCodesEnum, // TypeScript Only
+//   tokenize,
+//   YooKassaError,
+// } from 'rn-yookassa'
+import { postPayment } from 'state/payment/action'
 import { lang } from 'utils/lang'
 
 import styleConfig from './CreateProfileScreen.style'
@@ -14,9 +25,26 @@ import styleConfig from './CreateProfileScreen.style'
 const T = R.lang.screen_createProfile
 
 const CreateProfileScreen = () => {
+  const dispatch = useAppDispatch()
   const styles = useStyles(styleConfig)
   const [check, setCheck] = useState('')
   const navigation = useSmartNavigation()
+  const userId = useAppSelector(state => state.user.user?.id)
+
+  // const onPayPress = async () => {
+  //   try {
+  //     // Our next code will be here.
+  //   } catch (err) {
+  //     // Process errors from YooKassa module:
+  //     if (err instanceof YooKassaError) {
+  //       switch (err.code) {
+  //         case ErrorCodesEnum.E_PAYMENT_CANCELLED:
+  //           console.log('User cancelled YooKassa module.')
+  //           break
+  //       }
+  //     }
+  //   }
+  // }
 
   const freeBtn = () => {
     setCheck('standart')
@@ -26,9 +54,22 @@ const CreateProfileScreen = () => {
     setCheck('pro')
   }
 
-  const goTelegram = () => {
+  const goTelegram = async () => {
     //@ts-ignore
-    navigation.navigate(R.routes.SCREEN_ADD_TELEGRAM_INFO)
+    // navigation.navigate(R.routes.SCREEN_ADD_TELEGRAM_INFO)
+
+    if (userId) {
+      dispatch(
+        postPayment({
+          userId: userId,
+          price: 200,
+          onSucces: () => {
+            //@ts-ignore
+            navigation.navigate(R.routes.SCREEN_ADD_TELEGRAM_INFO)
+          },
+        }),
+      )
+    }
   }
 
   return (
@@ -90,6 +131,7 @@ const CreateProfileScreen = () => {
           onPress={goTelegram}
         />
       </View>
+      {/* <YooKassa /> */}
     </Container>
   )
 }

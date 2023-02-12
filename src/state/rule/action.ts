@@ -1,7 +1,22 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import apiClient from 'api/instance'
 import R from 'res'
-import { IruleList, IRuleListRes } from 'types/data'
+import { IGroups, IruleList, IRuleListRes } from 'types/data'
+
+export const getGroups = createAsyncThunk<IGroups>(
+  'get/ruleGroups',
+  async () => {
+    try {
+      const { data: response } = await apiClient.get<IGroups>(
+        R.consts.API_PATH_RULES_GROUPS,
+      )
+
+      return response
+    } catch (e) {
+      throw e
+    }
+  },
+)
 
 export const getRuleList = createAsyncThunk<
   IRuleListRes,

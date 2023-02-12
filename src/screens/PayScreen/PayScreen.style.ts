@@ -21,13 +21,18 @@ export default createStyles(color => ({
     // justifyContent: 'space-between',
     // width: '50%',
   },
+  card: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
   freeCard: {
     borderWidth: 1,
     paddingHorizontal: '25@s',
-    paddingVertical: '10@vs',
+    paddingVertical: '15@vs',
     marginTop: '25@vs',
     borderRadius: '7@s',
     // borderColor: color.title,
+    width: '40%',
   },
   ProCard: {
     borderWidth: 1,
@@ -36,6 +41,7 @@ export default createStyles(color => ({
     marginTop: '25@vs',
     borderRadius: '7@s',
     // borderColor: color.title,
+    width: '40%',
   },
   title: {
     marginBottom: '10@vs',

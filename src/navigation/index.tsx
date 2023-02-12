@@ -63,6 +63,15 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
           }
           screenOptions={{ headerShown: false }}>
           <RootStack.Screen
+            component={PayScreen}
+            name={R.routes.SCREEN_PAY}
+            options={{
+              headerShown: false,
+              headerBackTitleVisible: false,
+            }}
+          />
+
+          <RootStack.Screen
             component={FirsStartScreen}
             name={R.routes.SCREEN_FIRS_START}
             options={{
@@ -314,14 +323,6 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
             options={{
               headerShown: false,
               headerTitleAlign: 'center',
-              headerBackTitleVisible: false,
-            }}
-          />
-          <RootStack.Screen
-            component={PayScreen}
-            name={R.routes.SCREEN_PAY}
-            options={{
-              headerShown: false,
               headerBackTitleVisible: false,
             }}
           />

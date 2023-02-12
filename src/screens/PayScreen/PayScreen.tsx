@@ -1,20 +1,20 @@
 import { BottomSheetModal } from '@gorhom/bottom-sheet'
 import BottomSheet from 'components/BottomSheet'
+// import { LoginButton } from 'components/LoginButton/LoginButtton'
+// import { LoginInput } from 'components/LoginInput/LoginInput'
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
 import { CustomButton } from 'components/CustomButton/CustomButton'
-import { LoginButton } from 'components/LoginButton/LoginButtton'
-import { LoginInput } from 'components/LoginInput/LoginInput'
 import Menu from 'components/Menu/Menu'
 import Typo from 'components/typo'
-import { Formik } from 'formik'
+// import { Formik } from 'formik'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React, { useRef, useState } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
 import R from 'res'
-import { ISendCode } from 'types/data'
-import { LoginRequired, validator } from 'utils/validators'
 
+// import { ISendCode } from 'types/data'
+// import { LoginRequired, validator } from 'utils/validators'
 import styleConfig from './PayScreen.style'
 
 export const PayScreen = () => {
@@ -33,16 +33,16 @@ export const PayScreen = () => {
   const menuBar = () => {
     bottomsheetRef2.current?.present()
   }
-  const onSubmit = () => {}
+  // const onSubmit = () => {}
 
   const goTelegram = () => {
     //@ts-ignore
     navigation.navigate(R.routes.SCREEN_ADD_TELEGRAM_INFO)
   }
-  const initialValues: ISendCode = {
-    phone: '',
-    use_call: false,
-  }
+  // const initialValues: ISendCode = {
+  //   phone: '',
+  //   use_call: false,
+  // }
 
   return (
     <View style={styles.container}>
@@ -68,27 +68,29 @@ export const PayScreen = () => {
           Выберите удобный способ для оплатит VIP тарифа
         </Typo.Title>
 
-        <TouchableOpacity
-          onPress={freeBtn}
-          style={[
-            styles.freeCard,
-            check === 'standart'
-              ? { borderColor: R.colors.main }
-              : { borderColor: R.colors.title },
-          ]}>
-          <Text style={styles.title}>ЮMoney</Text>
-        </TouchableOpacity>
+        <View style={styles.card}>
+          <TouchableOpacity
+            onPress={freeBtn}
+            style={[
+              styles.freeCard,
+              check === 'standart'
+                ? { borderColor: R.colors.main }
+                : { borderColor: R.colors.title },
+            ]}>
+            <Text style={styles.title}>ЮMoney</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity
-          onPress={proBtn}
-          style={[
-            styles.ProCard,
-            check === 'pro'
-              ? { borderColor: R.colors.main }
-              : { borderColor: R.colors.title },
-          ]}>
-          <Text>Банксковый карта </Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            onPress={proBtn}
+            style={[
+              styles.ProCard,
+              check === 'pro'
+                ? { borderColor: R.colors.main }
+                : { borderColor: R.colors.title },
+            ]}>
+            <Text>Банксковый карта </Text>
+          </TouchableOpacity>
+        </View>
       </View>
       <CustomButton
         text={'dasdadd'}
@@ -100,7 +102,7 @@ export const PayScreen = () => {
       <View style={styles.sector}>
         <Text>dasdasdad</Text>
       </View>
-      <Formik onSubmit={onSubmit} initialValues={initialValues}>
+      {/* <Formik onSubmit={onSubmit} initialValues={initialValues}>
         {() => (
           <>
             <View style={styles.inputContent}>
@@ -125,7 +127,7 @@ export const PayScreen = () => {
             </View>
           </>
         )}
-      </Formik>
+      </Formik> */}
     </View>
   )
 }

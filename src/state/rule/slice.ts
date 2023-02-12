@@ -1,14 +1,15 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { PersistConfig, persistReducer } from 'redux-persist'
-import { IRuleListRes } from 'types/data'
+import { IGroups, IRuleListRes } from 'types/data'
 
-import { getRuleList } from './action'
+import { getGroups, getRuleList } from './action'
 import { IRuleState } from './type'
 
 const initialState: IRuleState = {
   loading: false,
   language: 'ru',
+  groups: '',
 }
 
 const ruleSlice = createSlice({
@@ -16,6 +17,16 @@ const ruleSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
+    [getGroups.pending.type]: state => {
+      state.loading = true
+    },
+    [getGroups.fulfilled.type]: (state, action: PayloadAction<IGroups>) => {
+      state.loading = false
+      state.groupsName
+    },
+    [getGroups.rejected.type]: state => {
+      state.loading = false
+    },
     [getRuleList.pending.type]: state => {
       state.loading = true
     },

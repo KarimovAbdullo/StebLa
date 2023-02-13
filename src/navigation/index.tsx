@@ -4,7 +4,7 @@ import {
   useNavigationContainerRef,
 } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-// import { useAppSelector } from 'hooks/redux'
+import { useAppSelector } from 'hooks/redux'
 import React, { useRef } from 'react'
 import R from 'res'
 import { TTheme } from 'res/theme'
@@ -35,18 +35,14 @@ import { StaticListChatScreen } from 'screens/StaticListChatScreen/StaticListCha
 import { StaticWordScreen } from 'screens/StaticWordScreen/StaticWordScreen'
 import UserListForm from 'screens/UserListForm'
 import YourListsScreen from 'screens/YourLists'
-// import { getUser } from 'state/user/selectors'
+import { getUser } from 'state/user/selectors'
 import { TNavigationParams } from 'types/navigation'
 
 const Navigator = ({ theme }: { theme: TTheme }) => {
   const RootStack = createStackNavigator()
   const navigationRef = useNavigationContainerRef<TNavigationParams>()
   const routeNameRef = useRef()
-  // const {
-  //   // onboardingSuccess,
-  //   token,
-  // } = useAppSelector(getUser)
-  // console.log(token)
+  const { onboardingSuccess, token } = useAppSelector(getUser)
 
   return (
     <NavigationContainer
@@ -58,9 +54,13 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
       }}>
       <BottomSheetModalProvider>
         <RootStack.Navigator
-          // initialRouteName={
-          //   token?.accessToken ? R.routes.SCREEN_HOME : R.routes.SCREEN_LOGIN
-          // }
+          initialRouteName={
+            onboardingSuccess
+              ? token?.accessToken
+                ? R.routes.SCREEN_HOME
+                : R.routes.SCREEN_LOGIN
+              : R.routes.SCREEN_FIRS_START
+          }
           screenOptions={{ headerShown: false }}>
           {/* <RootStack.Screen
             component={PayScreen}

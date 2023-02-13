@@ -2,7 +2,7 @@ import { createStyles } from 'utils/createStyles'
 
 export default createStyles(color => ({
   topCard: {
-    height: '46%',
+    height: '43%',
     backgroundColor: '#000000',
     opacity: 0.6,
   },
@@ -22,8 +22,7 @@ export default createStyles(color => ({
   menu: {
     flexDirection: 'row',
     aligItems: 'center',
-    // borderWidth: 1,
-    marginTop: '25@vs',
+    marginTop: '15@vs',
   },
   Main: {
     backgroundColor: color.white,

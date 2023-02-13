@@ -1,6 +1,7 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit'
 import apiClient from 'api/instance'
 import R from 'res'
+import { onChangeTelegram } from 'state/user/actions'
 // import { store } from 'state'
 import {
   ILogin,
@@ -23,7 +24,7 @@ export const addTelegram = createAsyncThunk<
     onSuccess?: (response: {}) => void
     onError?: () => void
   }
->('add/telegram', async arg => {
+>('add/telegram', async (arg, thunk) => {
   try {
     console.log('asdasd')
     const { data: response } = await apiClient.post<string>(
@@ -31,6 +32,7 @@ export const addTelegram = createAsyncThunk<
       { ...arg.data, phone: arg.data.phone.toString() },
     )
 
+    thunk.dispatch(onChangeTelegram(true))
     arg.onSuccess?.(response)
     return response
   } catch (e) {
@@ -46,7 +48,7 @@ export const verifyTelegram = createAsyncThunk<
     onSuccess?: (response: ITelegramVeryfiy) => void
     onError?: () => void
   }
->('addTelegramm/confirm', async arg => {
+>('addTelegramm/confirm', async (arg, thunk) => {
   try {
     const { data: response } = await apiClient.post<ITelegramVeryfiy>(
       R.consts.API_PATH_TELEGRAM_VERFY,
@@ -60,6 +62,7 @@ export const verifyTelegram = createAsyncThunk<
       // )
     }
 
+    thunk.dispatch(onChangeTelegram(true))
     arg.onSuccess?.(response)
     return response
   } catch (e) {

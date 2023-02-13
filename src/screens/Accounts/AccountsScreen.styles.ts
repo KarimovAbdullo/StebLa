@@ -48,20 +48,19 @@ export default createStyles(colors => ({
     marginTop: '25@vs',
   },
   otpContent: {
-    marginTop: '20@vs',
+    marginTop: '10@vs',
     marginBottom: '10@vs',
     width: '100%',
     height: '69@s',
     fontSize: '24@ms',
-    backgroundColor: colors.white,
   },
   otpInput: {
     // paddingHorizontal: '30@s',
   },
   active: {
     fontSize: '24@ms',
-    width: '69@s',
-    height: '69@s',
+    width: '49@s',
+    height: '49@s',
     borderWidth: '0.5@s',
     borderColor: '#3BBE53',
     borderRadius: '16@s',
@@ -77,5 +76,11 @@ export default createStyles(colors => ({
     borderRadius: '16@s',
     backgroundColor: colors.white,
     color: colors.textPrimary,
+  },
+  errorText: {
+    paddingLeft: '10@s',
+  },
+  loadingStyle: {
+    marginVertical: '20@s',
   },
 }))

@@ -2,7 +2,7 @@ import { createStyles } from 'utils/createStyles'
 
 export default createStyles(color => ({
   topCard: {
-    height: '46%',
+    height: '42%',
     backgroundColor: '#000000',
     opacity: 0.6,
   },

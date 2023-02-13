@@ -5,7 +5,6 @@ import {
   IChatsList,
   INottificationData,
   IruleList,
-  IRuleListRes,
   IRuleResponse,
 } from 'types/data'
 
@@ -22,7 +21,7 @@ export const getChatsAction = createAsyncThunk<IChatsList>(
 
       return response
     } catch (e) {
-      thunk.dispatch(getChatsAction)
+      await thunk.dispatch(getChatsAction())
       throw e
     }
   },
@@ -31,7 +30,7 @@ export const getChatsAction = createAsyncThunk<IChatsList>(
 export const getMoreChatsAction = createAsyncThunk<
   IChatsList,
   { offset: number }
->('chats/get-more-cahts', async arg => {
+>('chats/get-more-chats', async arg => {
   try {
     const { data: response } = await apiClient.get<IChatsList>(
       R.consts.API_PATH_GET_CHATS,

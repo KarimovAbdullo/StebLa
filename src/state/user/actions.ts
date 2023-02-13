@@ -1,21 +1,24 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit'
 import apiClient from 'api/instance'
+import jwtDecode from 'jwt-decode'
 import R from 'res'
 import {
   IChatsList,
   IError,
   ILogin,
   ILoginSuccessResponse,
-  IPubliKey,
+  IPriceData,
+  // IPubliKey,
   ISendCode,
   ISendCodeResponse,
   IToken,
   IUser,
 } from 'types/data'
 
+export const signOutUser = createAction('user/signOut')
+export const onChangeTelegram = createAction<boolean>('user/telegram')
 // export const signOutUser = createAction('user/signOut')
 export const changeLanguage = createAction<'ru' | 'en'>('user/language')
-
 export const confirmOnBoarding = createAction<boolean>('user/startedData')
 
 export const sendConfirmCode = createAsyncThunk<
@@ -70,25 +73,16 @@ export const login = createAsyncThunk<
         R.consts.API_PATH_GET_USER_INFO,
         { accessToken: response?.accessToken },
       )
-      const jwtDecode = require('jwt-decode')
-      const token = response.accessToken
-      const decoded = jwtDecode(token)
-      console.log('TOOOOOKEEEENNN')
 
-      try {
-        ////
-        console.log('PUBLIK KEY')
-        await apiClient.post<IPubliKey>(R.consts.API_PATH_GET_PUBLIC_KEY, {})
-      } catch (e) {
-        arg.onError?.()
-        throw e
-      }
+      const token = response.accessToken
+      const decoded = jwtDecode<{ sub: string }>(token)
 
       let hasTelegram = false
 
       try {
         await apiClient.get<IChatsList>(R.consts.API_PATH_GET_CHATS, {
           params: { limit: 10, offset: 1 },
+          headers: { authorization: `Bearer ${token}` },
         })
 
         hasTelegram = true
@@ -121,6 +115,15 @@ export const login = createAsyncThunk<
   }
 })
 
+export const getPrice = createAsyncThunk<IPriceData>('price/get', async () => {
+  try {
+    const { data: response } = await apiClient.get<IPriceData>(R.consts.PRICE)
+    return response
+  } catch (e) {
+    throw e
+  }
+})
+
 // export const getUserInfo = createAsyncThunk<
 //   IGetUserInfo | null,
 //   {
@@ -139,37 +142,8 @@ export const login = createAsyncThunk<
 //       },
 //     )
 
-//     if (response) {
-//       arg.onSuccess?.(response)
-//       return response
-//     }
-//     arg.onError?.()
-//     return null
-//   } catch (e) {
-//     arg.onError?.()
-//     throw e
-//   }
-// })
-//
-// export const userInfo = createAsyncThunk<
-//   IUserInfo | null,
-//   {
-//     data: IUserInfo
-//     onSuccess?: (response: IUserInfo) => void
-//     onError?: () => void
-//   }
-// >('users/change_name', async arg => {
-//   try {
-//     const { data: response } = await apiClient.put<IUserInfo>(
-//       R.consts.API_PATH_CHANGE_NAME,
-//       arg.data,
-//     )
-//     console.log(response)
-//
-//     arg.onSuccess?.(response)
 //     return response
 //   } catch (e) {
-//     arg.onError?.()
 //     throw e
 //   }
 // })

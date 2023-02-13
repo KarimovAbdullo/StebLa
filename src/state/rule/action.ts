@@ -1,17 +1,30 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import apiClient from 'api/instance'
 import R from 'res'
-import { IGroups, IruleList, IRuleListRes } from 'types/data'
+import {
+  IGroups,
+  IRuleGroups,
+  IruleList,
+  IRuleListRes,
+  IRuleMetaStatics,
+  IRuleStatics,
+  IStaticRuleData,
+} from 'types/data'
 
-export const getGroups = createAsyncThunk<IGroups>(
+export const getGroups = createAsyncThunk<IRuleGroups[] | never[]>(
   'get/ruleGroups',
+  //@ts-ignore
   async () => {
     try {
       const { data: response } = await apiClient.get<IGroups>(
         R.consts.API_PATH_RULES_GROUPS,
       )
 
-      return response
+      if (response.groups) {
+        return response.groups
+      }
+
+      return []
     } catch (e) {
       throw e
     }
@@ -46,3 +59,44 @@ export const getRuleList = createAsyncThunk<
     throw e
   }
 })
+
+// export const getStatistics = createAsyncThunk<>(
+//   'get/ruleStatistics',
+//   //@ts-ignore
+//   async () => {
+//     try {
+//       const { data: response } = await apiClient.get<{
+//         data: IStaticRuleData
+//         meta: IRuleMeta
+//       }>(R.consts.API_PATH_RULES_STATICS)
+//     }
+//     return response
+//   } catch (e) {
+//     throw e
+//   }
+
+// )
+
+export const getRuleStatistics = createAsyncThunk<
+  { data: IRuleStatics },
+  { data: IStaticRuleData;
+>(
+    'get/ruleStatistics',
+    //@ts-ignore
+    async () => {
+      try {
+        const { data: response } = await apiClient.get<{
+          data: IRuleStatics
+          // meta: IRuleMetaStatics
+        }>(R.consts.API_PATH_RULES_STATICS)
+
+        if (response) {
+          return response
+        }
+
+        return response
+      } catch (e) {
+        throw e
+      }
+    },
+  )

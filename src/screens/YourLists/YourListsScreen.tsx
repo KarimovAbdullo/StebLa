@@ -6,13 +6,13 @@ import ListItem from 'components/ListItem'
 import Menu from 'components/Menu/Menu'
 import Typo from 'components/typo'
 import { useAppDispatch } from 'hooks/redux'
+import { useAppSelector } from 'hooks/redux'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { FlatList, TouchableOpacity, View } from 'react-native'
 import R from 'res'
-import { getGroups } from 'state/rule/action'
-import { IListInfo } from 'types/data'
+import { getGroups, getRuleStatistics } from 'state/rule/action'
 import { lang } from 'utils/lang'
 
 import stylesConfig from './YourListsScreen.styles'
@@ -36,6 +36,7 @@ export const YourListsScreen: React.FC<IProps> = ({}) => {
   const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
   const navigate = useSmartNavigation()
   // const { chatId, rules } = route.params || {}
+  const dataGr = useAppSelector(state => state.rules.groups)
 
   const menuBar = () => {
     bottomsheetRef2.current?.present()
@@ -58,54 +59,58 @@ export const YourListsScreen: React.FC<IProps> = ({}) => {
       setActiveButton(true)
     }, 100)
 
-    // const group: string[] = data.filter(i => i.text).map(i => i.text || '')
-    // dispatch(
-    //   getRuleList({
-    //     data: { rules: rules, chatId, groupName: group },
-    //   }),
-    // )
-    // navigate.navigate(R.routes.CREATE_RULE_SCREEN)
-    dispatch(getGroups())
+    dispatch(
+      getRuleStatistics({
+        data: {},
+        onSuccess: () => {
+          navigate.navigate(R.routes.SCREEN_YOUR_LIST)
+        },
+      }),
+    )
   }
 
-  const [data] = useState<IListInfo[]>([
-    {
-      text: 'Список 1',
-      id: '1',
-    },
-    {
-      text: 'Список 2',
-      id: '2',
-    },
-    {
-      text: 'Список 3',
-      id: '3',
-    },
-    {
-      text: 'Список 4',
-      id: '4',
-    },
-    {
-      text: 'Список 5',
-      id: '5',
-    },
-    {
-      text: 'Список 6',
-      id: '6',
-    },
-    {
-      text: 'Список 7',
-      id: '7',
-    },
-    {
-      text: 'Список 8',
-      id: '8',
-    },
-    {
-      text: 'Список 9',
-      id: '9',
-    },
-  ])
+  useEffect(() => {
+    dispatch(getGroups())
+  }, [])
+
+  // const [data] = useState<IListInfo[]>([
+  //   {
+  //     text: 'Список 1',
+  //     id: '1',
+  //   },
+  //   {
+  //     text: 'Список 2',
+  //     id: '2',
+  //   },
+  //   {
+  //     text: 'Список 3',
+  //     id: '3',
+  //   },
+  //   {
+  //     text: 'Список 4',
+  //     id: '4',
+  //   },
+  //   {
+  //     text: 'Список 5',
+  //     id: '5',
+  //   },
+  //   {
+  //     text: 'Список 6',
+  //     id: '6',
+  //   },
+  //   {
+  //     text: 'Список 7',
+  //     id: '7',
+  //   },
+  //   {
+  //     text: 'Список 8',
+  //     id: '8',
+  //   },
+  //   {
+  //     text: 'Список 9',
+  //     id: '9',
+  //   },
+  // ])
 
   return (
     <View style={styles.itemContent}>
@@ -125,8 +130,8 @@ export const YourListsScreen: React.FC<IProps> = ({}) => {
       </View>
 
       <FlatList
-        data={data}
-        keyExtractor={(item, index) => item.id.toString() + index}
+        data={dataGr}
+        keyExtractor={(_, index) => index.toString()}
         ListFooterComponent={() => (
           <ButtonInline
             text={lang(`${T}.buttonText`)}

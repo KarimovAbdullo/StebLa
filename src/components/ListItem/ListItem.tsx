@@ -18,9 +18,15 @@ interface IProps {
   activeList: string[]
   item: IListInfo
   setActiveList: (value: string[]) => void
+  onPress: () => void
 }
 
-export const ListItem = ({ item, activeList, setActiveList }: IProps) => {
+export const ListItem = ({
+  item,
+  activeList,
+  setActiveList,
+  onPress,
+}: IProps) => {
   const styles = useStyles(stylesConfig)
   const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
   const navigation = useSmartNavigation()
@@ -70,7 +76,7 @@ export const ListItem = ({ item, activeList, setActiveList }: IProps) => {
           </SkeletonPlaceholder.Item>
         </SkeletonPlaceholder>
       ) : (
-        <TouchableOpacity style={styles.container} onPress={onLongPress}>
+        <TouchableOpacity style={styles.container} onPress={onPress}>
           <View style={styles.textContent}>
             <Typo.TextButton color="textPrimary" type="regular16">
               {item.text}

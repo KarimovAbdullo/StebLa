@@ -28,6 +28,7 @@ import stylesConfig from './ChatsScreen.styles'
 const T = R.lang.screen_chats
 
 export const ChatsScreen = () => {
+  // const chatId = useAppSelector(state=> state.chats.chats)
   const styles = useStyles(stylesConfig)
   const [activeList, setActiveList] = useState<number[]>([])
   const [activeButton, setActiveButton] = useState(false)
@@ -69,8 +70,9 @@ export const ChatsScreen = () => {
 
   const changeButton = () => {
     navigate.navigate(R.routes.CREATE_RULE_SCREEN, {
-      chatId: activeList[0],
+      chatIds: activeList,
     })
+    console.log('loggg', activeList)
   }
 
   const deliteList = () => {

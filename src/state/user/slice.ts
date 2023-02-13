@@ -53,16 +53,11 @@ const userSlice = createSlice({
     },
     [login.fulfilled.type]: (
       state,
-      action: PayloadAction<{
-        token: IToken
-        user: IUser
-        hasTelegram: boolean
-      }>,
+      action: PayloadAction<{ token: IToken; user: IUser }>,
     ) => {
       state.loading = false
       state.token = action.payload.token
       state.user = action.payload.user
-      state.hasTelegram = action.payload.hasTelegram
     },
     [login.rejected.type]: state => {
       state.loading = false

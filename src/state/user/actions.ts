@@ -17,6 +17,7 @@ import {
 
 export const signOutUser = createAction('user/signOut')
 export const onChangeTelegram = createAction<boolean>('user/telegram')
+// export const signOutUser = createAction('user/signOut')
 export const changeLanguage = createAction<'ru' | 'en'>('user/language')
 export const confirmOnBoarding = createAction<boolean>('user/startedData')
 
@@ -117,9 +118,32 @@ export const login = createAsyncThunk<
 export const getPrice = createAsyncThunk<IPriceData>('price/get', async () => {
   try {
     const { data: response } = await apiClient.get<IPriceData>(R.consts.PRICE)
-
     return response
   } catch (e) {
     throw e
   }
 })
+
+// export const getUserInfo = createAsyncThunk<
+//   IGetUserInfo | null,
+//   {
+//     data: ILogin
+//     onSuccess?: (response: IGetUserInfo) => void
+//     onError?: () => void
+//   }
+// >('user/verifyUser', async arg => {
+//   try {
+//     const { data: response } = await apiClient.post<IGetUserInfo>(
+//       R.consts.API_PATH_GET_USER_INFO,
+//       {
+//         ...arg.data,
+//         credential: arg.data.credential.toString().replace(/\D/g, ''),
+//         code: +arg.data.code,
+//       },
+//     )
+
+//     return response
+//   } catch (e) {
+//     throw e
+//   }
+// })

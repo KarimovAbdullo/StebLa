@@ -1,7 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import apiClient from 'api/instance'
 import R from 'res'
-import { IChatsList, INottificationData, IRuleResponse } from 'types/data'
+import {
+  IChatsList,
+  INottificationData,
+  IruleList,
+  IRuleResponse,
+} from 'types/data'
 
 export const getChatsAction = createAsyncThunk<IChatsList>(
   'chats/get',
@@ -66,28 +71,23 @@ export const getMoreChatsAction = createAsyncThunk<
 // })
 
 export const getRuleAction = createAsyncThunk<
-  IRuleResponse,
+  IruleList,
   {
-    data: IRuleResponse
-    onSuccess?: () => void
+    data: IRuleResponse[]
+    onSuccess?: (response: {}) => void
     onError?: () => void
   }
 >('rule/posttttt', async arg => {
   try {
-    console.log('data', arg.data)
+    console.log('IRuledata', arg.data)
 
-    const { data: response } = await apiClient.post<IRuleResponse>(
+    const { data: response } = await apiClient.post<IruleList>(
       R.consts.API_PATH_RULES,
-      arg.data,
+      { words: arg.data },
     )
 
-    if (response) {
-      arg.onSuccess?.()
-      return response
-    }
-
-    arg.onError?.()
-    throw response
+    arg.onSuccess?.(response)
+    return response
   } catch (e) {
     arg.onError?.()
     throw e

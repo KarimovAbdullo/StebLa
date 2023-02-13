@@ -1,3 +1,4 @@
+import notifee, { AuthorizationStatus } from '@notifee/react-native'
 import apiClient from 'api/instance'
 import { useAppDispatch, useAppSelector } from 'hooks/redux'
 import { useAppState } from 'hooks/useAppState'
@@ -56,6 +57,26 @@ const AppLogic = (props: IAppLogic) => {
       RNBootSplash.hide({ fade: true })
     }, 500)
   })
+
+  async function requestUserPermissionn() {
+    const settings = await notifee.requestPermission()
+
+    if (settings.authorizationStatus >= AuthorizationStatus.AUTHORIZED) {
+      console.log('Permission settings:', settings)
+    } else {
+      console.log('User declined permissions')
+    }
+  }
+
+  notifee.createChannel({
+    id: 'messages',
+    name: 'Private Messages',
+    badge: true,
+  })
+
+  useEffect(() => {
+    requestUserPermissionn()
+  }, [])
 
   const sendToken = async () => {
     if (!user) {

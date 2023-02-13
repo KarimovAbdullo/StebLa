@@ -60,6 +60,7 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
                 ? R.routes.SCREEN_HOME
                 : R.routes.SCREEN_LOGIN
               : R.routes.SCREEN_FIRS_START
+            // R.routes.SCREEN_ADD_TELEGRAM_NUM
           }
           screenOptions={{ headerShown: false }}>
           <RootStack.Screen

@@ -1,4 +1,4 @@
-import { IToken, IUser } from 'types/data'
+import { IPriceData, IToken, IUser } from 'types/data'
 
 export type UserState = {
   user: IUser | null
@@ -7,4 +7,5 @@ export type UserState = {
   language: 'ru' | 'en'
   onboardingSuccess: boolean
   hasTelegram: boolean
+  price: IPriceData | null
 }

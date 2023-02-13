@@ -2,11 +2,14 @@ import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusB
 import Container from 'components/Container'
 import { CustomButton } from 'components/CustomButton/CustomButton'
 import Typo from 'components/typo'
+import { useAppDispatch, useAppSelector } from 'hooks/redux'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import R from 'res'
+import { getPrice } from 'state/user/actions'
+import { getUser } from 'state/user/selectors'
 import { lang } from 'utils/lang'
 
 import styleConfig from './CreateProfileScreen.style'
@@ -17,6 +20,14 @@ const CreateProfileScreen = () => {
   const styles = useStyles(styleConfig)
   const [check, setCheck] = useState('')
   const navigation = useSmartNavigation()
+  const dispatch = useAppDispatch()
+  const { price } = useAppSelector(getUser)
+
+  useEffect(() => {
+    dispatch(getPrice())
+  }, [])
+
+  console.log('prise', price)
 
   const freeBtn = () => {
     setCheck('standart')

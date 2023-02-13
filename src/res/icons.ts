@@ -13,6 +13,7 @@ import DollorIcon from 'assets/icons/DollorIcon'
 import DotIcon from 'assets/icons/DotIcon'
 import DownIcon from 'assets/icons/DownIcon'
 import ExampleIcon from 'assets/icons/ExampleIcon'
+import ExitIcon from 'assets/icons/ExitIcon'
 import FileIcon from 'assets/icons/FileIcon'
 import GroupIcon from 'assets/icons/GroupIcon'
 import HamburgerIcon from 'assets/icons/Hamburger'
@@ -55,6 +56,7 @@ export {
   DotIcon,
   DownIcon,
   ExampleIcon,
+  ExitIcon,
   FileIcon,
   GroupIcon,
   HamburgerIcon,

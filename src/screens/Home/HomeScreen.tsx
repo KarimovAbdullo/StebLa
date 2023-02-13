@@ -1,6 +1,7 @@
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
 import Typo from 'components/typo'
 import { useAppSelector } from 'hooks/redux'
+import { useAppDispatch } from 'hooks/redux'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React from 'react'
@@ -8,6 +9,7 @@ import { TouchableOpacity, View } from 'react-native'
 import Config from 'react-native-config'
 import R from 'res'
 import { getChats } from 'state/chats/selectors'
+import { signOutUser } from 'state/user/actions'
 import { getUser } from 'state/user/selectors'
 import { lang } from 'utils/lang'
 
@@ -19,6 +21,7 @@ const HomeScreen = () => {
   const styles = useStyles(stylesConfig)
   console.log(Config.SIZE_MATTERS_BASE_WIDTH)
   const navigate = useSmartNavigation()
+  const dispatch = useAppDispatch()
 
   const { hasTelegram } = useAppSelector(getUser)
   const { chats } = useAppSelector(getChats)
@@ -52,11 +55,7 @@ const HomeScreen = () => {
   }
 
   const onAcounts = () => {
-    if (hasTelegram) {
-      navigate.navigate(R.routes.SCREEN_ACCOUNTS)
-    } else {
-      navigate.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
-    }
+    navigate.navigate(R.routes.SCREEN_ACCOUNTS)
   }
 
   const onMyProfile = () => {
@@ -75,6 +74,15 @@ const HomeScreen = () => {
       navigate.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
     }
   }
+
+  const signOut = () => {
+    dispatch(signOutUser())
+    navigate.navigate(R.routes.SCREEN_LOGIN)
+  }
+
+  // const onUserList = () => {
+  //   navigate.navigate(R.routes.SCREEN_LIST_USERS)
+  // }
 
   return (
     <View style={styles.Main}>
@@ -127,6 +135,20 @@ const HomeScreen = () => {
           <R.icons.DollorIcon />
           <Typo.Title type="regular18" color="textPrimary" style={styles.text}>
             {lang(`${T}.btnSubText`)}
+          </Typo.Title>
+        </TouchableOpacity>
+
+        {/* <TouchableOpacity style={styles.menu} onPress={onUserList}>
+          <R.icons.DollorIcon />
+          <Typo.Title type="regular18" color="textPrimary" style={styles.text}>
+            Spisik Polzovateley
+          </Typo.Title>
+        </TouchableOpacity> */}
+
+        <TouchableOpacity style={styles.menu} onPress={signOut}>
+          <R.icons.ExitIcon />
+          <Typo.Title type="regular18" color="red" style={styles.text}>
+            Выход
           </Typo.Title>
         </TouchableOpacity>
       </View>

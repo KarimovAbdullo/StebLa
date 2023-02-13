@@ -4,13 +4,14 @@ import { PersistConfig, persistReducer } from 'redux-persist'
 import {
   changeLanguage,
   confirmOnBoarding,
+  getPrice,
   login,
   onChangeTelegram,
   sendConfirmCode,
-  // signOutUser,
+  signOutUser,
 } from 'state/user/actions'
 import { UserState } from 'state/user/types'
-import { IToken, IUser } from 'types/data'
+import { IPriceData, IToken, IUser } from 'types/data'
 
 const initialState: UserState = {
   user: null,
@@ -19,6 +20,7 @@ const initialState: UserState = {
   language: 'ru',
   onboardingSuccess: false,
   hasTelegram: false,
+  price: null,
 }
 
 const userSlice = createSlice({
@@ -26,17 +28,14 @@ const userSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
-    // [signOutUser.type]: state => {
-    //   state.user = null
-    //   state.loading = false
-    //   state.token = null
-    // },
     [changeLanguage.type]: (state, action: PayloadAction<'ru' | 'en'>) => {
       state.language = action.payload
     },
-
     [confirmOnBoarding.type]: (state, action: PayloadAction<boolean>) => {
       state.onboardingSuccess = action.payload
+    },
+    [onChangeTelegram.type]: (state, action: PayloadAction<boolean>) => {
+      state.hasTelegram = action.payload
     },
 
     [sendConfirmCode.pending.type]: state => {
@@ -69,8 +68,25 @@ const userSlice = createSlice({
       state.loading = false
     },
 
-    [onChangeTelegram.type]: (state, action: PayloadAction<boolean>) => {
-      state.hasTelegram = action.payload
+    [signOutUser.type]: state => {
+      state.user = null
+      state.loading = false
+      state.token = null
+      state.hasTelegram = false
+    },
+
+    [getPrice.pending.type]: state => {
+      state.loading = true
+    },
+    [getPrice.fulfilled.type]: (
+      state,
+      action: PayloadAction<{ price: IPriceData }>,
+    ) => {
+      state.loading = false
+      state.price = action.payload.price
+    },
+    [getPrice.rejected.type]: state => {
+      state.loading = false
     },
   },
 })
@@ -78,7 +94,14 @@ const userSlice = createSlice({
 const persistConfig: PersistConfig<UserState> = {
   key: 'auth',
   storage: AsyncStorage,
-  whitelist: ['user', 'token', 'language', 'onboardingSuccess'],
+  whitelist: [
+    'user',
+    'token',
+    'language',
+    'onboardingSuccess',
+    'price',
+    'hasTelegram',
+  ],
 }
 
 export const userReducer = persistReducer(persistConfig, userSlice.reducer)

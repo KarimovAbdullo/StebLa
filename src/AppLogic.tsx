@@ -1,11 +1,10 @@
 import apiClient from 'api/instance'
-import { useAppDispatch, useAppSelector } from 'hooks/redux'
+import { useAppSelector } from 'hooks/redux'
 import { useAppState } from 'hooks/useAppState'
 import React, { ReactChild, ReactElement, ReactNode, useEffect } from 'react'
 import { AppState, AppStateStatus } from 'react-native'
 import RNBootSplash from 'react-native-bootsplash'
 import R from 'res'
-import { getPrice } from 'state/chats/actions'
 import { getUser } from 'state/user/selectors'
 import {
   getFCMToken,
@@ -20,7 +19,6 @@ interface IAppLogic {
 const AppLogic = (props: IAppLogic) => {
   const appState = useAppState()
   const { user } = useAppSelector(getUser)
-  const dispatch = useAppDispatch()
 
   useEffect(() => {
     const subscription = AppState.addEventListener(
@@ -35,7 +33,6 @@ const AppLogic = (props: IAppLogic) => {
 
   useEffect(() => {
     notification()
-    dispatch(getPrice())
   }, [])
 
   useEffect(() => {

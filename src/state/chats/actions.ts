@@ -1,12 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import apiClient from 'api/instance'
 import R from 'res'
-import {
-  IChatsList,
-  INottificationData,
-  IPriceData,
-  IRuleResponse,
-} from 'types/data'
+import { IChatsList, INottificationData, IRuleResponse } from 'types/data'
 
 export const getChatsAction = createAsyncThunk<IChatsList>(
   'chats/get',
@@ -21,7 +16,7 @@ export const getChatsAction = createAsyncThunk<IChatsList>(
 
       return response
     } catch (e) {
-      thunk.dispatch(getChatsAction())
+      await thunk.dispatch(getChatsAction())
       throw e
     }
   },
@@ -30,7 +25,7 @@ export const getChatsAction = createAsyncThunk<IChatsList>(
 export const getMoreChatsAction = createAsyncThunk<
   IChatsList,
   { offset: number }
->('chats/get-more-cahts', async arg => {
+>('chats/get-more-chats', async arg => {
   try {
     const { data: response } = await apiClient.get<IChatsList>(
       R.consts.API_PATH_GET_CHATS,
@@ -122,17 +117,6 @@ export const postMessage = createAsyncThunk<
     throw response
   } catch (e) {
     arg.onError?.()
-    throw e
-  }
-})
-
-export const getPrice = createAsyncThunk<IPriceData>('price/get', async () => {
-  try {
-    const { data: response } = await apiClient.get<IPriceData>(R.consts.PRICE)
-
-    console.log('price', response)
-    return response
-  } catch (e) {
     throw e
   }
 })

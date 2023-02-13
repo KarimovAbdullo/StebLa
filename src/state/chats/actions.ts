@@ -71,7 +71,7 @@ export const getMoreChatsAction = createAsyncThunk<
 // })
 
 export const getRuleAction = createAsyncThunk<
-  IruleList,
+  IRuleResponse,
   {
     data: IRuleResponse[]
     onSuccess?: (response: {}) => void
@@ -81,7 +81,7 @@ export const getRuleAction = createAsyncThunk<
   try {
     console.log('IRuledata', arg.data)
 
-    const { data: response } = await apiClient.post<IruleList>(
+    const { data: response } = await apiClient.post<IRuleResponse>(
       R.consts.API_PATH_RULES,
       { words: arg.data },
     )

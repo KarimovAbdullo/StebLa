@@ -256,3 +256,7 @@ export interface IAdminList {
   users: IAdminData[]
   total: number
 }
+
+export interface IPriceData {
+  price: string
+}

@@ -7,7 +7,7 @@ export default createStyles(color => ({
     opacity: 0.6,
   },
   bottomCard: {
-    marginVertical: '10@vs',
+    marginVertical: '25@vs',
     flexDirection: 'row',
     aligItems: 'center',
   },
@@ -23,7 +23,7 @@ export default createStyles(color => ({
     flexDirection: 'row',
     aligItems: 'center',
     // borderWidth: 1,
-    marginTop: '20@vs',
+    marginTop: '25@vs',
   },
   Main: {
     backgroundColor: color.white,

@@ -15,6 +15,7 @@ const initialState: ChatsState = {
   offset: 0,
   hasMore: true,
   moreLoading: false,
+  rules: [''],
 }
 
 const chatSlice = createSlice({
@@ -63,9 +64,7 @@ const chatSlice = createSlice({
       action: PayloadAction<IRuleResponse>,
     ) => {
       state.loading = false
-      console.log('====================================')
-      console.log(action.payload)
-      console.log('====================================')
+      state.rules = action.payload.rules
     },
     [getRuleAction.rejected.type]: state => {
       state.loading = false

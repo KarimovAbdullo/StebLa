@@ -54,7 +54,7 @@ export const LoginScreen = () => {
       </Typo.TextButton>
 
       <Formik onSubmit={onSubmit} initialValues={initialValues}>
-        {({ values }) => (
+        {() => (
           <>
             <View style={styles.inputContent}>
               <LoginInput
@@ -74,7 +74,6 @@ export const LoginScreen = () => {
                 text={lang(`${T}.BtnTitle`)}
                 style={styles.button}
                 loading={loading}
-                disabled={values.phone === '' ? true : false}
               />
             </View>
           </>

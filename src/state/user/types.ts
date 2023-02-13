@@ -6,5 +6,4 @@ export type UserState = {
   token: IToken | null
   language: 'ru' | 'en'
   onboardingSuccess: boolean
-  hasTelegram: boolean
 }

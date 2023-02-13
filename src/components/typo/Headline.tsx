@@ -20,7 +20,6 @@ interface IProps {
     | 'bold42'
     | 'bold20'
     | 'bold16'
-    | 'bold26'
     | 'reg20'
   style?: StyleProp<TextProps>
   numberOfLines?: number
@@ -81,11 +80,6 @@ const stylesConfig = createStyles((_colors, fonts) => ({
   },
   center: {
     textAlign: 'center',
-  },
-  bold26: {
-    fontFamily: fonts.Ubuntu.regular,
-    fontSize: '26@ms',
-    lineHeight: '34@ms',
   },
   reg20: {
     fontSize: '22@ms',

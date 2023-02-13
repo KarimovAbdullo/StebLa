@@ -13,6 +13,7 @@ import {
   IUser,
 } from 'types/data'
 
+// export const signOutUser = createAction('user/signOut')
 export const changeLanguage = createAction<'ru' | 'en'>('user/language')
 
 export const confirmOnBoarding = createAction<boolean>('user/startedData')
@@ -119,8 +120,6 @@ export const login = createAsyncThunk<
     throw e
   }
 })
-
-export const onChangeTelegram = createAction<boolean>('user/telegram')
 
 // export const getUserInfo = createAsyncThunk<
 //   IGetUserInfo | null,

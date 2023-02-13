@@ -4,7 +4,8 @@ import R from 'res'
 import {
   IChatsList,
   INottificationData,
-  IPriceData,
+  IruleList,
+  IRuleListRes,
   IRuleResponse,
 } from 'types/data'
 
@@ -21,7 +22,7 @@ export const getChatsAction = createAsyncThunk<IChatsList>(
 
       return response
     } catch (e) {
-      thunk.dispatch(getChatsAction())
+      thunk.dispatch(getChatsAction)
       throw e
     }
   },
@@ -71,28 +72,23 @@ export const getMoreChatsAction = createAsyncThunk<
 // })
 
 export const getRuleAction = createAsyncThunk<
-  IRuleResponse,
+  IruleList,
   {
-    data: IRuleResponse
-    onSuccess?: () => void
+    data: IRuleResponse[]
+    onSuccess?: (response: {}) => void
     onError?: () => void
   }
 >('rule/posttttt', async arg => {
   try {
-    console.log('data', arg.data)
+    console.log('IRuledata', arg.data)
 
-    const { data: response } = await apiClient.post<IRuleResponse>(
+    const { data: response } = await apiClient.post<IruleList>(
       R.consts.API_PATH_RULES,
-      arg.data,
+      { words: arg.data },
     )
 
-    if (response) {
-      arg.onSuccess?.()
-      return response
-    }
-
-    arg.onError?.()
-    throw response
+    arg.onSuccess?.(response)
+    return response
   } catch (e) {
     arg.onError?.()
     throw e
@@ -122,17 +118,6 @@ export const postMessage = createAsyncThunk<
     throw response
   } catch (e) {
     arg.onError?.()
-    throw e
-  }
-})
-
-export const getPrice = createAsyncThunk<IPriceData>('price/get', async () => {
-  try {
-    const { data: response } = await apiClient.get<IPriceData>(R.consts.PRICE)
-
-    console.log('price', response)
-    return response
-  } catch (e) {
     throw e
   }
 })

@@ -7,4 +7,5 @@ export type ChatsState = {
   offset: number
   hasMore: boolean
   moreLoading: boolean
+  rules: string[]
 }

@@ -65,13 +65,11 @@ export const NotificationsScreen = () => {
         {lang(`${T}.text`)}
       </Typo.Title>
 
-      {textNtf.readData.length > 0 ? (
-        <TouchableOpacity onPress={() => pressAllRead(['*'])}>
-          <Typo.Title color="main" style={styles.labelStyle}>
-            {lang(`${T}.label`)}
-          </Typo.Title>
-        </TouchableOpacity>
-      ) : null}
+      <TouchableOpacity onPress={() => pressAllRead(['*'])}>
+        <Typo.Title color="main" style={styles.labelStyle}>
+          {lang(`${T}.label`)}
+        </Typo.Title>
+      </TouchableOpacity>
 
       {textNtf.readData?.map(item => (
         <NotificationsItems
@@ -79,11 +77,9 @@ export const NotificationsScreen = () => {
           onPress={() => pressRead(item.id)}
         />
       ))}
-      {textNtf.unreadData ? null : (
-        <Typo.Title center color="iconPrimary">
-          "Прочитанные"
-        </Typo.Title>
-      )}
+      <Typo.Title center color="iconPrimary">
+        "Прочитанные"
+      </Typo.Title>
 
       {textNtf.unreadData?.map(item => (
         <ReadNotificationItems

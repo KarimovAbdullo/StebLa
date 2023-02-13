@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { PersistConfig, persistReducer } from 'redux-persist'
 
 // import { ITelegramVeryfiy } from 'types/data'
-import { addTelegram, verifyTelegram } from './action'
+import { addTelegram, confirmOnBoarding, verifyTelegram } from './action'
 import { changeLanguage } from './action'
 import { TelegramState } from './types'
 
@@ -21,6 +21,9 @@ const addTelegramSlice = createSlice({
   extraReducers: {
     [changeLanguage.type]: (state, action: PayloadAction<'ru' | 'en'>) => {
       state.language = action.payload
+    },
+    [confirmOnBoarding.type]: (state, action: PayloadAction<boolean>) => {
+      state.onboardingSuccess = action.payload
     },
 
     [addTelegram.pending.type]: state => {

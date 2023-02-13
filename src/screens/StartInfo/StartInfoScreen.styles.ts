@@ -20,9 +20,6 @@ export default createStyles(color => ({
   inputContent: {
     marginTop: '25@vs',
   },
-  subtext: {
-    marginBottom: '20@vs',
-  },
   card: {
     flexDirection: 'row',
     height: '200@vs',

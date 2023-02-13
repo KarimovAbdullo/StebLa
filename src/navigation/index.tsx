@@ -4,7 +4,7 @@ import {
   useNavigationContainerRef,
 } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import { useAppSelector } from 'hooks/redux'
+// import { useAppSelector } from 'hooks/redux'
 import React, { useRef } from 'react'
 import R from 'res'
 import { TTheme } from 'res/theme'
@@ -24,7 +24,7 @@ import LoginScreen from 'screens/Login'
 import { MyProfileScreen } from 'screens/MyProfileScreen/MyProfileScreen'
 import NotificationsScreen from 'screens/Notifications'
 import OtpScreen from 'screens/Otp'
-import { PayScreen } from 'screens/PayScreen/PayScreen'
+// import { PayScreen } from 'screens/PayScreen/PayScreen'
 import { RatesScreen } from 'screens/RatesScreen/RatesScreen'
 import RegisteredTelegrammInfo from 'screens/RegisteredTelegrammInfo'
 import StartInfoScreen from 'screens/StartInfo'
@@ -35,15 +35,18 @@ import { StaticListChatScreen } from 'screens/StaticListChatScreen/StaticListCha
 import { StaticWordScreen } from 'screens/StaticWordScreen/StaticWordScreen'
 import UserListForm from 'screens/UserListForm'
 import YourListsScreen from 'screens/YourLists'
-import { getUser } from 'state/user/selectors'
+// import { getUser } from 'state/user/selectors'
 import { TNavigationParams } from 'types/navigation'
 
 const Navigator = ({ theme }: { theme: TTheme }) => {
   const RootStack = createStackNavigator()
   const navigationRef = useNavigationContainerRef<TNavigationParams>()
   const routeNameRef = useRef()
-  const { onboardingSuccess, token } = useAppSelector(getUser)
-  console.log(token?.accessToken, onboardingSuccess)
+  // const {
+  //   // onboardingSuccess,
+  //   token,
+  // } = useAppSelector(getUser)
+  // console.log(token)
 
   return (
     <NavigationContainer
@@ -55,22 +58,18 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
       }}>
       <BottomSheetModalProvider>
         <RootStack.Navigator
-          initialRouteName={
-            onboardingSuccess
-              ? token?.accessToken
-                ? R.routes.SCREEN_HOME
-                : R.routes.SCREEN_LOGIN
-              : R.routes.SCREEN_FIRS_START
-          }
+          // initialRouteName={
+          //   token?.accessToken ? R.routes.SCREEN_HOME : R.routes.SCREEN_LOGIN
+          // }
           screenOptions={{ headerShown: false }}>
-          <RootStack.Screen
+          {/* <RootStack.Screen
             component={PayScreen}
             name={R.routes.SCREEN_PAY}
             options={{
               headerShown: false,
               headerBackTitleVisible: false,
             }}
-          />
+          /> */}
 
           <RootStack.Screen
             component={FirsStartScreen}

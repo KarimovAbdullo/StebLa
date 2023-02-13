@@ -220,8 +220,13 @@ export interface INottificationData {
   subject: string
 }
 
-export interface IPriceData {
-  price: string
+export interface IPay {
+  value: string
+  currency: string
+}
+
+export interface IPayment {
+  amount: IPay
 }
 
 export interface IPay {

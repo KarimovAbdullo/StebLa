@@ -1,7 +1,6 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit'
 import apiClient from 'api/instance'
 import R from 'res'
-import { onChangeTelegram } from 'state/user/actions'
 // import { store } from 'state'
 import {
   ILogin,
@@ -13,26 +12,29 @@ import {
 // export const signOutUser = createAction('user/signOut')
 export const changeLanguage = createAction<'ru' | 'en'>('addTelegram/language')
 
+export const confirmOnBoarding = createAction<boolean>(
+  'addTelegram/startedData',
+)
+
 export const addTelegram = createAsyncThunk<
   string | null,
   {
     data: ITelegram
     onSuccess?: (response: {}) => void
-    onError?: (error?: string) => void
+    onError?: () => void
   }
->('add/telegram', async (arg, thunk) => {
+>('add/telegram', async arg => {
   try {
+    console.log('asdasd')
     const { data: response } = await apiClient.post<string>(
       R.consts.API_PATH_TELEGRAM_INIT,
       { ...arg.data, phone: arg.data.phone.toString() },
     )
 
-    thunk.dispatch(onChangeTelegram(true))
     arg.onSuccess?.(response)
     return response
   } catch (e) {
-    // @ts-ignore
-    arg.onError?.(e?.response?.data?.message || 'Server error')
+    arg.onError?.()
     throw e
   }
 })

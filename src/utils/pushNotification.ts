@@ -1,4 +1,6 @@
+import notifee from '@notifee/react-native'
 import AsyncStorage from '@react-native-community/async-storage'
+import inAppMessaging from '@react-native-firebase/in-app-messaging'
 import messaging from '@react-native-firebase/messaging'
 
 export async function requestUserPermission() {
@@ -29,27 +31,43 @@ export async function getFCMToken() {
   return fcmToken
 }
 
-export const notificationListner = () => {
-  messaging().onNotificationOpenedApp(remoteMessage => {
-    console.log(
-      'Notification caused app to open from background state:',
-      remoteMessage.notification,
-    )
-
-    messaging()
-      .getInitialNotification()
-      // eslint-disable-next-line @typescript-eslint/no-shadow
-      .then(remoteMessage => {
-        if (remoteMessage) {
-          console.log(
-            'Notification caused app to open from quit state:',
-            remoteMessage.notification,
-          )
-        }
-      })
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    messaging().onMessage(async remoteMessage => {
-      console.log('notification froground state...', remoteMessage)
-    })
-  })
+export const notificationListner = async () => {
+  // messaging().setBackgroundMessageHandler(async remoteMessage => {
+  //   const channelId = await notifee.createChannel({
+  //     id: 'backgroundMessage',
+  //     name: 'backgroundMessage',
+  //   })
+  //
+  //   await notifee.displayNotification({
+  //     title: remoteMessage.notification?.title,
+  //     body: remoteMessage.notification?.body,
+  //     android: {
+  //       channelId,
+  //       sound: 'hollow',
+  //       pressAction: {
+  //         id: 'default',
+  //       },
+  //     },
+  //   })
+  // })
+  //
+  // messaging().onNotificationOpenedApp(async remoteMessage => {
+  //   console.log(
+  //     'Notification caused app to open from background state:',
+  //     remoteMessage.notification,
+  //   )
+  //
+  //   const newMessage = await messaging().getInitialNotification()
+  //
+  //   if (newMessage) {
+  //     console.log(
+  //       'Notification caused app to open from quit state:',
+  //       remoteMessage.notification,
+  //     )
+  //   }
+  //
+  //   messaging().onMessage(async gg => {
+  //     console.log('notification froground state...', gg)
+  //   })
+  // })
 }

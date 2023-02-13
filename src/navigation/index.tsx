@@ -4,7 +4,7 @@ import {
   useNavigationContainerRef,
 } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-// import { useAppSelector } from 'hooks/redux'
+import { useAppSelector } from 'hooks/redux'
 import React, { useRef } from 'react'
 import R from 'res'
 import { TTheme } from 'res/theme'
@@ -35,18 +35,18 @@ import { StaticListChatScreen } from 'screens/StaticListChatScreen/StaticListCha
 import { StaticWordScreen } from 'screens/StaticWordScreen/StaticWordScreen'
 import UserListForm from 'screens/UserListForm'
 import YourListsScreen from 'screens/YourLists'
-// import { getUser } from 'state/user/selectors'
+import { getUser } from 'state/user/selectors'
 import { TNavigationParams } from 'types/navigation'
 
 const Navigator = ({ theme }: { theme: TTheme }) => {
   const RootStack = createStackNavigator()
   const navigationRef = useNavigationContainerRef<TNavigationParams>()
   const routeNameRef = useRef()
-  // const {
-  //   // onboardingSuccess,
-  //   token,
-  // } = useAppSelector(getUser)
-  // console.log(token)
+  const {
+    // onboardingSuccess,
+    token,
+  } = useAppSelector(getUser)
+  console.log(token)
 
   return (
     <NavigationContainer
@@ -58,9 +58,9 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
       }}>
       <BottomSheetModalProvider>
         <RootStack.Navigator
-          // initialRouteName={
-          //   token?.accessToken ? R.routes.SCREEN_HOME : R.routes.SCREEN_LOGIN
-          // }
+          initialRouteName={
+            token?.accessToken ? R.routes.SCREEN_HOME : R.routes.SCREEN_LOGIN
+          }
           screenOptions={{ headerShown: false }}>
           {/* <RootStack.Screen
             component={PayScreen}
@@ -273,17 +273,6 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
           />
 
           <RootStack.Screen
-            //@ts-ignore
-            component={YourListsScreen}
-            name={R.routes.SCREEN_YOUR_LIST}
-            options={{
-              headerShown: false,
-              headerTitleAlign: 'center',
-              headerBackTitleVisible: false,
-            }}
-          />
-
-          <RootStack.Screen
             // @ts-ignore
             component={UserListForm}
             name={R.routes.USER_LIST_FORM_SCREEN}
@@ -320,6 +309,17 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
             // @ts-ignore
             component={RegisteredTelegrammInfo}
             name={R.routes.screen_REGISTERED_TELEGRAMM_INFO}
+            options={{
+              headerShown: false,
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
+
+          <RootStack.Screen
+            //@ts-ignore
+            component={YourListsScreen}
+            name={R.routes.SCREEN_YOUR_LIST}
             options={{
               headerShown: false,
               headerTitleAlign: 'center',

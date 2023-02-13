@@ -47,9 +47,9 @@ const HomeScreen = () => {
   const onAcounts = () => {
     if (user?.hasTelegram) {
     } else {
-      navigate.navigate(R.routes.SCREEN_ACCOUNTS)
+      navigate.navigate(R.routes.SCREEN_YOUR_LIST)
     }
-    navigate.navigate(R.routes.SCREEN_ACCOUNTS)
+    navigate.navigate(R.routes.SCREEN_YOUR_LIST)
   }
 
   const onMyProfile = () => {

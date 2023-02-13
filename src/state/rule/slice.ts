@@ -1,15 +1,17 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { PersistConfig, persistReducer } from 'redux-persist'
-import { IGroups, IRuleListRes } from 'types/data'
+import { IRuleGroups, IRuleStatics } from 'types/data'
 
-import { getGroups, getRuleList } from './action'
+import { getGroups } from './action'
+import { getRuleStatistics } from './action'
 import { IRuleState } from './type'
 
 const initialState: IRuleState = {
   loading: false,
   language: 'ru',
-  groups: '',
+  groups: [],
+  data: [],
 }
 
 const ruleSlice = createSlice({
@@ -20,24 +22,27 @@ const ruleSlice = createSlice({
     [getGroups.pending.type]: state => {
       state.loading = true
     },
-    [getGroups.fulfilled.type]: (state, action: PayloadAction<IGroups>) => {
+    [getGroups.fulfilled.type]: (
+      state,
+      action: PayloadAction<IRuleGroups[]>,
+    ) => {
       state.loading = false
-      state.groupsName
+      state.groups = action.payload
     },
     [getGroups.rejected.type]: state => {
       state.loading = false
     },
-    [getRuleList.pending.type]: state => {
+    [getRuleStatistics.pending.type]: state => {
       state.loading = true
     },
-    [getRuleList.fulfilled.type]: (
+    [getRuleStatistics.fulfilled.type]: (
       state,
-      action: PayloadAction<IRuleListRes>,
+      action: PayloadAction<{ data: IRuleStatics[] }>,
     ) => {
       state.loading = false
-      console.log(action.payload)
+      state.data = action.payload.data
     },
-    [getRuleList.rejected.type]: state => {
+    [getRuleStatistics.rejected.type]: state => {
       state.loading = false
     },
   },

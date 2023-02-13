@@ -159,18 +159,17 @@ export interface IIcondata {
 }
 export interface IRuleResponse {
   chatId: string
-  userId: string | undefined
+  // userId: string | undefined
   rules: string[]
+  groupName: string
 }
 
 export interface IruleList {
-  chatId: number
-  groupName: string | string[]
-  rules: string[]
+  words: IRuleResponse
 }
 
 export interface IRuleGroups {
-  groupName: string
+  groupName: string[]
 }
 
 export interface IGroups {
@@ -236,4 +235,28 @@ export interface IPay {
 
 export interface IPayment {
   amount: IPay
+}
+
+export interface IStaticRuleData {
+  id: number
+  userId: string
+  rule: string
+  chatId: number
+  groupName: string
+  repeatsCount: number
+  chatsCount: number
+}
+
+export interface IRuleStatics {
+  data: IStaticRuleData
+}
+
+export interface IRuleMeta {
+  skip: number
+  take: number
+  count: number
+}
+
+export interface IRuleMetaStatics {
+  meta: IRuleMeta
 }

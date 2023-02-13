@@ -30,7 +30,6 @@ interface IProps {
 }
 
 const CreateRuleScreen: React.FC<IProps> = ({ route }) => {
-  const userId = useAppSelector(state => state.user.user?.id)
   const { loading } = useAppSelector(getChats)
 
   const { chatIds } = route.params || {}
@@ -47,16 +46,21 @@ const CreateRuleScreen: React.FC<IProps> = ({ route }) => {
   }
 
   const onYourList = async () => {
-    // const rules: string[] = state.filter(i => i.text).map(i => i.text || '')
-    // const newData = chatIds.map(chatId => ({ rules, chatId, userId }))
-    // dispatch(
-    //   getRuleAction({
-    //     data: newData,
-    //     onSuccess: () => {
-    navigation.navigate(R.routes.SCREEN_YOUR_LIST)
-    //   },
-    // }),
-    // )
+    const rules: string[] = state.filter(i => i.text).map(i => i.text || '')
+    const newData = chatIds.map(chatId => ({
+      rules,
+      chatId,
+      // userId,
+      groupName: `Список ${Math.trunc(Math.random() * 99)}`,
+    }))
+    dispatch(
+      getRuleAction({
+        data: newData,
+        onSuccess: () => {
+          navigation.navigate(R.routes.SCREEN_YOUR_LIST)
+        },
+      }),
+    )
   }
 
   // const onYourList = () => {

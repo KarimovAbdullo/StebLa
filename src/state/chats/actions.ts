@@ -5,7 +5,6 @@ import {
   IChatsList,
   INottificationData,
   IruleList,
-  IRuleListRes,
   IRuleResponse,
 } from 'types/data'
 
@@ -22,7 +21,7 @@ export const getChatsAction = createAsyncThunk<IChatsList>(
 
       return response
     } catch (e) {
-      thunk.dispatch(getChatsAction)
+      thunk.dispatch(getChatsAction())
       throw e
     }
   },

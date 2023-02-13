@@ -6,6 +6,7 @@ export const API_BASE_URL = Config.API_BASE_URL
 export const BASE_PAGE_LIMIT = 10
 
 export const FCM_TOKEN = '/noty/api/v1/firebaseToken'
+export const PRICE = '/api/v1/tariff'
 
 export const API_PATH_SEND_CONFIRM_CODE = '/auth-back/api/v2/sendConfirmCode'
 export const API_PATH_LOGIN = '/auth-back/api/v2/login'

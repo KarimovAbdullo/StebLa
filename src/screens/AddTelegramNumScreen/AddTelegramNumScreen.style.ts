@@ -20,4 +20,7 @@ export default createStyles(color => ({
   inputContent: {
     marginTop: '25@vs',
   },
+  errorText: {
+    paddingLeft: '10@s',
+  },
 }))

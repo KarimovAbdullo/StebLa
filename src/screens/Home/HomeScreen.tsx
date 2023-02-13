@@ -7,6 +7,7 @@ import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import Config from 'react-native-config'
 import R from 'res'
+import { getChats } from 'state/chats/selectors'
 import { getUser } from 'state/user/selectors'
 import { lang } from 'utils/lang'
 
@@ -18,54 +19,60 @@ const HomeScreen = () => {
   const styles = useStyles(stylesConfig)
   console.log(Config.SIZE_MATTERS_BASE_WIDTH)
   const navigate = useSmartNavigation()
-  const { user } = useAppSelector(getUser)
+
+  const { hasTelegram } = useAppSelector(getUser)
+  const { chats } = useAppSelector(getChats)
 
   const goCreateScreen = () => {
-    if (user?.hasTelegram) {
-      navigate.navigate(R.routes.screen_REGISTERED_TELEGRAMM_INFO)
+    if (hasTelegram) {
+      if (chats.length > 0) {
+        navigate.navigate(R.routes.SCREEN_CHATS)
+      } else {
+        navigate.navigate(R.routes.SCREEN_IMPORT_CHATS)
+      }
     } else {
-      navigate.navigate(R.routes.CREATE_RULE_SCREEN)
+      navigate.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
     }
   }
 
   const goWord = () => {
-    if (user?.hasTelegram) {
-      navigate.navigate(R.routes.screen_REGISTERED_TELEGRAMM_INFO)
-    } else {
+    if (hasTelegram) {
       navigate.navigate(R.routes.SCTATIC_WORD_SCREEN)
+    } else {
+      navigate.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
     }
   }
 
   const onNotification = () => {
-    if (user?.hasTelegram) {
-      navigate.navigate(R.routes.screen_REGISTERED_TELEGRAMM_INFO)
-    } else {
+    if (hasTelegram) {
       navigate.navigate(R.routes.SCREEN_NOTIFICATIONS)
+    } else {
+      navigate.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
     }
   }
 
   const onAcounts = () => {
-    if (user?.hasTelegram) {
-    } else {
+    if (hasTelegram) {
       navigate.navigate(R.routes.SCREEN_ACCOUNTS)
+    } else {
+      navigate.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
     }
-    navigate.navigate(R.routes.SCREEN_ACCOUNTS)
   }
 
   const onMyProfile = () => {
-    if (user?.hasTelegram) {
-      navigate.navigate(R.routes.screen_REGISTERED_TELEGRAMM_INFO)
-    } else {
-      // @ts-ignore
+    if (hasTelegram) {
+      //@ts-ignore
       navigate.navigate(R.routes.MY_PROFILE_SCREEN)
+    } else {
+      navigate.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
     }
   }
 
   const onRule = () => {
-    if (user?.hasTelegram) {
-      navigate.navigate(R.routes.screen_REGISTERED_TELEGRAMM_INFO)
-    } else {
+    if (hasTelegram) {
       navigate.navigate(R.routes.RATES_SCREEN)
+    } else {
+      navigate.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
     }
   }
 

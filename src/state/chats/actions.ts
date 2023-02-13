@@ -4,8 +4,7 @@ import R from 'res'
 import {
   IChatsList,
   INottificationData,
-  IruleList,
-  IRuleListRes,
+  IPriceData,
   IRuleResponse,
 } from 'types/data'
 
@@ -22,7 +21,7 @@ export const getChatsAction = createAsyncThunk<IChatsList>(
 
       return response
     } catch (e) {
-      thunk.dispatch(getChatsAction)
+      thunk.dispatch(getChatsAction())
       throw e
     }
   },
@@ -118,6 +117,17 @@ export const postMessage = createAsyncThunk<
     throw response
   } catch (e) {
     arg.onError?.()
+    throw e
+  }
+})
+
+export const getPrice = createAsyncThunk<IPriceData>('price/get', async () => {
+  try {
+    const { data: response } = await apiClient.get<IPriceData>(R.consts.PRICE)
+
+    console.log('price', response)
+    return response
+  } catch (e) {
     throw e
   }
 })

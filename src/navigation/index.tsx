@@ -273,17 +273,6 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
           />
 
           <RootStack.Screen
-            //@ts-ignore
-            component={YourListsScreen}
-            name={R.routes.SCREEN_YOUR_LIST}
-            options={{
-              headerShown: false,
-              headerTitleAlign: 'center',
-              headerBackTitleVisible: false,
-            }}
-          />
-
-          <RootStack.Screen
             // @ts-ignore
             component={UserListForm}
             name={R.routes.USER_LIST_FORM_SCREEN}
@@ -320,6 +309,17 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
             // @ts-ignore
             component={RegisteredTelegrammInfo}
             name={R.routes.screen_REGISTERED_TELEGRAMM_INFO}
+            options={{
+              headerShown: false,
+              headerTitleAlign: 'center',
+              headerBackTitleVisible: false,
+            }}
+          />
+
+          <RootStack.Screen
+            //@ts-ignore
+            component={YourListsScreen}
+            name={R.routes.SCREEN_YOUR_LIST}
             options={{
               headerShown: false,
               headerTitleAlign: 'center',

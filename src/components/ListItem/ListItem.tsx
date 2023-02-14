@@ -8,7 +8,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder'
 import R from 'res'
-import { IListInfo } from 'types/data'
+import { IListInfo, IRuleGroups } from 'types/data'
 import { lang } from 'utils/lang'
 
 import stylesConfig from './ListItem.styles'
@@ -16,7 +16,7 @@ import stylesConfig from './ListItem.styles'
 const T = R.lang.screen_yourList
 interface IProps {
   activeList: string[]
-  item: IListInfo
+  item: IRuleGroups
   setActiveList: (value: string[]) => void
   onPress: () => void
 }
@@ -79,7 +79,7 @@ export const ListItem = ({
         <TouchableOpacity style={styles.container} onPress={onPress}>
           <View style={styles.textContent}>
             <Typo.TextButton color="textPrimary" type="regular16">
-              {item.text}
+              {item.groupName}
             </Typo.TextButton>
           </View>
 

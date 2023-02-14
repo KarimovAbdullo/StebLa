@@ -40,7 +40,7 @@ const ruleSlice = createSlice({
       action: PayloadAction<{ data: IRuleStatics[] }>,
     ) => {
       state.loading = false
-      state.data = action.payload.data
+      action.payload.data
     },
     [getRuleStatistics.rejected.type]: state => {
       state.loading = false

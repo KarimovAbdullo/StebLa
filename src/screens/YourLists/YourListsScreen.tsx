@@ -106,10 +106,7 @@ export const YourListsScreen: React.FC<IProps> = ({}) => {
   //     text: 'Список 8',
   //     id: '8',
   //   },
-  //   {
-  //     text: 'Список 9',
-  //     id: '9',
-  //   },
+
   // ])
 
   return (

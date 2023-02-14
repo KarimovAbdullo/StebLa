@@ -63,6 +63,10 @@ const CreateRuleScreen: React.FC<IProps> = ({ route }) => {
     )
   }
 
+  // useEffect(()=>{
+  //   setState()
+  // })
+
   // const onYourList = () => {
   //   // @ts-ignore
   //   navigation.navigate(R.routes.SCREEN_YOUR_LIST)

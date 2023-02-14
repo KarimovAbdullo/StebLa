@@ -260,3 +260,35 @@ export interface IRuleMeta {
 export interface IRuleMetaStatics {
   meta: IRuleMeta
 }
+
+export interface IAccountsData {
+  userId: string
+  telegramId: string
+  phone: string
+}
+
+export interface IAccountsList {
+  accounts: IAccountsData[]
+}
+
+export interface IAdminData {
+  id: string
+  presence: string
+  status: string
+  roles: [string]
+  email: string
+  emailIsConfirmed: boolean
+  phoneIsConfirmed: boolean
+  isActive: boolean
+  lastLoginRemoteAddress: string
+  userinfo: {}
+}
+
+export interface IAdminList {
+  users: IAdminData[]
+  total: number
+}
+
+export interface IPriceData {
+  price: string
+}

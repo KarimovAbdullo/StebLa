@@ -1,15 +1,16 @@
-// import useSmartNavigation from 'hooks/useSmartNavigation'
 import { BottomSheetModal } from '@gorhom/bottom-sheet'
 import BottomSheet from 'components/BottomSheet'
 import FocusAwareStatusBar from 'components/common/CustomStatusBar/CustomStatusBar'
 import ListUserItem from 'components/ListUserItem'
 import Menu from 'components/Menu/Menu'
-// import { CustomButton } from 'components/CustomButton/CustomButton'
 import Typo from 'components/typo'
+import { useAppDispatch, useAppSelector } from 'hooks/redux'
 import { useStyles } from 'hooks/useStyles'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { FlatList, TouchableOpacity, View } from 'react-native'
 import R from 'res'
+import { getUsersAction } from 'state/admin.tsx/actions'
+import { getAdminUsers } from 'state/admin.tsx/selector'
 import { IListUserInfo } from 'types/data'
 import { lang } from 'utils/lang'
 
@@ -21,33 +22,14 @@ export const ListUsersScreen = () => {
   const styles = useStyles(stylesConfig)
   const [activeList, setActiveList] = useState<string[]>([])
   const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
+  const dispatch = useAppDispatch()
+  const { admin } = useAppSelector(getAdminUsers)
+
+  console.log('admin', admin)
 
   const menuBar = () => {
     bottomsheetRef2.current?.present()
   }
-  //   const [activeButton, setActiveButton] = useState(false)
-  // const navigate = useSmartNavigation()
-
-  // const onLongPress = () => {
-  //   // @ts-ignore
-  //   setActiveButton(!activeButton)
-  // }
-
-  // const changeButton = () => {
-  //   // @ts-ignore
-  //   navigate.navigate(R.routes.CREATE_RULE_SCREEN)
-  // }
-
-  // const deliteList = () => {
-  //   setActiveList([])
-  // }
-
-  //   const activeButtons = () => {
-  //     setActiveButton(false)
-  //     setTimeout(() => {
-  //       setActiveButton(true)
-  //     }, 100)
-  //   }
 
   const [data] = useState<IListUserInfo[]>([
     {
@@ -56,50 +38,11 @@ export const ListUsersScreen = () => {
       subTitle: '+ 7 (777) 777 777 77',
       image: require('../../assets/images/01.png'),
     },
-    {
-      text: 'Имя пользователя',
-      id: '2',
-      subTitle: '+ 7 (777) 777 777 77',
-      image: require('../../assets/images/02.png'),
-    },
-    {
-      text: 'Имя пользователя',
-      id: '3',
-      subTitle: '+ 7 (777) 777 777 77',
-      image: require('../../assets/images/03.png'),
-    },
-    {
-      text: 'Имя пользователя',
-      id: '4',
-      subTitle: '+ 7 (777) 777 777 77',
-      image: require('../../assets/images/04.png'),
-    },
-    {
-      text: 'Имя пользователя',
-      id: '5',
-      subTitle: '+ 7 (777) 777 777 77',
-      image: require('../../assets/images/05.png'),
-    },
-    {
-      text: 'Имя пользователя',
-      id: '6',
-      subTitle: '+ 7 (777) 777 777 77',
-      image: require('../../assets/images/06.png'),
-    },
-
-    {
-      text: 'Имя пользователя',
-      id: '7',
-      subTitle: '+ 7 (777) 777 777 77',
-      image: require('../../assets/images/07.png'),
-    },
-    {
-      text: 'Имя пользователя',
-      id: '8',
-      subTitle: '+ 7 (777) 777 777 77',
-      image: require('../../assets/images/08.png'),
-    },
   ])
+
+  useEffect(() => {
+    dispatch(getUsersAction())
+  }, [])
 
   return (
     <View style={styles.itemContent}>

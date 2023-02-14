@@ -33,15 +33,9 @@ export const AddTelegramCodeScreen: React.FC<IProps> = ({ route }) => {
   const dispatch = useAppDispatch()
   const { loading } = useAppSelector(addTelegramSelector)
 
-  const goHome = () => {
-    navigation.navigate(R.routes.screen_REGISTERED_TELEGRAMM_INFO)
-  }
-
   const goNum = () => {
     navigation.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
   }
-
-  console.log(code)
 
   useEffect(() => {
     if (countdown > 0) {
@@ -99,7 +93,7 @@ export const AddTelegramCodeScreen: React.FC<IProps> = ({ route }) => {
           <CustomButton
             text={lang(`${T}.button`)}
             style={styles.button}
-            onPress={goHome}
+            onPress={onSubmit}
             loading={loading}
             disabled={code.length > 4 ? false : true}
           />

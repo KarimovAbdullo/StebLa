@@ -7,12 +7,12 @@ import React, { useEffect, useRef, useState } from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import SkeletonPlaceholder from 'react-native-skeleton-placeholder'
 import R from 'res'
-import { ITelegramData } from 'types/data'
+import { IAccountsData } from 'types/data'
 
 import stylesConfig from './TelegramItem.styles'
 
 interface IProps {
-  item: ITelegramData
+  item: IAccountsData
   activeList: string[]
   setActiveList: (value: string[]) => void
 }
@@ -30,16 +30,16 @@ export const TelegramItem = ({ item, activeList, setActiveList }: IProps) => {
   }, [])
 
   const onLongPress = () => {
-    setActiveList([...activeList, item.id])
+    setActiveList([...activeList, item.telegramId])
     console.log(activeList)
     if (active) {
-      const delite = activeList.filter(i => i !== item.id)
+      const delite = activeList.filter(i => i !== item.telegramId)
       setActiveList(delite)
     }
     bottomsheetRef2.current?.present()
   }
 
-  const active = activeList.find(i => i === item.id)
+  const active = activeList.find(i => i === item.telegramId)
 
   return (
     <>
@@ -72,7 +72,7 @@ export const TelegramItem = ({ item, activeList, setActiveList }: IProps) => {
             <R.icons.TelegrammIcon />
 
             <Typo.Title type="regular16" style={styles.textContent}>
-              {item.title}
+              {item.phone}
             </Typo.Title>
           </View>
           <TouchableOpacity
@@ -86,11 +86,11 @@ export const TelegramItem = ({ item, activeList, setActiveList }: IProps) => {
             ref={bottomsheetRef2}
             style={styles.bottomSheet}>
             <View>
-              {/* <BottomSheetButtons
+              <BottomSheetButtons
                 text="Открыть"
                 icon={<R.icons.DisableIcon />}
                 style={styles.button}
-              /> */}
+              />
 
               <BottomSheetButtons
                 text="Удалить"

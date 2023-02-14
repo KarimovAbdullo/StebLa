@@ -1,11 +1,13 @@
 import { useBottomSheetModal } from '@gorhom/bottom-sheet'
 import Typo from 'components/typo'
 import { useAppSelector } from 'hooks/redux'
+import { useAppDispatch } from 'hooks/redux'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
 import React from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import R from 'res'
+import { signOutUser } from 'state/user/actions'
 import { getUser } from 'state/user/selectors'
 import { lang } from 'utils/lang'
 
@@ -17,6 +19,7 @@ const Menu = () => {
   const styles = useStyles(stylesConfig)
   const navigate = useSmartNavigation()
   const { dismissAll } = useBottomSheetModal()
+  const dispatch = useAppDispatch()
   const { user } = useAppSelector(getUser)
 
   // const bottomsheetRef2 = useRef<BottomSheetModal | null>(null)
@@ -69,8 +72,16 @@ const Menu = () => {
 
   const onRule = () => {
     dismissAll()
-    //@ts-ignore
-    navigate.navigate(R.routes.RATES_SCREEN)
+    if (user?.hasTelegram) {
+      navigate.navigate(R.routes.RATES_SCREEN)
+    } else {
+      navigate.navigate(R.routes.SCREEN_ADD_TELEGRAM_NUM)
+    }
+  }
+
+  const signOut = () => {
+    dispatch(signOutUser())
+    navigate.navigate(R.routes.SCREEN_LOGIN)
   }
 
   return (
@@ -118,6 +129,13 @@ const Menu = () => {
           <R.icons.DollorIcon />
           <Typo.Title type="regular18" color="textPrimary" style={styles.text}>
             {lang(`${T}.btnSubText`)}
+          </Typo.Title>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.menu} onPress={signOut}>
+          <R.icons.ExitIcon />
+          <Typo.Title type="regular18" color="red" style={styles.text}>
+            Выход
           </Typo.Title>
         </TouchableOpacity>
       </View>

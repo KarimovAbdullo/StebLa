@@ -42,11 +42,7 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
   const RootStack = createStackNavigator()
   const navigationRef = useNavigationContainerRef<TNavigationParams>()
   const routeNameRef = useRef()
-  const {
-    // onboardingSuccess,
-    token,
-  } = useAppSelector(getUser)
-  console.log(token)
+  const { onboardingSuccess, token } = useAppSelector(getUser)
 
   return (
     <NavigationContainer
@@ -59,7 +55,11 @@ const Navigator = ({ theme }: { theme: TTheme }) => {
       <BottomSheetModalProvider>
         <RootStack.Navigator
           initialRouteName={
-            token?.accessToken ? R.routes.SCREEN_HOME : R.routes.SCREEN_LOGIN
+            onboardingSuccess
+              ? token?.accessToken
+                ? R.routes.SCREEN_HOME
+                : R.routes.SCREEN_LOGIN
+              : R.routes.SCREEN_FIRS_START
           }
           screenOptions={{ headerShown: false }}>
           {/* <RootStack.Screen

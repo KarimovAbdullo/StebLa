@@ -19,7 +19,8 @@
 			"text": "Whatsapp",
 			"bottomText": "Добавить аккаунт",
 			"modalTitle": "Добавление аккаунта",
-			"modalBtnTitle": "Выслать код"
+			"modalBtnTitle": "Выслать код",
+			"btnTitle1": "Подтвердить"
 		},
 		"addCode": {
 			"titleTop": "Добавление профиля Telegram",

@@ -238,17 +238,13 @@ export interface IPayment {
 }
 
 export interface IStaticRuleData {
-  id: number
-  userId: string
-  rule: string
-  chatId: number
+  id?: number
+  userId?: string
+  rule?: string
+  chatId?: number
   groupName: string
-  repeatsCount: number
-  chatsCount: number
-}
-
-export interface IRuleStatics {
-  data: IStaticRuleData
+  repeatsCount?: number
+  chatsCount?: number
 }
 
 export interface IRuleMeta {
@@ -257,7 +253,8 @@ export interface IRuleMeta {
   count: number
 }
 
-export interface IRuleMetaStatics {
+export interface IRuleStatics {
+  data: IStaticRuleData
   meta: IRuleMeta
 }
 

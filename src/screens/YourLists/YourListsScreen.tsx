@@ -42,31 +42,14 @@ export const YourListsScreen: React.FC<IProps> = ({}) => {
     bottomsheetRef2.current?.present()
   }
 
-  // const onYourList = async () => {
-  //   const rule: string[] = state.filter(i => i.text).map(i => i.text || '')
-  //   dispatch(
-  //     getRuleAction({
-  //       data: { rules: rule, chatId, userId },
-  //       onSuccess: () => {
-  //         navigation.navigate(R.routes.SCREEN_YOUR_LIST, { chatId, rule })
-  //       },
-  //     }),
-  //   )
-  // }
   const activeButtons = () => {
     setActiveButton(false)
     setTimeout(() => {
       setActiveButton(true)
     }, 100)
 
-    dispatch(
-      getRuleStatistics({
-        data: {},
-        onSuccess: () => {
-          navigate.navigate(R.routes.SCREEN_YOUR_LIST)
-        },
-      }),
-    )
+    dispatch(getRuleStatistics())
+    navigate.navigate(R.routes.CREATE_RULE_SCREEN)
   }
 
   useEffect(() => {

@@ -6,9 +6,8 @@ import {
   IRuleGroups,
   IruleList,
   IRuleListRes,
-  IRuleMetaStatics,
   IRuleStatics,
-  IStaticRuleData,
+  // IStaticRuleData,
 } from 'types/data'
 
 export const getGroups = createAsyncThunk<IRuleGroups[] | never[]>(
@@ -77,26 +76,22 @@ export const getRuleList = createAsyncThunk<
 
 // )
 
-export const getRuleStatistics = createAsyncThunk<
-  { data: IRuleStatics },
-  { data: IStaticRuleData;
->(
-    'get/ruleStatistics',
-    //@ts-ignore
-    async () => {
-      try {
-        const { data: response } = await apiClient.get<{
-          data: IRuleStatics
-          // meta: IRuleMetaStatics
-        }>(R.consts.API_PATH_RULES_STATICS)
+export const getRuleStatistics = createAsyncThunk<IRuleStatics>(
+  'get/ruleStatistics',
+  //@ts-ignore
+  async () => {
+    try {
+      const { data: response } = await apiClient.get<IRuleStatics>(
+        R.consts.API_PATH_RULES_STATICS,
+        // { data: arg.data },
+      )
 
-        if (response) {
-          return response
-        }
-
+      if (response) {
         return response
-      } catch (e) {
-        throw e
       }
-    },
-  )
+      return response
+    } catch (e) {
+      throw e
+    }
+  },
+)

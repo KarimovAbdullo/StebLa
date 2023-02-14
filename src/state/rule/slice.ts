@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { PersistConfig, persistReducer } from 'redux-persist'
-import { IRuleGroups, IRuleStatics } from 'types/data'
+import { IRuleGroups, IStaticRuleData } from 'types/data'
 
 import { getGroups } from './action'
 import { getRuleStatistics } from './action'
@@ -37,10 +37,10 @@ const ruleSlice = createSlice({
     },
     [getRuleStatistics.fulfilled.type]: (
       state,
-      action: PayloadAction<{ data: IRuleStatics[] }>,
+      action: PayloadAction<IStaticRuleData[]>,
     ) => {
       state.loading = false
-      action.payload.data
+      state.data = action.payload
     },
     [getRuleStatistics.rejected.type]: state => {
       state.loading = false

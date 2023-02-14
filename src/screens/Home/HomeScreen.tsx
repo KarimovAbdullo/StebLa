@@ -70,6 +70,14 @@ const HomeScreen = () => {
     }
   }
 
+  const goList = () => {
+    if (user?.hasTelegram) {
+      navigate.navigate(R.routes.screen_REGISTERED_TELEGRAMM_INFO)
+    } else {
+      navigate.navigate(R.routes.SCREEN_YOUR_LIST)
+    }
+  }
+
   const signOut = () => {
     dispatch(signOutUser())
     navigate.navigate(R.routes.SCREEN_LOGIN)
@@ -116,6 +124,13 @@ const HomeScreen = () => {
           <R.icons.BellIcon />
           <Typo.Title type="regular18" color="textPrimary" style={styles.text}>
             {lang(`${T}.btnSubLabel`)}
+          </Typo.Title>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.menu} onPress={goList}>
+          <R.icons.StaticIcon />
+          <Typo.Title type="regular18" color="textPrimary" style={styles.text}>
+            {'My List'}
           </Typo.Title>
         </TouchableOpacity>
 

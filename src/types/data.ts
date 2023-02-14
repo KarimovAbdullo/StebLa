@@ -240,7 +240,7 @@ export interface IPayment {
 export interface IStaticRuleData {
   id?: number
   userId?: string
-  rule?: string
+  rule: string
   chatId?: number
   groupName: string
   repeatsCount?: number

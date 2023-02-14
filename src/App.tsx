@@ -1,4 +1,3 @@
-import notifee from '@notifee/react-native'
 import { AppStateProvider } from 'contexts/AppStateContext'
 import Navigator from 'navigation'
 import React, { useEffect } from 'react'

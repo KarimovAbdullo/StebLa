@@ -9,7 +9,7 @@ import Typo from 'components/typo'
 import { useAppDispatch, useAppSelector } from 'hooks/redux'
 import useSmartNavigation from 'hooks/useSmartNavigation'
 import { useStyles } from 'hooks/useStyles'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { FlatList, SafeAreaView, TouchableOpacity, View } from 'react-native'
 import R from 'res'
 import { getRuleAction } from 'state/chats/actions'
@@ -31,6 +31,8 @@ interface IProps {
 
 const CreateRuleScreen: React.FC<IProps> = ({ route }) => {
   const { loading } = useAppSelector(getChats)
+  const data = useAppSelector(state => state.rules.data)
+  console.log('zyb', data)
 
   const { chatIds } = route.params || {}
 
@@ -63,14 +65,9 @@ const CreateRuleScreen: React.FC<IProps> = ({ route }) => {
     )
   }
 
-  // useEffect(()=>{
-  //   setState()
-  // })
-
-  // const onYourList = () => {
-  //   // @ts-ignore
-  //   navigation.navigate(R.routes.SCREEN_YOUR_LIST)
-  // }
+  // useEffect(() => {
+  //   setState([...state, { text: data.map(i => i.rule) }])
+  // }, [])
 
   const [state, setState] = useState<IRuleData[]>([
     { id: 1 },
